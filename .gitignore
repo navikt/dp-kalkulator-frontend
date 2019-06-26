@@ -1,9 +1,5 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
 # dependencies
 /node_modules
-/.pnp
-.pnp.js
 
 # testing
 /coverage
@@ -18,6 +14,40 @@
 .env.test.local
 .env.production.local
 
+*.css
+
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+/dist
+.DS_STORE
+node_modules
+*.pyc
+.grunt
+_SpecRunner.html
+__benchmarks__
+build/
+coverage/
+.module-cache
+*.log*
+*.sublime-project
+*.sublime-workspace
+.idea
+*.iml
+*.swp
+.idea/
+.vscode/
+node_modules/
+build
+.DS_Store
+*.tgz
+lerna-debug.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+/.changelog
+.npm/
+*.swo
+.cache/
+*.css
