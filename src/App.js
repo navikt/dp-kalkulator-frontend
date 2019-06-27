@@ -1,5 +1,8 @@
 import React from 'react';
 import './App.css';
+import Ekspanderbartpanel from 'nav-frontend-ekspanderbartpanel';
+import Panel from 'nav-frontend-paneler';
+
 
 class App extends React.Component {
     constructor(props) {
@@ -16,15 +19,18 @@ class App extends React.Component {
     render() {
         return (
             <div className="App">
-                <h1>Vår info </h1>
-                {this.state.totalIncome === null ? <div/> : <TotalInntekt totalIncome={this.state.totalIncome}/>}
-                <div>Laster fortsatt: {this.state.loading ? "yes" : "no"} </div>
-                <div>Hvis noe av oppgitt data her er feil, kontakt oss på nav.no</div>
-                <div>Personnummeret ditt er: {this.state.personnummer} </div>
-                <div>Kvalifisert for dagpenger: {this.state.doesPersonQualify ? "ja" : "nei"} </div>
-                {this.state.employerSummaries === null ? <div/> : <EmployerList employerSummaries={this.state.employerSummaries}/>}
-                {this.state.monthsIncomeInformation === null ? <div/> : <AllMonths monthsIncomeInformation={this.state.monthsIncomeInformation}/>}
-
+                    <h1>Vår info </h1>
+                    {this.state.totalIncome === null ? <br/> : <TotalInntekt totalIncome={this.state.totalIncome}/>}
+                    <div>Laster fortsatt: {this.state.loading ? "yes" : "no"} </div>
+                    <div>Hvis noe av oppgitt data her er feil, kontakt oss på nav.no</div>
+                    <div>Personnummeret ditt er: {this.state.personnummer} </div>
+                    <div>Kvalifisert for dagpenger: {this.state.doesPersonQualify ? "ja" : "nei"} </div>
+                <Panel border={true}>
+                    {this.state.employerSummaries === null ? <br/> :
+                        <EmployerList employerSummaries={this.state.employerSummaries}/>}
+                    {this.state.monthsIncomeInformation === null ? <br/> :
+                        <AllMonths monthsIncomeInformation={this.state.monthsIncomeInformation}/>}
+                </Panel>
             </div>
         );
     }
@@ -103,10 +109,11 @@ function EmployerSummary(props) {
 function EmployersMonth(props) {
     return (
         <li>
-            <div>Måned: {props.month.month} </div>
-            <ul>
-                {props.month.employers.map(arbeidsgiver => <Employer employer={arbeidsgiver}/>)}
-            </ul>
+            <Ekspanderbartpanel tittel={"Måned:" + props.month.month}>
+                <ul>
+                    {props.month.employers.map(arbeidsgiver => <Employer employer={arbeidsgiver}/>)}
+                </ul>
+            </Ekspanderbartpanel>
         </li>
     );
 }
