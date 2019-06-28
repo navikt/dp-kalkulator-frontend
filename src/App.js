@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Ekspanderbartpanel from 'nav-frontend-ekspanderbartpanel';
-import Panel from 'nav-frontend-paneler';
+import PanelBase from 'nav-frontend-paneler';
 
 
 class App extends React.Component {
@@ -25,12 +25,12 @@ class App extends React.Component {
                     <div>Hvis noe av oppgitt data her er feil, kontakt oss på nav.no</div>
                     <div>Personnummeret ditt er: {this.state.personnummer} </div>
                     <div>Kvalifisert for dagpenger: {this.state.doesPersonQualify ? "ja" : "nei"} </div>
-                <Panel border={true}>
+                <PanelBase border>
                     {this.state.employerSummaries === null ? <br/> :
                         <EmployerList employerSummaries={this.state.employerSummaries}/>}
                     {this.state.monthsIncomeInformation === null ? <br/> :
                         <AllMonths monthsIncomeInformation={this.state.monthsIncomeInformation}/>}
-                </Panel>
+                </PanelBase>
             </div>
         );
     }
