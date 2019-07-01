@@ -2,6 +2,8 @@ import React from 'react';
 import './App.css';
 import Ekspanderbartpanel from 'nav-frontend-ekspanderbartpanel';
 import PanelBase from 'nav-frontend-paneler';
+import {Sidetittel, Normaltekst} from 'nav-frontend-typografi';
+import NavFrontendSpinner from 'nav-frontend-spinner';
 
 
 class App extends React.Component {
@@ -19,12 +21,11 @@ class App extends React.Component {
     render() {
         return (
             <div className="App">
-                    <h1>Vår info </h1>
+                    <Sidetittel>Din inntekt {this.state.loading ? <NavFrontendSpinner></NavFrontendSpinner> : <br/>} </Sidetittel>
                     {this.state.totalIncome === null ? <br/> : <TotalInntekt totalIncome={this.state.totalIncome}/>}
-                    <div>Laster fortsatt: {this.state.loading ? "yes" : "no"} </div>
-                    <div>Hvis noe av oppgitt data her er feil, kontakt oss på nav.no</div>
-                    <div>Personnummeret ditt er: {this.state.personnummer} </div>
-                    <div>Kvalifisert for dagpenger: {this.state.doesPersonQualify ? "ja" : "nei"} </div>
+                    <Normaltekst>Hvis noe av oppgitt data her er feil, kontakt oss på nav.no</Normaltekst>
+                    <Normaltekst>Personnummeret ditt er: {this.state.personnummer} </Normaltekst>
+                    <Normaltekst>Kvalifisert for dagpenger: {this.state.doesPersonQualify ? "ja" : "nei"} </Normaltekst>
                 <PanelBase border>
                     {this.state.employerSummaries === null ? <br/> :
                         <EmployerList employerSummaries={this.state.employerSummaries}/>}
@@ -88,9 +89,9 @@ function EmployerList(props) {
 
 function TotalInntekt(props) {
     return (
-        <div>
+        <Normaltekst>
             Din totale inntekt de siste 36 måneder: {props.totalIncome}
-        </div>
+        </Normaltekst>
     );
 }
 
@@ -109,7 +110,7 @@ function EmployerSummary(props) {
 function EmployersMonth(props) {
     return (
         <li>
-            <Ekspanderbartpanel tittel={"Måned:" + props.month.month}>
+            <Ekspanderbartpanel tittel={"Måned: " + props.month.month}>
                 <ul>
                     {props.month.employers.map(arbeidsgiver => <Employer employer={arbeidsgiver}/>)}
                 </ul>
