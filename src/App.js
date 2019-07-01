@@ -2,6 +2,9 @@ import React from 'react';
 import './App.css';
 import Ekspanderbartpanel from 'nav-frontend-ekspanderbartpanel';
 import PanelBase from 'nav-frontend-paneler';
+import {Sidetittel, Normaltekst} from 'nav-frontend-typografi';
+import NavFrontendSpinner from 'nav-frontend-spinner';
+
 
 class App extends React.Component {
   constructor(props) {
@@ -17,22 +20,19 @@ class App extends React.Component {
   render() {
     return (
         <div className="App">
-          <h1>Vår info </h1>
-          {this.state.totalIncome === null ? <br/> : <TotalInntekt
-              totalIncome={this.state.totalIncome}/>}
-          <div>Laster fortsatt: {this.state.loading ? "yes" : "no"} </div>
-          <div>Hvis noe av oppgitt data her er feil, kontakt oss på nav.no</div>
-          <div>Personnummeret ditt er: {this.state.personnummer} </div>
-          <div>Kvalifisert for dagpenger: {this.state.doesPersonQualify ? "ja"
-              : "nei"} </div>
-          <PanelBase border>
-            {this.state.employerSummaries === null ? <br/> :
-                <EmployerList
-                    employerSummaries={this.state.employerSummaries}/>}
-            {this.state.monthsIncomeInformation === null ? <br/> :
-                <AllMonths
-                    monthsIncomeInformation={this.state.monthsIncomeInformation}/>}
-          </PanelBase>
+            <Sidetittel>Din inntekt {this.state.loading ? <NavFrontendSpinner></NavFrontendSpinner> : <br/>} </Sidetittel>
+            {this.state.totalIncome === null ? <br/> : <TotalInntekt totalIncome={this.state.totalIncome}/>}
+            <Normaltekst>Hvis noe av oppgitt data her er feil, kontakt oss på nav.no</Normaltekst>
+            <Normaltekst>Personnummeret ditt er: {this.state.personnummer} </Normaltekst>
+            <Normaltekst>Kvalifisert for dagpenger: {this.state.doesPersonQualify ? "ja" : "nei"} </Normaltekst>
+            <PanelBase border>
+                {this.state.employerSummaries === null ? <br/> :
+                    <EmployerList
+                        employerSummaries={this.state.employerSummaries}/>}
+                {this.state.monthsIncomeInformation === null ? <br/> :
+                    <AllMonths
+                        monthsIncomeInformation={this.state.monthsIncomeInformation}/>}
+            </PanelBase>
         </div>
     );
   }
@@ -94,9 +94,9 @@ function EmployerList(props) {
 
 function TotalInntekt(props) {
   return (
-      <div>
+      <Normaltekst>
         Din totale inntekt de siste 36 måneder: {props.totalIncome}
-      </div>
+      </Normaltekst>
   );
 }
 
