@@ -5,7 +5,6 @@ import PanelBase from 'nav-frontend-paneler';
 import {Sidetittel, Normaltekst} from 'nav-frontend-typografi';
 import NavFrontendSpinner from 'nav-frontend-spinner';
 
-
 class App extends React.Component {
     constructor(props) {
         super(props);
@@ -80,11 +79,12 @@ class App extends React.Component {
 }
 
 function EmployerList(props) {
-    return (
-        <ul>
-            {props.employerSummaries.map(employer => <EmployerSummary employer={employer}/>)}
-        </ul>
-    );
+  return (
+      <ul>
+        {props.employerSummaries.map(
+            employer => <EmployerSummary employer={employer}/>)}
+      </ul>
+  );
 }
 
 function TotalInntekt(props) {
@@ -96,15 +96,13 @@ function TotalInntekt(props) {
 }
 
 function EmployerSummary(props) {
-    return (
-        <li>
-            <div>Arbeidsgiver: {props.employer.name}</div>
-            <div>Organisasjonsnummer: {props.employer.orgID}</div>
-            <div>Total inntekt: {props.employer.income}</div>
-            <div>Fra: {props.employer.startMonth}</div>
-            <div>Til: {props.employer.endMonth}</div>
-        </li>
-    )
+  return (
+      <li>
+        <div>Arbeidsgiver: {props.employer.name}</div>
+        <div>Organisasjonsnummer: {props.employer.orgID}</div>
+        <div>Total inntekt: {props.employer.income}</div>
+      </li>
+  )
 }
 
 function EmployersMonth(props) {
@@ -120,35 +118,34 @@ function EmployersMonth(props) {
 }
 
 function Employer(props) {
-    return (
-        <li>
-            <div>Arbeidsgiver: {props.employer.name}</div>
-            <div>OrganisasjonsID: {props.employer.orgID}</div>
-            <div>Inntekt: {props.employer.income}</div>
-        </li>
-    )
+  return (
+      <li>
+        <div>Arbeidsgiver: {props.employer.name}</div>
+        <div>OrganisasjonsID: {props.employer.orgID}</div>
+        <div>Inntekt: {props.employer.income}</div>
+      </li>
+  )
 }
 
 function AllMonths(props) {
-    return (
-        <ul>
-            {props.monthsIncomeInformation.map(month => <EmployersMonth month={month}/>)}
-        </ul>
-    );
+  return (
+      <ul>
+        {props.monthsIncomeInformation.map(
+            month => <EmployersMonth month={month}/>)}
+      </ul>
+  );
 }
-
 
 function getQueryVariable(variable, path) {
-    const query = path.substring(1);
-    const vars = query.split("&");
-    for (let i = 0; i < vars.length; i++) {
-        let pair = vars[i].split("=");
-        if (pair[0] === variable) {
-            return pair[1];
-        }
+  const query = path.substring(1);
+  const vars = query.split("&");
+  for (let i = 0; i < vars.length; i++) {
+    let pair = vars[i].split("=");
+    if (pair[0] === variable) {
+      return pair[1];
     }
-    return (false);
+  }
+  return (false);
 }
-
 
 export default App;
