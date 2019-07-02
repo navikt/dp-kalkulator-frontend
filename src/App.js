@@ -2,8 +2,9 @@ import React from 'react';
 import './App.css';
 import Ekspanderbartpanel from 'nav-frontend-ekspanderbartpanel';
 import PanelBase from 'nav-frontend-paneler';
-import {Sidetittel, Normaltekst} from 'nav-frontend-typografi';
+import { Sidetittel, Normaltekst, Innholdstittel, Undertittel } from 'nav-frontend-typografi';
 import NavFrontendSpinner from 'nav-frontend-spinner';
+import AlertStripe from 'nav-frontend-alertstriper';
 
 
 class App extends React.Component {
@@ -21,10 +22,10 @@ class App extends React.Component {
     return (
         <div className="App">
             <Sidetittel>Din inntekt {this.state.loading ? <NavFrontendSpinner></NavFrontendSpinner> : <br/>} </Sidetittel>
+            <QualifiedMessage doesPersonQualify={this.state.doesPersonQualify}></QualifiedMessage>
             {this.state.totalIncome === null ? <br/> : <TotalInntekt totalIncome={this.state.totalIncome}/>}
-            <Normaltekst>Hvis noe av oppgitt data her er feil, kontakt oss på nav.no</Normaltekst>
-            <Normaltekst>Personnummeret ditt er: {this.state.personnummer} </Normaltekst>
-            <Normaltekst>Kvalifisert for dagpenger: {this.state.doesPersonQualify ? "ja" : "nei"} </Normaltekst>
+            <Normaltekst>Stemmer ikke noen av opplysningene? Meld fra hos sherveer@nav.no.</Normaltekst>
+            
             <PanelBase border>
                 {this.state.employerSummaries === null ? <br/> :
                     <EmployerList
@@ -83,62 +84,86 @@ class App extends React.Component {
   }
 }
 
-function EmployerList(props) {
-  return (
-      <ul>
-        {props.employerSummaries.map(
-            employer => <EmployerSummary employer={employer}/>)}
-      </ul>
-  );
+function QualifiedMessage(props) {
+    return (
+        <AlertStripe type={props.doesPersonQualify ? "suksess" : "feil"}>
+            Du er {props.doesPersonQualify ? "kvalifisert" : "ikke kvalifisert"} for dagpenger.
+        </AlertStripe>
+    );
 }
 
 function TotalInntekt(props) {
+    return (
+        <Normaltekst>
+          Din totale inntekt for de siste 36 månedene er {props.totalIncome}.
+        </Normaltekst>
+    );
+}
+
+function EmployerList(props) {
   return (
-      <Normaltekst>
-        Din totale inntekt de siste 36 måneder: {props.totalIncome}
-      </Normaltekst>
+      <div>
+        <Innholdstittel>Arbeidsgivere</Innholdstittel>
+        <ul>
+            {props.employerSummaries.map(
+                employer => <EmployerSummary employer={employer}/>)}
+        </ul>
+      </div>
   );
 }
 
 function EmployerSummary(props) {
   return (
       <li>
-        <div>Arbeidsgiver: {props.employer.name}</div>
-        <div>Organisasjonsnummer: {props.employer.orgID}</div>
-        <div>Total inntekt: {props.employer.income}</div>
+        <Undertittel>{props.employer.name}</Undertittel>
+        <div>
+            Total inntekt: {props.employer.income}
+        </div>
       </li>
   )
 }
 
 function EmployersMonth(props) {
-  return (
-      <li>
-        <Ekspanderbartpanel tittel={"Måned:" + props.month.month}>
-          <ul>
-            {props.month.employers.map(
-                arbeidsgiver => <Employer employer={arbeidsgiver}/>)}
-          </ul>
-        </Ekspanderbartpanel>
-      </li>
-  );
+    var moment = require('moment');
+    moment.locale('nb');
+    return (
+            <li>
+                <Ekspanderbartpanel tittel={moment(props.month.month, 'YYYY-MM').format('MMMM YYYY')}>
+                <ul>
+                    {props.month.employers.map(
+                        arbeidsgiver => <Employer employer={arbeidsgiver}/>)}
+                </ul>
+                </Ekspanderbartpanel>
+            </li>
+    );
 }
 
 function Employer(props) {
   return (
       <li>
-        <div>Arbeidsgiver: {props.employer.name}</div>
-        <div>OrganisasjonsID: {props.employer.orgID}</div>
-        <div>Inntekt: {props.employer.income}</div>
+        <Ekspanderbartpanel tittel={props.employer.name + ": " + props.employer.income + " kroner"} border>
+            <ul>
+                <li>
+                    Fastlønn:
+                </li>
+                <li>
+                    Bonus:
+                </li>
+            </ul>
+        </Ekspanderbartpanel>
       </li>
   )
 }
 
 function AllMonths(props) {
   return (
-      <ul>
-        {props.monthsIncomeInformation.map(
-            month => <EmployersMonth month={month}/>)}
-      </ul>
+      <div>
+        <Innholdstittel>Månedsoversikt</Innholdstittel>
+        <ul>
+            {props.monthsIncomeInformation.map(
+                month => <EmployersMonth month={month}/>)}
+        </ul>
+      </div>
   );
 }
 
