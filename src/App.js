@@ -141,16 +141,20 @@ function EmployersMonth(props) {
 function Employer(props) {
   return (
       <li>
-        <Ekspanderbartpanel tittel={props.employer.name + ": " + props.employer.income + " kroner"} border>
+        <Ekspanderbartpanel tittel={props.employer.name} border>
             <ul>
-                <li>
-                    Fastlønn:
-                </li>
-                <li>
-                    Bonus:
-                </li>
+                {props.employer.incomes.map(
+                  income => <Income income={income}/>)}
             </ul>
         </Ekspanderbartpanel>
+      </li>
+  )
+}
+
+function Income(props) {
+  return (
+      <li>
+            {props.income.verdikode + ": " + props.income.income}
       </li>
   )
 }
