@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import Ekspanderbartpanel from 'nav-frontend-ekspanderbartpanel';
 import PanelBase from 'nav-frontend-paneler';
-import { Sidetittel, Normaltekst, Innholdstittel, Undertittel } from 'nav-frontend-typografi';
+import { Sidetittel, Normaltekst, Innholdstittel } from 'nav-frontend-typografi';
 import NavFrontendSpinner from 'nav-frontend-spinner';
 import AlertStripe from 'nav-frontend-alertstriper';
 
@@ -21,8 +21,8 @@ class App extends React.Component {
   render() {
     return (
         <div className="App">
-            <Sidetittel>Din inntekt {this.state.loading ? <NavFrontendSpinner></NavFrontendSpinner> : <br/>} </Sidetittel>
-            <QualifiedMessage doesPersonQualify={this.state.doesPersonQualify}></QualifiedMessage>
+            <Sidetittel>Din inntekt {this.state.loading ? <NavFrontendSpinner/> : <br/>} </Sidetittel>
+            <QualifiedMessage doesPersonQualify={this.state.doesPersonQualify}/>
             {this.state.totalIncome === null ? <br/> : <TotalInntekt totalIncome={this.state.totalIncome}/>}
             <Normaltekst>Din arbebiedsgiver og andre som utbetaler ytelser rapporterer dine inntekter til a-ordningen. Oppdager du feil? Ta kontakt med de som har rapportert opplysningene.</Normaltekst>
             
@@ -41,31 +41,24 @@ class App extends React.Component {
   componentDidMount() {
     const personnummer = getQueryVariable("personnummer",
         window.location.pathname);
-    console.log(personnummer);
+    const beregningsdato = "2019-03-21";
+    const token = "1234567890ABCDEFghijkl";
     this.setState({
       personnummer: personnummer,
       loading: true
     });
-    /*const json = '{"totalIncome":"1858201","employerSummaries":[{"name":"NAV","orgID":"144132","income":"1858201","startMonth":"2019-07","endMonth":"2019-07"}],"monthsIncomeInformation":[{"month":"2019-07","employers":[{"name":"NAV","orgID":"144132","income":"58.32"}]}]}';
-    const obj = JSON.parse(json);
-    this.setState({
-      monthsIncomeInformation: obj.monthsIncomeInformation,
-      totalIncome: obj.totalIncome,
-      employerSummaries: obj.employerSummaries
-    });*/
-    const personObject = {
-          personnummer: "15118512351",
-          beregningsdato: "2019-03-01",
-          token:"1234567890ABCDEFghijkl"
-
-    };
+    const personObject = '{'
+        + '"personnummer" :"' + personnummer + '"'
+        + '"beregningsdato" :"'+ beregningsdato + '"'
+        + '"token" : "' + token + '"'
+        + '}';
     const fetchRequest = {
       method: "POST",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json"
       },
-      body: JSON.stringify(personObject)
+      body: personObject
     };
     fetch("http://127.0.0.1:8080/inntekt", fetchRequest)
     .then(personIncomeInformation => {
@@ -83,8 +76,6 @@ class App extends React.Component {
         monthsIncomeInformation: json.monthsIncomeInformation,
         employerSummaries: json.employerSummaries
       });
-      console.log(json);
-      console.log(this.employerSummaries)
     })
     .catch(error => console.error(error));
   }
@@ -191,45 +182,31 @@ function Income(props) {
   )
 }
 function AllYears(props) {
-    console.log(props.monthsIncomeInformation);
-    //const monthsIncomeInformationByYear = props.monthsIncomeInformation.map(month => month.groupeBy(props.monthsIncomeInformation, month.toString().split("-",1)));
-    //console.log(monthsIncomeInformationByYear);
+    let yearBuckets = [[], [], [], []];
+    for (let i = 0; i < props.monthsIncomeInformation.length; i++) {
+      yearBuckets[(props.monthsIncomeInformation[i].month.split("-")[0]) % 4].push(props.monthsIncomeInformation[i]);
+    }
+    let noEmptyYearBuckets = [];
+    for (let i = 0; i < 4; i++) {
+      if (yearBuckets[i].length > 0) noEmptyYearBuckets.push(yearBuckets[i]);
+    }
+    noEmptyYearBuckets.sort((list1, list2) => list1[0].month.split("-")[0] - list2[1].month.split("-")[0]);
     return (
         <div>
             <Innholdstittel>Årsoversikt</Innholdstittel>
             <ul>
-                {props.monthsIncomeInformation.map(
-                    monthIncomeInformation => <AllMonths monthsIncomeInformation={props.monthsIncomeInformation} monthIncomeInformation={monthIncomeInformation}/>)}
+              {noEmptyYearBuckets.map(monthIncomeInformation => <AllMonths monthsIncomeInformation = {monthIncomeInformation} year={monthIncomeInformation[0].month.split("-")[0]} />)}
             </ul>
         </div>
     );
 }
 
-//
-// function Years(props) {
-//     var moment = require('moment');
-//     moment.locale('nb');
-//     console.log(props.year.month)
-//     return (
-//         <li>
-//             <Ekspanderbartpanel tittel={moment(props.year.month.toString(), 'YYYY-MM').format('MMMM YYYY')}>
-//                 <ul>
-//                     {props.monthsIncomeInformation.map(
-//                         month => <EmployersMonth month={month}/>)}
-//                 </ul>
-//             </Ekspanderbartpanel>
-//         </li>
-//     );
-// }
-
-
 function AllMonths(props) {
-    var moment = require('moment');
+    let moment = require('moment');
     moment.locale('nb');
-    console.log(props.monthsIncomeInformation[0].month.toString().split("-",1))
     return (
       <li>
-        <Ekspanderbartpanel tittel = {"20001"}>//moment(props.monthIncomeInformation.month.toString(), 'YYYY-;;').format('MMMM YYYY')}>
+        <Ekspanderbartpanel tittel = {props.year}>
             <Innholdstittel>Månedsoversikt</Innholdstittel>
             <ul>
                 {props.monthsIncomeInformation.map(
