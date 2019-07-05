@@ -31,7 +31,7 @@ class App extends React.Component {
                     <EmployerList
                         employerSummaries={this.state.employerSummaries}/>}
                 {this.state.monthsIncomeInformation === null ? <br/> :
-                    <AllMonths
+                    <AllYears
                         monthsIncomeInformation={this.state.monthsIncomeInformation}/>}
             </PanelBase>
         </div>
@@ -187,16 +187,53 @@ function Income(props) {
       </li>
   )
 }
+function AllYears(props) {
+    //console.log(props.monthsIncomeInformation)
+    //const monthsIncomeInformationByYear = props.monthsIncomeInformation.mapValues(monthsIncomeInformation.groupBy(months => months.month.toString().split("-",1)))
+    //console.log(monthsIncomeInformationByYear)
+    return (
+        <div>
+            <Innholdstittel>Årsoversikt</Innholdstittel>
+            <ul>
+                {props.monthsIncomeInformation.map(
+                    monthIncomeInformation => <AllMonths monthsIncomeInformation={props.monthsIncomeInformation} monthIncomeInformation={monthIncomeInformation}/>)}
+            </ul>
+        </div>
+    );
+}
+
+//
+// function Years(props) {
+//     var moment = require('moment');
+//     moment.locale('nb');
+//     console.log(props.year.month)
+//     return (
+//         <li>
+//             <Ekspanderbartpanel tittel={moment(props.year.month.toString(), 'YYYY-MM').format('MMMM YYYY')}>
+//                 <ul>
+//                     {props.monthsIncomeInformation.map(
+//                         month => <EmployersMonth month={month}/>)}
+//                 </ul>
+//             </Ekspanderbartpanel>
+//         </li>
+//     );
+// }
+
 
 function AllMonths(props) {
-  return (
-      <div>
-        <Innholdstittel>Månedsoversikt</Innholdstittel>
-        <ul>
-            {props.monthsIncomeInformation.map(
-                month => <EmployersMonth month={month}/>)}
-        </ul>
-      </div>
+    var moment = require('moment');
+    moment.locale('nb');
+    console.log(props.monthsIncomeInformation[0].month.toString().split("-",1))
+    return (
+      <li>
+        <Ekspanderbartpanel tittel = {"20001"}>//moment(props.monthIncomeInformation.month.toString(), 'YYYY-;;').format('MMMM YYYY')}>
+            <Innholdstittel>Månedsoversikt</Innholdstittel>
+            <ul>
+                {props.monthsIncomeInformation.map(
+                    month => <EmployersMonth month={month}/>)}
+            </ul>
+        </Ekspanderbartpanel>
+      </li>
   );
 }
 
