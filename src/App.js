@@ -79,6 +79,7 @@ class App extends React.Component {
       this.setState({
         loading: false,
         totalIncome: json.totalIncome,
+        totalIncome12: json.totalIncome12,
         monthsIncomeInformation: json.monthsIncomeInformation,
         employerSummaries: json.employerSummaries
       });
@@ -100,7 +101,9 @@ function QualifiedMessage(props) {
 function TotalInntekt(props) {
     return (
         <Normaltekst>
-          Din totale inntekt for de siste 36 månedene er: {props.totalIncome} kr.
+          Din totale inntekt for de siste 36 månedene er: {props.totalIncome} kr, din gjennomsnittlig inntekt de siste 36 månedene har vært har vært {(props.totalIncome / 36).toFixed(2)} kr.
+
+          Din totale inntekt for de siste 12 månedene er: {props.totalIncome12} kr, din gjennomsnittlig inntekt de siste 12 månedene har vært {(props.totalIncome12 / 12).toFixed(2)} kr .
         </Normaltekst>
     );
 }
@@ -188,9 +191,9 @@ function Income(props) {
   )
 }
 function AllYears(props) {
-    //console.log(props.monthsIncomeInformation)
-    //const monthsIncomeInformationByYear = props.monthsIncomeInformation.mapValues(monthsIncomeInformation.groupBy(months => months.month.toString().split("-",1)))
-    //console.log(monthsIncomeInformationByYear)
+    console.log(props.monthsIncomeInformation);
+    //const monthsIncomeInformationByYear = props.monthsIncomeInformation.map(month => month.groupeBy(props.monthsIncomeInformation, month.toString().split("-",1)));
+    //console.log(monthsIncomeInformationByYear);
     return (
         <div>
             <Innholdstittel>Årsoversikt</Innholdstittel>
