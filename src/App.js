@@ -90,12 +90,24 @@ function QualifiedMessage(props) {
 }
 
 function TotalInntekt(props) {
+    console.log(props)
     return (
         <Normaltekst>
-          Din totale inntekt for de siste 36 månedene er: {props.totalIncome} kr, din gjennomsnittlig inntekt de siste 36 månedene har vært har vært {(props.totalIncome / 36).toFixed(2)} kr.
-
-          Din totale inntekt for de siste 12 månedene er: {props.totalIncome12} kr, din gjennomsnittlig inntekt de siste 12 månedene har vært {(props.totalIncome12 / 12).toFixed(2)} kr .
-        </Normaltekst>
+            <p>
+                <li>
+          Din totale inntekt for de siste 36 månedene er: {props.totalIncome} kr
+                </li>
+                <li>
+                    Din gjennomsnittlig inntekt de siste 36 månedene har vært har vært {(props.totalIncome / 36).toFixed(2)}kr.
+                </li>
+                <li>
+                    Din totale inntekt for de siste 12 månedene er: {props.totalIncome12} kr
+                </li>
+                <li>
+                    Din gjennomsnittlig inntekt de siste 12 månedene har vært {(props.totalIncome12 / 12).toFixed(2)}kr.
+                </li>
+            </p>
+            </Normaltekst>
     );
 }
 
