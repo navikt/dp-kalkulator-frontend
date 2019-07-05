@@ -184,13 +184,17 @@ function Income(props) {
 function AllYears(props) {
     let yearBuckets = [[], [], [], []];
     for (let i = 0; i < props.monthsIncomeInformation.length; i++) {
+      console.log(props.monthsIncomeInformation);
+      console.log(props.monthsIncomeInformation[i]);
+      console.log(props.monthsIncomeInformation[i].month);
       yearBuckets[(props.monthsIncomeInformation[i].month.split("-")[0]) % 4].push(props.monthsIncomeInformation[i]);
     }
     let noEmptyYearBuckets = [];
     for (let i = 0; i < 4; i++) {
       if (yearBuckets[i].length > 0) noEmptyYearBuckets.push(yearBuckets[i]);
     }
-    noEmptyYearBuckets.sort((list1, list2) => list1[0].month.split("-")[0] - list2[1].month.split("-")[0]);
+    console.log(noEmptyYearBuckets);
+    noEmptyYearBuckets.sort(function (list1, list2){return ((list2[0]).month.split("-")[0] - (list1[0]).month.split("-")[0])});
     return (
         <div>
             <Innholdstittel>Årsoversikt</Innholdstittel>
