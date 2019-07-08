@@ -11,7 +11,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      totalIncome: null,
+      totalIncome: null, totalIncome12: null,
       employerSummaries: null,
       monthsIncomeInformation: null,
       doesPersonQualify: false
@@ -24,7 +24,8 @@ class App extends React.Component {
             <Sidetittel>Din inntekt {this.state.loading ? <NavFrontendSpinner/> : <br/>} </Sidetittel>
             <QualifiedMessage doesPersonQualify={this.state.doesPersonQualify}/>
             {this.state.totalIncome === null ? <br/> : <TotalInntekt totalIncome={this.state.totalIncome}/>}
-            <Normaltekst>Din arbebiedsgiver og andre som utbetaler ytelser rapporterer dine inntekter til a-ordningen. Oppdager du feil? Ta kontakt med de som har rapportert opplysningene.</Normaltekst>
+            {this.state.totalIncome12 === null ? <br/> : <TotalInntekt12 totalIncome12={this.state.totalIncome12}/>}
+            <Normaltekst>Din arbeidsgiver og andre som utbetaler ytelser rapporterer dine inntekter til a-ordningen. Oppdager du feil? Ta kontakt med de som har rapportert opplysningene.</Normaltekst>
             
             <PanelBase border>
                 {this.state.employerSummaries === null ? <br/> :
@@ -90,24 +91,31 @@ function QualifiedMessage(props) {
 }
 
 function TotalInntekt(props) {
-    console.log(props)
     return (
         <Normaltekst>
-            <p>
+
                 <li>
-          Din totale inntekt for de siste 36 månedene er: {props.totalIncome} kr
+                    Din totale inntekt for de siste 36 månedene er: {props.totalIncome.toFixed(2)} kr
                 </li>
                 <li>
-                    Din gjennomsnittlig inntekt de siste 36 månedene har vært har vært {(props.totalIncome / 36).toFixed(2)}kr.
+                    Din gjennomsnittlig inntekt de siste 36 månedene har vært {(props.totalIncome / 36).toFixed(2)}kr.
                 </li>
+
+            </Normaltekst>
+    );
+}
+function TotalInntekt12(props) {
+    return (
+        <Normaltekst>
+
                 <li>
-                    Din totale inntekt for de siste 12 månedene er: {props.totalIncome12} kr
+                    Din totale inntekt for de siste 12 månedene er: {props.totalIncome12.toFixed()} kr
                 </li>
                 <li>
                     Din gjennomsnittlig inntekt de siste 12 månedene har vært {(props.totalIncome12 / 12).toFixed(2)}kr.
                 </li>
-            </p>
-            </Normaltekst>
+
+        </Normaltekst>
     );
 }
 
@@ -152,7 +160,7 @@ console.log(props.periode.startDateYearMonth);
     moment.locale('nb');
     return(
         <li>
-            periode = fra {moment(props.periode.startDateYearMonth, 'YYYY-MM').format('MMMM YYYY') +" til " +moment(props.periode.endDateYearMonth, 'YYYY-MM').format('MMMM YYYY') }
+            Periode:  {(props.periode.startDateYearMonth === props.periode.endDateYearMonth) ? moment(props.periode.startDateYearMonth, 'YYYY-MM').format('MMMM YYYY') :  "fra " + moment(props.periode.startDateYearMonth, 'YYYY-MM').format('MMMM YYYY') +" til " +moment(props.periode.endDateYearMonth, 'YYYY-MM').format('MMMM YYYY') }
         </li>
     )
 
