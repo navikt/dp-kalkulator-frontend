@@ -45,29 +45,18 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    const personnummer = getQueryVariable("personnummer",
-        window.location.pathname);
-    const beregningsdato = "2019-03-21";
-    const token = "1234567890ABCDEFghijkl";
+    document.cookie = "ID_token=2416281490ghj;";
+    document.cookie = `beregningsdato=${((new Date()).toISOString().split("T")[0])}`;
     this.setState({
-      personnummer: personnummer,
       loading: true
     });
-    const personObject = '{'
-        + '"personnummer" :"' + personnummer + '"'
-        + '"beregningsdato" :"'+ beregningsdato + '"'
-        + '"token" : "' + token + '"'
-        + '}';
-    const fetchRequest = {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      },
-      body: personObject
-    };
-    fetch("http://127.0.0.1:8080/inntekt", fetchRequest)
-    .then(personIncomeInformation => {
+    fetch("http://app.lvh.me:8080/inntekt",{
+      mode: 'cors',
+      cache: 'no-cache',
+      credentials: 'include'
+    })
+
+  .then(personIncomeInformation => {
       if (personIncomeInformation.ok) {
         return personIncomeInformation.json();
       } else {
@@ -94,6 +83,7 @@ function QualifiedMessage(props) {
         </AlertStripe>
     );
 }
+
 function PositivResponse(props) {
     return (
         <div>
@@ -243,10 +233,7 @@ function AllYears(props) {
     for (let i = 0; i < props.monthsIncomeInformation.length; i++) {
       yearBuckets[(props.monthsIncomeInformation[i].month.split("-")[0]) % 4].push(props.monthsIncomeInformation[i]);
     }
-    let noEmptyYearBuckets = [];
-    for (let i = 0; i < 4; i++) {
-      if (yearBuckets[i].length > 0) noEmptyYearBuckets.push(yearBuckets[i]);
-    }
+    let noEmptyYearBuckets = yearBuckets.filter(year => year.length > 0);
     noEmptyYearBuckets.sort(function (list1, list2){return ((list2[0]).month.split("-")[0] - (list1[0]).month.split("-")[0])});
     return (
         <div>
@@ -274,16 +261,5 @@ function AllMonths(props) {
   );
 }
 
-function getQueryVariable(variable, path) {
-  const query = path.substring(1);
-  const vars = query.split("&");
-  for (let i = 0; i < vars.length; i++) {
-    let pair = vars[i].split("=");
-    if (pair[0] === variable) {
-      return pair[1];
-    }
-  }
-  return (false);
-}
 
 export default App;
