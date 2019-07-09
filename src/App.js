@@ -5,7 +5,7 @@ import PanelBase from 'nav-frontend-paneler';
 import { Sidetittel, Normaltekst, Innholdstittel } from 'nav-frontend-typografi';
 import NavFrontendSpinner from 'nav-frontend-spinner';
 import AlertStripe from 'nav-frontend-alertstriper';
-
+import { HjelpetekstAuto } from 'nav-frontend-hjelpetekst';
 
 class App extends React.Component {
   constructor(props) {
@@ -22,11 +22,16 @@ class App extends React.Component {
     return (
         <div className="App">
             <Sidetittel>Din inntekt {this.state.loading ? <NavFrontendSpinner/> : <br/>} </Sidetittel>
-            <QualifiedMessage doesPersonQualify={this.state.doesPersonQualify}/>
+            <p>
+            <b>Her vises opplysninger om dine inntekter. NAV bruker blant annet disse opplysningene for å vurdere om du har rett til dagpenger, hvor lenge og hvor mye du kan få i dagpenger.</b>
             {this.state.totalIncome === null ? <br/> : <TotalInntekt totalIncome={this.state.totalIncome}/>}
             {this.state.totalIncome12 === null ? <br/> : <TotalInntekt12 totalIncome12={this.state.totalIncome12}/>}
-            <Normaltekst>Din arbeidsgiver og andre som utbetaler ytelser rapporterer dine inntekter til a-ordningen. Oppdager du feil? Ta kontakt med de som har rapportert opplysningene.</Normaltekst>
-            
+            <Normaltekst>Din arbeidsgiver og andre som utbetaler inntekter til deg rapporterer disse opplysningene til a-ordningen minst én gang i måneden. Oppdager du feil? Ta kontakt med de som har rapportert opplysningene.</Normaltekst>
+            </p>
+            <p>
+
+                <HelpTextForRejection> </HelpTextForRejection>
+            </p>
             <PanelBase border>
                 {this.state.employerSummaries === null ? <br/> :
                     <EmployerList
@@ -85,20 +90,43 @@ class App extends React.Component {
 function QualifiedMessage(props) {
     return (
         <AlertStripe type={props.doesPersonQualify ? "suksess" : "feil"}>
-            Du er {props.doesPersonQualify ? "kvalifisert" : "ikke kvalifisert"} for dagpenger.
+            {props.doesPersonQualify ? <PositivResponse> </PositivResponse>  : <PositivResponse> </PositivResponse>}
         </AlertStripe>
     );
 }
+function PositivResponse(props) {
+    return (
+        <div>
+        <Normaltekst>
+            <p>
+            A-ordningen viser at du har hatt inntekter over 1,5 ganger folketrygdens grunnbeløp (1,5 G) de siste 12 månedene eller 3 G de siste 36 månedene, og kan derfor ha tjent nok til å ha rett på dagpenger.
+            </p>
+            <p>
+                Du kan likevel avslag på søknaden på grunn av for lav inntekt
+                <HjelpetekstAuto tittel={""} >
+                    Du har mottatt dagpenger i løpet av de siste 36 månedene, og inntekter som vises her har allerede blitt brukt opp i en tidligere dagpengeperiode. Du kan i mange tilfeller ha rett på dagpenger selv om du har mottatt dagpenger de siste 36 månedene. (OBS: regner med at hele denne kun vises for de som søker vanlig, og ikke gjenopptak?)
+
+                    · Du får innvilget dagpenger fra en dato fram i tid. Da kan nyere inntekter bli tatt med i vurderingen av om du har rett på dagpenger. Dette kan i noen tilfeller kan føre til at du ikke har tjent nok.
+
+                    · Opplysningene i a-ordningen er feil, for eksempel fordi arbeidsgiveren din har rapportert for høy inntekt for deg en måned.
+
+            </HjelpetekstAuto>
+            </p>
+        </Normaltekst>
+        </div>
+    );
+}
+
 
 function TotalInntekt(props) {
     return (
         <Normaltekst>
 
                 <li>
-                    Din totale inntekt for de siste 36 månedene er: {props.totalIncome.toFixed(2)} kr
+                    Mine inntekter de siste 36 månedene: {props.totalIncome.toFixed(2)} kr
                 </li>
                 <li>
-                    Din gjennomsnittlig inntekt de siste 36 månedene har vært {(props.totalIncome / 36).toFixed(2)}kr.
+                    Min gjennomsnittlige inntekt de siste 36 månedene: {(props.totalIncome / 36).toFixed(2)}kr.
                 </li>
 
             </Normaltekst>
@@ -109,10 +137,10 @@ function TotalInntekt12(props) {
         <Normaltekst>
 
                 <li>
-                    Din totale inntekt for de siste 12 månedene er: {props.totalIncome12.toFixed()} kr
+                    Mine inntekter de siste 12 månedene: {props.totalIncome12.toFixed()} kr
                 </li>
                 <li>
-                    Din gjennomsnittlig inntekt de siste 12 månedene har vært {(props.totalIncome12 / 12).toFixed(2)}kr.
+                    Min gjennomsnittlige inntekt de siste 12 månedene: {(props.totalIncome12 / 12).toFixed(2)}kr.
                 </li>
 
         </Normaltekst>
@@ -132,6 +160,15 @@ function EmployerList(props) {
         </ul>
       </div>
   );
+}
+
+function HelpTextForRejection(props) {
+    return(
+        <HjelpetekstAuto  >
+            Innholdet vil vises når brukeren klikker på knappen.
+
+        </HjelpetekstAuto>
+    )
 }
 
 function EmployerSummary(props) {
@@ -160,7 +197,7 @@ console.log(props.periode.startDateYearMonth);
     moment.locale('nb');
     return(
         <li>
-            Periode:  {(props.periode.startDateYearMonth === props.periode.endDateYearMonth) ? moment(props.periode.startDateYearMonth, 'YYYY-MM').format('MMMM YYYY') :  "fra " + moment(props.periode.startDateYearMonth, 'YYYY-MM').format('MMMM YYYY') +" til " +moment(props.periode.endDateYearMonth, 'YYYY-MM').format('MMMM YYYY') }
+            Periode:  {(props.periode.startDateYearMonth === props.periode.endDateYearMonth) ? moment(props.periode.startDateYearMonth, 'YYYY-MM').format('MMMM YYYY') :  moment(props.periode.startDateYearMonth, 'YYYY-MM').format('MMMM YYYY') +" til " +moment(props.periode.endDateYearMonth, 'YYYY-MM').format('MMMM YYYY') }
         </li>
     )
 
