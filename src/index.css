@@ -8,19 +8,264 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
+.hjelpetekst {
+  position: relative;
+  padding-left: 1.25rem;
+  display: inline-block;
+}
+.hjelpetekst .lukknapp {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  border: 0;
+  position: relative;
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+  color: #78706A;
+  border: 2px solid currentColor;
+  background-color: transparent;
+  border-radius: 2px;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+.hjelpetekst .lukknapp:before,
+.hjelpetekst .lukknapp:after {
+  content: '';
+  position: absolute;
+  width: 1.25rem;
+  height: 3px;
+  top: calc(50% - 0.175rem);
+  left: 50%;
+  background-color: currentColor;
+}
+.hjelpetekst .lukknapp:before {
+  transform: translate(-50%, 50%) rotate(-45deg);
+}
+.hjelpetekst .lukknapp:after {
+  transform: translate(-50%, 50%) rotate(45deg);
+}
+.hjelpetekst .lukknapp:hover {
+  background-color: currentColor;
+}
+.hjelpetekst .lukknapp:hover:before,
+.hjelpetekst .lukknapp:hover:after {
+  background-color: #FFF;
+}
+.hjelpetekst .lukknapp:active {
+  color: #19548a;
+}
+.hjelpetekst .lukknapp:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px #254b6d;
+}
+.hjelpetekst .lukknapp--bla {
+  color: #0067C5;
+}
+.hjelpetekst .lukknapp--hvit {
+  color: #FFF;
+}
+.hjelpetekst .lukknapp--hvit:hover {
+  background-color: #66CBEC;
+  border-color: #66CBEC;
+  color: #78706A;
+}
+.hjelpetekst .lukknapp--hvit:hover:before,
+.hjelpetekst .lukknapp--hvit:hover:after {
+  background-color: #3E3832;
+}
+.hjelpetekst .lukknapp--overstHjorne {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+.hjelpetekst__tekst:before {
+  content: '';
+  display: block;
+  width: 4rem;
+  height: 3rem;
+  float: right;
+}
+.hjelpetekst__apneknapp {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  cursor: pointer;
+  background-color: transparent;
+}
+.hjelpetekst__apneknapp:focus,
+.hjelpetekst__apneknapp:active,
+.hjelpetekst__apneknapp:hover {
+  outline: 0;
+  color: #FFF;
+}
+.hjelpetekst__apneknapp:focus .hjelpetekst__anchor {
+  outline: 0;
+  box-shadow: 0 0 0 3px #254b6d;
+}
+.hjelpetekst__anchor {
+  border-radius: 50%;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.hjelpetekst__container {
+  display: inline-block;
+  position: relative;
+}
+.hjelpetekst__tooltip {
+  position: fixed;
+  top: 0.5rem;
+  left: 0.5rem;
+  bottom: 0.5rem;
+  right: 0.5rem;
+  z-index: 1000;
+  background-color: #3E3832;
+  color: #FFF;
+  padding: 1rem;
+}
+.hjelpetekst__tooltip:focus {
+  outline: 0;
+  box-shadow: 0 0 0 3px #254b6d;
+}
+@media only screen and (min-width: 480px) {
+  .hjelpetekst__tooltip {
+    position: absolute;
+    width: 24rem;
+    top: auto;
+    left: auto;
+    bottom: auto;
+    right: auto;
+    border-radius: 0.25rem;
+  }
+  .hjelpetekst__tooltip:before,
+  .hjelpetekst__tooltip:after {
+    content: '';
+    height: 1.06066017rem;
+    width: 1.06066017rem;
+    background-color: #3E3832;
+    display: block;
+    position: absolute;
+    transform: rotate(-45deg);
+    transform-origin: 0 0;
+    z-index: 1;
+    border: 3px solid transparent;
+    box-sizing: border-box;
+  }
+  .hjelpetekst__tooltip:after {
+    z-index: 0;
+    background-color: transparent;
+    transform: rotate(-45deg);
+    box-sizing: content-box;
+    border: 3px solid transparent;
+  }
+}
+@media only screen and (min-width: 480px) {
+  .hjelpetekst__tooltip--over,
+  .hjelpetekst__tooltip--midtstilt {
+    left: 0;
+    bottom: 3rem;
+  }
+  .hjelpetekst__tooltip--over:before,
+  .hjelpetekst__tooltip--midtstilt:before,
+  .hjelpetekst__tooltip--over:focus:after,
+  .hjelpetekst__tooltip--midtstilt:focus:after {
+    top: 100%;
+    bottom: 3rem;
+    left: 1.25rem;
+  }
+  .hjelpetekst__tooltip--over:focus:after,
+  .hjelpetekst__tooltip--midtstilt:focus:after {
+    left: 1rem;
+    border-left-color: #254b6d;
+    border-bottom-color: #254b6d;
+  }
+  .hjelpetekst__tooltip--midtstilt {
+    left: calc(20px + 50%);
+    transform: translateX(calc(-50% - 10px));
+  }
+  .hjelpetekst__tooltip--midtstilt:before,
+  .hjelpetekst__tooltip--midtstilt:focus:after {
+    transform-origin: 50% 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    left: 50%;
+  }
+  .hjelpetekst__tooltip--under,
+  .hjelpetekst__tooltip--under-venstre {
+    left: 0;
+    top: 3rem;
+  }
+  .hjelpetekst__tooltip--under:before,
+  .hjelpetekst__tooltip--under-venstre:before,
+  .hjelpetekst__tooltip--under:after,
+  .hjelpetekst__tooltip--under-venstre:after {
+    top: 0;
+  }
+  .hjelpetekst__tooltip--under:focus:after,
+  .hjelpetekst__tooltip--under-venstre:focus:after {
+    border-top-color: #254b6d;
+    border-right-color: #254b6d;
+  }
+  .hjelpetekst__tooltip--under:before,
+  .hjelpetekst__tooltip--under-venstre:before {
+    left: calc(1rem + 4px);
+  }
+  .hjelpetekst__tooltip--under-venstre {
+    left: auto;
+    right: -1.5rem;
+  }
+  .hjelpetekst__tooltip--under-venstre:before,
+  .hjelpetekst__tooltip--under-venstre:after {
+    left: auto;
+    right: 1.95rem;
+  }
+  .hjelpetekst__tooltip--under-venstre:focus:after {
+    right: calc(1.95rem - 2px);
+  }
+  .hjelpetekst__tooltip--hoyre {
+    left: 4rem;
+    top: -2rem;
+    bottom: auto;
+  }
+  .hjelpetekst__tooltip--hoyre:before {
+    top: 2rem;
+  }
+  .hjelpetekst__tooltip--hoyre:before,
+  .hjelpetekst__tooltip--hoyre:focus:after {
+    left: 0;
+    transform: rotate(45deg);
+  }
+  .hjelpetekst__tooltip--hoyre:focus:after {
+    top: 1.75rem;
+    left: 0;
+    border-left: 3px solid #254b6d;
+    border-bottom: 3px solid #254b6d;
+  }
+  .hjelpetekst__tooltip--venstre {
+    right: 3rem;
+    left: auto;
+    top: -2rem;
+    bottom: auto;
+  }
+  .hjelpetekst__tooltip--venstre:before {
+    top: 2rem;
+  }
+  .hjelpetekst__tooltip--venstre:before,
+  .hjelpetekst__tooltip--venstre:focus:after {
+    right: 0;
+    transform-origin: 100% 0;
+  }
+  .hjelpetekst__tooltip--venstre:focus:after {
+    top: 1.75rem;
+    right: 0;
+    border-right: 3px solid #254b6d;
+    border-bottom: 3px solid #254b6d;
+  }
+}
 .ekspanderbartPanel {
   position: relative;
   background: white;
   border-radius: 0.25rem;
-}
-.ekspanderbartPanel:hover,
-.ekspanderbartPanel--hover {
-  box-shadow: #B7B1A9 0 2px 1px 0;
-}
-.ekspanderbartPanel:focus,
-.ekspanderbartPanel--focus {
-  box-shadow: 0 0 0px 3px #254b6d;
-  outline: none;
 }
 .ekspanderbartPanel:hover,
 .ekspanderbartPanel--hover {
@@ -110,10 +355,6 @@ code {
 }
 .ekspanderbartPanel--border {
   border: 1px solid #78706A;
-}
-.ekspanderbartPanel--border:hover,
-.ekspanderbartPanel--border.panel-interaktiv-mixin--hover {
-  border: 1px solid #0067C5;
 }
 .ekspanderbartPanel--border:hover,
 .ekspanderbartPanel--border.panel-interaktiv-mixin--hover {
