@@ -45,12 +45,13 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    document.cookie = "nav-esso=2416281490ghj; domain=.myapp.com";
-    document.cookie = `beregningsdato=${((new Date()).toISOString().split("T")[0])}; domain=.myapp.com`;
+    document.cookie = "nav-esso=2416281490ghj";
+    document.cookie = `beregningsdato=${((new Date()).toISOString().split("T")[0])}`;
+    document.cookie = "domain=.myapp.com"
     this.setState({
       loading: true
     });
-    fetch("http://backend.myapp.com:8099/inntekt",{
+    fetch("http://app.lvh.me:8099/inntekt",{
       mode: 'cors',
       cache: 'no-cache',
       credentials: 'include'
