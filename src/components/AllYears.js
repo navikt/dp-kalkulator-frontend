@@ -2,45 +2,6 @@ import Ekspanderbartpanel from "nav-frontend-ekspanderbartpanel";
 import React from "react";
 import {Innholdstittel} from "nav-frontend-typografi";
 
-function EmployersMonth(props) {
-  var moment = require("moment");
-  moment.locale("nb");
-  return (
-      <li>
-        <Ekspanderbartpanel
-            tittel={moment(props.month.month.toString(), "YYYY-MM").format(
-                "MMMM YYYY")}>
-          <ul>
-            {props.month.employers.map(
-                arbeidsgiver => <Employer key={arbeidsgiver.name}
-                                          employer={arbeidsgiver}/>)}
-          </ul>
-        </Ekspanderbartpanel>
-      </li>
-  );
-}
-
-function Employer(props) {
-  return (
-      <li>
-        <Ekspanderbartpanel tittel={props.employer.name} border>
-          <ul>
-            {props.employer.incomes.map(
-                income => <Income key={income.verdikode} income={income}/>)}
-          </ul>
-        </Ekspanderbartpanel>
-      </li>
-  );
-}
-
-function Income(props) {
-  return (
-      <ul>
-        {props.income.verdikode + ": " + props.income.income}
-      </ul>
-  );
-}
-
 export function AllYears(props) {
   let yearBuckets = [[], [], [], []];
   for (let i = 0; i < props.monthsIncomeInformation.length; i++) {
@@ -74,9 +35,51 @@ function AllMonths(props) {
           <ul>
             {props.monthsIncomeInformation.map(
                 month => <EmployersMonth key={month.month.toString()}
-                                         month={month}/>)}
+                                         month={month.month}
+                employers={month.employers}/>)}
           </ul>
         </Ekspanderbartpanel>
       </li>
+  );
+}
+
+function EmployersMonth(props) {
+  var moment = require("moment");
+  moment.locale("nb");
+  return (
+      <li>
+        <Ekspanderbartpanel
+            tittel={moment(props.month.toString(), "YYYY-MM").format(
+                "MMMM YYYY")}>
+          <ul>
+            {props.employers.map(
+                employer => <Employer key={employer.name}
+                                          name={employer.name}
+                incomes={employer.incomes}/>)}
+          </ul>
+        </Ekspanderbartpanel>
+      </li>
+  );
+}
+
+function Employer(props) {
+  return (
+      <li>
+        <Ekspanderbartpanel tittel={props.name} border>
+          <ul>
+            {props.incomes.map(
+                income => <Income key={income.verdikode} income={income.income}
+                verdikode={income.verdikode}/>)}
+          </ul>
+        </Ekspanderbartpanel>
+      </li>
+  );
+}
+
+function Income(props) {
+  return (
+      <ul>
+        {props.verdikode + ": " + props.income}
+      </ul>
   );
 }

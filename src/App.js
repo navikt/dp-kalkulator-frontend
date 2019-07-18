@@ -4,7 +4,7 @@ import PanelBase from "nav-frontend-paneler";
 import {Normaltekst, Sidetittel} from "nav-frontend-typografi";
 import NavFrontendSpinner from "nav-frontend-spinner";
 import {QualifiedMessage} from "./components/QualifiedMessage";
-import {TotalInntekt, TotalInntekt12} from "./components/TotalInntekt";
+import {TotalInntekt} from "./components/TotalInntekt";
 import {EmployerList} from "./components/EmployerList";
 import {AllYears} from "./components/AllYears";
 
@@ -27,8 +27,8 @@ class App extends React.Component {
             <Sidetittel>Din inntekt {this.state.loading ? <NavFrontendSpinner/> : <br/>} </Sidetittel>
             <div>
             <b>Her vises opplysninger om dine inntekter hentet fra a-ordnigen.</b>
-            {this.state.totalIncome === null ? <br/> : <TotalInntekt totalIncome={this.state.totalIncome}/>}
-            {this.state.totalIncome12 === null ? <br/> : <TotalInntekt12 totalIncome12={this.state.totalIncome12}/>}
+            {this.state.totalIncome === null ? <br/> : <TotalInntekt totalIncome={this.state.totalIncome} months={36}/>}
+            {this.state.totalIncome12 === null ? <br/> : <TotalInntekt totalIncome={this.state.totalIncome12} months={12}/>}
             </div>
           <Normaltekst>Din arbeidsgiver og andre som utbetaler inntekter til deg rapporterer disse opplysningene til a-ordningen minst én gang i måneden. Oppdager du feil? Ta kontakt med de som har rapportert opplysningene.</Normaltekst>
           <PanelBase border>

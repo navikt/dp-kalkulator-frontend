@@ -8,8 +8,10 @@ export function EmployerList(props) {
         <Innholdstittel>Arbeidsgivere</Innholdstittel>
         <ul>
           {props.employerSummaries.map(
-              employerSummery => <EmployerSummary key={employerSummery.name}
-                                                  employerSummery={employerSummery}/>)}
+              employerSummary => <EmployerSummary key={employerSummary.name}
+                                                  name={employerSummary.name}
+              income={employerSummary.income}
+              employmentPeriodes={employerSummary.employmentPeriodes}/>)}
 
 
         </ul>
@@ -20,15 +22,17 @@ export function EmployerList(props) {
 function EmployerSummary(props) {
   return (
       <li>
-        <Ekspanderbartpanel tittel={props.employerSummery.name} border>
+        <Ekspanderbartpanel tittel={props.name} border>
           <ul>
-            Total inntekt: {props.employerSummery.income} kr
+            Total inntekt: {props.income} kr
 
           </ul>
           <ul>
-            {props.employerSummery.employmentPeriodes.map(
+            {props.employmentPeriodes.map(
                 periode => <EmploymentPeriode key={periode.startDateYearMonth}
-                                              periode={periode}/>)}
+
+                startDate = {periode.startDateYearMonth}
+                endDate = {periode.endDateYearMonth }/>)}
           </ul>
 
 
@@ -38,16 +42,15 @@ function EmployerSummary(props) {
 }
 
 function EmploymentPeriode(props) {
-  console.log(props.periode.startDateYearMonth);
   var moment = require("moment");
   moment.locale("nb");
   return (
       <ul>
-        Periode: {(props.periode.startDateYearMonth
-          === props.periode.endDateYearMonth) ? moment(
-          props.periode.startDateYearMonth, "YYYY-MM").format("MMMM YYYY")
-          : moment(props.periode.startDateYearMonth, "YYYY-MM").format(
-          "MMMM YYYY") + " til " + moment(props.periode.endDateYearMonth,
+        Periode: {(props.startDate
+          === props.endDate) ? moment(
+          props.startDate, "YYYY-MM").format("MMMM YYYY")
+          : moment(props.startDate, "YYYY-MM").format(
+          "MMMM YYYY") + " til " + moment(props.endDate,
           "YYYY-MM").format("MMMM YYYY")}
       </ul>
   );

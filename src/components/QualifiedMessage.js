@@ -7,12 +7,12 @@ import {Normaltekst} from "nav-frontend-typografi";
 export function QualifiedMessage(props) {
   return (
       <AlertStripe type={props.doesPersonQualify ? "suksess" : "advarsel"}>
-        {props.doesPersonQualify ? <PositivResponse/> : <NegativeResponse/>}
+        {props.doesPersonQualify ? <PositiveResponse/> : <NegativeResponse/>}
       </AlertStripe>
   );
 }
 
-function PositivResponse() {
+function PositiveResponse() {
   return (
       <div>
         <Normaltekst>
