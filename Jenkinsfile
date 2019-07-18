@@ -17,54 +17,43 @@ pipeline {
 
       steps {
         sh label: 'Install dependencies', script: """
-          ./gradlew assemble
+          npm install
+        """
+
+        sh label: 'Build artifact', script: """
+          npm run build
+          cp ~/.npmrc .npmrc
         """
 
         // Should run a set of tests like: unit, functional, component,
         // coverage, contract, lint, mutation.
-        sh label: 'Test code', script: """
-          ./gradlew test
-        """
-
-        sh label: 'Build artifact', script: """
-          ./gradlew build
-        """
+         sh label: 'Test code', script: """
+          CI=true npm test
+         """
 
         withDockerRegistry(
           credentialsId: 'repo.adeo.no',
           url: "https://${DOCKER_REPO}"
         ) {
           sh label: 'Build and push Docker image', script: """
-            docker build . --pull -t ${DOCKER_IMAGE_VERSION}
+            docker build  --build-arg http_proxy=http://webproxy-internett.nav.no:8088 --build-arg https_proxy=http://webproxy-internett.nav.no:8088 . --pull -t ${DOCKER_IMAGE_VERSION}
             docker push ${DOCKER_IMAGE_VERSION} || true
           """
         }
 
         sh label: 'Set image version on base overlay', script: """
-          sed -i 's/latest/${VERSION}/' ./nais/base/nais.yaml 
+          sed -i 's/latest/${VERSION}/' ./nais/base/nais.yaml
         """
+
         sh label: 'Prepare dev service contract', script: """
            kustomize build ./nais/dev -o ./nais/nais-dev-deploy.yaml &&  cat ./nais/nais-dev-deploy.yaml
         """
+
         sh label: 'Prepare prod service contract', script: """
            kustomize build ./nais/prod -o ./nais/nais-prod-deploy.yaml &&  cat ./nais/nais-prod-deploy.yaml
         """
       }
 
-      post {
-        always {
-          publishHTML target: [
-            allowMissing: true,
-            alwaysLinkToLastBuild: false,
-            keepAll: true,
-            reportDir: 'build/reports/tests/test',
-            reportFiles: 'index.html',
-            reportName: 'Test coverage'
-          ]
-
-          junit 'build/test-results/test/*.xml'
-        }
-      }
     }
 
     stage('Acceptance testing') {
@@ -72,9 +61,9 @@ pipeline {
         stage('Deploy to pre-production') {
           when { branch 'master' }
           steps {
-
             sh label: 'Deploy with kubectl', script: """
               kubectl config use-context dev-${env.ZONE}
+              kubectl apply -f ./nais/base/redis.yaml --wait
               kubectl apply -f ./nais/nais-dev-deploy.yaml --wait
               kubectl rollout status -w deployment/${APPLICATION_NAME}
             """
@@ -153,6 +142,30 @@ pipeline {
             }
           }
         }
+      }
+    }
+
+    stage('Deploy') {
+      when { branch 'master' }
+
+      steps {
+        sh label: 'Deploy with kubectl', script: """
+          kubectl config use-context prod-${env.ZONE}
+          kubectl apply -f ./nais/base/redis.yaml --wait
+          kubectl apply  -f ./nais/nais-prod-deploy.yaml --wait
+          kubectl rollout status -w deployment/${APPLICATION_NAME}
+        """
+
+        archiveArtifacts artifacts: 'nais/nais-prod-deploy.yaml', fingerprint: true
+
+      }
+    }
+
+    stage('Release') {
+      when { branch 'master' }
+
+      steps {
+        sh "echo true"
       }
     }
   }
