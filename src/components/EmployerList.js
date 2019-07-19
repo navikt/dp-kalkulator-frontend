@@ -1,25 +1,29 @@
 import { Innholdstittel } from 'nav-frontend-typografi';
 import React from 'react';
 import Ekspanderbartpanel from 'nav-frontend-ekspanderbartpanel';
+import HjelpetekstBase from 'nav-frontend-hjelpetekst';
 import PropTypes from 'prop-types';
 
 export default function EmployerList({ employerSummaries }) {
   return (
     <div>
-      <Innholdstittel>Arbeidsgivere</Innholdstittel>
+      <Innholdstittel>
+Arbeidsgivere
+        <HjelpetekstBase type="auto"> Dine arbeidsgivere de 36 siste månedene</HjelpetekstBase>
+      </Innholdstittel>
       <ul>
-        {employerSummaries.map(
-          employerSummary => (
-            <EmployerSummary
-              key={employerSummary.name}
-              name={employerSummary.name}
-              income={employerSummary.income}
-              employmentPeriodes={employerSummary.employmentPeriodes}
-            />
-          ),
-        )}
-
-
+        <li>
+          {employerSummaries.map(
+            employerSummary => (
+              <EmployerSummary
+                key={employerSummary.name}
+                name={employerSummary.name}
+                income={employerSummary.income}
+                employmentPeriodes={employerSummary.employmentPeriodes}
+              />
+            ),
+          )}
+        </li>
       </ul>
     </div>
   );
@@ -31,17 +35,17 @@ EmployerList.propTypes = {
 
 function EmployerSummary({ name, income, employmentPeriodes }) {
   return (
-    <li>
+    <ul>
       <Ekspanderbartpanel tittel={name} border>
-        <ul>
+        <li>
             Total inntekt:
           {' '}
           {income}
           {' '}
 kr
 
-        </ul>
-        <ul>
+        </li>
+        <li>
           {employmentPeriodes.map(
             periode => (
               <EmploymentPeriode
@@ -52,11 +56,11 @@ kr
               />
             ),
           )}
-        </ul>
+        </li>
 
 
       </Ekspanderbartpanel>
-    </li>
+    </ul>
   );
 }
 
@@ -71,16 +75,18 @@ function EmploymentPeriode({ startDate, endDate }) {
   moment.locale('nb');
   return (
     <ul>
+      <li>
         Periode:
-      {' '}
-      {(startDate
+        {' '}
+        {(startDate
           === endDate) ? moment(
-          startDate, 'YYYY-MM',
-        ).format('MMMM YYYY')
-        : `${moment(startDate, 'YYYY-MM').format(
-          'MMMM YYYY',
-        )} til ${moment(endDate,
-          'YYYY-MM').format('MMMM YYYY')}`}
+            startDate, 'YYYY-MM',
+          ).format('MMMM YYYY')
+          : `${moment(startDate, 'YYYY-MM').format(
+            'MMMM YYYY',
+          )} til ${moment(endDate,
+            'YYYY-MM').format('MMMM YYYY')}`}
+      </li>
     </ul>
   );
 }

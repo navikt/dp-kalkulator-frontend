@@ -36,7 +36,7 @@ function AllMonths({ monthsIncomeInformation, year }) {
   moment.locale('nb');
   return (
     <li>
-      <Ekspanderbartpanel tittel={year}>
+      <Ekspanderbartpanel tittel={year} border>
         <Innholdstittel>Månedsoversikt</Innholdstittel>
         <ul>
           {monthsIncomeInformation.map(
@@ -68,6 +68,7 @@ function EmployersMonth({ month, employers }) {
         tittel={moment(month.toString(), 'YYYY-MM').format(
           'MMMM YYYY',
         )}
+        border
       >
         <ul>
           {employers.map(
