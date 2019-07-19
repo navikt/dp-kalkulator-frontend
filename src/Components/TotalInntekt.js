@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 export default function TotalInntekt({ months, totalIncome }) {
   return (
 
-    <ul className="a">
+
       <Normaltekst>
 
         <li>
@@ -32,7 +32,7 @@ kr.
         </li>
 
       </Normaltekst>
-    </ul>
+
 
 
   );

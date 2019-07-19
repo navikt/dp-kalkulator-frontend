@@ -65,9 +65,11 @@ Din inntekt
         </Sidetittel>
         <div>
           <b>Her vises opplysninger om dine inntekter hentet fra a-ordnigen.</b>
+          <ul className="a">
           {this.state.totalIncome === null ? <br /> : <TotalInntekt totalIncome={this.state.totalIncome} months={36} />}
           {this.state.totalIncome12 === null ? <br /> : <TotalInntekt totalIncome={this.state.totalIncome12} months={12} />}
-        </div>
+          </ul>
+          </div>
         <QualifiedMessage doesPersonQualify={this.state.doesPersonQualify} />
         <Normaltekst>
           <br/>
