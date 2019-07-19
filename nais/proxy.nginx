@@ -1,10 +1,5 @@
 # Simple Proxy to backend
 location /api/ {
     access_by_lua_file oidc_protected.lua;
-    proxy_pass "${APP_INNTEKT_BASEURL}";
-}
-
-location /oppslag/ {
-  access_by_lua_file oidc_protected.lua;
-  proxy_pass "${APP_OPPSLAG_BASEURL}";
+    proxy_pass "${APP_INNSYN_API_BASEURL}";
 }

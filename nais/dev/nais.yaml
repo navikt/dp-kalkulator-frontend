@@ -2,4 +2,17 @@ apiVersion: "nais.io/v1alpha1"
 kind: "Application"
 metadata:
   name: dp-inntekt-innsyn-ui
-
+spec:
+  ingresses:
+    - "https://dp-inntekt-innsyn-ui.nais.preprod.local/"
+  env:
+    - name: APP_INNSYN_API_BASEURL
+      value: http://dp-inntekt-innsyn-api/
+    - name: REDIS_HOST
+      value: dagpenger-redis.default.svc.nais.local
+    - name: REDIS_PORT
+      value: "6379"
+    - name: OIDC_HOST_URL
+      value: https://isso-q.adeo.no:443/isso/oauth2
+    - name: OIDC_AGENTNAME
+      value: dagpenger-regel-ui-q1
