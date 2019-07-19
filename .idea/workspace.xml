@@ -17,6 +17,7 @@
       <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.less" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/serviceWorker.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/serviceWorker.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nais/proxy.nginx" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -45,6 +46,23 @@
               </folding>
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/nais/base/nais.yaml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-124" />
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/nais/base/kustomization.yaml">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/nais/proxy.nginx">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -114,7 +132,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/QualifiedMessage.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="561">
@@ -124,22 +142,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/App.test.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" selection-start-line="9" selection-end-line="9" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Dockerfile">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" selection-start-line="8" selection-end-line="8" />
+            <state relative-caret-position="153">
+              <caret line="9" column="15" lean-forward="true" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
             </state>
           </provider>
         </entry>
@@ -178,6 +184,7 @@
         <option value="$PROJECT_DIR$/src/components/EmployerList.js" />
         <option value="$PROJECT_DIR$/src/components/TotalInntekt.js" />
         <option value="$PROJECT_DIR$/src/components/QualifiedMessage.js" />
+        <option value="$PROJECT_DIR$/Dockerfile" />
       </list>
     </option>
   </component>
@@ -189,8 +196,8 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-11" />
-    <option name="width" value="1940" />
-    <option name="height" value="2111" />
+    <option name="width" value="1200" />
+    <option name="height" value="1031" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -204,6 +211,29 @@
             <path>
               <item name="dp-inntekt-innsyn-ui" type="b2602c69:ProjectViewProjectNode" />
               <item name="dp-inntekt-innsyn-ui" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dp-inntekt-innsyn-ui" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dp-inntekt-innsyn-ui" type="462c0819:PsiDirectoryNode" />
+              <item name="nais" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dp-inntekt-innsyn-ui" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dp-inntekt-innsyn-ui" type="462c0819:PsiDirectoryNode" />
+              <item name="nais" type="462c0819:PsiDirectoryNode" />
+              <item name="base" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dp-inntekt-innsyn-ui" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dp-inntekt-innsyn-ui" type="462c0819:PsiDirectoryNode" />
+              <item name="nais" type="462c0819:PsiDirectoryNode" />
+              <item name="dev" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dp-inntekt-innsyn-ui" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dp-inntekt-innsyn-ui" type="462c0819:PsiDirectoryNode" />
+              <item name="nais" type="462c0819:PsiDirectoryNode" />
+              <item name="prod" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="dp-inntekt-innsyn-ui" type="b2602c69:ProjectViewProjectNode" />
@@ -227,7 +257,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/nais" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -242,6 +272,7 @@
       <recent name="C:\Users\K156548\Documents\repos\dp-inntekt-innsyn-ui\src" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\P156553\Desktop\nav-dagpenger.frontend\dp-inntekt-innsyn-ui\nais" />
       <recent name="C:\Users\P156553\Desktop\nav-dagpenger.frontend\dp-inntekt-innsyn-ui" />
       <recent name="C:\Users\K156548\Documents\repos\dp-inntekt-innsyn-ui" />
     </key>
@@ -364,7 +395,14 @@
       <option name="project" value="LOCAL" />
       <updated>1563525092292</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="ny docker fix">
+      <created>1563525842020</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1563525842020</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -376,7 +414,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="138240000" />
+    <option name="totallyTimeSpent" value="140382000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -388,10 +426,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="1293" height="1407" extended-state="0" />
+    <frame x="-7" y="0" width="800" height="687" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27980536" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3527027" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Image Layers" order="3" />
@@ -409,7 +447,7 @@
       <window_info anchor="bottom" id="Docker" order="7" weight="0.32969603" />
       <window_info active="true" anchor="bottom" id="Version Control" order="8" visible="true" weight="0.32862744" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.27137256" />
+      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.15675676" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="SonarLint" order="12" weight="0.3286119" />
       <window_info anchor="bottom" id="Messages" order="13" weight="0.32969603" />
@@ -518,7 +556,8 @@
     <MESSAGE value="gjort litt sånn derre refactoring part 2" />
     <MESSAGE value="ny jenkins" />
     <MESSAGE value="kosmetikk og error fiksing" />
-    <option name="LAST_COMMIT_MESSAGE" value="kosmetikk og error fiksing" />
+    <MESSAGE value="ny docker fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="ny docker fix" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/App.css">
@@ -640,13 +679,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Dockerfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/AllYears.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="544">
@@ -661,16 +693,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="65" selection-start-line="2" selection-start-column="65" selection-end-line="2" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/App.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="39" column="33" lean-forward="true" selection-start-line="39" selection-start-column="33" selection-end-line="39" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -690,6 +712,34 @@
           <caret line="37" column="67" lean-forward="true" selection-start-line="37" selection-start-column="67" selection-end-line="37" selection-end-column="67" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dockerfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="15" lean-forward="true" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="663">
+          <caret line="39" column="33" lean-forward="true" selection-start-line="39" selection-start-column="33" selection-end-line="39" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nais/base/nais.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-124" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nais/base/kustomization.yaml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nais/proxy.nginx">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
   <component name="masterDetails">
