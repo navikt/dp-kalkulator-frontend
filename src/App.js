@@ -3,10 +3,10 @@ import './App.css';
 import PanelBase from 'nav-frontend-paneler';
 import { Normaltekst, Sidetittel } from 'nav-frontend-typografi';
 import NavFrontendSpinner from 'nav-frontend-spinner';
-import { QualifiedMessage } from './components/QualifiedMessage';
-import  TotalInntekt from './components/TotalInntekt';
-import { EmployerList } from './components/EmployerList';
-import { AllYears } from './components/AllYears';
+import { QualifiedMessage } from './Components/QualifiedMessage';
+import TotalInntekt from './Components/TotalInntekt';
+import EmployerList from './Components/EmployerList';
+import AllYears from './Components/AllYears';
 
 class App extends React.Component {
   constructor(props) {
@@ -18,6 +18,37 @@ class App extends React.Component {
       monthsIncomeInformation: null,
       doesPersonQualify: false,
     };
+  }
+
+  componentDidMount() {
+    document.cookie = 'nav-esso=2416281490ghj';
+    document.cookie = `beregningsdato=${((new Date()).toISOString().split('T')[0])}`;
+    document.cookie = 'domain=.myapp.com';
+    this.setState({
+      loading: true,
+    });
+    fetch('http://app.lvh.me:8099/inntekt', {
+      mode: 'cors',
+      cache: 'no-cache',
+      credentials: 'include',
+    })
+
+      .then((personIncomeInformation) => {
+        if (personIncomeInformation.ok) {
+          return personIncomeInformation.json();
+        }
+        throw Error(personIncomeInformation.statusText);
+      })
+      .then((json) => {
+        this.setState({
+          loading: false,
+          totalIncome: json.totalIncome,
+          totalIncome12: json.totalIncome12,
+          monthsIncomeInformation: json.monthsIncomeInformation,
+          employerSummaries: json.employerSummaries,
+        });
+      })
+      .catch(error => console.error(error));
   }
 
   render() {
@@ -56,37 +87,6 @@ Din inntekt
 
       </div>
     );
-  }
-
-  componentDidMount() {
-    document.cookie = 'nav-esso=2416281490ghj';
-    document.cookie = `beregningsdato=${((new Date()).toISOString().split('T')[0])}`;
-    document.cookie = 'domain=.myapp.com';
-    this.setState({
-      loading: true,
-    });
-    fetch('http://app.lvh.me:8099/inntekt', {
-      mode: 'cors',
-      cache: 'no-cache',
-      credentials: 'include',
-    })
-
-      .then((personIncomeInformation) => {
-        if (personIncomeInformation.ok) {
-          return personIncomeInformation.json();
-        }
-        throw Error(personIncomeInformation.statusText);
-      })
-      .then((json) => {
-        this.setState({
-          loading: false,
-          totalIncome: json.totalIncome,
-          totalIncome12: json.totalIncome12,
-          monthsIncomeInformation: json.monthsIncomeInformation,
-          employerSummaries: json.employerSummaries,
-        });
-      })
-      .catch(error => console.error(error));
   }
 }
 

@@ -1,8 +1,9 @@
 import Ekspanderbartpanel from 'nav-frontend-ekspanderbartpanel';
 import React from 'react';
 import { Innholdstittel } from 'nav-frontend-typografi';
+import PropTypes from 'prop-types';
 
-export function AllYears(props) {
+export default function AllYears(props) {
   const yearBuckets = [[], [], [], []];
   for (let i = 0; i < props.monthsIncomeInformation.length; i++) {
     yearBuckets[(props.monthsIncomeInformation[i].month.split('-')[0])
@@ -25,6 +26,10 @@ export function AllYears(props) {
     </div>
   );
 }
+
+AllYears.propTypes = {
+  monthsIncomeInformation: PropTypes.node,
+};
 
 function AllMonths(props) {
   const moment = require('moment');

@@ -6,7 +6,7 @@
   "parserOptions": {
     "ecmaFeatures": {
       "ecmaVersion": 8,
-      "jsx": true,
+      "jsx": false,
       "impliedStrict": true
     }
   },

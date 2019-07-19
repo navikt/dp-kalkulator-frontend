@@ -1,13 +1,14 @@
 import { Innholdstittel } from 'nav-frontend-typografi';
 import React from 'react';
 import Ekspanderbartpanel from 'nav-frontend-ekspanderbartpanel';
+import PropTypes from 'prop-types';
 
-export function EmployerList(props) {
+export default function EmployerList({ employerSummaries }) {
   return (
     <div>
       <Innholdstittel>Arbeidsgivere</Innholdstittel>
       <ul>
-        {props.employerSummaries.map(
+        {employerSummaries.map(
           employerSummary => (
             <EmployerSummary
               key={employerSummary.name}
@@ -24,20 +25,28 @@ export function EmployerList(props) {
   );
 }
 
-function EmployerSummary(props) {
+EmployerList.propTypes = {
+  employerSummaries: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string,
+    income: PropTypes.number,
+    employmentPeriodes: PropTypes.shape(),
+  })),
+};
+
+function EmployerSummary({ name, income, employmentPeriodes }) {
   return (
     <li>
-      <Ekspanderbartpanel tittel={props.name} border>
+      <Ekspanderbartpanel tittel={name} border>
         <ul>
             Total inntekt:
           {' '}
-          {props.income}
+          {income}
           {' '}
 kr
 
         </ul>
         <ul>
-          {props.employmentPeriodes.map(
+          {employmentPeriodes.map(
             periode => (
               <EmploymentPeriode
                 key={periode.startDateYearMonth}
@@ -55,21 +64,32 @@ kr
   );
 }
 
-function EmploymentPeriode(props) {
+EmployerSummary.propTypes = {
+  name: PropTypes.string,
+  income: PropTypes.number,
+  employmentPeriodes: PropTypes.shape(),
+};
+
+function EmploymentPeriode({ startDate, endDate }) {
   const moment = require('moment');
   moment.locale('nb');
   return (
     <ul>
         Periode:
       {' '}
-      {(props.startDate
-          === props.endDate) ? moment(
-          props.startDate, 'YYYY-MM',
+      {(startDate
+          === endDate) ? moment(
+          startDate, 'YYYY-MM',
         ).format('MMMM YYYY')
-        : `${moment(props.startDate, 'YYYY-MM').format(
+        : `${moment(startDate, 'YYYY-MM').format(
           'MMMM YYYY',
-        )} til ${moment(props.endDate,
+        )} til ${moment(endDate,
           'YYYY-MM').format('MMMM YYYY')}`}
     </ul>
   );
 }
+
+EmploymentPeriode.propTypes = {
+  startDate: PropTypes.string,
+  endDate: PropTypes.string,
+};
