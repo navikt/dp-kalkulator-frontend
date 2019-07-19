@@ -7,7 +7,7 @@ spec:
     - "https://dp-inntekt-innsyn-ui.nais.preprod.local/"
   env:
     - name: APP_INNSYN_API_BASEURL
-      value: http://dp-inntekt-innsyn-api/
+      value: http://dagpenger-innsyn-api/
     - name: REDIS_HOST
       value: dagpenger-redis.default.svc.nais.local
     - name: REDIS_PORT

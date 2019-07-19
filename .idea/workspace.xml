@@ -4,8 +4,6 @@
     <list default="true" id="38f9f49d-ff30-4c82-9dc0-fd0a801b02dd" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nais/dev/nais.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/nais/dev/nais.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nais/proxy.nginx" beforeDir="false" afterPath="$PROJECT_DIR$/nais/proxy.nginx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -27,8 +25,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/App.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="389">
-              <caret line="29" column="42" lean-forward="true" selection-start-line="29" selection-start-column="10" selection-end-line="29" selection-end-column="42" />
+            <state relative-caret-position="204">
+              <caret line="51" selection-start-line="51" selection-end-line="51" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -48,8 +46,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/nais/dev/nais.yaml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+            <state relative-caret-position="136">
+              <caret line="8" column="34" lean-forward="true" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -155,8 +153,8 @@
         <option value="$PROJECT_DIR$/src/components/TotalInntekt.js" />
         <option value="$PROJECT_DIR$/src/components/QualifiedMessage.js" />
         <option value="$PROJECT_DIR$/Dockerfile" />
-        <option value="$PROJECT_DIR$/src/App.js" />
         <option value="$PROJECT_DIR$/nais/proxy.nginx" />
+        <option value="$PROJECT_DIR$/src/App.js" />
         <option value="$PROJECT_DIR$/nais/dev/nais.yaml" />
       </list>
     </option>
@@ -333,7 +331,7 @@
       <workItem from="1562828019966" duration="253000" />
       <workItem from="1562830183492" duration="1188000" />
       <workItem from="1562926387027" duration="1610000" />
-      <workItem from="1563536103520" duration="2895000" />
+      <workItem from="1563536103520" duration="4614000" />
     </task>
     <task id="LOCAL-00001" summary="perioder lagt til i arbeidsgiver">
       <created>1562250075078</created>
@@ -391,7 +389,21 @@
       <option name="project" value="LOCAL" />
       <updated>1563537251296</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="noe nais greier">
+      <created>1563539821721</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1563539821721</updated>
+    </task>
+    <task id="LOCAL-00010" summary="test">
+      <created>1563542373168</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1563542373168</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -403,7 +415,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="144701000" />
+    <option name="totallyTimeSpent" value="146420000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -548,7 +560,9 @@
     <MESSAGE value="ny docker fix" />
     <MESSAGE value="add proxy" />
     <MESSAGE value="add redis" />
-    <option name="LAST_COMMIT_MESSAGE" value="add redis" />
+    <MESSAGE value="noe nais greier" />
+    <MESSAGE value="test" />
+    <option name="LAST_COMMIT_MESSAGE" value="test" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/.gitignore">
@@ -730,6 +744,16 @@
     <entry file="file://$PROJECT_DIR$/nais/base/redis.yaml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="51" selection-start-line="51" selection-end-line="51" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/nais/proxy.nginx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -737,20 +761,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/App.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="389">
-          <caret line="29" column="42" lean-forward="true" selection-start-line="29" selection-start-column="10" selection-end-line="29" selection-end-column="42" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/nais/dev/nais.yaml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+        <state relative-caret-position="136">
+          <caret line="8" column="34" lean-forward="true" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
         </state>
       </provider>
     </entry>
