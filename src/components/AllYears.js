@@ -3,11 +3,11 @@ import React from 'react';
 import { Innholdstittel } from 'nav-frontend-typografi';
 import PropTypes from 'prop-types';
 
-export default function AllYears(props) {
+export default function AllYears({ monthsIncomeInformation }) {
   const yearBuckets = [[], [], [], []];
-  for (let i = 0; i < props.monthsIncomeInformation.length; i++) {
-    yearBuckets[(props.monthsIncomeInformation[i].month.split('-')[0])
-    % 4].push(props.monthsIncomeInformation[i]);
+  for (let i = 0; i < monthsIncomeInformation.length; i += 1) {
+    yearBuckets[(monthsIncomeInformation[i].month.split('-')[0])
+    % 4].push(monthsIncomeInformation[i]);
   }
   const noEmptyYearBuckets = yearBuckets.filter(year => year.length > 0);
   noEmptyYearBuckets.sort((list1, list2) => ((list2[0]).month.split('-')[0] - (list1[0]).month.split('-')[0]));
@@ -28,18 +28,18 @@ export default function AllYears(props) {
 }
 
 AllYears.propTypes = {
-  monthsIncomeInformation: PropTypes.node,
+  monthsIncomeInformation: PropTypes.arrayOf(PropTypes.shape()),
 };
 
-function AllMonths(props) {
+function AllMonths({ monthsIncomeInformation, year }) {
   const moment = require('moment');
   moment.locale('nb');
   return (
     <li>
-      <Ekspanderbartpanel tittel={props.year}>
+      <Ekspanderbartpanel tittel={year}>
         <Innholdstittel>Månedsoversikt</Innholdstittel>
         <ul>
-          {props.monthsIncomeInformation.map(
+          {monthsIncomeInformation.map(
             month => (
               <EmployersMonth
                 key={month.month.toString()}
@@ -54,18 +54,23 @@ function AllMonths(props) {
   );
 }
 
-function EmployersMonth(props) {
+AllMonths.propTypes = {
+  monthsIncomeInformation: PropTypes.arrayOf(PropTypes.shape()),
+  year: PropTypes.string.isRequired,
+};
+
+function EmployersMonth({ month, employers }) {
   const moment = require('moment');
   moment.locale('nb');
   return (
     <li>
       <Ekspanderbartpanel
-        tittel={moment(props.month.toString(), 'YYYY-MM').format(
+        tittel={moment(month.toString(), 'YYYY-MM').format(
           'MMMM YYYY',
         )}
       >
         <ul>
-          {props.employers.map(
+          {employers.map(
             employer => (
               <Employer
                 key={employer.name}
@@ -80,12 +85,17 @@ function EmployersMonth(props) {
   );
 }
 
-function Employer(props) {
+EmployersMonth.propTypes = {
+  month: PropTypes.string.isRequired,
+  employers: PropTypes.arrayOf(PropTypes.shape()),
+};
+
+function Employer({ name, incomes }) {
   return (
     <li>
-      <Ekspanderbartpanel tittel={props.name} border>
+      <Ekspanderbartpanel tittel={name} border>
         <ul>
-          {props.incomes.map(
+          {incomes.map(
             income => (
               <Income
                 key={income.verdikode}
@@ -100,10 +110,20 @@ function Employer(props) {
   );
 }
 
-function Income(props) {
+Employer.propTypes = {
+  name: PropTypes.string.isRequired,
+  incomes: PropTypes.arrayOf(PropTypes.shape()),
+};
+
+function Income({ verdikode, income }) {
   return (
     <ul>
-      {`${props.verdikode}: ${props.income}`}
+      {`${verdikode}: ${income}`}
     </ul>
   );
 }
+
+Income.propTypes = {
+  verdikode: PropTypes.string.isRequired,
+  income: PropTypes.number.isRequired,
+};

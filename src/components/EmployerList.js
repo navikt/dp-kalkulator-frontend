@@ -26,11 +26,7 @@ export default function EmployerList({ employerSummaries }) {
 }
 
 EmployerList.propTypes = {
-  employerSummaries: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string,
-    income: PropTypes.number,
-    employmentPeriodes: PropTypes.shape(),
-  })),
+  employerSummaries: PropTypes.arrayOf(PropTypes.shape()),
 };
 
 function EmployerSummary({ name, income, employmentPeriodes }) {
@@ -67,7 +63,7 @@ kr
 EmployerSummary.propTypes = {
   name: PropTypes.string,
   income: PropTypes.number,
-  employmentPeriodes: PropTypes.shape(),
+  employmentPeriodes: PropTypes.arrayOf(PropTypes.shape()),
 };
 
 function EmploymentPeriode({ startDate, endDate }) {

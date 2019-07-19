@@ -3,7 +3,7 @@ import './App.css';
 import PanelBase from 'nav-frontend-paneler';
 import { Normaltekst, Sidetittel } from 'nav-frontend-typografi';
 import NavFrontendSpinner from 'nav-frontend-spinner';
-import { QualifiedMessage } from './Components/QualifiedMessage';
+import QualifiedMessage from './Components/QualifiedMessage';
 import TotalInntekt from './Components/TotalInntekt';
 import EmployerList from './Components/EmployerList';
 import AllYears from './Components/AllYears';
@@ -67,7 +67,10 @@ Din inntekt
           {this.state.totalIncome === null ? <br /> : <TotalInntekt totalIncome={this.state.totalIncome} months={36} />}
           {this.state.totalIncome12 === null ? <br /> : <TotalInntekt totalIncome={this.state.totalIncome12} months={12} />}
         </div>
-        <Normaltekst>Din arbeidsgiver og andre som utbetaler inntekter til deg rapporterer disse opplysningene til a-ordningen minst én gang i måneden. Oppdager du feil? Ta kontakt med de som har rapportert opplysningene.</Normaltekst>
+        <Normaltekst>
+Din arbeidsgiver og andre som utbetaler inntekter til deg rapporterer disse opplysningene til a-ordningen minst én gang i måneden.
+          Oppdager du feil? Ta kontakt med de som har rapportert opplysningene.
+        </Normaltekst>
         <PanelBase border>
           {this.state.employerSummaries === null ? <br />
             : (

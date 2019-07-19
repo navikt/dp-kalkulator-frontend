@@ -1,33 +1,39 @@
 import { Normaltekst } from 'nav-frontend-typografi';
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export default function TotalInntekt(props) {
+export default function TotalInntekt({ months, totalIncome }) {
   return (
     <Normaltekst>
 
       <li>
           Dine inntekter de siste
         {' '}
-        {props.months}
+        {months}
         {' '}
 månedene:
         {' '}
-        {props.totalIncome.toFixed(2)}
+        {totalIncome.toFixed(2)}
         {' '}
 kr
       </li>
       <li>
           Din gjennomsnittlige inntekt de siste
         {' '}
-        {props.months}
+        {months}
         {' '}
 månedene:
         {' '}
-        {(props.totalIncome
-            / props.months).toFixed(2)}
+        {(totalIncome
+            / months).toFixed(2)}
 kr.
       </li>
 
     </Normaltekst>
   );
 }
+
+TotalInntekt.propTypes = {
+  months: PropTypes.number.isRequired,
+  totalIncome: PropTypes.number.isRequired,
+};

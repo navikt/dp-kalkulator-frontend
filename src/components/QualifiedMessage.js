@@ -3,14 +3,19 @@ import React from 'react';
 import HjelpetekstBase from 'nav-frontend-hjelpetekst';
 import Lenke from 'nav-frontend-lenker';
 import { Normaltekst } from 'nav-frontend-typografi';
+import PropTypes from 'prop-types';
 
-export function QualifiedMessage(props) {
+export default function QualifiedMessage({ doesPersonQualify }) {
   return (
-    <AlertStripe type={props.doesPersonQualify ? 'suksess' : 'advarsel'}>
-      {props.doesPersonQualify ? <PositiveResponse /> : <NegativeResponse />}
+    <AlertStripe type={doesPersonQualify ? 'suksess' : 'advarsel'}>
+      {doesPersonQualify ? <PositiveResponse /> : <NegativeResponse />}
     </AlertStripe>
   );
 }
+
+QualifiedMessage.propTypes = {
+  doesPersonQualify: PropTypes.bool.isRequired,
+};
 
 function PositiveResponse() {
   return (
