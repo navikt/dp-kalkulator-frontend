@@ -30,7 +30,7 @@ function AllMonths(props) {
   moment.locale("nb");
   return (
       <li>
-        <Ekspanderbartpanel tittel={props.year}>
+        <Ekspanderbartpanel tittel={props.year} border>
           <Innholdstittel>Månedsoversikt</Innholdstittel>
           <ul>
             {props.monthsIncomeInformation.map(
@@ -50,7 +50,7 @@ function EmployersMonth(props) {
       <li>
         <Ekspanderbartpanel
             tittel={moment(props.month.toString(), "YYYY-MM").format(
-                "MMMM YYYY")}>
+                "MMMM YYYY")} border>
           <ul>
             {props.employers.map(
                 employer => <Employer key={employer.name}

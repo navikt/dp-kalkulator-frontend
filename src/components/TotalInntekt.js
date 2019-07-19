@@ -1,19 +1,24 @@
 import {Normaltekst} from "nav-frontend-typografi";
 import React from "react";
 
-export function TotalInntekt(props) {
+export default function TotalInntekt(props) {
   return (
-      <Normaltekst>
 
-        <li>
-          Dine inntekter de siste {props.months} månedene: {props.totalIncome.toFixed(2)} kr
-        </li>
-        <li>
-          Din gjennomsnittlige inntekt de siste {props.months} månedene: {(props.totalIncome
+        <ul className = "a">
+<Normaltekst>
+
+            <li>
+              Dine inntekter de siste {props.months} månedene: {props.totalIncome.toFixed(2)} kr
+            </li>
+            <li>
+             Din gjennomsnittlige inntekt de siste {props.months} månedene: {(props.totalIncome
             / props.months).toFixed(2)}kr.
-        </li>
+            </li>
 
-      </Normaltekst>
+</Normaltekst>
+        </ul>
+
+
   );
 }
 

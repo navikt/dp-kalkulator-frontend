@@ -26,7 +26,7 @@ function PositiveResponse() {
 
           <b>Får du likevel avslag på grunn av for lav inntekt, kan det være
             fordi:</b>
-          <ul>
+          <ul className= "a">
             <li>Inntektene har blitt brukt opp i en tidligere dagpengeperiode.
             </li>
             <li>Du får innvilget dagpenger fra en dato fram i tid. Da vil
@@ -59,7 +59,7 @@ function NegativeResponse() {
             36 månedene.</HjelpetekstBase></h4>
 
         <b>Du kan likevel ha tjent nok til å ha rett på dagpenger hvis:</b>
-        <ul>
+        <ul className = "a">
           <li>Du har hatt verneplikt.</li>
           <li>Du får innvilget dagpenger fra en dato fram i tid.</li>
           <li>Du har hatt arbeid i et annet EØS-land.</li>
