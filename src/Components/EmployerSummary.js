@@ -1,26 +1,28 @@
 import React from 'react';
 import Ekspanderbartpanel from 'nav-frontend-ekspanderbartpanel';
 import PropTypes from 'prop-types';
-import EmploymentPeriode from "./EmploymentPeriode";
+import EmploymentPeriode from './EmploymentPeriode';
 
 export default function EmployerSummary({ name, income, employmentPeriodes }) {
-  return (<ul>
-    <Ekspanderbartpanel tittel={name} border>
-      <li>
+  return (
+    <ul>
+      <Ekspanderbartpanel tittel={name} border>
+        <li>
         Total inntekt:
           {' '}
-        {income}
-        {' '}
+          {income}
+          {' '}
         kr
-        
+
         </li>
-      <li>
-        {employmentPeriodes.map(periode => (<EmploymentPeriode key={periode.startDateYearMonth} startDate={periode.startDateYearMonth} endDate={periode.endDateYearMonth} />))}
-      </li>
+        <li>
+          {employmentPeriodes.map(periode => (<EmploymentPeriode key={periode.startDateYearMonth} startDate={periode.startDateYearMonth} endDate={periode.endDateYearMonth} />))}
+        </li>
 
 
-    </Ekspanderbartpanel>
-  </ul>);
+      </Ekspanderbartpanel>
+    </ul>
+  );
 }
 
 EmployerSummary.propTypes = {

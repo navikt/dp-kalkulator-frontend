@@ -6,33 +6,32 @@ export default function TotalInntekt({ months, totalIncome }) {
   return (
 
 
-      <Normaltekst>
+    <Normaltekst>
 
-        <li>
+      <li>
               Dine inntekter de siste
-          {' '}
-          {months}
-          {' '}
+        {' '}
+        {months}
+        {' '}
 månedene:
-          {' '}
-          {totalIncome.toFixed(2)}
-          {' '}
+        {' '}
+        {totalIncome.toFixed(2)}
+        {' '}
 kr
-        </li>
-        <li>
+      </li>
+      <li>
              Din gjennomsnittlige inntekt de siste
-          {' '}
-          {months}
-          {' '}
+        {' '}
+        {months}
+        {' '}
 månedene:
-          {' '}
-          {(totalIncome
+        {' '}
+        {(totalIncome
             / months).toFixed(2)}
 kr.
-        </li>
+      </li>
 
-      </Normaltekst>
-
+    </Normaltekst>
 
 
   );

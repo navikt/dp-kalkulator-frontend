@@ -49,7 +49,6 @@ class App extends React.Component {
         });
       })
       .catch(error => console.error(error));
-
   }
 
   render() {
@@ -66,17 +65,17 @@ Din inntekt
         <div>
           <b>Her vises opplysninger om dine inntekter hentet fra a-ordnigen.</b>
           <ul className="a">
-          {this.state.totalIncome === null ? <br /> : <TotalInntekt totalIncome={this.state.totalIncome} months={36} />}
-          {this.state.totalIncome12 === null ? <br /> : <TotalInntekt totalIncome={this.state.totalIncome12} months={12} />}
+            {this.state.totalIncome === null ? <br /> : <TotalInntekt totalIncome={this.state.totalIncome} months={36} />}
+            {this.state.totalIncome12 === null ? <br /> : <TotalInntekt totalIncome={this.state.totalIncome12} months={12} />}
           </ul>
-          </div>
+        </div>
         <QualifiedMessage doesPersonQualify={this.state.doesPersonQualify} />
         <Normaltekst>
-          <br/>
+          <br />
 Din arbeidsgiver og andre som utbetaler inntekter til deg rapporterer disse opplysningene til a-ordningen minst én gang i måneden.
           Oppdager du feil? Ta kontakt med de som har rapportert opplysningene.
         </Normaltekst>
-        <br/>
+        <br />
         <PanelBase border>
           {this.state.employerSummaries === null ? <br />
             : (
