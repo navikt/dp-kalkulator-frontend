@@ -1,10 +1,11 @@
 import Ekspanderbartpanel from 'nav-frontend-ekspanderbartpanel';
 import React from 'react';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 import Employer from './Employer';
 
+
 export default function EmployersMonth({ month, employers }) {
-  const moment = require('moment');
   moment.locale('nb');
   return (
     <li>

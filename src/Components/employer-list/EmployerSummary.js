@@ -16,7 +16,8 @@ export default function EmployerSummary({ name, income, employmentPeriodes }) {
 
         </li>
         <li>
-          {employmentPeriodes.map(periode => (<EmploymentPeriode key={periode.startDateYearMonth} startDate={periode.startDateYearMonth} endDate={periode.endDateYearMonth} />))}
+          {employmentPeriodes.map(periode => (
+            <EmploymentPeriode key={periode.startDateYearMonth} startDate={periode.startDateYearMonth} endDate={periode.endDateYearMonth} />))}
         </li>
 
 

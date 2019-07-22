@@ -2,10 +2,11 @@ import Ekspanderbartpanel from 'nav-frontend-ekspanderbartpanel';
 import React from 'react';
 import { Innholdstittel } from 'nav-frontend-typografi';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 import EmployersMonth from './EmployersMonth';
 
+
 export default function AllMonths({ monthsIncomeInformation, year }) {
-  const moment = require('moment');
   moment.locale('nb');
   return (
     <li>

@@ -27,7 +27,7 @@ class App extends React.Component {
     this.setState({
       loading: true,
     });
-    fetch('http://app.lvh.me:8099/inntekt', {
+    fetch('http://backend.myapp.com:8099/inntekt', {
       mode: 'cors',
       cache: 'no-cache',
       credentials: 'include',
@@ -52,24 +52,30 @@ class App extends React.Component {
   }
 
   render() {
+    const { loading } = this.state;
+    const { totalIncome } = this.state;
+    const { totalIncome12 } = this.state;
+    const { doesPersonQualify } = this.state;
+    const { employerSummaries } = this.state;
+    const { monthsIncomeInformation } = this.state;
     return (
       <div className="App">
         <img src="https://www.nav.no/_public/beta.nav.no/images/logo.png?_ts=1512923c9b0" alt="NAV-logo-rød-trans-bg-200.png" />
 
         <Sidetittel>
 Din inntekt
-          {this.state.loading ? <NavFrontendSpinner /> : <br />}
+          {loading ? <NavFrontendSpinner /> : <br />}
           {' '}
 
         </Sidetittel>
         <div>
           <b>Her vises opplysninger om dine inntekter hentet fra a-ordnigen.</b>
           <ul className="a">
-            {this.state.totalIncome === null ? <br /> : <TotalInntekt totalIncome={this.state.totalIncome} months={36} />}
-            {this.state.totalIncome12 === null ? <br /> : <TotalInntekt totalIncome={this.state.totalIncome12} months={12} />}
+            {totalIncome === null ? <br /> : <TotalInntekt totalIncome={totalIncome} months={36} />}
+            {totalIncome12 === null ? <br /> : <TotalInntekt totalIncome={totalIncome12} months={12} />}
           </ul>
         </div>
-        <QualifiedMessage doesPersonQualify={this.state.doesPersonQualify} />
+        <QualifiedMessage doesPersonQualify={doesPersonQualify} />
         <Normaltekst>
           <br />
 Din arbeidsgiver og andre som utbetaler inntekter til deg rapporterer disse opplysningene til a-ordningen minst én gang i måneden.
@@ -77,16 +83,16 @@ Din arbeidsgiver og andre som utbetaler inntekter til deg rapporterer disse oppl
         </Normaltekst>
         <br />
         <PanelBase border>
-          {this.state.employerSummaries === null ? <br />
+          {employerSummaries === null ? <br />
             : (
               <EmployerList
-                employerSummaries={this.state.employerSummaries}
+                employerSummaries={employerSummaries}
               />
             )}
-          {this.state.monthsIncomeInformation === null ? <br />
+          {monthsIncomeInformation === null ? <br />
             : (
               <AllYears
-                monthsIncomeInformation={this.state.monthsIncomeInformation}
+                monthsIncomeInformation={monthsIncomeInformation}
               />
             )}
         </PanelBase>

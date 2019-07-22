@@ -60,7 +60,7 @@ Noen av inntektene teller med, men vises ikke i a-ordningen...?
               Usikker på om: folketrygdytelsene foreldrepenger,
               svangerskapspenger og svangerskapsrelaterte sykepenge
           </li>
-          <li>Inntekter som selvstenig næringsdrivende?</li>
+          <li>Inntekter som selvstendig næringsdrivende?</li>
         </ul>
 
         <b>
