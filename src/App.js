@@ -27,7 +27,7 @@ class App extends React.Component {
     this.setState({
       loading: true,
     });
-    fetch('http://backend.myapp.com:8099/inntekt', {
+    fetch('/api/inntekt', {
       mode: 'cors',
       cache: 'no-cache',
       credentials: 'include',
