@@ -4,7 +4,7 @@ metadata:
   name: dp-inntekt-innsyn-ui
 spec:
   image: repo.adeo.no:5443/dp-inntekt-innsyn-ui:latest
-  port: 8092
+  port: 443
   liveness:
     path: /inntekter/health/is-alive
     initialDelay: 20
