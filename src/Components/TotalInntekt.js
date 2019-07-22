@@ -15,7 +15,9 @@ export default function TotalInntekt({ months, totalIncome }) {
         {' '}
 månedene:
         {' '}
-        {totalIncome.toFixed(2)}
+        <em className="incomeNumber">
+          {totalIncome.toFixed(2)}
+        </em>
         {' '}
 kr
       </li>
@@ -26,9 +28,12 @@ kr
         {' '}
 månedene:
         {' '}
-        {(totalIncome
+        <em className="incomeNumber">
+          {(totalIncome
             / months).toFixed(2)}
-kr.
+        </em>
+        {' '}
+kr
       </li>
 
     </Normaltekst>
