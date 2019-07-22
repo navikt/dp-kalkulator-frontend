@@ -6,9 +6,15 @@ spec:
   image: repo.adeo.no:5443/dp-inntekt-innsyn-ui:latest
   port: 8092
   liveness:
-    path: /isAlive
+    path: /inntekter/health/is-alive
+    initialDelay: 20
+    timeout: 1
+    periodSeconds: 5     # How often (in seconds) to perform the probe. Default to 10 seconds
+    failureThreshold: 10 # when a Pod starts and the probe fails,
   readiness:
-    path: /isReady
+    path: /inntekter/health/is-alive
+    initialDelay: 20
+    timeout: 1
   prometheus:
     enabled: true
     path: /metrics
