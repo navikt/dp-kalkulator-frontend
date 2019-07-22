@@ -5,8 +5,8 @@ import { Normaltekst, Sidetittel } from 'nav-frontend-typografi';
 import NavFrontendSpinner from 'nav-frontend-spinner';
 import QualifiedMessage from './Components/QualifiedMessage';
 import TotalInntekt from './Components/TotalInntekt';
-import EmployerList from './Components/EmployerList';
-import AllYears from './Components/AllYears';
+import EmployerList from './Components/employer-list/EmployerList';
+import AllYears from './Components/all-years/AllYears';
 
 class App extends React.Component {
   constructor(props) {
