@@ -76,7 +76,7 @@ Din inntekt
         <div>
           <b>Her vises opplysninger om dine inntekter hentet fra a-ordningen.</b>
           <br />
-          <b>Rett på dagpenger baserer seg enten på inntekter siste 36 måneder eller inntekter siste 12 måneder</b>
+          <b>Rett på dagpenger baserer seg enten på inntekter siste 36 måneder eller inntekter siste 12 måneder.</b>
           <ul className="a">
             {totalIncome36 == null ? <br /> : <TotalInntekt totalIncome={totalIncome36} months={36} />}
             {totalIncome12 == null ? <br /> : <TotalInntekt totalIncome={totalIncome12} months={12} />}

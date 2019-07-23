@@ -2,6 +2,7 @@ import React from 'react';
 import { Innholdstittel } from 'nav-frontend-typografi';
 import PropTypes from 'prop-types';
 import Tabs from 'nav-frontend-tabs';
+import HjelpetekstBase from 'nav-frontend-hjelpetekst';
 import AllMonths from './AllMonths';
 
 export default class AllYears extends React.Component {
@@ -44,7 +45,10 @@ export default class AllYears extends React.Component {
 
     return (
       <div>
-        <Innholdstittel>Årsoversikt</Innholdstittel>
+        <Innholdstittel>
+          Årsoversikt
+          <HjelpetekstBase type="auto"> Dine inntekter gruppert på år og måneder.</HjelpetekstBase>
+        </Innholdstittel>
         <Tabs
           kompakt={false}
           defaultAktiv={0}

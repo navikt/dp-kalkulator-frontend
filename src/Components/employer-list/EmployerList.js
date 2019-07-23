@@ -9,7 +9,7 @@ export default function EmployerList({ employerSummaries }) {
     <div>
       <Innholdstittel>
 Arbeidsgivere
-        <HjelpetekstBase type="auto"> Dine arbeidsgivere de 36 siste månedene</HjelpetekstBase>
+        <HjelpetekstBase type="auto"> Dine arbeidsgivere de 36 siste månedene.</HjelpetekstBase>
       </Innholdstittel>
       <ul>
         <li>
