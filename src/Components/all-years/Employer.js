@@ -1,9 +1,8 @@
-import Ekspanderbartpanel from 'nav-frontend-ekspanderbartpanel';
 import React from 'react';
 import PropTypes from 'prop-types';
-import Income from './Income';
 import PanelBase from 'nav-frontend-paneler';
 import { Element } from 'nav-frontend-typografi';
+import Income from './Income';
 
 export default function Employer({ name, incomes }) {
   return (
