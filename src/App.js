@@ -78,8 +78,8 @@ Din inntekt
           <br />
           <b>Rett på dagpenger baserer seg enten på inntekter siste 36 måneder eller inntekter siste 12 måneder</b>
           <ul className="a">
-            {totalIncome36 === null ? <br /> : <TotalInntekt totalIncome={totalIncome36} months={36} />}
-            {totalIncome12 === null ? <br /> : <TotalInntekt totalIncome={totalIncome12} months={12} />}
+            {totalIncome36 == null ? <br /> : <TotalInntekt totalIncome={totalIncome36} months={36} />}
+            {totalIncome12 == null ? <br /> : <TotalInntekt totalIncome={totalIncome12} months={12} />}
           </ul>
         </div>
         <QualifiedMessage doesPersonQualify={doesPersonQualify} />
