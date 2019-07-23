@@ -30,6 +30,8 @@
     "nav-frontend-skjema-style": "^1.0.40",
     "nav-frontend-spinner": "^1.0.18",
     "nav-frontend-spinner-style": "^0.2.5",
+    "nav-frontend-tabs": "0.0.32",
+    "nav-frontend-tabs-style": "0.0.18",
     "nav-frontend-typografi": "^2.0.12",
     "nav-frontend-typografi-style": "^1.0.13",
     "popper.js": "^1.15.0",

@@ -1,6 +1,4 @@
-import Ekspanderbartpanel from 'nav-frontend-ekspanderbartpanel';
 import React from 'react';
-import { Innholdstittel } from 'nav-frontend-typografi';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import EmployersMonth from './EmployersMonth';
@@ -9,14 +7,11 @@ import EmployersMonth from './EmployersMonth';
 export default function AllMonths({ monthsIncomeInformation, year }) {
   moment.locale('nb');
   return (
-    <li>
-      <Ekspanderbartpanel tittel={year} border>
-        <Innholdstittel>Månedsoversikt</Innholdstittel>
+      <div tittel={year}>
         <ul>
           {monthsIncomeInformation.map(month => (<EmployersMonth key={month.month.toString()} month={month.month} employers={month.employers} />))}
         </ul>
-      </Ekspanderbartpanel>
-    </li>
+      </div>
   );
 }
 AllMonths.propTypes = {
