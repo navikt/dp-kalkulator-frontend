@@ -83,6 +83,7 @@ Ifølge a-ordningen har du tjent under minstekravet for å ha rett på
         <HjelpetekstBase type="auto">
 Minstekravet er på 1,5
             ganger
+          {' '}
           <Lenke
             href="https://www.nav.no/383506/grunnbel%C3%B8pet-i-folketrygden"
           >

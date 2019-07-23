@@ -15,4 +15,4 @@ spec:
     - name: OIDC_HOST_URL
       value: https://isso-q.adeo.no:443/isso/oauth2
     - name: OIDC_AGENTNAME
-      value: dagpenger-regel-ui-q1
+      value: dp-inntekt-innsyn-ui-q1

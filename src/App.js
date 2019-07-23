@@ -2,21 +2,22 @@ import React from 'react';
 import './App.css';
 import PanelBase from 'nav-frontend-paneler';
 import { Normaltekst, Sidetittel } from 'nav-frontend-typografi';
-import NavFrontendSpinner from 'nav-frontend-spinner';
 import QualifiedMessage from './Components/QualifiedMessage';
 import TotalInntekt from './Components/TotalInntekt';
 import EmployerList from './Components/employer-list/EmployerList';
 import AllYears from './Components/all-years/AllYears';
+import LoadingMessage from './Components/LoadingMessage';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      totalIncome: null,
+      totalIncome36: null,
       totalIncome12: null,
       employerSummaries: null,
       monthsIncomeInformation: null,
       doesPersonQualify: false,
+      loading: true,
     };
   }
 
@@ -42,7 +43,7 @@ class App extends React.Component {
       .then((json) => {
         this.setState({
           loading: false,
-          totalIncome: json.totalIncome,
+          totalIncome36: json.totalIncome36,
           totalIncome12: json.totalIncome12,
           monthsIncomeInformation: json.monthsIncomeInformation,
           employerSummaries: json.employerSummaries,
@@ -53,7 +54,12 @@ class App extends React.Component {
 
   render() {
     const { loading } = this.state;
-    const { totalIncome } = this.state;
+    if (loading) {
+      return (
+        <LoadingMessage />
+      );
+    }
+    const { totalIncome36 } = this.state;
     const { totalIncome12 } = this.state;
     const { doesPersonQualify } = this.state;
     const { employerSummaries } = this.state;
@@ -64,14 +70,15 @@ class App extends React.Component {
 
         <Sidetittel>
 Din inntekt
-          {loading ? <NavFrontendSpinner /> : <br />}
           {' '}
 
         </Sidetittel>
         <div>
-          <b>Her vises opplysninger om dine inntekter hentet fra a-ordnigen.</b>
+          <b>Her vises opplysninger om dine inntekter hentet fra a-ordningen.</b>
+          <br />
+          <b>Rett på dagpenger baserer seg enten på inntekter siste 36 måneder eller inntekter siste 12 måneder</b>
           <ul className="a">
-            {totalIncome === null ? <br /> : <TotalInntekt totalIncome={totalIncome} months={36} />}
+            {totalIncome36 === null ? <br /> : <TotalInntekt totalIncome={totalIncome36} months={36} />}
             {totalIncome12 === null ? <br /> : <TotalInntekt totalIncome={totalIncome12} months={12} />}
           </ul>
         </div>
@@ -79,6 +86,7 @@ Din inntekt
         <Normaltekst>
           <br />
 Din arbeidsgiver og andre som utbetaler inntekter til deg rapporterer disse opplysningene til a-ordningen minst én gang i måneden.
+          <br />
           Oppdager du feil? Ta kontakt med de som har rapportert opplysningene.
         </Normaltekst>
         <br />
