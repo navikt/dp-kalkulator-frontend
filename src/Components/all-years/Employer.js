@@ -10,7 +10,7 @@ export default function Employer({ name, incomes }) {
       <PanelBase border>
         <Element>{name}</Element>
         <ul>
-          {incomes.map(income => (<Income key={income.verdikode} income={income.income} verdikode={income.verdikode} />))}
+          {incomes.map(income => (<Income key={income.beskrivelse} income={income.income} verdikode={income.beskrivelse} />))}
         </ul>
       </PanelBase>
     </li>
