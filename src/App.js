@@ -16,7 +16,7 @@ class App extends React.Component {
       totalIncome12: null,
       employerSummaries: null,
       monthsIncomeInformation: null,
-      doesPersonQualify: false,
+      doesPersonQualify: true,
       loading: true,
     };
   }
@@ -64,13 +64,12 @@ class App extends React.Component {
     const { monthsIncomeInformation } = this.state;
     return (
       <div className="App">
-        <img src="https://www.nav.no/_public/beta.nav.no/images/logo.png?_ts=1512923c9b0" alt="NAV-logo-rød-trans-bg-200.png" />
-
-        <Sidetittel>
-Din inntekt
-          {' '}
-
-        </Sidetittel>
+        <div className="header">
+          <img src="https://www.nav.no/_public/beta.nav.no/images/logo.png?_ts=1512923c9b0" alt="NAV-logo-rød-trans-bg-200.png" />
+          <Sidetittel>Din inntekt</Sidetittel>
+        </div>
+        <br />
+        <br />
         <div>
           <b>Her vises opplysninger om dine inntekter hentet fra a-ordningen.</b>
           <br />

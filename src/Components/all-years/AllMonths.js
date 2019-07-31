@@ -9,7 +9,7 @@ export default function AllMonths({ monthsIncomeInformation, year }) {
   return (
     <div tittel={year}>
       <ul>
-        {monthsIncomeInformation.map(month => (<EmployersMonth key={month.month.toString()} month={month.month} employers={month.employers} />))}
+        {monthsIncomeInformation.map(month => (<EmployersMonth key={month.month.toString()} month={month.month} employers={month.employers} monthTotalIncome={month.totalIncomeMonth} />))}
       </ul>
     </div>
   );

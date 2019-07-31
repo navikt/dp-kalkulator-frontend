@@ -23,8 +23,12 @@ function PositiveResponse() {
       <Normaltekst>
         <h3>
           {' '}
-Ifølge a-ordningen har du tjent over minstekravet for å ha rett
-            på dagpenger
+          Ifølge a-ordningen ser det ut til at du vil få
+          {' '}
+          <em> beløp</em>
+          {' '}
+i perioden
+          <em> Periode </em>
           <HjelpetekstBase type="auto">
             {' '}
 Minstekravet er på 1,5
@@ -55,12 +59,6 @@ Du får innvilget dagpenger fra en dato fram i tid. Da vil
               inntekter beregnes fra kravsdato.
           </li>
           <li>Opplysningene i a-ordningen er feil.</li>
-          <li>
-Noen av inntektene teller med, men vises ikke i a-ordningen...?
-              Usikker på om: folketrygdytelsene foreldrepenger,
-              svangerskapspenger og svangerskapsrelaterte sykepenge
-          </li>
-          <li>Inntekter som selvstendig næringsdrivende?</li>
         </ul>
 
         <b>

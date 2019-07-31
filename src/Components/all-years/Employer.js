@@ -6,8 +6,8 @@ import Income from './Income';
 
 export default function Employer({ name, incomes }) {
   return (
-    <li>
-      <PanelBase border>
+    <li className="b">
+      <PanelBase>
         <Element>{name}</Element>
         <ul>
           {incomes.map(income => (<Income key={income.beskrivelse} income={income.income} verdikode={income.beskrivelse} />))}

@@ -5,11 +5,27 @@ import moment from 'moment';
 import Employer from './Employer';
 
 
-export default function EmployersMonth({ month, employers }) {
+export default function EmployersMonth({ month, employers, monthTotalIncome }) {
   moment.locale('nb');
+  const date = moment(month.toString(), 'YYYY-MM').format('MMMM');
   return (
     <li>
-      <Ekspanderbartpanel tittel={moment(month.toString(), 'YYYY-MM').format('MMMM YYYY')} border>
+      <Ekspanderbartpanel tittel={date.charAt(0).toUpperCase() + date.slice(1)} border>
+        <ul>
+        Din totalInntekt i
+          {' '}
+          {date}
+          {' '}
+          var
+          {' '}
+          <em className="incomeNumber">
+            {(monthTotalIncome).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}
+          </em>
+          {' '}
+          kr
+        </ul>
+        <br />
+        <br />
         <ul>
           {employers.map(employer => (<Employer key={employer.name} name={employer.name} incomes={employer.incomes} />))}
         </ul>
@@ -20,4 +36,5 @@ export default function EmployersMonth({ month, employers }) {
 EmployersMonth.propTypes = {
   month: PropTypes.string.isRequired,
   employers: PropTypes.arrayOf(PropTypes.shape()),
+  monthTotalIncome: PropTypes.number(),
 };

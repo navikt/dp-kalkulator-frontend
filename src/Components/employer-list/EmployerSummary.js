@@ -10,12 +10,16 @@ export default function EmployerSummary({ name, income, employmentPeriodes }) {
         <li>
         Total inntekt:
           {' '}
-          {income}
+          <em className="incomeNumber">
+            {income.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}
+          </em>
           {' '}
-        kr
+          kr
 
         </li>
         <li>
+          Utbetalingsperioder:
+          {' '}
           {employmentPeriodes.map(periode => (
             <EmploymentPeriode key={periode.startDateYearMonth} startDate={periode.startDateYearMonth} endDate={periode.endDateYearMonth} />))}
         </li>

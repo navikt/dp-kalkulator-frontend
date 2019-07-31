@@ -3,8 +3,12 @@ import PropTypes from 'prop-types';
 
 export default function Income({ verdikode, income }) {
   return (
-    <ul>
-      {`${verdikode}: ${income}`}
+    <ul className="a">
+      {verdikode}
+      {': '}
+      {income.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}
+      {' '}
+      kr
     </ul>
   );
 }

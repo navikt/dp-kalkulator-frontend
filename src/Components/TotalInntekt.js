@@ -16,7 +16,8 @@ export default function TotalInntekt({ months, totalIncome }) {
 månedene:
         {' '}
         <em className="incomeNumber">
-          {totalIncome.toFixed(2)}
+          {totalIncome.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
+          }
         </em>
         {' '}
 kr
@@ -30,7 +31,8 @@ månedene:
         {' '}
         <em className="incomeNumber">
           {(totalIncome
-            / months).toFixed(2)}
+            / months).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
+          }
         </em>
         {' '}
 kr
