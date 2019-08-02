@@ -35,5 +35,5 @@ export default function EmployersMonth({ month, employers, monthTotalIncome }) {
 EmployersMonth.propTypes = {
   month: PropTypes.string.isRequired,
   employers: PropTypes.arrayOf(PropTypes.shape()),
-  monthTotalIncome: PropTypes.number(),
+  monthTotalIncome: PropTypes.number,
 };
