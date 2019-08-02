@@ -6,7 +6,9 @@ export default function Income({ verdikode, income }) {
     <ul className="a">
       {verdikode}
       {': '}
-      {income.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}
+      <em>
+        {income.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}
+      </em>
       {' '}
       kr
     </ul>

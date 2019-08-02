@@ -5,19 +5,20 @@ import Lenke from 'nav-frontend-lenker';
 import { Normaltekst } from 'nav-frontend-typografi';
 import PropTypes from 'prop-types';
 
-export default function QualifiedMessage({ doesPersonQualify }) {
+export default function QualifiedMessage({ doesPersonQualify, beløp }) {
   return (
     <AlertStripe type={doesPersonQualify ? 'suksess' : 'advarsel'}>
-      {doesPersonQualify ? <PositiveResponse /> : <NegativeResponse />}
+      {doesPersonQualify ? <PositiveResponse beløp={beløp} /> : <NegativeResponse />}
     </AlertStripe>
   );
 }
 
 QualifiedMessage.propTypes = {
   doesPersonQualify: PropTypes.bool.isRequired,
+  beløp: PropTypes.number,
 };
 
-function PositiveResponse() {
+function PositiveResponse({ beløp }) {
   return (
     <div>
       <Normaltekst>
@@ -25,7 +26,9 @@ function PositiveResponse() {
           {' '}
           Ifølge a-ordningen ser det ut til at du vil få
           {' '}
-          <em> beløp</em>
+          <em>
+            { beløp }
+          </em>
           {' '}
 i perioden
           <em> Periode </em>
@@ -70,6 +73,10 @@ Vi anbefaler at du sender en søknad om dagpenger selv hvis du er
     </div>
   );
 }
+
+PositiveResponse.propTypes = {
+  beløp: PropTypes.number,
+};
 
 function NegativeResponse() {
   return (

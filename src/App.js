@@ -1,12 +1,11 @@
 import React from 'react';
 import './App.css';
-import PanelBase from 'nav-frontend-paneler';
-import { Normaltekst, Sidetittel } from 'nav-frontend-typografi';
+import { Sidetittel } from 'nav-frontend-typografi';
 import QualifiedMessage from './Components/QualifiedMessage';
-import TotalInntekt from './Components/TotalInntekt';
-import EmployerList from './Components/employer-list/EmployerList';
-import AllYears from './Components/all-years/AllYears';
+import InformationSummary from './Components/InformationSummary';
 import LoadingMessage from './Components/LoadingMessage';
+import IncomeSummary from './Components/IncomeSummary';
+import RapporteringInfo from './Components/RapporteringInfo';
 
 class App extends React.Component {
   constructor(props) {
@@ -14,6 +13,7 @@ class App extends React.Component {
     this.state = {
       totalIncome36: null,
       totalIncome12: null,
+      beløp: null,
       employerSummaries: null,
       monthsIncomeInformation: null,
       doesPersonQualify: true,
@@ -62,6 +62,7 @@ class App extends React.Component {
     const { doesPersonQualify } = this.state;
     const { employerSummaries } = this.state;
     const { monthsIncomeInformation } = this.state;
+    const { beløp } = this.state;
     return (
       <div className="App">
         <div className="header">
@@ -70,38 +71,11 @@ class App extends React.Component {
         </div>
         <br />
         <br />
-        <div>
-          <b>Her vises opplysninger om dine inntekter hentet fra a-ordningen.</b>
-          <br />
-          <b>Rett på dagpenger baserer seg enten på inntekter siste 36 måneder eller inntekter siste 12 måneder.</b>
-          <ul className="a">
-            {totalIncome36 == null ? <br /> : <TotalInntekt totalIncome={totalIncome36} months={36} />}
-            {totalIncome12 == null ? <br /> : <TotalInntekt totalIncome={totalIncome12} months={12} />}
-          </ul>
-        </div>
-        <QualifiedMessage doesPersonQualify={doesPersonQualify} />
-        <Normaltekst>
-          <br />
-Din arbeidsgiver og andre som utbetaler inntekter til deg rapporterer disse opplysningene til a-ordningen minst én gang i måneden.
-          <br />
-          Oppdager du feil? Ta kontakt med de som har rapportert opplysningene.
-        </Normaltekst>
+        <IncomeSummary totalIncome36={totalIncome36} totalIncome12={totalIncome12} />
+        <QualifiedMessage doesPersonQualify={doesPersonQualify} beløp={beløp} />
+        <RapporteringInfo />
         <br />
-        <PanelBase border>
-          {employerSummaries === null ? <br />
-            : (
-              <EmployerList
-                employerSummaries={employerSummaries}
-              />
-            )}
-          {monthsIncomeInformation === null ? <br />
-            : (
-              <AllYears
-                monthsIncomeInformation={monthsIncomeInformation}
-              />
-            )}
-        </PanelBase>
-
+        <InformationSummary employerSummaries={employerSummaries} monthsIncomeInformation={monthsIncomeInformation} />
       </div>
     );
   }

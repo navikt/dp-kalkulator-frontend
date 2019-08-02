@@ -17,14 +17,13 @@ export default function EmployerSummary({ name, income, employmentPeriodes }) {
           kr
 
         </li>
+        <hr />
         <li>
           Utbetalingsperioder:
           {' '}
           {employmentPeriodes.map(periode => (
             <EmploymentPeriode key={periode.startDateYearMonth} startDate={periode.startDateYearMonth} endDate={periode.endDateYearMonth} />))}
         </li>
-
-
       </Ekspanderbartpanel>
     </ul>
   );

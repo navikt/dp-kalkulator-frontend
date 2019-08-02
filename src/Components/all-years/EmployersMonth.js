@@ -12,7 +12,7 @@ export default function EmployersMonth({ month, employers, monthTotalIncome }) {
     <li>
       <Ekspanderbartpanel tittel={date.charAt(0).toUpperCase() + date.slice(1)} border>
         <ul>
-        Din totalInntekt i
+        Din totalinntekt i
           {' '}
           {date}
           {' '}
@@ -24,8 +24,7 @@ export default function EmployersMonth({ month, employers, monthTotalIncome }) {
           {' '}
           kr
         </ul>
-        <br />
-        <br />
+        <hr />
         <ul>
           {employers.map(employer => (<Employer key={employer.name} name={employer.name} incomes={employer.incomes} />))}
         </ul>
