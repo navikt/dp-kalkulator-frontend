@@ -1,11 +1,12 @@
 import React from 'react';
 import './App.css';
-import { Sidetittel } from 'nav-frontend-typografi';
+import Header from './Components/Header';
 import QualifiedMessage from './Components/QualifiedMessage';
 import InformationSummary from './Components/InformationSummary';
-import LoadingMessage from './Components/LoadingMessage';
-import IncomeSummary from './Components/IncomeSummary';
-import RapporteringInfo from './Components/RapporteringInfo';
+import LoadingMessage from './Components/information/LoadingMessage';
+import ErrorMessage from './Components/information/ErrorMessage';
+import IncomeSummary from './Components/income/IncomeSummary';
+import RapporteringInfo from './Components/information/RapporteringInfo';
 
 class App extends React.Component {
   constructor(props) {
@@ -18,6 +19,7 @@ class App extends React.Component {
       monthsIncomeInformation: null,
       doesPersonQualify: true,
       loading: true,
+      error: false,
     };
   }
 
@@ -47,14 +49,24 @@ class App extends React.Component {
           employerSummaries: json.employerSummaries,
         });
       })
-      .catch(error => console.error(error));
+      .catch(() => {
+        this.setState({
+          error: true,
+        });
+      });
   }
 
   render() {
     const { loading } = this.state;
+    const { error } = this.state;
     if (loading) {
       return (
         <LoadingMessage />
+      );
+    }
+    if (error) {
+      return (
+        <ErrorMessage />
       );
     }
     const { totalIncome36 } = this.state;
@@ -65,10 +77,7 @@ class App extends React.Component {
     const { beløp } = this.state;
     return (
       <div className="App">
-        <div className="header">
-          <img src="https://www.nav.no/_public/beta.nav.no/images/logo.png?_ts=1512923c9b0" alt="NAV-logo-rød-trans-bg-200.png" />
-          <Sidetittel>Din inntekt</Sidetittel>
-        </div>
+        <Header />
         <br />
         <br />
         <IncomeSummary totalIncome36={totalIncome36} totalIncome12={totalIncome12} />

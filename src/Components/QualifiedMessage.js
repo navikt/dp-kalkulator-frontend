@@ -5,10 +5,10 @@ import Lenke from 'nav-frontend-lenker';
 import { Normaltekst } from 'nav-frontend-typografi';
 import PropTypes from 'prop-types';
 
-export default function QualifiedMessage({ doesPersonQualify, beløp }) {
+export default function QualifiedMessage({ doesPersonQualify, beløp, periode }) {
   return (
     <AlertStripe type={doesPersonQualify ? 'suksess' : 'advarsel'}>
-      {doesPersonQualify ? <PositiveResponse beløp={beløp} /> : <NegativeResponse />}
+      {doesPersonQualify ? <PositiveResponse beløp={beløp} periode={periode} /> : <NegativeResponse />}
     </AlertStripe>
   );
 }
@@ -16,9 +16,10 @@ export default function QualifiedMessage({ doesPersonQualify, beløp }) {
 QualifiedMessage.propTypes = {
   doesPersonQualify: PropTypes.bool.isRequired,
   beløp: PropTypes.number,
+  periode: PropTypes.string,
 };
 
-function PositiveResponse({ beløp }) {
+function PositiveResponse({ beløp, periode }) {
   return (
     <div>
       <Normaltekst>
@@ -30,44 +31,34 @@ function PositiveResponse({ beløp }) {
             { beløp }
           </em>
           {' '}
-i perioden
-          <em> Periode </em>
-          <HjelpetekstBase type="auto">
-            {' '}
-Minstekravet er på 1,5
-              ganger
-            <Lenke
-              href="https://www.nav.no/383506/grunnbel%C3%B8pet-i-folketrygden"
-            >
-folketrygdens
-                grunnbeløp
-            </Lenke>
-            {' '}
-(1,5 G) de siste 12 månedene eller 3 G de
-              siste 36 månedene.
-          </HjelpetekstBase>
+          i
+          <em>
+            { periode }
+          </em>
+          uker
+          <Minstekrav />
         </h3>
-
-
         <b>
-Får du likevel avslag på grunn av for lav inntekt, kan det være
-            fordi:
+          Får du likevel avslag på grunn av for lav inntekt, kan det være
+          fordi:
         </b>
         <ul className="a">
           <li>
-Inntektene har blitt brukt opp i en tidligere dagpengeperiode.
+            Inntektene har blitt brukt opp i en tidligere dagpengeperiode.
           </li>
           <li>
-Du får innvilget dagpenger fra en dato fram i tid. Da vil
-              inntekter beregnes fra kravsdato.
+            Du får innvilget dagpenger fra en dato fram i tid. Da vil
+            inntekter beregnes fra kravsdato.
           </li>
-          <li>Opplysningene i a-ordningen er feil.</li>
+          <li>
+            Opplysningene i a-ordningen er feil.
+          </li>
         </ul>
 
         <b>
-Vi anbefaler at du sender en søknad om dagpenger selv hvis du er
-            usikker på om du har tjent nok, så kan en saksbehandler vurdere
-            dette.
+          Vi anbefaler at du sender en søknad om dagpenger selv hvis du er
+          usikker på om du har tjent nok, så kan en saksbehandler vurdere
+          dette.
         </b>
       </Normaltekst>
     </div>
@@ -76,6 +67,7 @@ Vi anbefaler at du sender en søknad om dagpenger selv hvis du er
 
 PositiveResponse.propTypes = {
   beløp: PropTypes.number,
+  periode: PropTypes.string,
 };
 
 function NegativeResponse() {
@@ -83,22 +75,9 @@ function NegativeResponse() {
     <div>
       <h4>
         {' '}
-Ifølge a-ordningen har du tjent under minstekravet for å ha rett på
-          dagpenger.
-        <HjelpetekstBase type="auto">
-Minstekravet er på 1,5
-            ganger
-          {' '}
-          <Lenke
-            href="https://www.nav.no/383506/grunnbel%C3%B8pet-i-folketrygden"
-          >
-folketrygdens
-              grunnbeløp
-          </Lenke>
-          {' '}
-(1,5 G) de siste 12 månedene eller 3 G de siste
-            36 månedene.
-        </HjelpetekstBase>
+        Ifølge a-ordningen har du tjent under minstekravet for å ha rett på
+        dagpenger.
+        <Minstekrav />
       </h4>
 
       <b>Du kan likevel ha tjent nok til å ha rett på dagpenger hvis:</b>
@@ -109,10 +88,29 @@ folketrygdens
         <li>Opplysningene i a-ordningen er feil.</li>
       </ul>
       <b>
-Vi anbefaler at du sender en søknad om dagpenger selv hvis du er
-          usikker på om du har tjent nok, så kan en saksbehandler vurdere
-          dette.
+        Vi anbefaler at du sender en søknad om dagpenger selv hvis du er
+        usikker på om du har tjent nok, så kan en saksbehandler vurdere
+        dette.
       </b>
     </div>
+  );
+}
+
+function Minstekrav() {
+  return (
+    <HjelpetekstBase id="minstekrav" type="auto">
+      {' '}
+      Minstekravet er på 1,5
+      ganger
+      <Lenke
+        href="https://www.nav.no/383506/grunnbel%C3%B8pet-i-folketrygden"
+      >
+        folketrygdens
+        grunnbeløp
+      </Lenke>
+      {' '}
+      (1,5 G) de siste 12 månedene eller 3 G de
+      siste 36 månedene.
+    </HjelpetekstBase>
   );
 }
