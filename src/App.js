@@ -7,6 +7,7 @@ import LoadingMessage from './Components/information/LoadingMessage';
 import ErrorMessage from './Components/information/ErrorMessage';
 import IncomeSummary from './Components/income/IncomeSummary';
 import RapporteringInfo from './Components/information/RapporteringInfo';
+import NoIncome from './Components/NoIncome';
 
 class App extends React.Component {
   constructor(props) {
@@ -75,6 +76,11 @@ class App extends React.Component {
     const { employerSummaries } = this.state;
     const { monthsIncomeInformation } = this.state;
     const { beløp } = this.state;
+    if (monthsIncomeInformation.length === 0 && !doesPersonQualify) {
+      return (
+        <NoIncome />
+      );
+    }
     return (
       <div className="App">
         <Header loading={false} />
