@@ -7,8 +7,10 @@ export default function Header({ loading }) {
   return (
     <div className="header">
       <img src="https://www.nav.no/_public/beta.nav.no/images/logo.png?_ts=1512923c9b0" alt="NAV-logo-rød-trans-bg-200.png" />
-      <Sidetittel>Din inntekt</Sidetittel>
-      {loading ? <NavFrontendSpinner /> : <div />}
+      <Sidetittel>
+        Din inntekt
+        {loading ? <NavFrontendSpinner /> : <div />}
+      </Sidetittel>
     </div>
   );
 }

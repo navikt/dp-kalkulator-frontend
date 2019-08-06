@@ -77,7 +77,7 @@ class App extends React.Component {
     const { beløp } = this.state;
     return (
       <div className="App">
-        <Header />
+        <Header loading={false} />
         <br />
         <br />
         <IncomeSummary totalIncome36={totalIncome36} totalIncome12={totalIncome12} />
