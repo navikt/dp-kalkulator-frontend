@@ -6,8 +6,6 @@ export default function LoadingMessage() {
   return (
     <div className="App">
       <Header loading />
-      <br />
-      <br />
       <PanelBase border>
         Vi laster nå inn informasjonen vi har om dine inntekter som danner grunnlaget for vurderingen om dagpenger.
         <br />

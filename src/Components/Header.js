@@ -11,6 +11,8 @@ export default function Header({ loading }) {
         Din inntekt
         {loading ? <NavFrontendSpinner /> : <div />}
       </Sidetittel>
+      <br />
+      <br />
     </div>
   );
 }

@@ -13,12 +13,6 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      totalIncome36: null,
-      totalIncome12: null,
-      beløp: null,
-      employerSummaries: null,
-      monthsIncomeInformation: null,
-      doesPersonQualify: true,
       loading: true,
       error: false,
     };
@@ -36,63 +30,46 @@ class App extends React.Component {
     })
 
       .then((personIncomeInformation) => {
-        if (personIncomeInformation.ok) {
-          return personIncomeInformation.json();
-        }
+        if (personIncomeInformation.ok) { return personIncomeInformation.json(); }
         throw Error(personIncomeInformation.statusText);
       })
       .then((json) => {
         this.setState({
           loading: false,
+          doesPersonQualify: json.oppfyllerMinstekrav,
           totalIncome36: json.totalIncome36,
           totalIncome12: json.totalIncome12,
           monthsIncomeInformation: json.monthsIncomeInformation,
           employerSummaries: json.employerSummaries,
         });
       })
-      .catch(() => {
-        this.setState({
-          error: true,
-        });
-      });
+      .catch(() => { this.setState({ error: true }); });
   }
 
   render() {
     const { loading } = this.state;
     const { error } = this.state;
-    if (loading) {
-      return (
-        <LoadingMessage />
-      );
-    }
-    if (error) {
-      return (
-        <ErrorMessage />
-      );
-    }
+    if (loading) { return (<LoadingMessage />); }
+    if (error) { return (<ErrorMessage />); }
     const { totalIncome36 } = this.state;
     const { totalIncome12 } = this.state;
     const { doesPersonQualify } = this.state;
     const { employerSummaries } = this.state;
     const { monthsIncomeInformation } = this.state;
     const { beløp } = this.state;
-    if (monthsIncomeInformation.length === 0 && !doesPersonQualify) {
+    if (monthsIncomeInformation.length === 0 && !doesPersonQualify) { return (<NoIncome />); }
+    try {
       return (
-        <NoIncome />
+        <div className="App">
+          <Header loading={false} />
+          <IncomeSummary totalIncome36={totalIncome36} totalIncome12={totalIncome12} />
+          <QualifiedMessage doesPersonQualify={doesPersonQualify} beløp={beløp} />
+          <RapporteringInfo />
+          <br />
+          <InformationSummary employerSummaries={employerSummaries} monthsIncomeInformation={monthsIncomeInformation} />
+        </div>
       );
-    }
-    return (
-      <div className="App">
-        <Header loading={false} />
-        <br />
-        <br />
-        <IncomeSummary totalIncome36={totalIncome36} totalIncome12={totalIncome12} />
-        <QualifiedMessage doesPersonQualify={doesPersonQualify} beløp={beløp} />
-        <RapporteringInfo />
-        <br />
-        <InformationSummary employerSummaries={employerSummaries} monthsIncomeInformation={monthsIncomeInformation} />
-      </div>
-    );
+    } catch (err) { return (<ErrorMessage />); }
   }
 }
 

@@ -30,7 +30,7 @@ export default class AllYears extends React.Component {
 
     this.state = {
       tabs,
-      currentTab: tabs[0].content,
+      currentTab: tabs.length > 0 ? tabs[0].content : null,
     };
   }
 
@@ -47,7 +47,7 @@ export default class AllYears extends React.Component {
       <div>
         <Innholdstittel>
           Årsoversikt
-          <HjelpetekstBase type="auto"> Dine inntekter gruppert på år og måneder.</HjelpetekstBase>
+          <HjelpetekstBase id="AllYearsExplanation" type="auto"> Dine inntekter gruppert på år og måneder.</HjelpetekstBase>
         </Innholdstittel>
         <Tabs
           kompakt={false}
