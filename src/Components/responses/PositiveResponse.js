@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import Minstekrav from './Minstekrav';
 
-export default function PositiveResponse({ beløp, periode }) {
+export default function PositiveResponse({ ukeSats, periodeAntalluker }) {
   return (
     <div>
       <Normaltekst>
@@ -12,12 +12,13 @@ export default function PositiveResponse({ beløp, periode }) {
           Ifølge a-ordningen ser det ut til at du vil få
           {' '}
           <em>
-            { beløp }
+            { ukeSats }
           </em>
           {' '}
-          i
+          kr i
+          {' '}
           <em>
-            { periode }
+            { periodeAntalluker }
           </em>
           {' '}
           uker
@@ -51,6 +52,6 @@ export default function PositiveResponse({ beløp, periode }) {
 }
 
 PositiveResponse.propTypes = {
-  beløp: PropTypes.number,
-  periode: PropTypes.string,
+  ukeSats: PropTypes.number,
+  periodeAntalluker: PropTypes.string,
 };
