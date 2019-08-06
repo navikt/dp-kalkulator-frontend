@@ -13,12 +13,13 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      periodeAntalluker: null,
+      ukeSats: null,
       totalIncome36: null,
       totalIncome12: null,
-      beløp: null,
       employerSummaries: null,
       monthsIncomeInformation: null,
-      doesPersonQualify: true,
+      doesPersonQualify: false,
       loading: true,
       error: false,
     };
@@ -44,6 +45,9 @@ class App extends React.Component {
       .then((json) => {
         this.setState({
           loading: false,
+          doesPersonQualify: json.oppfyllerMinstekrav,
+          periodeAntalluker: json.periodeAntalluker,
+          ukeSats: json.ukeSats,
           totalIncome36: json.totalIncome36,
           totalIncome12: json.totalIncome12,
           monthsIncomeInformation: json.monthsIncomeInformation,
@@ -75,7 +79,8 @@ class App extends React.Component {
     const { doesPersonQualify } = this.state;
     const { employerSummaries } = this.state;
     const { monthsIncomeInformation } = this.state;
-    const { beløp } = this.state;
+    const { ukeSats } = this.state;
+    const { periodeAntalluker } = this.state;
     if (monthsIncomeInformation.length === 0 && !doesPersonQualify) {
       return (
         <NoIncome />
@@ -87,7 +92,7 @@ class App extends React.Component {
         <br />
         <br />
         <IncomeSummary totalIncome36={totalIncome36} totalIncome12={totalIncome12} />
-        <QualifiedMessage doesPersonQualify={doesPersonQualify} beløp={beløp} />
+        <QualifiedMessage doesPersonQualify={doesPersonQualify} ukeSats={ukeSats} periodeAntalluker={periodeAntalluker} />
         <RapporteringInfo />
         <br />
         <InformationSummary employerSummaries={employerSummaries} monthsIncomeInformation={monthsIncomeInformation} />
