@@ -8,6 +8,8 @@ import ErrorMessage from './Components/information/ErrorMessage';
 import IncomeSummary from './Components/income/IncomeSummary';
 import RapporteringInfo from './Components/information/RapporteringInfo';
 import NoIncome from './Components/NoIncome';
+import IncomeInPeriodList from './Components/periode-list/IncomeInPeriodList';
+import InntektFiltrering from "./Components/information/InntektFiltrering";
 
 class App extends React.Component {
   constructor(props) {
@@ -43,6 +45,7 @@ class App extends React.Component {
           totalIncome12: json.totalIncome12,
           monthsIncomeInformation: json.monthsIncomeInformation,
           employerSummaries: json.employerSummaries,
+          periodIncome: json.periodIncome,
         });
       })
       .catch(() => { this.setState({ error: true }); });
@@ -60,15 +63,17 @@ class App extends React.Component {
     const { monthsIncomeInformation } = this.state;
     const { ukeSats } = this.state;
     const { periodeAntalluker } = this.state;
-    if (monthsIncomeInformation.length === 0 && !doesPersonQualify) { return (<NoIncome />); }
+    const { periodIncome } = this.state;
+    if (monthsIncomeInformation.length === 0) { return (<NoIncome doesPersonQualify={doesPersonQualify} />); }
     try {
       return (
         <div className="App">
           <Header loading={false} />
-          <IncomeSummary totalIncome36={totalIncome36} totalIncome12={totalIncome12} />
+          <InntektFiltrering />
           <QualifiedMessage doesPersonQualify={doesPersonQualify} ukeSats={ukeSats} periodeAntalluker={periodeAntalluker} />
+          <IncomeSummary totalIncome36={totalIncome36} totalIncome12={totalIncome12} />
+          <IncomeInPeriodList periodIncome={periodIncome} />
           <RapporteringInfo />
-          <br />
           <InformationSummary employerSummaries={employerSummaries} monthsIncomeInformation={monthsIncomeInformation} />
         </div>
       );

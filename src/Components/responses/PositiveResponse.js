@@ -9,13 +9,16 @@ export default function PositiveResponse({ ukeSats, periodeAntalluker }) {
       <Normaltekst>
         <h3>
           {' '}
-          Ifølge a-ordningen ser det ut til at du vil få
+          Det ser ut som du kan være kvalifisert for dagpenger
+          <br />
+          {' '}
+          Du vil i så fall få
           {' '}
           <em>
             { ukeSats }
           </em>
           {' '}
-          kr i
+          kr før skatt hver uke i
           {' '}
           <em>
             { periodeAntalluker }

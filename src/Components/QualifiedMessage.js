@@ -6,7 +6,7 @@ import NegativeResponse from './responses/NegativeResponse';
 
 export default function QualifiedMessage({ doesPersonQualify, ukeSats, periodeAntalluker }) {
   return (
-    <AlertStripe type={doesPersonQualify ? 'suksess' : 'advarsel'}>
+    <AlertStripe type={doesPersonQualify ? 'info' : 'advarsel'}>
       {doesPersonQualify ? <PositiveResponse ukeSats={ukeSats} periodeAntalluker={periodeAntalluker} /> : <NegativeResponse />}
     </AlertStripe>
   );

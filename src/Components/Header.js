@@ -8,7 +8,7 @@ export default function Header({ loading }) {
     <div className="header">
       <img src="https://www.nav.no/_public/beta.nav.no/images/logo.png?_ts=1512923c9b0" alt="NAV-logo-rød-trans-bg-200.png" />
       <Sidetittel>
-        Din inntekt
+        Grunnlag for dagpenger - A-ordningen
         {loading ? <NavFrontendSpinner /> : <div />}
       </Sidetittel>
       <br />

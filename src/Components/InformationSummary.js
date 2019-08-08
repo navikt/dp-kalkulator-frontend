@@ -19,6 +19,7 @@ export default function InformationSummary({ employerSummaries, monthsIncomeInfo
             monthsIncomeInformation={monthsIncomeInformation}
           />
         )}
+      <br />
     </PanelBase>
   );
 }

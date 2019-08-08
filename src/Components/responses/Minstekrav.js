@@ -6,10 +6,11 @@ export default function Minstekrav() {
   return (
     <HjelpetekstBase id="minstekrav" type="auto">
       {' '}
-      Minstekravet er på 1,5
-      ganger
+      Minstekravet er på 1,5 ganger
+      {' '}
       <Lenke
-        href="https://www.nav.no/383506/grunnbel%C3%B8pet-i-folketrygden"
+        className="hjelpetekstLenke"
+        href="https://www.nav.no/grunnbelop"
       >
         folketrygdens
         grunnbeløp
