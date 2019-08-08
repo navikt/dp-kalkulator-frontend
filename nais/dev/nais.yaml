@@ -4,7 +4,7 @@ metadata:
   name: dp-inntekt-innsyn-ui
 spec:
   ingresses:
-    - "https://dp-inntekt-innsyn-ui.nais.preprod.local/"
+    - "https://dp-inntekt-innsyn-ui.nais.oera-q.local/"
   env:
     - name: APP_INNSYN_API_BASEURL
       value: http://dagpenger-innsyn-api/
