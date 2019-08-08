@@ -13,6 +13,6 @@ spec:
     - name: REDIS_PORT
       value: "6379"
     - name: OIDC_HOST_URL
-      value: https://isso-q.adeo.no:443/isso/oauth2
+      value: https://loginservice-q.nav.no/login?redirect=https://dp-inntekt-innsyn-ui.nais.oera-q.local
     - name: OIDC_AGENTNAME
       value: dp-inntekt-innsyn-ui-q1
