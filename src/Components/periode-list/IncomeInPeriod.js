@@ -17,6 +17,8 @@ export default function IncomeInPeriod({
       <em className="incomeNumber">
         {totalIncome.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}
       </em>
+      {' '}
+      kr
     </div>
   );
 }

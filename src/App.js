@@ -9,7 +9,7 @@ import IncomeSummary from './Components/income/IncomeSummary';
 import RapporteringInfo from './Components/information/RapporteringInfo';
 import NoIncome from './Components/NoIncome';
 import IncomeInPeriodList from './Components/periode-list/IncomeInPeriodList';
-import InntektFiltrering from "./Components/information/InntektFiltrering";
+import InntektFiltrering from './Components/information/InntektFiltrering';
 
 class App extends React.Component {
   constructor(props) {
@@ -48,7 +48,11 @@ class App extends React.Component {
           periodIncome: json.periodIncome,
         });
       })
-      .catch(() => { this.setState({ error: true }); });
+      .catch(() => {
+        this.setState(
+          { error: true, loading: false },
+        );
+      });
   }
 
   render() {
