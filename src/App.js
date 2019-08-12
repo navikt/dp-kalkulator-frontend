@@ -10,22 +10,22 @@ import RapporteringInfo from './Components/information/RapporteringInfo';
 import NoIncome from './Components/NoIncome';
 import IncomeInPeriodList from './Components/periode-list/IncomeInPeriodList';
 import InntektFiltrering from "./Components/information/InntektFiltrering";
-import PersonIncomeService from './services/PersonIncome'
+import personIncomeService from './services/personIncome'
 
 const App = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [doesPersonQualify, setDoesPersonQualify] = useState(false)
-  const [periodeAntalluker, setPeriodeAntallUker] = useState()
+  const [periodeAntalluker, setPeriodeAntallUker] = useState(0)
   const [ukesats, setUkesats] = useState(0.0)
   const [totalIncome36, setTotalIncome36] = useState(0.0)
   const [totalIncome12, setTotalIncome12] = useState(0.0)
   const [monthsIncomeInformation, setMonthsIncomeInformation] = useState([])
   const [employerSummaries, setEmployerSummaries] = useState([])
   const [periodIncome, setPeriodIncome] = useState([])
- 
+
   useEffect(() => {
-    PersonIncomeService.get()
+    personIncomeService.get()
       .then(personIncomeInformation => {
         if (personIncomeInformation.ok) {
           return personIncomeInformation.json()
@@ -42,33 +42,32 @@ const App = () => {
         setMonthsIncomeInformation(json.monthsIncomeInformation)
         setEmployerSummaries(json.employerSummaries)
         setPeriodIncome(json.periodIncome)
-      })  
+      })
       .catch(e => {
         console.log(e)
         setLoading(false)
         setError(true)
       })
-}, [])
+  }, [])
 
-   
+  if (loading) { return (<LoadingMessage />); }
+  if (error) { return (<ErrorMessage />); }
 
-    if (loading) { return (<LoadingMessage />); }
-    if (error) { return (<ErrorMessage />); }
-    
-    if (monthsIncomeInformation.length === 0) { return (<NoIncome doesPersonQualify={doesPersonQualify} />); }
-    try {
-      return (
-        <div className="App">
-          <Header loading={false} />
-          <InntektFiltrering />
-          <QualifiedMessage doesPersonQualify={doesPersonQualify} ukeSats={ukesats} periodeAntalluker={periodeAntalluker} />
-          <IncomeSummary totalIncome36={totalIncome36} totalIncome12={totalIncome12} />
-          <IncomeInPeriodList periodIncome={periodIncome} />
-          <RapporteringInfo />
-          <InformationSummary employerSummaries={employerSummaries} monthsIncomeInformation={monthsIncomeInformation} />
-        </div>
-      );
-    } catch (err) { return (<ErrorMessage />); }
+  if (monthsIncomeInformation.length === 0) {
+    return (<NoIncome doesPersonQualify={doesPersonQualify} />);
+  }
+
+  return (
+    <div className="App">
+      <Header loading={false} />
+      <InntektFiltrering />
+      <QualifiedMessage doesPersonQualify={doesPersonQualify} ukeSats={ukesats} periodeAntalluker={periodeAntalluker} />
+      <IncomeSummary totalIncome36={totalIncome36} totalIncome12={totalIncome12} />
+      <IncomeInPeriodList periodIncome={periodIncome} />
+      <RapporteringInfo />
+      <InformationSummary employerSummaries={employerSummaries} monthsIncomeInformation={monthsIncomeInformation} />
+    </div>
+  );
 }
 
 
