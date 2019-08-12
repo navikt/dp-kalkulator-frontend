@@ -10,6 +10,7 @@ import RapporteringInfo from './Components/information/RapporteringInfo';
 import NoIncome from './Components/NoIncome';
 import IncomeInPeriodList from './Components/periode-list/IncomeInPeriodList';
 import InntektFiltrering from "./Components/information/InntektFiltrering";
+import PersonIncomeService from './services/PersonIncome'
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -24,18 +25,14 @@ const App = () => {
   const [periodIncome, setPeriodIncome] = useState([])
  
   useEffect(() => {
-    fetch('/api/inntekt', {
-      method: 'GET',
-      mode: 'same-origin',
-      cache: 'no-cache',
-      credentials: 'same-origin',
-    })
-      .then((personIncomeInformation) => {
-        if (personIncomeInformation.ok) 
-          { return personIncomeInformation.json(); }
+    PersonIncomeService.get()
+      .then(personIncomeInformation => {
+        if (personIncomeInformation.ok) {
+          return personIncomeInformation.json()
+        }
         throw Error(personIncomeInformation.statusText);
       })
-      .then((json) => {
+      .then(json => {
         setLoading(false);
         setDoesPersonQualify(json.oppfyllerMinstekrav);
         setPeriodeAntallUker(json.periodeAntalluker)
@@ -45,14 +42,13 @@ const App = () => {
         setMonthsIncomeInformation(json.monthsIncomeInformation)
         setEmployerSummaries(json.employerSummaries)
         setPeriodIncome(json.periodIncome)
-
-      })
-      .catch((e) => { 
-        console.log(e);
+      })  
+      .catch(e => {
+        console.log(e)
         setLoading(false)
         setError(true)
-  })
-})
+      })
+}, [])
 
    
 
