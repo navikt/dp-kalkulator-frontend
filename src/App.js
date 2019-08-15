@@ -10,7 +10,7 @@ import RapporteringInfo from './Components/information/RapporteringInfo';
 import NoIncome from './Components/NoIncome';
 import IncomeInPeriodList from './Components/periode-list/IncomeInPeriodList';
 import InntektFiltrering from "./Components/information/InntektFiltrering";
-import personIncomeService from './services/personIncome'
+import personIncomeService from './services/PersonIncome'
 
 const App = () => {
   const [loading, setLoading] = useState(true);
