@@ -20,7 +20,7 @@ const App = () => {
       setData(response)
       setLoading(false)
     } catch (e) {
-      setError('noe feil skjedde')
+      setError(true)
       setLoading(false)
     }
   }
