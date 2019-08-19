@@ -1,7 +1,7 @@
 import React from 'react';
 import PanelBase from 'nav-frontend-paneler';
 
-export default function ErrorMessage(errorObject) {
+export default function ErrorMessage({errorObject}) {
     const parsedText = () => {
         if(errorObject.data == "")
         {
