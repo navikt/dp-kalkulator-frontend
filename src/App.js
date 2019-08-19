@@ -10,12 +10,12 @@ import personIncomeService from './services/PersonIncome'
 const App = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [errorMessage, setErrorMessage] = useState("")
+  const [errorObject, setErrorObject] = useState([])
   const [doesPersonQualify, setDoesPersonQualify] = useState(false)
   const [periodeAntalluker, setPeriodeAntallUker] = useState(0)
   const [ukesats, setUkesats] = useState(0.0)
 
-  const fetchData = async () => {
+  /*const fetchData = async () => {
     try {
       const response = await personIncomeService.get()
       setData(response)
@@ -24,7 +24,7 @@ const App = () => {
       setError(true)
       setLoading(false)
     }
-  }
+  }*/
 
   const setData = (json) => {
     setDoesPersonQualify(json.oppfyllerMinstekrav);
@@ -32,44 +32,20 @@ const App = () => {
     setUkesats(json.ukeSats)
   }
 
-  useEffect(() => {
+/*  useEffect(() => {
     fetchData()
-  })
+  })*/
 
   useEffect(() => {
     personIncomeService.get()
       .then(personIncomeInformation => {
-        let contentType = personIncomeInformation.headers.get("content-type")
-        if(contentType && contentType.includes("application/json"))
-        {
-          let json = personIncomeInformation.json()
-          if (personIncomeInformation.ok) {
-            setDoesPersonQualify(json.oppfyllerMinstekrav)
-            setPeriodeAntallUker(json.periodeAntalluker)
-            setUkesats(json.ukeSats)
-            setTotalIncome36(json.totalIncome36)
-            setTotalIncome12(json.totalIncome12)
-            setMonthsIncomeInformation(json.monthsIncomeInformation)
-            setEmployerSummaries(json.employerSummaries)
-            setPeriodIncome(json.periodIncome)
-          }
-          else {
-            let errorResponse = json.toJSON()
-            console.log("json = " + errorResponse.status)
-            console.log(json)
-            console.log(errorResponse)
-            setErrorMessage(errorResponse.title)
-            console.log("errormessage = " + errorResponse)
-            setError(true)
-          }
-
-          setLoading(false);
-        }
-        else {
-          throw Error("En feil uten feilmelding oppstod");
-        }
+        setData(personIncomeInformation)
+        setLoading(false);
       })
       .catch(e => {
+        let error = e.response
+        console.log(error)
+        setErrorObject( {data : error.data, status : error.status, statusText: error.statusText} )
         setLoading(false)
         setError(true)
       })
@@ -78,7 +54,8 @@ const App = () => {
   let feedback;
   if (loading) { feedback = (<LoadingMessage />); }
   else if (error) {
-    feedback = <ErrorMessage />
+    console.log(errorObject)
+    feedback = <ErrorMessage error={errorObject}/>
   }
   else {
     feedback =

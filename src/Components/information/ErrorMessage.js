@@ -1,10 +1,20 @@
 import React from 'react';
 import PanelBase from 'nav-frontend-paneler';
 
-export default function ErrorMessage() {
+export default function ErrorMessage(errorObject) {
+    const parsedText = () => {
+        if(errorObject.data == "")
+        {
+            return (errorObject.status.toString + " " + errorObject.statusText.toString())
+        }
+        else
+        {
+            return (errorObject.status.toString + " " + errorObject.data.title.toString())
+        }
+    }
   return (
       <PanelBase className="Error" border>
-        Vi opplevde en feil når vi prøvde å laste inn din data. Hvis feilen vedvarer kontakt nav.no.
+          { parsedText }
       </PanelBase>
   );
 }
