@@ -21,7 +21,8 @@ const App = () => {
       setData(response)
       setLoading(false)
     } catch (e) {
-      setError(true)
+      console.log(e.message)
+      setError(e.message)
       setLoading(false)
     }
   }
@@ -34,7 +35,9 @@ const App = () => {
 
   useEffect(() => {
     fetchData()
-  useEffect(() => {
+  }, [])
+
+ /* useEffect(() => {
     personIncomeService.get()
       .then(personIncomeInformation => {
         let contentType = personIncomeInformation.headers.get("content-type")
@@ -71,12 +74,13 @@ const App = () => {
         setLoading(false)
         setError(true)
       })
-  }, [])
+  }, [])*/
 
   let feedback;
   if (loading) { feedback = (<LoadingMessage />); }
   else if (error) {
-    feedback = <ErrorMessage />
+    feedback = <ErrorMessage message={error} />
+    console.log(errorMessage)
   }
   else {
     feedback =

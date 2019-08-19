@@ -8,7 +8,11 @@ const get = async () => {
       return response.data
     } catch (error) {
       console.log(error.response)
-      throw Error(error.response)
+      if (error.response.data.title) {
+        throw new Error(error.response.data.title)
+      } else {
+        throw new Error('Noe skjedde, whoopsie doopsie')
+      }
     }
 }
 
