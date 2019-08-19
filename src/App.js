@@ -26,14 +26,7 @@ const App = () => {
 
   useEffect(() => {
     personIncomeService.get()
-      .then(personIncomeInformation => {
-        if (personIncomeInformation.ok) {
-          return personIncomeInformation.json()
-        }
-        throw Error(personIncomeInformation.statusText);
-      })
       .then(json => {
-        setLoading(false);
         setDoesPersonQualify(json.oppfyllerMinstekrav);
         setPeriodeAntallUker(json.periodeAntalluker)
         setUkesats(json.ukeSats)
@@ -42,20 +35,17 @@ const App = () => {
         setMonthsIncomeInformation(json.monthsIncomeInformation)
         setEmployerSummaries(json.employerSummaries)
         setPeriodIncome(json.periodIncome)
+        setLoading(false);
       })
       .catch(e => {
         console.log(e)
-        setLoading(false)
         setError(true)
+        setLoading(false)
       })
   }, [])
 
   if (loading) { return (<LoadingMessage />); }
   if (error) { return (<ErrorMessage />); }
-
-  if (monthsIncomeInformation.length === 0) {
-    return (<NoIncome doesPersonQualify={doesPersonQualify} />);
-  }
 
   return (
     <div className="App">

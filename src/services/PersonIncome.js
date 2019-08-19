@@ -1,14 +1,10 @@
-const url = '/api/inntekt'
+const axios = require('axios')
+
+const url = '/api/inntekt/'
 
 const get = async () => {
-    const result = await fetch(url, {
-        method: 'GET',
-        mode: 'same-origin',
-        cache: 'no-cache',
-        credentials: 'same-origin',
-      })
-
-    return result
+    const response = await axios.get(url)
+    return response.data
 }
 
 export default { get }
