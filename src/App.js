@@ -34,6 +34,8 @@ const App = () => {
 
   useEffect(() => {
     fetchData()
+  })
+
   useEffect(() => {
     personIncomeService.get()
       .then(personIncomeInformation => {
