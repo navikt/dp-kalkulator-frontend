@@ -1,20 +1,18 @@
 import React from 'react';
 import PanelBase from 'nav-frontend-paneler';
 
-export default function ErrorMessage({errorObject}) {
-    const parsedText = () => {
-        if(errorObject.data == "")
-        {
-            return (errorObject.status.toString + " " + errorObject.statusText.toString())
-        }
-        else
-        {
-            return (errorObject.status.toString + " " + errorObject.data.title.toString())
-        }
+export default function ErrorMessage({ error }) {
+  const parsedText = () => {
+    if (!error.data) {
+      return (error.status + " " + error.statusText)
     }
+    else {
+      return (error.status + " " + error.data.title)
+    }
+  }
   return (
-      <PanelBase className="Error" border>
-          { parsedText }
-      </PanelBase>
+    <PanelBase className="Error" border>
+      {parsedText()}
+    </PanelBase>
   );
 }

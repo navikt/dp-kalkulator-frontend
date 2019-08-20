@@ -44,7 +44,6 @@ const App = () => {
       })
       .catch(e => {
         let error = e.response
-        console.log(error)
         setErrorObject( {data : error.data, status : error.status, statusText: error.statusText} )
         setLoading(false)
         setError(true)
@@ -54,7 +53,6 @@ const App = () => {
   let feedback;
   if (loading) { feedback = (<LoadingMessage />); }
   else if (error) {
-    console.log(errorObject)
     feedback = <ErrorMessage error={errorObject}/>
   }
   else {
