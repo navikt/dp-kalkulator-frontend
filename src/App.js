@@ -15,39 +15,44 @@ const App = () => {
   const [periodeAntalluker, setPeriodeAntallUker] = useState(0)
   const [ukesats, setUkesats] = useState(0.0)
 
-  /*const fetchData = async () => {
-    try {
-      const response = await personIncomeService.get()
-      setData(response)
-      setLoading(false)
-    } catch (e) {
-      setError(true)
-      setLoading(false)
-    }
-  }*/
 
-  const setData = (json) => {
-    setDoesPersonQualify(json.oppfyllerMinstekrav);
-    setPeriodeAntallUker(json.periodeAntalluker)
-    setUkesats(json.ukeSats)
-  }
 
-/*  useEffect(() => {
-    fetchData()
-  }, [])*/
+
+
 
   useEffect(() => {
-    personIncomeService.get()
-      .then(personIncomeInformation => {
-        setData(personIncomeInformation)
-        setLoading(false);
-      })
-      .catch(e => {
-        let error = e.response
-        setErrorObject( {data : error.data, status : error.status, statusText: error.statusText} )
-        setLoading(false)
-        setError(true)
-      })
+    const urlAPI = '/api/inntekt/'
+    const urlMock = `${process.env.PUBLIC_URL}/mock/mockInnsyn.json`
+
+    const fetchData = (url) => {
+      personIncomeService.get(url)
+          .then(personIncomeInformation => {
+            console.log(personIncomeInformation)
+            setData(personIncomeInformation)
+            setLoading(false);
+          })
+          .catch(e => {
+            let error = e.response
+            setErrorObject({data: error.data, status: error.status, statusText: error.statusText})
+            setLoading(false)
+            setError(true)
+          })
+    }
+
+    const setData = (json) => {
+      setDoesPersonQualify(json.oppfyllerMinstekrav);
+      setPeriodeAntallUker(json.periodeAntalluker)
+      setUkesats(json.ukeSats)
+    }
+
+    if (process.env.NODE_ENV === 'production')
+    {
+      fetchData(urlAPI);
+    }
+    else {
+      fetchData(urlMock);
+    }
+
   }, [])
 
   let feedback;

@@ -6,7 +6,7 @@ import Minstekrav from './Minstekrav';
 export default function PositiveResponse({ ukeSats, periodeAntalluker }) {
   return (
     <div>
-      <Normaltekst>
+
         <h3>
           {' '}
           Det ser ut som du kan være kvalifisert for dagpenger
@@ -27,6 +27,8 @@ export default function PositiveResponse({ ukeSats, periodeAntalluker }) {
           uker
           <Minstekrav />
         </h3>
+      <Normaltekst>
+      </Normaltekst>
         <b>
           Får du likevel avslag på grunn av for lav inntekt, kan det være
           fordi:
@@ -49,7 +51,7 @@ export default function PositiveResponse({ ukeSats, periodeAntalluker }) {
           usikker på om du har tjent nok, så kan en saksbehandler vurdere
           dette.
         </b>
-      </Normaltekst>
+
     </div>
   );
 }
