@@ -69,10 +69,28 @@ const App = () => {
 
   return (
     <div className="App">
-      <Header loading={loading} />
-      <TilbakeTilInfoKnapp/>
-      { feedback }
-      <TilbakeTilInfoKnapp/>
+      <div className="row">
+          <Header className="maxWidth"/>
+      </div>
+      <div className="row">
+        <div className="col-xs-12">
+          <TilbakeTilInfoKnapp/>
+        </div>
+      </div>
+      <div className="row">
+        <div className="col-xs-12">
+          { feedback }
+        </div>
+      </div>
+      <div className="row">
+        <div className="col-xs-12">
+          <TilbakeTilInfoKnapp/>
+        </div>
+      </div>
+
+
+
+
     </div>
   );
 }

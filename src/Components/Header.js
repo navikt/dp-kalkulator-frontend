@@ -9,8 +9,6 @@ export default function Header() {
       <Sidetittel>
         Estimering av dagpenger
       </Sidetittel>
-      <br />
-      <br />
     </div>
   );
 }

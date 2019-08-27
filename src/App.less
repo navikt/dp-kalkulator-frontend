@@ -5,6 +5,14 @@
   padding-right: 20px;
 }
 
+.row {
+  display: flex;
+}
+
+.col-xs-12 {
+  min-width: 100%;
+}
+
 .App-logo {
     animation: App-logo-spin infinite 20s linear;
     height: 40vmin;
@@ -67,21 +75,44 @@
 header {
   background: white;
   color: white;
+  flex-direction: row;
+  align-content: space-between;
+  flex-wrap: wrap;
 }
 
-.header img {
-  float: left;
-  width: 100px;
-  color: white;
-  padding: 0;
+@media screen and (max-width: 499px) {
+  .header img {
+    flex-basis: 100%;
+    align-self: center;
+    width: 100%;
+    color: white;
+  }
+
+  .header h1 {
+    flex-basis: 100%;
+    width: 100%;
+    align-self: center;
+    text-align: center;
+  }
 
 }
 
-.header h1 {
-  position: relative;
-  top: 18px;
-  left: 10px;
+@media screen and (min-width: 500px) {
+  .header img {
+    flex-basis: 33%;
+    float: left;
+    width: 33%;
+    color: white;
+  }
+
+  .header h1 {
+    flex-basis: 66%;
+    width: 66%;
+    float: right;
+  }
+
 }
+
 
 ul.a {
   padding-left: 20px;
