@@ -29,7 +29,7 @@ export default function PositiveResponse({ ukeSats, periodeAntalluker }) {
         Beløp oppgitt før skatt
       </Normaltekst>
       <Normaltekst style={tekstPadding}>
-        Vi tar forbehold om at du oppfyller <Lenke> vilkårene for å få dagpenger</Lenke> 
+        Vi tar forbehold om at du oppfyller <Lenke href="http://nav.no/dagpenger"> vilkårene for å få dagpenger</Lenke> 
       </Normaltekst>
     </div>
   );
