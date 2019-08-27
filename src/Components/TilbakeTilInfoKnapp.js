@@ -5,7 +5,7 @@ import { NONAME } from 'dns';
 export default function TilbakeTilInfoKnapp() {
     return (
         <a href="http://nav.no/dagpenger" style={{color: 'none', textDecoration: 'none'}}>
-            <Tilbakeknapp>Tilbake til info om dagpenger</Tilbakeknapp>
+            <Tilbakeknapp mini={true}>Tilbake til info om dagpenger</Tilbakeknapp>
         </a>
     )
 }
