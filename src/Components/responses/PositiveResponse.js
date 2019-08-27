@@ -1,57 +1,36 @@
-import { Normaltekst } from 'nav-frontend-typografi';
+import { Element, Normaltekst } from 'nav-frontend-typografi';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Minstekrav from './Minstekrav';
+import Lenke from 'nav-frontend-lenker';
 
 export default function PositiveResponse({ ukeSats, periodeAntalluker }) {
+  const divStyle = {
+    padding: '0px 10px 5px 10px'
+  }
+
+  const tekstPadding = {
+    paddingTop: '10px'
+  }
+
+  const fontSize = {
+    fontSize: '1.3em'
+  }
+
   return (
-    <div>
-
-        <h3>
-          {' '}
-          Det ser ut som du kan være kvalifisert for dagpenger
-          <br />
-          {' '}
-          Du vil i så fall få
-          {' '}
-          <em>
-            { ukeSats }
-          </em>
-          {' '}
-          kr før skatt hver uke i
-          {' '}
-          <em>
-            { periodeAntalluker }
-          </em>
-          {' '}
-          uker
-          <Minstekrav />
-        </h3>
-      <Normaltekst>
+    <div style={divStyle}>
+      <Normaltekst style={{fontSize: '1.3em'}}>
+        Søker du om dagpenger fra i dag estimerer vi at du kunne fått
       </Normaltekst>
-        <b>
-          Får du likevel avslag på grunn av for lav inntekt, kan det være
-          fordi:
-        </b>
-        <ul className="a">
-          <li>
-            Inntektene har blitt brukt opp i en tidligere dagpengeperiode.
-          </li>
-          <li>
-            Du får innvilget dagpenger fra en dato fram i tid. Da vil
-            inntekter beregnes fra kravsdato.
-          </li>
-          <li>
-            Opplysningene i a-ordningen er feil.
-          </li>
-        </ul>
-
-        <b>
-          Vi anbefaler at du sender en søknad om dagpenger selv hvis du er
-          usikker på om du har tjent nok, så kan en saksbehandler vurdere
-          dette.
-        </b>
-
+      <Element style={{...tekstPadding, ...fontSize}}>
+        { ukeSats } kr hver uke i { periodeAntalluker } uker
+      </Element>
+      <Normaltekst style={tekstPadding}>
+        Beløp oppgitt før skatt
+      </Normaltekst>
+      <Normaltekst style={tekstPadding}>
+        Vi tar forbehold om at du oppfyller <Lenke> vilkårene for å få dagpenger</Lenke> 
+      </Normaltekst>
     </div>
   );
 }
