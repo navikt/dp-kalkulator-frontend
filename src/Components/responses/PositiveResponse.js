@@ -19,7 +19,7 @@ export default function PositiveResponse({ ukeSats, periodeAntalluker }) {
 
   return (
     <div style={divStyle}>
-      <Normaltekst style={{fontSize: '1.3em'}}>
+      <Normaltekst style={fontSize}>
         Søker du om dagpenger fra i dag estimerer vi at du kunne fått
       </Normaltekst>
       <Element style={{...tekstPadding, ...fontSize}}>

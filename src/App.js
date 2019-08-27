@@ -4,8 +4,9 @@ import Header from './Components/Header';
 import QualifiedMessage from './Components/QualifiedMessage';
 import LoadingMessage from './Components/information/LoadingMessage';
 import ErrorMessage from './Components/information/ErrorMessage';
-import InntektFiltrering from "./Components/information/InntektFiltrering";
 import personIncomeService from './services/PersonIncome'
+import TilbakeTilInfoKnapp from './Components/TilbakeTilInfoKnapp'
+
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -69,7 +70,9 @@ const App = () => {
   return (
     <div className="App">
       <Header loading={loading} />
+      <TilbakeTilInfoKnapp/>
       { feedback }
+      <TilbakeTilInfoKnapp/>
     </div>
   );
 }

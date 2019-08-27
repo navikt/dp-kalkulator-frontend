@@ -1,28 +1,41 @@
 import React from 'react';
-import Minstekrav from './Minstekrav';
+import { Element, Normaltekst } from 'nav-frontend-typografi';
 
 export default function NegativeResponse() {
-  return (
-    <div>
-      <h4>
-        {' '}
-        Ifølge a-ordningen har du tjent under minstekravet for å ha rett på
-        dagpenger.
-        <Minstekrav />
-      </h4>
 
-      <b>Du kan likevel ha tjent nok til å ha rett på dagpenger hvis:</b>
+  const divStyle = {
+    padding: '0px 10px 5px 10px'
+  }
+
+  const tekstPadding = {
+    paddingTop: '10px'
+  }
+
+  const fontSize = {
+    fontSize: '1.3em'
+  }
+
+  return (
+    <div style={divStyle}>
+      <Element style={fontSize}>
+        Søker du om dagpenger fra i dag kan det være at du får avslag på grunn av for lav inntekt
+        </Element>
+    
+      <Normaltekst style={{...tekstPadding, ...fontSize}}>
+        Du kan likevel ha rett på dagpenger om
+      </Normaltekst>
       <ul className="a">
-        <li>Du har hatt verneplikt.</li>
-        <li>Du får innvilget dagpenger fra en dato fram i tid.</li>
-        <li>Du har hatt arbeid i et annet EØS-land.</li>
-        <li>Opplysningene i a-ordningen er feil.</li>
+        <li>du nylig har avtjent verneplikt</li>
+        <li>søker frem i tid</li>
+        <li>har arbeidet i et annet EØS-land</li>
+        <li>har hatt inntekt fra fangst og fiske</li>
+        <li>inntektsopplysningene vi har om deg er feil</li>
       </ul>
-      <b>
-        Vi anbefaler at du sender en søknad om dagpenger selv hvis du er
-        usikker på om du har tjent nok, så kan en saksbehandler vurdere
-        dette.
-      </b>
+
+      <Element style={fontSize}>
+        Vi anbefaler deg å søke om dagpenger slik at en saksbehandler kan vurdere om du har rett til dette
+        </Element>
+
     </div>
   );
 }
