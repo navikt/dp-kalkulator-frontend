@@ -62,9 +62,7 @@ const App = () => {
   }
   else {
     feedback =
-        <>
         <QualifiedMessage doesPersonQualify={doesPersonQualify} ukeSats={ukesats} periodeAntalluker={periodeAntalluker} />
-        </>;
   }
 
 
