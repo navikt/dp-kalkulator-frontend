@@ -6,7 +6,6 @@ import Minstekrav from './Minstekrav';
 export default function PositiveResponse({ ukeSats, periodeAntalluker }) {
   return (
     <div>
-
         <h3>
           {' '}
           Det ser ut som du kan være kvalifisert for dagpenger
@@ -25,31 +24,41 @@ export default function PositiveResponse({ ukeSats, periodeAntalluker }) {
           </em>
           {' '}
           uker
-          <Minstekrav />
         </h3>
-      <Normaltekst>
-      </Normaltekst>
+
         <b>
           Får du likevel avslag på grunn av for lav inntekt, kan det være
           fordi:
         </b>
         <ul className="a">
           <li>
-            Inntektene har blitt brukt opp i en tidligere dagpengeperiode.
+            <Normaltekst>
+              Inntektene har blitt brukt opp i en tidligere dagpengeperiode.
+            </Normaltekst>
+
           </li>
           <li>
-            Du får innvilget dagpenger fra en dato fram i tid. Da vil
-            inntekter beregnes fra kravsdato.
+            <Normaltekst>
+              Du får innvilget dagpenger fra en dato fram i tid. Da vil
+              inntekter beregnes fra kravsdato.
+            </Normaltekst>
+
           </li>
           <li>
-            Opplysningene i a-ordningen er feil.
+            <Normaltekst>
+              Opplysningene i a-ordningen er feil.
+            </Normaltekst>
+
           </li>
         </ul>
 
         <b>
-          Vi anbefaler at du sender en søknad om dagpenger selv hvis du er
-          usikker på om du har tjent nok, så kan en saksbehandler vurdere
-          dette.
+          <Normaltekst>
+            Vi anbefaler at du sender en søknad om dagpenger selv hvis du er
+            usikker på om du har tjent nok, så kan en saksbehandler vurdere
+            dette.
+          </Normaltekst>
+
         </b>
 
     </div>

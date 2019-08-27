@@ -1,6 +1,5 @@
 import React from 'react';
 import PanelBase from 'nav-frontend-paneler';
-import Header from '../Header';
 
 export default function LoadingMessage() {
   return (
