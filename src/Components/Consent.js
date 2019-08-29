@@ -10,14 +10,18 @@ export default function Consent({consent, fetchData, toggle, feilMelding}) {
 
     }
     const minHeight = {
-        minHeight: '100px'
+        minHeight: '80px'
     }
     const fontSize = {
         fontSize: '1.3em'
     }
-    const centered = {
+    const flex = {
         display: 'flex',
+    }
+    const centerVertical = {
         alignItems: 'center',
+    }
+    const centerHorizontal = {
         justifyContent: 'center',
     }
     const margin = {
@@ -44,12 +48,12 @@ export default function Consent({consent, fetchData, toggle, feilMelding}) {
                 </div>
             </div>
             <div className={'row'}>
-                <div style={{...minHeight, ...centered, ...padding}} className={'col-xs-12'}>
+                <div style={{...minHeight, ...flex, ...padding, ...centerHorizontal}} className={'col-xs-12'}>
                     <Checkbox style={{...fontSize}} onChange={toggle} checked={consent} label={'Jeg samtykker til at NAV innhenter lønnsopplysningene mine'} feil={isChecked()}/>
                 </div>
             </div>
             <div className={'row'}>
-                <div className={'col-xs-12'} style={{...centered, ...margin}}>
+                <div className={'col-xs-12'} style={{...flex, ...margin, ...centerHorizontal, ...centerVertical}}>
                     <Hovedknapp onClick={fetchData}>Estimer dagpenger</Hovedknapp>
                 </div>
             </div>
