@@ -27,17 +27,17 @@ const App = () => {
 
     const fetchData = (url) => {
       personIncomeService.get(url)
-          .then(personIncomeInformation => {
-            console.log(personIncomeInformation)
-            setData(personIncomeInformation)
-            setLoading(false);
-          })
-          .catch(e => {
-            let error = e.response
-            setErrorObject({data: error.data, status: error.status, statusText: error.statusText})
-            setLoading(false)
-            setError(true)
-          })
+        .then(personIncomeInformation => {
+          console.log(personIncomeInformation)
+          setData(personIncomeInformation)
+          setLoading(false);
+        })
+        .catch(e => {
+          let error = e.response
+          setErrorObject({ data: error.data, status: error.status, statusText: error.statusText })
+          setLoading(false)
+          setError(true)
+        })
     }
 
     const setData = (json) => {
@@ -46,8 +46,7 @@ const App = () => {
       setUkesats(json.ukeSats)
     }
 
-    if (process.env.NODE_ENV === 'production')
-    {
+    if (process.env.NODE_ENV === 'production') {
       fetchData(urlAPI);
     }
     else {
@@ -59,32 +58,30 @@ const App = () => {
   let feedback;
   if (loading) { feedback = (<LoadingMessage />); }
   else if (error) {
-    feedback = <ErrorMessage error={errorObject}/>
+    feedback = <ErrorMessage error={errorObject} />
   }
   else {
     feedback =
-        <QualifiedMessage doesPersonQualify={doesPersonQualify} ukeSats={ukesats} periodeAntalluker={periodeAntalluker} />
+      <QualifiedMessage doesPersonQualify={doesPersonQualify} ukeSats={ukesats} periodeAntalluker={periodeAntalluker} />
   }
 
 
   return (
     <div className="App">
-      <div className="row">
-          <Header className="maxWidth"/>
-      </div>
+      <Header className="maxWidth" />
       <div className="row">
         <div className="col-xs-12">
-          <TilbakeTilInfoKnapp/>
+          <TilbakeTilInfoKnapp />
         </div>
       </div>
       <div className="row">
         <div className="col-xs-12">
-          { feedback }
+          {feedback}
         </div>
       </div>
       <div className="row">
         <div className="col-xs-12">
-          <TilbakeTilInfoKnapp/>
+          <TilbakeTilInfoKnapp />
         </div>
       </div>
 
