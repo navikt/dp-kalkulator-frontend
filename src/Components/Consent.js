@@ -7,16 +7,11 @@ import {Normaltekst} from "nav-frontend-typografi";
 export default function Consent({consent, fetchData, toggle, feilMelding}) {
     const panelStyle = {
         background: '#e0f5fb'
-    }
-    const divStyle = {
-        padding: '0px 10px 5px 10px'
-    }
 
-    const tekstPadding = {
-        paddingTop: '10px',
-        paddingBottom: '5px'
     }
-
+    const minHeight = {
+        minHeight: '80px'
+    }
     const fontSize = {
         fontSize: '1.3em'
     }
@@ -24,19 +19,27 @@ export default function Consent({consent, fetchData, toggle, feilMelding}) {
     const isChecked = () => {
         return(!consent && feilMelding ? {feilmelding: 'Du må samtykke for å kunne estimere'} : null)
     }
-    
+
     return (
         <Panel style={panelStyle}>
-            <div style={divStyle}>
-                <Normaltekst>
-                    For at vi skal kunne estimere dagpengemulighetene dine, innhenter NAV data om inntektene dine fra skattevesenet.
-                    Informasjonsutvekslingen foregår på en sikker måte, og krever ditt samtykke.
-                    Hvis du ikke samtykker, kan vi ikke estimere dagpengekravet ditt.
-                </Normaltekst>
-                <br/>
-                <Checkbox style={{...fontSize, ...tekstPadding}} onChange={toggle} checked={consent} label={'Jeg samtykker til at NAV innhenter lønnsopplysningene mine'} feil={isChecked()}/>
-                <br/>
-                <Hovedknapp style={tekstPadding} onClick={fetchData}>Estimer dagpenger</Hovedknapp>
+            <div className={'row'}>
+                <div className={'col-xs-12'}>
+                    <Normaltekst>
+                        For at vi skal kunne estimere dagpengemulighetene dine, innhenter NAV data om inntektene dine fra skattevesenet.
+                        Informasjonsutvekslingen foregår på en sikker måte, og krever ditt samtykke.
+                        Hvis du ikke samtykker, kan vi ikke estimere dagpengekravet ditt.
+                    </Normaltekst>
+                </div>
+            </div>
+            <div className={'row'}>
+                <div style={minHeight} className={'col-xs-12'}>
+                    <Checkbox style={{...fontSize}} onChange={toggle} checked={consent} label={'Jeg samtykker til at NAV innhenter lønnsopplysningene mine'} feil={isChecked()}/>
+                </div>
+            </div>
+            <div className={'row'}>
+                <div className={'col-xs-12'}>
+                    <Hovedknapp onClick={fetchData}>Estimer dagpenger</Hovedknapp>
+                </div>
             </div>
         </Panel>
     );
