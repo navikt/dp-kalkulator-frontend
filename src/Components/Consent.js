@@ -38,7 +38,7 @@ export default function Consent({consent, fetchData, toggle, feilMelding}) {
             </div>
             <div className={'row'}>
                 <div className={'col-xs-12'}>
-                    <Hovedknapp onClick={fetchData}>Estimer dagpenger</Hovedknapp>
+                    <Hovedknapp disabled={!consent} onClick={fetchData}>Estimer dagpenger</Hovedknapp>
                 </div>
             </div>
         </Panel>
