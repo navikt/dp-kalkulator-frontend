@@ -83,9 +83,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <div className="row">
-        <Header className="maxWidth" />
-      </div>
+      <Header className="maxWidth" />
       <div className="row">
         <div className="col-xs-12">
           <TilbakeTilInfoKnapp />
@@ -93,7 +91,7 @@ const App = () => {
       </div>
       <div className="row">
         <div className="col-xs-12">
-          { feedback }
+          {feedback}
         </div>
       </div>
       <div className="row">
