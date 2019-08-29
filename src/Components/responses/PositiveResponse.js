@@ -1,7 +1,6 @@
 import { Element, Normaltekst } from 'nav-frontend-typografi';
 import PropTypes from 'prop-types';
 import React from 'react';
-import Minstekrav from './Minstekrav';
 import Lenke from 'nav-frontend-lenker';
 
 export default function PositiveResponse({ ukeSats, periodeAntalluker }) {
@@ -20,16 +19,19 @@ export default function PositiveResponse({ ukeSats, periodeAntalluker }) {
   return (
     <div style={divStyle}>
       <Normaltekst style={fontSize}>
-        Søker du om dagpenger fra i dag estimerer vi at du kunne fått
+        Får du innvilget dagpenger dagpenger fra i dag, estimerer vi at du kunne fått
       </Normaltekst>
       <Element style={{...tekstPadding, ...fontSize}}>
-        { ukeSats } kr hver uke i { periodeAntalluker } uker
+        { ukeSats } kr før skatt hver uke i { periodeAntalluker } uker
       </Element>
       <Normaltekst style={tekstPadding}>
-        Beløp oppgitt før skatt
+        Dette er basert på opplysninger om dine inntekter fra <Lenke href="http://skatteetaten.no/mineinntekter">skatteetaten.no/mineinntekter</Lenke>
       </Normaltekst>
       <Normaltekst style={tekstPadding}>
-        Vi tar forbehold om at du oppfyller <Lenke href="http://nav.no/dagpenger"> vilkårene for å få dagpenger</Lenke> 
+      Denne beregningen er ikke juridisk bindende. Får du innvilget dagpenger, kan du få et annet resultat. 
+      </Normaltekst>
+      <Normaltekst style={tekstPadding}>
+      Vi tar forbehold om at du oppfyller <Lenke href="http://nav.no/dagpenger"> vilkårene for å få dagpenger</Lenke> 
       </Normaltekst>
     </div>
   );
