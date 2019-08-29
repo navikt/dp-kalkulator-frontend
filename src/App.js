@@ -6,18 +6,32 @@ import LoadingMessage from './Components/information/LoadingMessage';
 import ErrorMessage from './Components/information/ErrorMessage';
 import personIncomeService from './services/PersonIncome';
 import TilbakeTilInfoKnapp from './Components/TilbakeTilInfoKnapp';
+import Consent from "./Components/Consent";
+
 
 
 const App = () => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [errorObject, setErrorObject] = useState([]);
   const [doesPersonQualify, setDoesPersonQualify] = useState(false);
-  const [periodeAntalluker, setPeriodeAntallUker] = useState(0);
+  const [periodeAntalluker, setPeriodeAntallUker] = useState("");
   const [ukesats, setUkesats] = useState(0.0);
+  const [consent, setConsent] = useState(false);
+  const [estimated, setEstimated] = useState(false)
+  const [feilMelding, setFeilmelding] = useState(false)
 
+  const onEstimateClick = () => {
+    if (consent){
+      resolveFetchData()
+    }
+    else{
+      setFeilmelding(true)
+    }
+  }
 
-  useEffect(() => {
+  const resolveFetchData = () => {
+    setLoading(true)
     const urlAPI = '/api/inntekt/';
     const urlMock = `${process.env.PUBLIC_URL}/mock/mockInnsyn.json`;
 
@@ -32,14 +46,14 @@ const App = () => {
         .then((personIncomeInformation) => {
           console.log(personIncomeInformation);
           setData(personIncomeInformation);
-          setLoading(false);
         })
         .catch((e) => {
           const retrievedError = e.response;
           setErrorObject({ data: retrievedError.data, status: retrievedError.status, statusText: retrievedError.statusText });
-          setLoading(false);
           setError(true);
         });
+      setLoading(false);
+      setEstimated(true);
     };
 
 
@@ -48,12 +62,21 @@ const App = () => {
     } else {
       fetchData(urlMock);
     }
-  }, []);
+  }
+
+  const toggleConsent = () => {
+    setConsent(!consent)
+  }
 
   let feedback;
-  if (loading) { feedback = (<LoadingMessage />); } else if (error) {
+  if (loading) { feedback = (<LoadingMessage />); }
+  else if (error) {
     feedback = <ErrorMessage error={errorObject} />;
-  } else {
+  }
+  else if(!loading && !estimated) {
+    feedback = <Consent fetchData={onEstimateClick} consent={consent} toggle={toggleConsent} feilMelding={feilMelding}/>
+  }
+  else {
     feedback = <QualifiedMessage doesPersonQualify={doesPersonQualify} ukeSats={ukesats} periodeAntalluker={periodeAntalluker} />;
   }
 
