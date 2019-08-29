@@ -20,16 +20,18 @@ export default function NegativeResponse() {
       <Element style={fontSize}>
         Søker du om dagpenger fra i dag kan det være at du får avslag på grunn av for lav inntekt
         </Element>
-    
-      <Normaltekst style={{...tekstPadding, ...fontSize}}>
+
+      <Normaltekst style={{ ...tekstPadding, ...fontSize }}>
         Du kan likevel ha rett på dagpenger om
       </Normaltekst>
       <ul className="a">
-        <li>du nylig har avtjent verneplikt</li>
-        <li>søker frem i tid</li>
-        <li>har arbeidet i et annet EØS-land</li>
-        <li>har hatt inntekt fra fangst og fiske</li>
-        <li>inntektsopplysningene vi har om deg er feil</li>
+        <Normaltekst style={fontSize}>
+          <li>du nylig har avtjent verneplikt</li>
+          <li>søker frem i tid</li>
+          <li>har arbeidet i et annet EØS-land</li>
+          <li>har hatt inntekt fra fangst og fiske</li>
+          <li>inntektsopplysningene vi har om deg er feil</li>
+        </Normaltekst>
       </ul>
 
       <Element style={fontSize}>
