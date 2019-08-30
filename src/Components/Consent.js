@@ -5,10 +5,16 @@ import { Checkbox } from "nav-frontend-skjema";
 import { Normaltekst } from "nav-frontend-typografi";
 
 export default function Consent({ consent, fetchData, toggle, feilMelding }) {
-    const panelStyle = {
+    const checkedPanelStyle = {
         background: '#e0f5fb'
-
     }
+
+    const uncheckedConsentPanelStyle = {
+        background: '#ffe9cc'
+    }
+
+    const panelStyle = consent ? checkedPanelStyle : uncheckedConsentPanelStyle
+    
     const minHeight = {
         minHeight: '80px'
     }
