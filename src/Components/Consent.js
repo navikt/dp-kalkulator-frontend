@@ -10,7 +10,7 @@ export default function Consent({ consent, fetchData, toggle, feilMelding }) {
     }
 
     const uncheckedConsentPanelStyle = {
-        background: '#ffe9cc'
+        background: '#ffe9cc'        
     }
 
     const panelStyle = consent ? checkedPanelStyle : uncheckedConsentPanelStyle
@@ -39,7 +39,7 @@ export default function Consent({ consent, fetchData, toggle, feilMelding }) {
     }
 
     return (
-        <Panel style={{ ...panelStyle, ...maxWidth, ...flex }}>
+        <Panel className='fadeable' style={{ ...panelStyle, ...maxWidth, ...flex }}>
             <div className={'row'} style={padding}>
                 <div className={'col-xs-12'}>
                     <Normaltekst>
