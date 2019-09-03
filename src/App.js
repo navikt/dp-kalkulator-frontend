@@ -77,7 +77,7 @@ const App = () => {
     feedback = <Consent fetchData={onEstimateClick} consent={consent} toggle={toggleConsent} feilMelding={feilMelding}/>
   }
   else {
-    feedback = <QualifiedMessage doesPersonQualify={doesPersonQualify} ukeSats={ukesats} periodeAntalluker={periodeAntalluker} />;
+    feedback = <QualifiedMessage doesPersonQualify={!doesPersonQualify} ukeSats={ukesats} periodeAntalluker={periodeAntalluker} />;
   }
 
 
