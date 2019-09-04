@@ -5,7 +5,7 @@ metadata:
 spec:
   ingresses:
     - "https://dp-inntekt-innsyn-ui.nais.oera-q.local/"
-    - "https://tjenester-t6.nav.no/dp-inntekt-innsyn-ui/"
+    - "https://www-q0.nav.no/arbeid/dagpenger/kalkulator/"
   env:
     - name: APP_INNSYN_API_BASEURL
       value: http://dagpenger-innsyn-api/
