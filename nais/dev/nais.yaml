@@ -14,6 +14,6 @@ spec:
     - name: REDIS_PORT
       value: "6379"
     - name: OIDC_HOST_URL
-      value: https://loginservice-q.nav.no/login?redirect=https://www-q0.nav.no/arbeid/dagpenger/kalkulator
+      value: https://isso-q.adeo.no/isso/oauth2
     - name: OIDC_AGENTNAME
       value: dp-inntekt-innsyn-ui-q1
