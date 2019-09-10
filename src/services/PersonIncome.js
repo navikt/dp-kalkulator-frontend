@@ -1,8 +1,22 @@
 const axios = require('axios')
 
-const get = async (url) => {
-      const response = await axios.get(url)
-      return response.data
+const header = (token) => {
+      return {
+            headers: {
+                  'X-API-KEY' : token,
+                  'Content-Type' : 'application/json'
+            }
+      }
 }
 
-export default { get }
+const get = async (url, token) => {
+      const response = await axios.get(url, header(token))
+      return response
+}
+
+const post = async (url, params, token) => {
+      const response = await axios.post(url, params, header(token))
+      return response
+}
+
+export default { get, post }
