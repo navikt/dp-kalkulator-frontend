@@ -12,7 +12,7 @@ const Kalkulator = () => {
             beregningsdato: process.env.REACT_APP_beregningsdato
           }
           const localparams = JSON.stringify(localPayload)
-        api.startBehov(localparams)
+        api.startBehov(localparams).then(console.log)
     }, [])
 
 
@@ -84,25 +84,25 @@ const Kalkulator = () => {
     
     //   function getSubsumsjon(url) {
     
-    //     console.log("polling! polling api url: " + pollingApi + " Try #" + tries)
-    //     api.get(url, localToken)
-    //       .then(response => {
-    //         if (response.status === 303 && response.headers.location) {
-    //           console.log(response.statusText)
-    //           console.log(response.headers.location)
-    //           setPollingApi(false)
-    //           return fetchData(response.headers.location, localToken)
-    //         }
-    //         if (response.status === 200 && response.data.status) {
-    //           console.log("poll still pending")
-    //           console.log(response)
-    //           tries++
-    //           if (tries < 10) {
-    //             console.log("sleeping before next try")
-    //             sleep(2000);
-    //             console.log("done sleeping")
-    //             getSubsumsjon(url)
-    //           }
+        // console.log("polling! polling api url: " + pollingApi + " Try #" + tries)
+        // api.get(url, localToken)
+        //   .then(response => {
+        //     if (response.status === 303 && response.headers.location) {
+        //       console.log(response.statusText)
+        //       console.log(response.headers.location)
+        //       setPollingApi(false)
+        //       return fetchData(response.headers.location, localToken)
+        //     }
+        //     if (response.status === 200 && response.data.status) {
+        //       console.log("poll still pending")
+        //       console.log(response)
+        //       tries++
+        //       if (tries < 10) {
+        //         console.log("sleeping before next try")
+        //         sleep(2000);
+        //         console.log("done sleeping")
+        //         getSubsumsjon(url)
+        //       }
     
     //         }
     //         if (response.status === 200 && response.data.id) {

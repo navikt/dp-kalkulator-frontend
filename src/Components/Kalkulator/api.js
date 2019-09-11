@@ -24,23 +24,19 @@ const getSubsumsjonsLocation = (response) => {
 }
 
 const startBehov = async (params, token) => {
-      post(process.env.REACT_APP_API_URL, params, token)
-            .then(getSubsumsjonsLocation)
-            .then(url => startPolling(url, token))
-            .then(console.log)
-            .catch(error => console.log(`error: ${error}`))
+      return post(process.env.REACT_APP_API_URL, params, token)
+                              .then(getSubsumsjonsLocation)
+                              .then(poll)
+                              .catch(error => console.log(`error: ${error}`))
+
 }
 
-const startPolling = async (url, token, retries = 3, msDelay = 1000) => {
+const poll = async (url, token, retries = 3, msDelay = 1000) => {
       const response = await get(url, token)
-      console.log('hallo')
+
       if (response.data.status) {
             if (retries > 0) {
-                   return await new Promise((resolve) => {
-                         setTimeout(async () => { 
-                              const shit = await startPolling(url, token, retries - 1, msDelay)
-                              resolve(shit)
-                        }, msDelay)})
+                   return await delayFunction(() => poll(url, token, retries - 1, msDelay), msDelay) 
             } else {
                   throw new Error('Polling timed out')
             }
@@ -48,6 +44,17 @@ const startPolling = async (url, token, retries = 3, msDelay = 1000) => {
             return response.data
       }     
 }
+
+
+const delayFunction = async (fn, msDelay) => {
+      return await new Promise((resolve) => {
+            setTimeout(async () => {
+                  const returnValue = await fn()
+                  resolve(await returnValue)
+            }, msDelay)
+      })
+}
+
 
 
 
