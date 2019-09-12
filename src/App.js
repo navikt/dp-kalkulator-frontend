@@ -12,51 +12,31 @@ const App = () => {
   const [errorObjects, setErrorObjects] = useState([new Error('hei'), new Error('hei2')])
   const [checkedHjelpeTekst, setCheckedHjelpeTekst] = useState(false)
 
-  const addError = (error) => {
-    setErrorObjects(errorObjects.concat(error))
-  }
+  const addError = (error) => setErrorObjects(errorObjects.concat(error))
 
   const verifyAndSetConsent = (checked) => {
     checked ? setConsent(checked) : setCheckedHjelpeTekst(true)
   }
 
   const handleRemoveError = (index) => {
-      setErrorObjects(errorObjects.filter(
-          (_, i) => {
-              return i !== index
-          }
-      ))
+    setErrorObjects(errorObjects.filter(
+      (_, i) => {
+        return i !== index
+      }
+    ))
   }
 
 
   return (
     <div className="App">
-      <Header className="maxWidth" />
-      <div className="row">
-        <div className="col-xs-12">
-          <TilbakeTilInfoKnapp />
-        </div>
-      </div>
-      <div className='row'>
-        <div className="col-xs-12">
-          <Feilmelding errors={errorObjects} click={handleRemoveError} />
-        </div>
-      </div>
-      <div className="row">
-        <div className="col-xs-12">
-          {consent ? 
-            <Kalkulator addError={addError}/> : 
-            <Consent consent={consent} onClick={verifyAndSetConsent} hjelpeTekst={checkedHjelpeTekst}/>
-          }
-        </div>
-      </div>
-      <div className="row">
-        <div className="col-xs-12">
-          <TilbakeTilInfoKnapp />
-        </div>
-      </div>
-
-
+      <Header />
+      <TilbakeTilInfoKnapp />
+      <Feilmelding errors={errorObjects} click={handleRemoveError} />
+      {consent ?
+        <Kalkulator addError={addError} /> :
+        <Consent consent={consent} onClick={verifyAndSetConsent} hjelpeTekst={checkedHjelpeTekst} />
+      }
+      <TilbakeTilInfoKnapp />
     </div>
   );
 };
