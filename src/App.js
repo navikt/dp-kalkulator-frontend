@@ -23,7 +23,7 @@ const App = () => {
   const handleRemoveError = (index) => {
       setErrorObjects(errorObjects.filter(
           (_, i) => {
-              return i !== index.index
+              return i !== index
           }
       ))
   }
