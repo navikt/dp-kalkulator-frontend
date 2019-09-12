@@ -25,9 +25,9 @@ const getSubsumsjonsLocation = (response) => {
 
 const startBehov = async (params, token) => {
       return post(process.env.REACT_APP_API_URL, params, token)
-                              .then(getSubsumsjonsLocation)
-                              .then(poll)
-                              .catch(error => console.log(`error: ${error}`))
+                  .then(getSubsumsjonsLocation)
+                  .then(poll)
+                  .catch(error => console.log(`error: ${error}`))
 
 }
 
@@ -41,9 +41,9 @@ const poll = async (url, token, retries = 3, msDelay = 1000) => {
             } else {
                   throw new Error('Polling timed out')
             }
-      } else {
-            return response.data
-      }     
+      } 
+      
+      return response.data
 }
 
 
