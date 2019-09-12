@@ -36,7 +36,8 @@ const poll = async (url, token, retries = 3, msDelay = 1000) => {
 
       if (response.data.status) {
             if (retries > 0) {
-                   return await delayFunction(() => poll(url, token, retries - 1, msDelay), msDelay) 
+                   await delay(msDelay) 
+                   return poll(url, token, retries - 1, msDelay)
             } else {
                   throw new Error('Polling timed out')
             }
@@ -46,11 +47,10 @@ const poll = async (url, token, retries = 3, msDelay = 1000) => {
 }
 
 
-const delayFunction = async (fn, msDelay) => {
+const delay = async (msDelay) => {
       return await new Promise((resolve) => {
             setTimeout(async () => {
-                  const returnValue = await fn()
-                  resolve(await returnValue)
+                  resolve()
             }, msDelay)
       })
 }
