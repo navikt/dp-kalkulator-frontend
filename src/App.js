@@ -9,7 +9,7 @@ import Kalkulator from './Components/Kalkulator/Kalkulator'
 
 const App = () => {
   const [consent, setConsent] = useState(false);
-  const [errorObjects, setErrorObjects] = useState([])
+  const [errorObjects, setErrorObjects] = useState([new Error('hei'), new Error('hei2')])
   const [checkedHjelpeTekst, setCheckedHjelpeTekst] = useState(false)
 
   const addError = (error) => {
@@ -22,7 +22,9 @@ const App = () => {
 
   const handleRemoveError = (index) => {
       setErrorObjects(errorObjects.filter(
-          (_, i) => i === index
+          (_, i) => {
+              return i !== index.index
+          }
       ))
   }
 
