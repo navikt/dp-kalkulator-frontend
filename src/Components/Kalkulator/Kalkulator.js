@@ -5,7 +5,7 @@ import QualifiedMessage from './responses/QualifiedMessage';
 
 const Kalkulator = ({ addError }) => {
     const [loading, setLoading] = useState(true);
-    const [personQualified, setPersonQualified] = useState(false)
+    const [oppfyllerInntekstkrav, setoppfyllerInntekstkrav] = useState(false)
     const [antallUker, setAntallUker] = useState(0)
     const [ukesats, setUkesats] = useState(0)
 
@@ -29,7 +29,7 @@ const Kalkulator = ({ addError }) => {
 
 
     const setData = (json) => {
-        setPersonQualified(json.oppfyllerMinstekrav);
+        setoppfyllerInntekstkrav(json.oppfyllerMinstekrav);
         setAntallUker(json.periodeAntalluker);
         setUkesats(json.ukeSats);
         setLoading(false)
@@ -46,7 +46,7 @@ const Kalkulator = ({ addError }) => {
     if (loading) {
         return <LoadingMessage />
     } else {
-        return <QualifiedMessage doesPersonQualify={personQualified} ukeSats={ukesats} periodeAntalluker={antallUker}/>
+        return <QualifiedMessage oppfyllerInntekstkrav={oppfyllerInntekstkrav} ukesats={ukesats} periodeAntalluker={antallUker}/>
     }
 }
 

@@ -4,19 +4,19 @@ import PropTypes from 'prop-types';
 import PositiveResponse from './PositiveResponse';
 import NegativeResponse from './NegativeResponse';
 
-export default function QualifiedMessage({ doesPersonQualify, ukeSats, periodeAntalluker }) {
+export default function QualifiedMessage({ oppfyllerInntekstkrav, ukesats, periodeAntalluker }) {
   const panelStyle = {
     background: '#e0f5fb'
   }
   return (
     <Panel style={panelStyle}>
-      {doesPersonQualify ? <PositiveResponse ukeSats={ukeSats} periodeAntalluker={periodeAntalluker} /> : <NegativeResponse />}
+      {oppfyllerInntekstkrav ? <PositiveResponse ukeSats={ukesats} periodeAntalluker={periodeAntalluker} /> : <NegativeResponse />}
     </Panel>
   );
 }
 
 QualifiedMessage.propTypes = {
-  doesPersonQualify: PropTypes.bool.isRequired,
-  ukeSats: PropTypes.number,
+  oppfyllerInntekstkrav: PropTypes.bool.isRequired,
+  ukesats: PropTypes.number,
   periodeAntalluker: PropTypes.number,
 };
