@@ -25,7 +25,7 @@ const Kalkulator = ({ addError }) => {
                 addError(error)
             }
             )
-    }, [])
+    }, [addError])
 
 
     const setData = (json) => {

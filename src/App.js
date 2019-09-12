@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import Header from './Components/Header';
 import TilbakeTilInfoKnapp from './Components/TilbakeTilInfoKnapp';
@@ -20,6 +20,12 @@ const App = () => {
     checked ? setConsent(checked) : setCheckedHjelpeTekst(true)
   }
 
+  const handleRemoveError = (index) => {
+      setErrorObjects(errorObjects.filter(
+          (_, i) => i === index
+      ))
+  }
+
 
   return (
     <div className="App">
@@ -31,7 +37,7 @@ const App = () => {
       </div>
       <div className='row'>
         <div className="col-xs-12">
-          <Feilmelding errors={errorObjects} />
+          <Feilmelding errors={errorObjects} click={handleRemoveError} />
         </div>
       </div>
       <div className="row">
