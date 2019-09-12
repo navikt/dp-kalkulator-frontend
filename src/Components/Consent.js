@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import Panel from "nav-frontend-paneler";
 import { Hovedknapp } from "nav-frontend-knapper";
 import { Checkbox } from "nav-frontend-skjema";
 import { Normaltekst, Innholdstittel } from "nav-frontend-typografi";
 
-export default function Consent({ consent, fetchData, toggle, feilMelding }) {
+export default function Consent({ consent, onClick, hjelpeTekst }) {
+    const [checked, setChecked] = useState(consent)
+
     const checkedPanelStyle = {
         background: '#e0f5fb'
     }
@@ -34,8 +36,9 @@ export default function Consent({ consent, fetchData, toggle, feilMelding }) {
     }
 
     const isChecked = () => {
-        return (!consent && feilMelding ? { feilmelding: 'Du må samtykke for å kunne estimere' } : null)
+        return (!checked && hjelpeTekst ? { feilmelding: 'Du må samtykke for å kunne estimere' } : null)
     }
+
 
     return (
         <Panel className='fadeable' style={{ ...panelStyle, ...maxWidth, ...flex }}>
@@ -49,11 +52,11 @@ export default function Consent({ consent, fetchData, toggle, feilMelding }) {
                 </div>
             </div>
             <div className='row' style={{ ...padding, ...{ alignSelf: 'start' } }}>
-                <Checkbox style={{ ...fontSize }} onChange={toggle} checked={consent} label={'Jeg samtykker til at NAV innhenter inntektsopplysningene mine fra Skatteetaten og lagrer dem i inntil én time'} feil={isChecked()} />
+                <Checkbox style={{ ...fontSize }} onChange={() => setChecked(!checked)} checked={checked} label={'Jeg samtykker til at NAV innhenter inntektsopplysningene mine fra Skatteetaten og lagrer dem i inntil én time'} feil={isChecked()} />
             </div>
             <div className={'row'}>
                 <div className={'col-xs-12'}>
-                    <Hovedknapp disabled={!consent} onClick={fetchData}>Estimer dagpenger</Hovedknapp>
+                    <Hovedknapp disabled={!checked} onClick={() => onClick(checked)}>Estimer dagpenger</Hovedknapp>
                 </div>
             </div>
         </Panel >

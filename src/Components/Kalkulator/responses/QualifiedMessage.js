@@ -1,8 +1,8 @@
 import Panel from 'nav-frontend-paneler'
 import React from 'react';
 import PropTypes from 'prop-types';
-import PositiveResponse from './responses/PositiveResponse';
-import NegativeResponse from './responses/NegativeResponse';
+import PositiveResponse from './PositiveResponse';
+import NegativeResponse from './NegativeResponse';
 
 export default function QualifiedMessage({ doesPersonQualify, ukeSats, periodeAntalluker }) {
   const panelStyle = {
@@ -18,5 +18,5 @@ export default function QualifiedMessage({ doesPersonQualify, ukeSats, periodeAn
 QualifiedMessage.propTypes = {
   doesPersonQualify: PropTypes.bool.isRequired,
   ukeSats: PropTypes.number,
-  periodeAntalluker: PropTypes.string,
+  periodeAntalluker: PropTypes.number,
 };

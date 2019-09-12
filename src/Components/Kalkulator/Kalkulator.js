@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import LoadingMessage from '../information/LoadingMessage';
 import api from './api';
-import QualifiedMessage from '../QualifiedMessage';
+import QualifiedMessage from './responses/QualifiedMessage';
 
 const Kalkulator = ({ addError }) => {
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [personQualified, setPersonQualified] = useState(false)
-    const [antallUker, setAntallUker] = useState('')
+    const [antallUker, setAntallUker] = useState(0)
     const [ukesats, setUkesats] = useState(0)
 
     useEffect(() => {
@@ -18,7 +18,6 @@ const Kalkulator = ({ addError }) => {
         const localparams = JSON.stringify(localPayload)
 
         api.startBehov(localparams)
-        .then(console.log)
             .then(transform)
             .then(setData)
             .catch(error => {
@@ -33,6 +32,7 @@ const Kalkulator = ({ addError }) => {
         setPersonQualified(json.oppfyllerMinstekrav);
         setAntallUker(json.periodeAntalluker);
         setUkesats(json.ukeSats);
+        setLoading(false)
     };
 
     const transform = (data) => {
