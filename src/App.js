@@ -23,6 +23,9 @@ const App = () => {
   const [pollingApi, setPollingApi] = useState(false)
   const [errorObjects, setErrorObjects] = useState([])
 
+  const addError = (error) => {
+    setErrorObjects(errorObjects.concat(error))
+  }
   // const localToken = process.env.REACT_APP_LOCALTOKEN
   // var tries = 0
 
@@ -69,7 +72,7 @@ const App = () => {
       <div className="row">
         <div className="col-xs-12">
           {/* {feedback} */}
-          <Kalkulator/>
+          <Kalkulator addError={addError}/>
         </div>
       </div>
       <div className="row">

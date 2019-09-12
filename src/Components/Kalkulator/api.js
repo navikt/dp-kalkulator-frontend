@@ -27,7 +27,7 @@ const startBehov = async (params, token) => {
       return post(process.env.REACT_APP_API_URL, params, token)
                   .then(getSubsumsjonsLocation)
                   .then(poll)
-                  .catch(error => console.log(`error: ${error}`))
+
 
 }
 
@@ -54,8 +54,5 @@ const delay = async (msDelay) => {
             }, msDelay)
       })
 }
-
-
-
 
 export default { startBehov }
