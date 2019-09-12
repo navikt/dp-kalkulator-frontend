@@ -15,7 +15,7 @@ export default function Consent({ consent, onClick, hjelpeTekst }) {
         background: '#ffe9cc'
     }
 
-    const panelStyle = consent ? checkedPanelStyle : uncheckedConsentPanelStyle
+    const panelStyle = checked ? checkedPanelStyle : uncheckedConsentPanelStyle
 
     const flex = {
         display: 'flex',
