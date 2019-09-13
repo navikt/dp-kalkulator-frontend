@@ -9,7 +9,7 @@ import Kalkulator from './Components/Kalkulator/Kalkulator'
 
 const App = () => {
   const [consent, setConsent] = useState(false);
-  const [errorObjects, setErrorObjects] = useState([new Error('hei'), new Error('hei2')])
+  const [errorObjects, setErrorObjects] = useState([])
   const [checkedHjelpeTekst, setCheckedHjelpeTekst] = useState(false)
 
   const addError = (error) => setErrorObjects(errorObjects.concat(error))

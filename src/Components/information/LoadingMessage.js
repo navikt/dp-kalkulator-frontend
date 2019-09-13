@@ -6,7 +6,7 @@ import { Normaltekst } from 'nav-frontend-typografi';
 export default function LoadingMessage() {
   const style = {
     display: 'flex',
-    flexDirection: 'column',
+    flexDirection: 'column'
   }
 
   return (
