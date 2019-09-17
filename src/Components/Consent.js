@@ -3,6 +3,7 @@ import Panel from "nav-frontend-paneler";
 import { Hovedknapp } from "nav-frontend-knapper";
 import { Checkbox } from "nav-frontend-skjema";
 import { Normaltekst, Innholdstittel } from "nav-frontend-typografi";
+import { redirectToLogin } from '../Authentication/Api'
 
 export default function Consent({ consent, onClick, hjelpeTekst }) {
     const [checked, setChecked] = useState(consent)
@@ -40,6 +41,8 @@ export default function Consent({ consent, onClick, hjelpeTekst }) {
     }
 
 
+
+
     return (
         <Panel className='fadeable' style={{ ...panelStyle, ...maxWidth, ...flex }}>
             <div className={'row'} style={padding}>
@@ -56,6 +59,7 @@ export default function Consent({ consent, onClick, hjelpeTekst }) {
             </div>
             <div className={'row'}>
                 <div className={'col-xs-12'}>
+                    <Hovedknapp onClick={() => redirectToLogin()}>log in</Hovedknapp>
                     <Hovedknapp disabled={!checked} onClick={() => onClick(checked)}>Estimer dagpenger</Hovedknapp>
                 </div>
             </div>

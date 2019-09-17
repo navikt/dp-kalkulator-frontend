@@ -1,11 +1,15 @@
 require('dotenv').config()
 const axios = require('axios')
+import { checkAuth } from "../../Authentication/Api";
+
+
 const header = (token) => {
       return {
             headers: {
                   'X-API-KEY': process.env.REACT_APP_TOKEN,
-                  'Content-Type': 'application/json'
-            }
+                  'Content-Type': 'application/json',
+            },
+            withCredentials: true
       }
 }
 
@@ -15,6 +19,7 @@ const get = async (url, token) => {
 }
 
 const post = async (url, params, token) => {
+      checkAuth()
       const response = await axios.post(url, params, header(token))
       return response
 }
