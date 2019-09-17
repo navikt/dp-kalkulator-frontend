@@ -18,8 +18,8 @@ spec:
   prometheus:
     enabled: false
   replicas:
-    min: 3
-    max: 4
+    min: 2
+    max: 3
   resources:
     limits:
       cpu: 500m
