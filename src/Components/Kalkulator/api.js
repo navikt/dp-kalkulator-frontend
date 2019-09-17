@@ -1,6 +1,6 @@
+import { checkAuth } from "../../Authentication/Api";
 require('dotenv').config()
 const axios = require('axios')
-import { checkAuth } from "../../Authentication/Api";
 
 
 const header = (token) => {
