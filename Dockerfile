@@ -1,7 +1,12 @@
-FROM node:12-alpine
+FROM node:current-alpine
 
-ENV APP_DIR="/app" \
-	APP_PATH_PREFIX="/arbeid/dagpenger/kalkulator"
+EXPOSE 5000
 
-COPY build /app/arbeid/dagpenger/kalkulator
-EXPOSE 3000 443
+RUN mkdir app
+WORKDIR app
+
+COPY build /app
+
+RUN npm i -g serve
+
+CMD ["serve"]
