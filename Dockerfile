@@ -1,4 +1,4 @@
-FROM node:latest-alpine
+FROM node:12-alpine
 
 ENV APP_DIR="/app" \
 	APP_PATH_PREFIX="/arbeid/dagpenger/kalkulator"
