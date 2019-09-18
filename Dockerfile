@@ -1,6 +1,8 @@
 # production environment
-FROM nginx:1.13.9-alpine
-COPY build /usr/share/nginx/html
-EXPOSE 80
+FROM node:current-alpine
+RUN mkdir app
+COPY build /app/build
+COPY server.js /app
+EXPOSE 443
 CMD ["nginx", "-g", "daemon off;"]
 
