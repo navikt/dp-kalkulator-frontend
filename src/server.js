@@ -7,7 +7,7 @@ app.configure(function(){
 })
 
 app.get('/', function(req, res) {
-    res.sendFile('index.html');
+    res.render('index.html');
 });
 
 app.get('/health/is-alive', function(req, res) {
