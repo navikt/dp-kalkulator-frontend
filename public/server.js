@@ -12,4 +12,4 @@ app.get('/health/is-alive', function(req, res) {
     res.status(200).send("hei")
 });
 
-app.listen(443);
+app.listen(8000);

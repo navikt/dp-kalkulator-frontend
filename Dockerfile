@@ -1,9 +1,6 @@
-# production environment
-FROM node:current-alpine
+FROM navikt/node-express:12.2.0-alpine
 RUN mkdir app
-WORKDIR app
 COPY build /app
-COPY node_modules /app/node_modules
-EXPOSE 443
-CMD ["node", "server"]
+EXPOSE 8000
 
+ENTRYPOINT ["/dumb-init", "node", "/app/server.js"]
