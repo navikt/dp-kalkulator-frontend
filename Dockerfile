@@ -1,8 +1,10 @@
 # production environment
 FROM node:current-alpine
 RUN mkdir app
-COPY build /app/build
-COPY server.js /app
+WORKDIR app
+COPY build /app
+COPY src/server.js /app
+RUN npm install express
 EXPOSE 443
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["node", "server"]
 
