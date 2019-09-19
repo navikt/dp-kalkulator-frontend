@@ -39,5 +39,5 @@ export default function PositiveResponse({ ukeSats, periodeAntalluker }) {
 
 PositiveResponse.propTypes = {
   ukeSats: PropTypes.number,
-  periodeAntalluker: PropTypes.string,
+  periodeAntalluker: PropTypes.number,
 };
