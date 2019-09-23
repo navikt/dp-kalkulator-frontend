@@ -8,7 +8,7 @@ app.get('/arbeid/dagpenger/kalkulator/', function(req, res) {
     res.sendFile(path.resolve(__dirname, 'index.html'));
 });
 
-app.get('/health/is-alive', function(req, res) {
+app.get('/arbeid/dagpenger/kalkulator/health/is-alive', function(req, res) {
     res.status(200).send("hei")
 });
 
