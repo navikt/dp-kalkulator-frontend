@@ -4,15 +4,15 @@ const app = express();
 
 app.use(express.static(__dirname));
 app.use(
-    '/static/js',
+    '/arbeid/dagpenger/kalkulator/static/js',
     express.static(path.resolve(__dirname, 'static/js'))
 );
 app.use(
-    '/static/css',
+    '/arbeid/dagpenger/kalkulator/static/css',
     express.static(path.resolve(__dirname, 'static/css'))
 );
 app.use(
-    '/static/media',
+    '/arbeid/dagpenger/kalkulator/static/media',
     express.static(path.resolve(__dirname, 'static/media'))
 );
 

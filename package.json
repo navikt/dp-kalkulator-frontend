@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "proxy": "http://localhost:8092",
+  "homepage": "/arbeid/dagpenger/kalkulator",
   "dependencies": {
     "@types/react": "^16.8.22",
     "@types/react-dom": "^16.8.4",
