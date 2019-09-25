@@ -17,11 +17,11 @@ app.use(
     express.static(path.resolve(__dirname, 'static/media'))
 );
 
-app.get('/arbeid/dagpenger/kalkulator/', function(req, res) {
+app.get('/arbeid/dagpenger/kalkulator/',  (req, res) => {
     res.sendFile(path.resolve(__dirname, 'index.html'));
 });
 
-app.get('/arbeid/dagpenger/kalkulator/health/is-alive', function(req, res) {
+app.get('/arbeid/dagpenger/kalkulator/health/is-alive', (req, res) => {
     res.status(200).send("hei")
 });
 

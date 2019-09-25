@@ -1,9 +1,10 @@
-import { checkAuth } from "../../Authentication/Api";
+import conf from "./Config";
+
 require('dotenv').config()
 const axios = require('axios')
 
 
-const header = (token) => {
+const header = () => {
       return {
             headers: {
                   'X-API-KEY': process.env.REACT_APP_TOKEN,
@@ -13,14 +14,13 @@ const header = (token) => {
       }
 }
 
-const get = async (url, token) => {
-      const response = await axios.get(url, header(token))
+const get = async (url) => {
+      const response = await axios.get(url, header())
       return response
 }
 
-const post = async (url, params, token) => {
-      checkAuth()
-      const response = await axios.post(url, params, header(token))
+const post = async (url, params) => {
+      const response = await axios.post(url, params, header())
       return response
 }
 
@@ -28,21 +28,28 @@ const getSubsumsjonsLocation = (response) => {
       return response.headers.location
 }
 
-const startBehov = async (params, token) => {
-      return post(process.env.REACT_APP_API_URL, params, token)
+const startBehov = async (params) => {
+      return post(process.env.REACT_APP_API_URL, params)
                   .then(getSubsumsjonsLocation)
                   .then(poll)
-
-
 }
 
-const poll = async (url, token, retries = 3, msDelay = 1000) => {
-      const response = await get(url, token)
+const redirectToLogin = () => {
+    window.location.assign(`${conf.LOGINSERVICE}&redirect=${window.location.href}`); // eslint-disable-line no-undef
+};
+
+
+const verifyToken = async () => {
+      return post(conf.REACT_APP_API_URL)
+  }
+
+const poll = async (url, retries = 3, msDelay = 1000) => {
+      const response = await get(url)
 
       if (response.data.status) {
             if (retries > 0) {
                    await delay(msDelay) 
-                   return poll(url, token, retries - 1, msDelay)
+                   return poll(url, retries - 1, msDelay)
             } else {
                   throw new Error('Polling timed out')
             }
@@ -60,4 +67,4 @@ const delay = async (msDelay) => {
       })
 }
 
-export default { startBehov }
+export default { startBehov, verifyToken, redirectToLogin }
