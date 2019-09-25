@@ -2,7 +2,6 @@ import React from "react";
 import Panel from "nav-frontend-paneler";
 import { Knapp, Hovedknapp } from "nav-frontend-knapper";
 import { Normaltekst, Innholdstittel } from "nav-frontend-typografi";
-import { redirectToLogin } from '../Authentication/Api'
 
 export default function Consent({ consent, onClick, hjelpeTekst }) {
 
@@ -37,12 +36,6 @@ export default function Consent({ consent, onClick, hjelpeTekst }) {
                 </Normaltekst>
             </div>
             <Knapp onClick={onClick} >Fortsett</Knapp>
-
-            {// DIV WITH CONTENTS UNDERNEATH SHOULD BE DELETED AFTER TESTING
-            }
-            <div style={{ marginTop: '10px' }}>
-                <Hovedknapp onClick={() => redirectToLogin()}>log in</Hovedknapp>
-            </div>
         </Panel >
     );
 

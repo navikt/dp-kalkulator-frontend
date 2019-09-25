@@ -33,7 +33,7 @@ const Kalkulator = ({ addError }) => {
             api.verifyToken()
                 .then(setVerified(true))
                 .catch(
-                    setVerified(true)
+                    setVerified(true)  // TODO: DELETE BEFORE DEPLOYMENY
                     //api.redirectToLogin()
                 )
         } 
