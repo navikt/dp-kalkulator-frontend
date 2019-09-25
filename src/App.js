@@ -10,8 +10,7 @@ import Kalkulator from './Components/Kalkulator/Kalkulator'
 const App = () => {
   const [consent, setConsent] = useState(false);
   const [errorObjects, setErrorObjects] = useState([])
-  const [checkedHjelpeTekst, setCheckedHjelpeTekst] = useState(false)
-
+  
   const addError = (error) => setErrorObjects(errorObjects.concat(error))
 
   const handleRemoveError = (index) => {
@@ -34,7 +33,7 @@ const App = () => {
       <Feilmelding errors={errorObjects} click={handleRemoveError} />
       {consent ?
         <Kalkulator addError={addError} /> :
-        <Consent consent={consent} onClick={handleFortsettClick} hjelpeTekst={checkedHjelpeTekst} />
+        <Consent onClick={handleFortsettClick} />
       }
       <TilbakeTilInfoKnapp />
     </div>

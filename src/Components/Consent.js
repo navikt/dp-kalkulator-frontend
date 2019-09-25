@@ -1,9 +1,9 @@
 import React from "react";
 import Panel from "nav-frontend-paneler";
-import { Knapp, Hovedknapp } from "nav-frontend-knapper";
+import { Knapp } from "nav-frontend-knapper";
 import { Normaltekst, Innholdstittel } from "nav-frontend-typografi";
 
-export default function Consent({ consent, onClick, hjelpeTekst }) {
+export default function Consent({ onClick }) {
 
     const panelBackground = {
         background: '#fff'
