@@ -9,7 +9,7 @@ export default function NegativeResponse() {
     padding: '10px'
   }
 
-  const headerMargin = {
+  const textMargin = {
     marginBottom: '15px'
   }
 
@@ -18,11 +18,10 @@ export default function NegativeResponse() {
   }
 
   return (
-
     <div style={padding}>
-      <Innholdstittel style={headerMargin}>Dagpengekalkulator</Innholdstittel>
-      <Element style={headerMargin}>Søker du om dagpenger fra i dag, risikerer du å få avslag på grunn av for lav inntekt.</Element>
-      <Normaltekst style={headerMargin}>
+      <Innholdstittel style={textMargin}>Dagpengekalkulator</Innholdstittel>
+      <Element style={textMargin}>Søker du om dagpenger fra i dag, risikerer du å få avslag på grunn av for lav inntekt.</Element>
+      <Normaltekst style={textMargin}>
         Beregningen er basert på inntektsopplysninger fra <Lenke href="http://skatteetaten.no/mineinntekter">skatteetaten.no/mineinntekter</Lenke>
         . Hvis opplysningene er feil, bør de rettes.
      </Normaltekst>
