@@ -14,16 +14,16 @@ const App = () => {
 
   const addError = (error) => setErrorObjects(errorObjects.concat(error))
 
-  const verifyAndSetConsent = (checked) => {
-    checked ? setConsent(checked) : setCheckedHjelpeTekst(true)
-  }
-
   const handleRemoveError = (index) => {
     setErrorObjects(errorObjects.filter(
       (_, i) => {
         return i !== index
       }
     ))
+  }
+
+  const handleFortsettClick = () => {
+    setConsent(true)
   }
 
 
@@ -34,7 +34,7 @@ const App = () => {
       <Feilmelding errors={errorObjects} click={handleRemoveError} />
       {consent ?
         <Kalkulator addError={addError} /> :
-        <Consent consent={consent} onClick={verifyAndSetConsent} hjelpeTekst={checkedHjelpeTekst} />
+        <Consent consent={consent} onClick={handleFortsettClick} hjelpeTekst={checkedHjelpeTekst} />
       }
       <TilbakeTilInfoKnapp />
     </div>

@@ -1,22 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import Panel from "nav-frontend-paneler";
-import { Hovedknapp } from "nav-frontend-knapper";
-import { Checkbox } from "nav-frontend-skjema";
+import { Knapp, Hovedknapp } from "nav-frontend-knapper";
 import { Normaltekst, Innholdstittel } from "nav-frontend-typografi";
 import { redirectToLogin } from '../Authentication/Api'
 
 export default function Consent({ consent, onClick, hjelpeTekst }) {
-    const [checked, setChecked] = useState(consent)
 
-    const checkedPanelStyle = {
-        background: '#e0f5fb'
+    const panelBackground = {
+        background: '#fff'
     }
-
-    const uncheckedConsentPanelStyle = {
-        background: '#ffe9cc'
-    }
-
-    const panelStyle = checked ? checkedPanelStyle : uncheckedConsentPanelStyle
 
     const flex = {
         display: 'flex',
@@ -36,32 +28,24 @@ export default function Consent({ consent, onClick, hjelpeTekst }) {
         padding: '10px'
     }
 
-    const isChecked = () => {
-        return (!checked && hjelpeTekst ? { feilmelding: 'Du må samtykke for å kunne estimere' } : null)
+    const headerMargin = {
+        marginBottom: '15px'
     }
 
-
-
-
     return (
-        <Panel className='fadeable' style={{ ...panelStyle, ...maxWidth, ...flex }}>
-            <div className={'row'} style={padding}>
-                <div className={'col-xs-12'}>
-                    <Innholdstittel>Vi trenger informasjon fra Skatteetaten </Innholdstittel>
-                    <br />
-                    <Normaltekst>
-                        Vi bruker opplysninger om dine inntekter fra Skatteetaten for å beregne omtrent hvor mye du kan få i dagpenger.
-                    </Normaltekst>
-                </div>
+        <Panel style={{ ...panelBackground, ...maxWidth, ...flex }}>
+            <div style={padding}>
+                <Innholdstittel style={headerMargin}>Vi henter informasjon fra Skatteetaten </Innholdstittel>
+                <Normaltekst style={headerMargin}>
+                    Vi henter opplysninger fra Skatteetaten for å regne ut omtrent hvor mye du kunne fått i dagpenger i dag. Vi sletter opplysningene etter en time.
+                </Normaltekst>
             </div>
-            <div className='row' style={{ ...padding, ...{ alignSelf: 'start' } }}>
-                <Checkbox style={{ ...fontSize }} onChange={() => setChecked(!checked)} checked={checked} label={'Jeg samtykker til at NAV innhenter inntektsopplysningene mine fra Skatteetaten og lagrer dem i inntil én time'} feil={isChecked()} />
-            </div>
-            <div className={'row'}>
-                <div className={'col-xs-12'}>
-                    <Hovedknapp onClick={() => redirectToLogin()}>log in</Hovedknapp>
-                    <Hovedknapp disabled={!checked} onClick={() => onClick(checked)}>Estimer dagpenger</Hovedknapp>
-                </div>
+            <Knapp onClick={onClick} >Fortsett</Knapp>
+
+            {// DIV WITH CONTENTS UNDERNEATH SHOULD BE DELETED AFTER TESTING
+            }
+            <div style={{ marginTop: '10px' }}>
+                <Hovedknapp onClick={() => redirectToLogin()}>log in</Hovedknapp>
             </div>
         </Panel >
     );
