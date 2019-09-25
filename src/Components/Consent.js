@@ -20,10 +20,6 @@ export default function Consent({ consent, onClick, hjelpeTekst }) {
         maxWidth: '600px'
     }
 
-    const fontSize = {
-        fontSize: '1.3em'
-    }
-
     const padding = {
         padding: '10px'
     }
@@ -37,7 +33,7 @@ export default function Consent({ consent, onClick, hjelpeTekst }) {
             <div style={padding}>
                 <Innholdstittel style={headerMargin}>Vi henter informasjon fra Skatteetaten </Innholdstittel>
                 <Normaltekst style={headerMargin}>
-                    Vi henter opplysninger fra Skatteetaten for å regne ut omtrent hvor mye du kunne fått i dagpenger i dag. Vi sletter opplysningene etter en time.
+                    Vi henter opplysninger fra Skatteetaten for å regne ut omtrent hvor mye du kunne fått i dagpenger i dag. Opplysningene slettes etter en time.
                 </Normaltekst>
             </div>
             <Knapp onClick={onClick} >Fortsett</Knapp>

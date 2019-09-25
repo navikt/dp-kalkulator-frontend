@@ -4,7 +4,7 @@ import { Tilbakeknapp } from 'nav-frontend-ikonknapper';
 export default function TilbakeTilInfoKnapp() {
   return (
     <a href="http://nav.no/dagpenger" style={{ color: 'none', textDecoration: 'none' }}>
-      <Tilbakeknapp mini>Tilbake til info om dagpenger</Tilbakeknapp>
+      <Tilbakeknapp mini>Tilbake til informasjon om dagpenger</Tilbakeknapp>
     </a>
   );
 }

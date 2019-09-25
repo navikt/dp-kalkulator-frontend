@@ -8,8 +8,19 @@ export default function QualifiedMessage({ oppfyllerInntekstkrav, ukesats, perio
   const panelStyle = {
     background: '#e0f5fb'
   }
+
+  const flex = {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center'
+  }
+
+  const maxWidth = {
+    maxWidth: '600px'
+  }
+
   return (
-    <Panel style={panelStyle}>
+    <Panel style={{ ...panelStyle, ...maxWidth, ...flex }}>
       {oppfyllerInntekstkrav ? <PositiveResponse ukeSats={ukesats} periodeAntalluker={periodeAntalluker} /> : <NegativeResponse />}
     </Panel>
   );
