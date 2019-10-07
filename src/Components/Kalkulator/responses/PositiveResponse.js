@@ -2,8 +2,9 @@ import { Element, Normaltekst, Innholdstittel } from 'nav-frontend-typografi';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Lenke from 'nav-frontend-lenker';
+import { withTranslation, Trans } from 'react-i18next';
 
-export default function PositiveResponse({ ukeSats, periodeAntalluker }) {
+function PositiveResponse({ ukeSats, periodeAntalluker, t }) {
   const padding = {
     padding: '10px'
   }
@@ -17,19 +18,25 @@ export default function PositiveResponse({ ukeSats, periodeAntalluker }) {
     <div style={padding}>
       <Innholdstittel style={textMargin}>Dagpengekalkulator</Innholdstittel>
       <Normaltekst >
-        I dag ville du fått omtrent:
+        {t("PositiveResponse_info1")}
       </Normaltekst>
       <Element style={textMargin}>
-        { ukeSats } kr før skatt hver uke i { periodeAntalluker } uker
+        {t("PositiveResponse_info_sats", { uke_sats: ukeSats, periode_antalluker: periodeAntalluker })}
       </Element>
       <Normaltekst style={textMargin}>
-        Dette gjelder kun hvis du oppfyller alle <Lenke href="http://nav.no/dagpenger"> vilkårene for å få dagpenger</Lenke>.
+        <Trans i18nKey="PositiveResponse_vilkar">
+        <Lenke href="http://nav.no/dagpenger"></Lenke>.
+        </Trans>
       </Normaltekst>
       <Normaltekst style={textMargin}>
-       Vi anbefaler at du <Lenke href="https://www.nav.no/soknader/nb/person/arbeid/dagpenger">sender søknad</Lenke> én uke før du blir arbeidsledig.
+       <Trans i18nKey="PositiveResponse_anbefaling">
+          <Lenke href="https://www.nav.no/soknader/nb/person/arbeid/dagpenger"></Lenke>
+       </Trans>
       </Normaltekst>
       <Normaltekst style={textMargin}>
-        Beregningen er basert på opplysninger om dine inntekter fra <Lenke href="http://skatteetaten.no/mineinntekter">skatteetaten.no/mineinntekter</Lenke>
+      <Trans i18nKey="PositiveResponse_beregning">
+        <Lenke href="http://skatteetaten.no/mineinntekter"></Lenke>
+     </Trans>
       </Normaltekst>
     </div>
   );
@@ -39,3 +46,4 @@ PositiveResponse.propTypes = {
   ukeSats: PropTypes.number,
   periodeAntalluker: PropTypes.number,
 };
+export default withTranslation()(PositiveResponse)

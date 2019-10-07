@@ -1,9 +1,10 @@
 import React from "react";
 import Panel from "nav-frontend-paneler";
 import { Knapp } from "nav-frontend-knapper";
+import { withTranslation } from 'react-i18next';
 import { Normaltekst, Innholdstittel } from "nav-frontend-typografi";
 
-export default function Consent({ onClick }) {
+function Consent({ onClick, t }) {
 
     const panelBackground = {
         background: '#fff'
@@ -30,13 +31,14 @@ export default function Consent({ onClick }) {
     return (
         <Panel style={{ ...panelBackground, ...maxWidth, ...flex }}>
             <div style={padding}>
-                <Innholdstittel style={headerMargin}>Vi henter informasjon fra Skatteetaten </Innholdstittel>
+                <Innholdstittel style={headerMargin}>{t("consent_innholdstittel")} </Innholdstittel>
                 <Normaltekst style={headerMargin}>
-                    Vi henter opplysninger fra Skatteetaten for å regne ut omtrent hvor mye du kunne fått i dagpenger i dag. Opplysningene slettes etter en time.
+                    {t("consent_skattetinfo")}
                 </Normaltekst>
             </div>
-            <Knapp onClick={onClick} >Fortsett</Knapp>
+            <Knapp onClick={onClick}>{t("consent_knapp")}</Knapp>
         </Panel >
     );
 
 }
+export default withTranslation()(Consent)

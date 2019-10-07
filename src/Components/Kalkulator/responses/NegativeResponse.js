@@ -2,8 +2,9 @@ import React from 'react';
 import Panel from "nav-frontend-paneler";
 import { Element, Normaltekst, Innholdstittel } from 'nav-frontend-typografi';
 import Lenke from 'nav-frontend-lenker';
+import { withTranslation, Trans } from 'react-i18next';
 
-export default function NegativeResponse() {
+ function NegativeResponse({t}) {
 
   const padding = {
     padding: '10px'
@@ -17,27 +18,35 @@ export default function NegativeResponse() {
     marginTop: '5px'
   }
 
+  const mineinntekter = "skatteetaten.no/mineinntekter"
+  
   return (
     <div style={padding}>
-      <Innholdstittel style={textMargin}>Dagpengekalkulator</Innholdstittel>
-      <Element style={textMargin}>Søker du om dagpenger fra i dag, risikerer du å få avslag på grunn av for lav inntekt.</Element>
+      <Innholdstittel style={textMargin}>{t( "NegativeResponse_innholdstittel")}</Innholdstittel>
+      <Element style={textMargin}>{t("NegativeResponse")}</Element>
       <Normaltekst style={textMargin}>
-        Beregningen er basert på inntektsopplysninger fra <Lenke href="http://skatteetaten.no/mineinntekter">skatteetaten.no/mineinntekter</Lenke>
-        . Hvis opplysningene er feil, bør de rettes.
+        <Trans i18nKey="NegativeResponse_inntektsopplysning_informasjon">
+          <Lenke href="http://skatteetaten.no/mineinntekter"></Lenke>
+        </Trans>
      </Normaltekst>
       <Element>
-        Du kan likevel ha rett på dagpenger om du
+        {t("NegativeResponse_listheader")}
       </Element>
-      <Normaltekst>
+    
         <ul style={listMargin}>
-          <li>nylig har avtjent verneplikt</li>
-          <li>søker fram i tid</li>
-          <li>har arbeidet i et annet EØS-land</li>
-          <li>har hatt inntekt fra fangst og fisk</li>
+          <li>{t("NegativeResponse_listitems1")}</li>
+          <li>{t("NegativeResponse_listitems2")}</li>
+          <li>{t("NegativeResponse_listitems3")}</li>
+          <li>{t("NegativeResponse_listitems4")}</li>
         </ul>
-      </Normaltekst>
-      <Element>Vi anbefaler uansett at du sender <Lenke href="https://www.nav.no/soknader/nb/person/arbeid/dagpenger">søknad om dagpenger</Lenke></Element>
+    
+      <Element>
+         <Trans i18nKey="NegativeResponse_soknadsanbefaling">   
+           <Lenke href="https://www.nav.no/soknader/nb/person/arbeid/dagpenger"></Lenke>
+         </Trans>
+      </Element>
     </div>
 
   );
 }
+export default withTranslation()(NegativeResponse);

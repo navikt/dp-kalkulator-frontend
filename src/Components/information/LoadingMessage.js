@@ -2,8 +2,9 @@ import React from 'react';
 import PanelBase from 'nav-frontend-paneler';
 import NavFrontendSpinner from 'nav-frontend-spinner';
 import { Normaltekst } from 'nav-frontend-typografi';
+import { withTranslation } from 'react-i18next';
 
-export default function LoadingMessage() {
+function LoadingMessage({t}) {
   const style = {
     display: 'flex',
     flexDirection: 'column'
@@ -13,11 +14,12 @@ export default function LoadingMessage() {
     <PanelBase style={style}>
       <NavFrontendSpinner style={{alignSelf: 'center'}} />
       <Normaltekst>
-        Vi laster nå inn informasjonen vi har om dine inntekter som danner grunnlaget for vurderingen om dagpenger.
+        {t("LoadingMessage_informasjon")}
         </Normaltekst>
       <Normaltekst>
-        Vennligst vent opp til 2 minutter før du laster inn siden på nytt.
+        {t("LoadingMessage_ventetid")}
       </Normaltekst>
     </PanelBase>
   );
 }
+export default withTranslation()

@@ -20,7 +20,7 @@ const Kalkulator = ({ addError }) => {
     useEffect(() => {
         
         if (verified) {
-            api.startBehov(localparams)
+             api.startBehov(localparams)
             .then(transform)
             .then(setData)
             .catch(error => {
@@ -28,7 +28,8 @@ const Kalkulator = ({ addError }) => {
                 console.log(error)
                 addError(error)
             }
-            )
+            ) 
+            //setData({oppfyllerMinstekrav:true, periodeAntalluker:13, ukeSats:54000})
         } else {
             api.verifyToken()
                 .then(setVerified(true))
