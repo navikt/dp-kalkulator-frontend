@@ -36,7 +36,6 @@ const App = () => {
         <Kalkulator addError={addError} /> :
         <Consent consent={consent} onClick={verifyAndSetConsent} hjelpeTekst={checkedHjelpeTekst} />
       }
-      <p>test Odin sier hei</p>
       <TilbakeTilInfoKnapp />
     </div>
   );
