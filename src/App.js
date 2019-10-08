@@ -5,6 +5,7 @@ import TilbakeTilInfoKnapp from './Components/TilbakeTilInfoKnapp';
 import Consent from "./Components/Consent";
 import Feilmelding from './Components/information/Feilmelding'
 import Kalkulator from './Components/Kalkulator/Kalkulator'
+import Sprakvelger from './Components/Kalkulator/sprak/sprakvelger';
 
 
 const App = () => {
@@ -25,11 +26,27 @@ const App = () => {
     setConsent(true)
   }
 
+const flex_grid = {
+  flex: 1,
+  flexDirection: "row",
+  display: "flex",
+  justifyContent:"space-between"
+}
+const col_80 = {
+  width: "70%"
+}
+const col_20 = {
+  width: "20%",
+}
 
   return (
     <div className="App">
       <Header />
-      <TilbakeTilInfoKnapp />
+      <div style={flex_grid}>
+      <TilbakeTilInfoKnapp style={col_80} /> 
+      <Sprakvelger style={col_20} />
+      </div>
+      
       <Feilmelding errors={errorObjects} click={handleRemoveError} />
       {consent ?
         <Kalkulator addError={addError} /> :
