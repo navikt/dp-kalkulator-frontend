@@ -1,11 +1,11 @@
 import React from "react";
 import Panel from "nav-frontend-paneler";
 import { Knapp } from "nav-frontend-knapper";
-import { withTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import { Normaltekst, Innholdstittel } from "nav-frontend-typografi";
 
-function Consent({ onClick, t }) {
-
+function Consent({ onClick}) {
+    const { t, i18n } = useTranslation()
     const panelBackground = {
         background: '#fff'
     }
@@ -41,4 +41,4 @@ function Consent({ onClick, t }) {
     );
 
 }
-export default withTranslation()(Consent)
+export default (Consent)

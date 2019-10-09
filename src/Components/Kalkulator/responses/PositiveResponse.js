@@ -2,9 +2,10 @@ import { Element, Normaltekst, Innholdstittel } from 'nav-frontend-typografi';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Lenke from 'nav-frontend-lenker';
-import { withTranslation, Trans } from 'react-i18next';
+import { useTranslation, Trans } from 'react-i18next';
 
-function PositiveResponse({ ukeSats, periodeAntalluker, t }) {
+function PositiveResponse({ ukeSats, periodeAntalluker}) {
+  const { t, i18n } = useTranslation()
   const padding = {
     padding: '10px'
   }
@@ -46,4 +47,4 @@ PositiveResponse.propTypes = {
   ukeSats: PropTypes.number,
   periodeAntalluker: PropTypes.number,
 };
-export default withTranslation()(PositiveResponse)
+export default (PositiveResponse)

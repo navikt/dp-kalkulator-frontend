@@ -2,9 +2,10 @@ import React from 'react';
 import PanelBase from 'nav-frontend-paneler';
 import NavFrontendSpinner from 'nav-frontend-spinner';
 import { Normaltekst } from 'nav-frontend-typografi';
-import { withTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 
-function LoadingMessage({t}) {
+function LoadingMessage() {
+  const { t, i18n } = useTranslation()
   const style = {
     display: 'flex',
     flexDirection: 'column'
@@ -22,4 +23,4 @@ function LoadingMessage({t}) {
     </PanelBase>
   );
 }
-export default withTranslation()
+export default LoadingMessage

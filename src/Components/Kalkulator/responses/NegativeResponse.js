@@ -2,10 +2,10 @@ import React from 'react';
 import Panel from "nav-frontend-paneler";
 import { Element, Normaltekst, Innholdstittel } from 'nav-frontend-typografi';
 import Lenke from 'nav-frontend-lenker';
-import { withTranslation, Trans } from 'react-i18next';
+import { useTranslation, Trans } from 'react-i18next';
 
- function NegativeResponse({t}) {
-
+ function NegativeResponse() {
+  const { t, i18n } = useTranslation()
   const padding = {
     padding: '10px'
   }
@@ -49,4 +49,4 @@ import { withTranslation, Trans } from 'react-i18next';
 
   );
 }
-export default withTranslation()(NegativeResponse);
+export default (NegativeResponse);
