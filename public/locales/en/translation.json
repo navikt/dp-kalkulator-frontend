@@ -1,43 +1,43 @@
 {
     "consent_innholdstittel":"We gather information from the Tax-authority",
    
-    "consent_skattetinfo":"Vi henter opplysninger fra Skatteetaten for å regne ut omtrent hvor mye du kunne fått i dagpenger i dag. Opplysningene slettes etter en time.",
+    "consent_skattetinfo":"We gather information from the Tax-authority to calculate the estimate of how much you could get in dagpenger.",
    
-    "consent_knapp":"Fortsett",
+    "consent_knapp":"Continue",
 
-    "header_sidetittel":"Estimering av Engelsk",
+    "header_sidetittel":"Estimation of dagpenger",
    
-    "TilbakeTilInfoKnapp":"Tilbake til informasjon om dagpenger",
+    "TilbakeTilInfoKnapp":"Return to information about dagpenger",
    
-    "LoadingMessage_informasjon":"Vi laster nå inn informasjonen vi har om dine inntekter som danner grunnlaget for vurderingen om dagpenger.",
+    "LoadingMessage_informasjon":"We are now loading the information we have about your income that sets the foundation for your estimate of dagpenger.",
 
-    "LoadingMessage_ventetid":"Vennligst vent opp til 2 minutter før du laster inn siden på nytt.",
+    "LoadingMessage_ventetid":"Please wait up to two minutes before refreshing the page.",
 
-    "NegativeResponse_innholdstittel":"Dagpengekalkulator",
+    "NegativeResponse_innholdstittel":"Dagpengecalculator",
    
-    "NegativeResponse":"Søker du om dagpenger fra i dag, risikerer du å få avslag på grunn av for lav inntekt.",
+    "NegativeResponse":"If you apply for dagpenger from today, you're risking refusal because of too low income.",
 
-    "NegativeResponse_inntektsopplysning_informasjon":"Beregningen er basert på inntektsopplysninger fra <0>skatteetaten.no/mineinntekter</0>. Hvis opplysningene er feil, bør de rettes.",
+    "NegativeResponse_inntektsopplysning_informasjon":"The calculation is based on incomeinformation from <0>skatteetaten.no/mineinntekter</0>. If the information in incorrect, it has to be corrected.",
 
-    "NegativeResponse_listheader":"Du kan likevel ha rett på dagpenger om du",
+    "NegativeResponse_listheader":"You may still have right for dagpenger if you",
 
-    "NegativeResponse_listitems1":"nylig har avtjent verneplikt",
+    "NegativeResponse_listitems1":"recently served military conscription",
 
-    "NegativeResponse_listitems2":"søker fram i tid",
+    "NegativeResponse_listitems2":"applying ahead of time",
 
-    "NegativeResponse_listitems3":"har arbeidet i et annet EØS-land",
+    "NegativeResponse_listitems3":"have worked in another EEA-country",
 
-    "NegativeResponse_listitems4":"har hatt inntekt fra fangst og fisk",
+    "NegativeResponse_listitems4":"have collected income from fishing",
 
-    "NegativeResponse_soksanbefaling":"Vi anbefaler uansett at du sender <0>søknad om dagpenger</0>",
+    "NegativeResponse_soksanbefaling":"We recommend you to apply for <0>employment benefits</0> anyway",
 
-    "PositiveResponse_info1":"I dag ville du fått omtrent:",
+    "PositiveResponse_info1":"Today you would get an estimate of:",
 
-    "PositiveResponse_info_sats":"{{uke_sats}} kr før skatt hver uke i {{periode_antalluker}} uker",
+    "PositiveResponse_info_sats":"{{uke_sats}} before taxes for {{periode_antalluker}} weeks",
 
-    "PositiveResponse_vilkar":"Dette gjelder kun hvis du oppfyller alle <0>vilkårene for å få dagpenger</0> én uke før du blir arbeidsledig.",
+    "PositiveResponse_vilkar":"This applies only if you fulfill all the <0>requirements for enployment benefits</0> one week before unemployment.",
 
-    "PositiveResponse_anbefaling":"Vi anbefaler at du <0>sender søknad</0> én uke før du blir arbeidsledig.",
+    "PositiveResponse_anbefaling":"We recomend that you <0>send a application</0> one week before you become unemployed.",
 
-    "PositiveResponse_beregning":"Beregningen er basert på opplysninger om dine inntekter fra <0>skatteetaten.no/mineinntekter</0>"
+    "PositiveResponse_beregning":"The calculations are based on information about your income from <0>skatteetaten.no/mineinntekter</0>"
 }
