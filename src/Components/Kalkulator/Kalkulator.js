@@ -8,25 +8,38 @@ const Kalkulator = ({ addError }) => {
     const [oppfyllerInntekstkrav, setoppfyllerInntekstkrav] = useState(false)
     const [antallUker, setAntallUker] = useState(0)
     const [ukesats, setUkesats] = useState(0)
+    const [verified, setVerified] = useState(false)
+
+    const localPayload = {
+        aktorId: process.env.REACT_APP_aktorId,
+        vedtakId: process.env.REACT_APP_vedtakId,
+        beregningsdato: process.env.REACT_APP_beregningsdato
+    }
+    const localparams = JSON.stringify(localPayload)
 
     useEffect(() => {
-        const localPayload = {
-            aktorId: process.env.REACT_APP_aktorId,
-            vedtakId: process.env.REACT_APP_vedtakId,
-            beregningsdato: process.env.REACT_APP_beregningsdato
-        }
-        const localparams = JSON.stringify(localPayload)
-
-        api.startBehov(localparams)
+        
+        if (verified) {
+             api.startBehov(localparams)
             .then(transform)
             .then(setData)
             .catch(error => {
+                // if error == 401 redirect
                 console.log(error)
                 addError(error)
             }
-            )
-    }, [])
-
+            ) 
+            //setData({oppfyllerMinstekrav:true, periodeAntalluker:13, ukeSats:54000})
+        } else {
+            api.verifyToken()
+                .then(setVerified(true))
+                .catch(
+                    setVerified(true)  // TODO: DELETE BEFORE DEPLOYMENY
+                    //api.redirectToLogin()
+                )
+        } 
+        
+    }, [verified])
 
     const setData = (json) => {
         setoppfyllerInntekstkrav(json.oppfyllerMinstekrav);

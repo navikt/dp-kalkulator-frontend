@@ -1,10 +1,7 @@
-FROM navikt/nginx-oidc:latest
+FROM navikt/node-express:12.2.0-alpine
+RUN mkdir app
+COPY build /app
+COPY server.js /app/server.js
+EXPOSE 8000
 
-ENV APP_DIR="/app" \
-	APP_PATH_PREFIX="/arbeid/dagpenger/kalkulator" \
-	APP_CALLBACK_PATH="/oidc/callback"
-
-COPY build /app/arbeid/dagpenger/kalkulator
-
-COPY nais/proxy.nginx      /nginx/proxy.nginx
-EXPOSE 3000 443
+#ENTRYPOINT ["/dumb-init", "node", "/app/server.js"]
