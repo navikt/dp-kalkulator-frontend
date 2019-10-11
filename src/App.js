@@ -39,14 +39,15 @@ const col_20 = {
   width: "20%",
 }
 
+    const sprakvelger = null // = <Sprakvelger style={col_20} />
+
   return (
     <div className="App">
       <Header />
       <div style={flex_grid}>
       <TilbakeTilInfoKnapp style={col_80} /> 
-      <Sprakvelger style={col_20} />
+          {sprakvelger}
       </div>
-      
       <Feilmelding errors={errorObjects} click={handleRemoveError} />
       {consent ?
         <Kalkulator addError={addError} /> :
