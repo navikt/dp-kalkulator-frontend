@@ -1,0 +1,66 @@
+@import '~nav-frontend-core/less/_variabler';
+
+.App {
+  max-width: 600px;
+  margin: 0 auto;
+
+  header {
+    padding: 24px;
+    text-align: center;
+  }
+
+  .toolbar {
+  }
+}
+
+// super simple flex grid
+.flex {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: flex-start;
+
+  &.center {
+    justify-content: center;
+  }
+
+  &.flexend {
+    justify-content: flex-end;
+  }
+
+  .flexend {
+    flex-grow: 1;
+    text-align: right;
+  }
+}
+
+// Spacer
+.spacer {
+  &.fourPx {
+    margin-bottom: 4px;
+  }
+
+  &.eightPx {
+    margin-bottom: 8px;
+  }
+
+  &.sixteenPx {
+    margin-bottom: 16px;
+  }
+
+  &.twentyPx {
+    margin-bottom: 20px;
+  }
+
+  &.dashed {
+    border-bottom: 3px dashed @navGra20;
+    margin-left: -10px;
+    margin-top: 13px;
+  }
+}
+
+// navfrontend shortcomings
+
+.padding16 {
+  padding: 16px;
+}
