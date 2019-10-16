@@ -7,7 +7,6 @@ const Header = () => {
 
   return (
     <header className="header">
-      <img src="https://www.nav.no/_public/beta.nav.no/images/logo.png" alt="NAV-logo-rød-trans-bg-200.png" />
       <Sidetittel>{t('header_sidetittel')}</Sidetittel>
     </header>
   );

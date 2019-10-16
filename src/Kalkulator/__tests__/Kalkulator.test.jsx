@@ -1,5 +1,7 @@
-describe('Kalkulator', () => {
-  it('Skal vise positiv tilbakemelding', () => {});
+import React from 'react';
+import { shallow } from 'enzyme';
+import Kalkulator from '../Kalkulator';
 
-  it('Skal vise negativ tilbakemelding', () => {});
+describe('Kalkulator', () => {
+  it('Skal vise kalkulator', () => {});
 });

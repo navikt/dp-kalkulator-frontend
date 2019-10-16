@@ -1,43 +1,22 @@
 {
-    "consent_innholdstittel":"Vi henter informasjon fra Skatteetaten",
-   
-    "consent_skattetinfo":"Vi henter opplysninger fra Skatteetaten for å regne ut omtrent hvor mye du kunne fått i dagpenger i dag. Opplysningene slettes etter en time.",
-   
-    "consent_knapp":"Fortsett",
-
-    "header_sidetittel":"Estimering av dagpenger",
-   
-    "TilbakeTilInfoKnapp":"Tilbake til informasjon om dagpenger",
-   
-    "LoadingMessage_informasjon":"Vi laster nå inn informasjonen vi har om dine inntekter som danner grunnlaget for vurderingen om dagpenger.",
-
-    "LoadingMessage_ventetid":"Vennligst vent opp til 2 minutter før du laster inn siden på nytt.",
-
-    "NegativeResponse_innholdstittel":"Dagpengekalkulator",
-   
-    "NegativeResponse":"Søker du om dagpenger fra i dag, risikerer du å få avslag på grunn av for lav inntekt.",
-
-    "NegativeResponse_inntektsopplysning_informasjon":"Beregningen er basert på inntektsopplysninger fra <0>skatteetaten.no/mineinntekter</0>. Hvis opplysningene er feil, bør de rettes.",
-
-    "NegativeResponse_listheader":"Du kan likevel ha rett på dagpenger om du",
-
-    "NegativeResponse_listitems1":"nylig har avtjent verneplikt",
-
-    "NegativeResponse_listitems2":"søker fram i tid",
-
-    "NegativeResponse_listitems3":"har arbeidet i et annet EØS-land",
-
-    "NegativeResponse_listitems4":"har hatt inntekt fra fangst og fisk",
-
-    "NegativeResponse_soksanbefaling":"Vi anbefaler uansett at du sender <0>søknad om dagpenger</0>",
-
-    "PositiveResponse_info1":"I dag ville du fått omtrent:",
-
-    "PositiveResponse_info_sats":"{{uke_sats}} kr før skatt hver uke i {{periode_antalluker}} uker",
-
-    "PositiveResponse_vilkar":"Dette gjelder kun hvis du oppfyller alle <0>vilkårene for å få dagpenger</0> én uke før du blir arbeidsledig.",
-
-    "PositiveResponse_anbefaling":"Vi anbefaler at du <0>sender søknad</0> én uke før du blir arbeidsledig.",
-
-    "PositiveResponse_beregning":"Beregningen er basert på opplysninger om dine inntekter fra <0>skatteetaten.no/mineinntekter</0>"
+  "consent_innholdstittel": "Vi henter informasjon fra Skatteetaten",
+  "consent_skattetinfo": "Vi henter opplysninger fra Skatteetaten for å regne ut omtrent hvor mye du kunne fått i dagpenger i dag. Opplysningene slettes etter en time.",
+  "consent_knapp": "Fortsett",
+  "header_sidetittel": "Dagpengekalkulator",
+  "TilbakeTilInfoKnapp": "Tilbake",
+  "LoadingMessage_informasjon": "Vi laster nå inn informasjonen vi har om dine inntekter som danner grunnlaget for vurderingen om dagpenger.",
+  "LoadingMessage_ventetid": "Vennligst vent opp til 2 minutter før du laster inn siden på nytt.",
+  "NegativeResponse": "Søker du om dagpenger fra i dag, risikerer du å få avslag på grunn av for lav inntekt.",
+  "NegativeResponse_inntektsopplysning_informasjon": "Beregningen er basert på inntektsopplysninger fra <0>skatteetaten.no/mineinntekter</0>. Hvis opplysningene er feil, bør de rettes.",
+  "NegativeResponse_listheader": "Du kan likevel ha rett på dagpenger om du",
+  "NegativeResponse_listitems1": "nylig har avtjent verneplikt",
+  "NegativeResponse_listitems2": "søker fram i tid",
+  "NegativeResponse_listitems3": "har arbeidet i et annet EØS-land",
+  "NegativeResponse_listitems4": "har hatt inntekt fra fangst og fisk",
+  "NegativeResponse_soksanbefaling": "Vi anbefaler uansett at du sender <0>søknad om dagpenger</0>",
+  "PositiveResponse_info1": "I dag ville du fått omtrent:",
+  "PositiveResponse_info_sats": "{{ukesats}} kr før skatt hver uke i {{periodeAntallUker}} uker",
+  "PositiveResponse_vilkar": "Dette gjelder kun hvis du oppfyller alle <0>vilkårene for å få dagpenger</0> én uke før du blir arbeidsledig.",
+  "PositiveResponse_anbefaling": "Vi anbefaler at du <0>sender søknad</0> én uke før du blir arbeidsledig.",
+  "PositiveResponse_beregning": "Beregningen er basert på opplysninger om dine inntekter fra <0>skatteetaten.no/mineinntekter</0>"
 }

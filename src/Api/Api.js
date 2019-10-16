@@ -1,11 +1,9 @@
 import conf from './Config';
 
-require('dotenv').config();
 const axios = require('axios');
 
-// TODO async await es6
-
-const header = () => ({
+const instance = axios.create({
+  timeout: 1000,
   headers: {
     'X-API-KEY': process.env.REACT_APP_TOKEN,
     'Content-Type': 'application/json',
@@ -13,13 +11,15 @@ const header = () => ({
   withCredentials: true,
 });
 
+// TODO async await es6
+
 const get = async url => {
-  const response = await axios.get(url, header());
+  const response = await instance.get(url);
   return response;
 };
 
 const post = async (url, params) => {
-  const response = await axios.post(url, params, header());
+  const response = await instance.post(url, params);
   return response;
 };
 
@@ -46,10 +46,12 @@ const poll = async (url, retries = 3, msDelay = 1000) => {
 
 const getSubsumsjonsLocation = response => response.headers.location;
 
-const startBehov = async params =>
+const startBehov = async params => {
+  console.log(process.env.REACT_APP_API_URL, params);
   post(process.env.REACT_APP_API_URL, params)
     .then(getSubsumsjonsLocation)
     .then(poll);
+};
 
 const redirectToLogin = () => {
   window.location.assign(`${conf.LOGINSERVICE}&redirect=${window.location.href}`); // eslint-disable-line no-undef

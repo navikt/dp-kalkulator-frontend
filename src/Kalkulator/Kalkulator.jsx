@@ -5,12 +5,13 @@ import api from '../Api/Api';
 import QualifiedMessage from './QualifiedMessage';
 
 const Kalkulator = ({ addErrorCallback }) => {
-  const [loading, setLoading] = useState(true);
-  const [IsOppfyllerInntekstkrav, setoppfyllerInntekstkrav] = useState(false);
-  const [antallUker, setAntallUker] = useState(0);
+  const [isLoading, setLoading] = useState(true);
+  const [isOppfyllerInntekstkrav, setOppfyllerInntekstkrav] = useState(false);
+  const [periodeAntallUker, setPeriodeAntallUker] = useState(0);
   const [ukesats, setUkesats] = useState(0);
-  const [isVerified, setVerified] = useState(false);
+  const [isVerified, setVerified] = useState(true);
 
+  // todo fjerne rerender da dette fører til henting av data kontinuerlig
   const localPayload = {
     aktorId: process.env.REACT_APP_aktorId,
     vedtakId: process.env.REACT_APP_vedtakId,
@@ -18,46 +19,50 @@ const Kalkulator = ({ addErrorCallback }) => {
   };
   const localparams = JSON.stringify(localPayload);
 
-  const setData = json => {
-    setoppfyllerInntekstkrav(json.oppfyllerMinstekrav);
-    setAntallUker(json.periodeAntalluker);
-    setUkesats(json.ukeSats);
-    setLoading(false);
-  };
-
-  const transform = data => ({
-    oppfyllerMinstekrav: data.minsteinntektResultat.oppfyllerMinsteinntekt,
-    periodeAntalluker: data.periodeResultat.periodeAntallUker,
-    ukeSats: data.satsResultat.ukesats,
-  });
-
-  // TODO try catch med await async
   useEffect(() => {
-    if (isVerified) {
-      api
-        .startBehov(localparams)
-        .then(transform)
-        .then(setData)
-        .catch(error => {
-          // if error == 401 redirect
+    async function fetchData() {
+      if (isVerified) {
+        try {
+          // const response = await api.startBehov(localparams);
+          const response = {
+            minsteinntektResultat: {
+              oppfyllerMinsteinntekt: true,
+            },
+            periodeResultat: {
+              periodeAntallUker: 13,
+            },
+            satsResultat: {
+              ukesats: 54000,
+            },
+          };
+          const { minsteinntektResultat, periodeResultat, satsResultat } = response;
+          setOppfyllerInntekstkrav(minsteinntektResultat.oppfyllerMinsteinntekt);
+          setPeriodeAntallUker(periodeResultat.periodeAntallUker);
+          setUkesats(satsResultat.ukesats);
+          setLoading(false);
+        } catch (error) {
           addErrorCallback(error);
-        });
-      // setData({oppfyllerMinstekrav:true, periodeAntalluker:13, ukeSats:54000})
-    } else {
-      api
-        .verifyToken()
-        .then(setVerified(true))
-        .catch(
-          setVerified(true), // TODO: DELETE BEFORE DEPLOYMENY
+          throw new Error(error);
+        }
+        // setData({oppfyllerMinstekrav:true, periodeAntalluker:13, ukeSats:54000})
+      } else {
+        try {
+          await api.verifyToken(localparams);
+          await setVerified(true);
+        } catch (error) {
+          setVerified(true); // TODO: DELETE BEFORE DEPLOYMENY
           // api.redirectToLogin()
-        );
+          throw new Error(error);
+        }
+      }
     }
+    fetchData();
   }, [addErrorCallback, isVerified, localparams]);
 
-  if (loading) {
+  if (isLoading) {
     return <LoadingMessage />;
   }
-  return <QualifiedMessage oppfyllerInntekstkrav={IsOppfyllerInntekstkrav} ukesats={ukesats} periodeAntalluker={antallUker} />;
+  return <QualifiedMessage isOppfyllerInntekstkrav={isOppfyllerInntekstkrav} ukesats={ukesats} periodeAntallUker={periodeAntallUker} />;
 };
 
 Kalkulator.propTypes = {

@@ -9,7 +9,7 @@ import Sprakvelger from '../Components/Sprakvelger';
 
 import './App.css';
 
-const App = () => {
+export const App = () => {
   const [isSamtykke, setSamtykke] = useState(false);
   const [errorObjects, setErrorObjects] = useState([]);
 

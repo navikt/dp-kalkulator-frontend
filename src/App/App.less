@@ -10,6 +10,15 @@
   }
 
   .toolbar {
+    .languageselector {
+      @media (max-width: 720px) {
+        text-align: center;
+      }
+    }
+  }
+
+  .panelblue {
+    background-color: @navLysBlaLighten80;
   }
 }
 
@@ -37,30 +46,39 @@
 // Spacer
 .spacer {
   &.fourPx {
-    margin-bottom: 4px;
+    padding-bottom: 4px;
   }
 
   &.eightPx {
-    margin-bottom: 8px;
+    padding-bottom: 8px;
   }
 
   &.sixteenPx {
-    margin-bottom: 16px;
+    padding-bottom: 16px;
   }
 
   &.twentyPx {
-    margin-bottom: 20px;
+    padding-bottom: 20px;
   }
 
   &.dashed {
     border-bottom: 3px dashed @navGra20;
-    margin-left: -10px;
-    margin-top: 13px;
+    padding-left: -10px;
+    padding-top: 13px;
   }
 }
 
-// navfrontend shortcomings
+// navfrontend shortcomings and faults
 
 .padding16 {
   padding: 16px;
+}
+
+.content {
+  .typo-normal,
+  .typo-sidetittel,
+  .typo-innholdstittel,
+  .typo-undertittel {
+    margin-bottom: 1em;
+  }
 }

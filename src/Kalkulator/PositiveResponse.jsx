@@ -1,17 +1,16 @@
-import { Element, Normaltekst, Innholdstittel } from 'nav-frontend-typografi';
-import PropTypes from 'prop-types';
 import React from 'react';
+import PropTypes from 'prop-types';
+import { Element, Normaltekst, Innholdstittel } from 'nav-frontend-typografi';
 import Lenke from 'nav-frontend-lenker';
 import { useTranslation, Trans } from 'react-i18next';
 
-function PositiveResponse({ ukeSats, periodeAntalluker }) {
+export const PositiveResponse = ({ ukesats, periodeAntallUker }) => {
   const { t } = useTranslation();
 
   return (
-    <div className="padding16">
-      <Innholdstittel>Dagpengekalkulator</Innholdstittel>
-      <Normaltekst>{t('PositiveResponse_info1')}</Normaltekst>
-      <Element>{t('PositiveResponse_info_sats', { uke_sats: ukeSats, periode_antalluker: periodeAntalluker })}</Element>
+    <>
+      <Element>{t('PositiveResponse_info1')}</Element>
+      <Innholdstittel tag="h3">{t('PositiveResponse_info_sats', { ukesats, periodeAntallUker })}</Innholdstittel>
       <Normaltekst>
         <Trans i18nKey="PositiveResponse_vilkar">
           <Lenke href="http://nav.no/dagpenger" />
@@ -27,12 +26,12 @@ function PositiveResponse({ ukeSats, periodeAntalluker }) {
           <Lenke href="https://skatteetaten.no/mineinntekter" />
         </Trans>
       </Normaltekst>
-    </div>
+    </>
   );
-}
+};
 
 PositiveResponse.propTypes = {
-  ukeSats: PropTypes.number,
-  periodeAntalluker: PropTypes.number,
+  ukesats: PropTypes.number.isRequired,
+  periodeAntallUker: PropTypes.number.isRequired,
 };
 export default PositiveResponse;

@@ -6,13 +6,12 @@ import { useTranslation } from 'react-i18next';
 import { Normaltekst, Innholdstittel } from 'nav-frontend-typografi';
 import Spacer from '../Components/Spacer';
 
-function SamtykkePanel({ onClickCallback }) {
+export const SamtykkePanel = ({ onClickCallback }) => {
   const { t } = useTranslation();
   return (
     <Panel>
       <div className="padding16">
-        <Innholdstittel>{t('consent_innholdstittel')}</Innholdstittel>
-        <Spacer twentyPx />
+        <Innholdstittel tag="h2">{t('consent_innholdstittel')}</Innholdstittel>
         <Normaltekst>{t('consent_skattetinfo')}</Normaltekst>
         <Spacer twentyPx />
         <div className="flex center">
@@ -21,7 +20,7 @@ function SamtykkePanel({ onClickCallback }) {
       </div>
     </Panel>
   );
-}
+};
 
 SamtykkePanel.propTypes = {
   onClickCallback: PropTypes.func.isRequired,

@@ -1,43 +1,22 @@
 {
-    "consent_innholdstittel":"We gather information from the Tax-authority",
-   
-    "consent_skattetinfo":"We gather information from the Tax-authority to calculate the estimate of how much you could get in dagpenger.",
-   
-    "consent_knapp":"Continue",
-
-    "header_sidetittel":"Estimation of dagpenger",
-   
-    "TilbakeTilInfoKnapp":"Return to information about dagpenger",
-   
-    "LoadingMessage_informasjon":"We are now loading the information we have about your income that sets the foundation for your estimate of dagpenger.",
-
-    "LoadingMessage_ventetid":"Please wait up to two minutes before refreshing the page.",
-
-    "NegativeResponse_innholdstittel":"Dagpengecalculator",
-   
-    "NegativeResponse":"If you apply for dagpenger from today, you're risking refusal because of too low income.",
-
-    "NegativeResponse_inntektsopplysning_informasjon":"The calculation is based on incomeinformation from <0>skatteetaten.no/mineinntekter</0>. If the information in incorrect, it has to be corrected.",
-
-    "NegativeResponse_listheader":"You may still have right for dagpenger if you",
-
-    "NegativeResponse_listitems1":"recently served military conscription",
-
-    "NegativeResponse_listitems2":"applying ahead of time",
-
-    "NegativeResponse_listitems3":"have worked in another EEA-country",
-
-    "NegativeResponse_listitems4":"have collected income from fishing",
-
-    "NegativeResponse_soksanbefaling":"We recommend you to apply for <0>employment benefits</0> anyway",
-
-    "PositiveResponse_info1":"Today you would get an estimate of:",
-
-    "PositiveResponse_info_sats":"{{uke_sats}} before taxes for {{periode_antalluker}} weeks",
-
-    "PositiveResponse_vilkar":"This applies only if you fulfill all the <0>requirements for enployment benefits</0> one week before unemployment.",
-
-    "PositiveResponse_anbefaling":"We recomend that you <0>send a application</0> one week before you become unemployed.",
-
-    "PositiveResponse_beregning":"The calculations are based on information about your income from <0>skatteetaten.no/mineinntekter</0>"
+  "consent_innholdstittel": "We gather information from the Tax-authority",
+  "consent_skattetinfo": "We gather information from the Tax-authority to calculate the estimate of how much you could get in dagpenger.",
+  "consent_knapp": "Continue",
+  "header_sidetittel": "Dagpengekalkulator",
+  "TilbakeTilInfoKnapp": "Back",
+  "LoadingMessage_informasjon": "We are now loading the information we have about your income that sets the foundation for your estimate of dagpenger.",
+  "LoadingMessage_ventetid": "Please wait up to two minutes before refreshing the page.",
+  "NegativeResponse": "If you apply for dagpenger from today, you're risking refusal because of too low income.",
+  "NegativeResponse_inntektsopplysning_informasjon": "The calculation is based on incomeinformation from <0>skatteetaten.no/mineinntekter</0>. If the information in incorrect, it has to be corrected.",
+  "NegativeResponse_listheader": "You may still have right for dagpenger if you",
+  "NegativeResponse_listitems1": "recently served military conscription",
+  "NegativeResponse_listitems2": "applying ahead of time",
+  "NegativeResponse_listitems3": "have worked in another EEA-country",
+  "NegativeResponse_listitems4": "have collected income from fishing",
+  "NegativeResponse_soksanbefaling": "We recommend you to apply for <0>employment benefits</0> anyway",
+  "PositiveResponse_info1": "Today you would get an estimate of:",
+  "PositiveResponse_info_sats": "{{ukesats}} before taxes for {{periodeAntallUker}} weeks",
+  "PositiveResponse_vilkar": "This applies only if you fulfill all the <0>requirements for enployment benefits</0> one week before unemployment.",
+  "PositiveResponse_anbefaling": "We recomend that you <0>send a application</0> one week before you become unemployed.",
+  "PositiveResponse_beregning": "The calculations are based on information about your income from <0>skatteetaten.no/mineinntekter</0>"
 }
