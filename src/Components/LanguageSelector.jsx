@@ -5,7 +5,7 @@ import i18n from '../i18n';
 // TODO:
 // Fix so that buttons lose focus/hover?
 // design.nav.knapp has a button outline/background when active&focused we dont want
-const Sprakvelger = () => {
+const LanguageSelector = () => {
   const handleSetLanguage = language => {
     i18n.changeLanguage(language);
   };
@@ -21,4 +21,4 @@ const Sprakvelger = () => {
     </div>
   );
 };
-export default Sprakvelger;
+export default LanguageSelector;

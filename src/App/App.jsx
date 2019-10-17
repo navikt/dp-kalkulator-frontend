@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import Header from '../Components/Header';
-import TilbakeTilInfoKnapp from '../Components/TilbakeTilInfoKnapp';
+import BackButton from '../Components/BackButton';
 import SamtykkePanel from '../Kalkulator/SamtykkePanel';
 import Feilmelding from '../Components/Feilmelding';
 import Spacer from '../Components/Spacer';
 import Kalkulator from '../Kalkulator/Kalkulator';
-import Sprakvelger from '../Components/Sprakvelger';
+import LanguageSelector from '../Components/LanguageSelector';
 
 import './App.css';
 
@@ -26,13 +26,13 @@ export const App = () => {
       <Header />
       <div className="content">
         <div className="toolbar flex">
-          <Sprakvelger />
+          <LanguageSelector />
         </div>
         <Spacer twentyPx />
         <Feilmelding errors={errorObjects} onClick={handleRemoveError} />
         {isSamtykke ? <Kalkulator addErrorCallback={addError} /> : <SamtykkePanel onClickCallback={handleSetSamtykke} />}
         <Spacer twentyPx />
-        <TilbakeTilInfoKnapp />
+        <BackButton />
       </div>
     </div>
   );

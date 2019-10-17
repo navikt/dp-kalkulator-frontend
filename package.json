@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "proxy": "http://localhost:8092",
-  "homepage": "https://nav.no/arbeid/dagpenger/kalkulator",
   "scripts": {
     "start:js": "NODE_ENV=dev react-scripts start",
     "build:js": "react-scripts build",
@@ -28,6 +27,7 @@
     "i18next-xhr-backend": "^2.0.1",
     "lodash.throttle": "^4.1.1",
     "moment": "^2.24.0",
+    "mustache-express": "^1.3.0",
     "nav-frontend-alertstriper": "^3.0.3",
     "nav-frontend-alertstriper-style": "^2.0.2",
     "nav-frontend-chevron": "^1.0.10",
@@ -59,6 +59,7 @@
     "nav-frontend-typografi": "^2.0.12",
     "nav-frontend-typografi-style": "^1.0.14",
     "path": "^0.12.7",
+    "promise": "^8.0.3",
     "prop-types": "^15.7.2",
     "react": "^16.9.0",
     "react-collapse": "^4.0.3",

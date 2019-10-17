@@ -2,7 +2,7 @@ import React from 'react';
 import { Tilbakeknapp } from 'nav-frontend-ikonknapper';
 import { useTranslation } from 'react-i18next';
 
-function TilbakeTilInfoKnapp() {
+function BackButton() {
   const { t } = useTranslation();
   return (
     <a href="https://nav.no/dagpenger">
@@ -10,4 +10,4 @@ function TilbakeTilInfoKnapp() {
     </a>
   );
 }
-export default TilbakeTilInfoKnapp;
+export default BackButton;

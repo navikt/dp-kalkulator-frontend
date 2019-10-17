@@ -23,6 +23,7 @@ const Kalkulator = ({ addErrorCallback }) => {
     async function fetchData() {
       if (isVerified) {
         try {
+          // FIXME: MOCK FOR NOW
           // const response = await api.startBehov(localparams);
           const response = {
             minsteinntektResultat: {
@@ -44,7 +45,6 @@ const Kalkulator = ({ addErrorCallback }) => {
           addErrorCallback(error);
           throw new Error(error);
         }
-        // setData({oppfyllerMinstekrav:true, periodeAntalluker:13, ukeSats:54000})
       } else {
         try {
           await api.verifyToken(localparams);

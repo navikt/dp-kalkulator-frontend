@@ -7,7 +7,7 @@ import { SamtykkePanel } from '../../Kalkulator/SamtykkePanel';
 import Feilmelding from '../../Components/Feilmelding';
 import Spacer from '../../Components/Spacer';
 import Kalkulator from '../../Kalkulator/Kalkulator';
-import Sprakvelger from '../../Components/Sprakvelger';
+import LanguageSelector from '../../Components/LanguageSelector';
 
 describe('App', () => {
   it('renders without crashing', () => {
