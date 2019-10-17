@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import Header from '../Components/Header';
 import BackButton from '../Components/BackButton';
 import SamtykkePanel from '../Kalkulator/SamtykkePanel';
@@ -20,6 +20,10 @@ export const App = () => {
   const handleSetSamtykke = () => {
     setSamtykke(true);
   };
+
+  useEffect( () => {
+    console.log(process.env)
+  }, [])
 
   return (
     <div className="App">
