@@ -3,7 +3,7 @@ const express = require('express');
 const path = require('path');
 const Promise = require('promise');
 const mustacheExpress = require('mustache-express');
-const getDecorator = require('./decorator');
+const getDecorator = require('./public/scripts/decorator');
 
 const port = process.env.PORT || 8000;
 
@@ -35,14 +35,10 @@ const renderApp = decoratorFragments =>
   });
 
 const startServer = html => {
-  app.use('/arbeid/dagpenger/kalkulator/static/js', express.static(path.resolve(__dirname, 'static/js')));
-  app.use('/arbeid/dagpenger/kalkulator/static/css', express.static(path.resolve(__dirname, 'static/css')));
-  app.use('/arbeid/dagpenger/kalkulator/static/media', express.static(path.resolve(__dirname, 'static/media')));
-  app.use('/locales', express.static(path.resolve(__dirname, 'build/locales')));
-
-  app.get(['/build/settings.js'], (req, res) => {
-    res.sendFile(path.resolve(`../../build/settings.js`));
-  });
+  app.use('*/static/js', express.static(path.resolve(__dirname, '/static/js')));
+  app.use('*/static/css', express.static(path.resolve(__dirname, '/static/css')));
+  app.use('*/static/media', express.static(path.resolve(__dirname, '/static/media')));
+  app.use('*/locales', express.static(path.resolve(__dirname, '/locales')));
 
   app.get(/^\/(?!.*build).*$/, (req, res) => {
     res.send(html);
