@@ -47,7 +47,6 @@ const poll = async (url, retries = 3, msDelay = 1000) => {
 const getSubsumsjonsLocation = response => response.headers.location;
 
 const startBehov = async params => {
-  console.log(process.env.REACT_APP_API_URL, params);
   post(process.env.REACT_APP_API_URL, params)
     .then(getSubsumsjonsLocation)
     .then(poll);

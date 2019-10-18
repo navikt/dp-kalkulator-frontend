@@ -35,9 +35,9 @@ const renderApp = decoratorFragments =>
   });
 
 const startServer = html => {
-  app.use('/arbeid/dagpenger/kalkulator/static/js', express.static(path.resolve(__dirname, 'build/static/js')));
-  app.use('/arbeid/dagpenger/kalkulator/static/css', express.static(path.resolve(__dirname, 'build/static/css')));
-  app.use('/arbeid/dagpenger/kalkulator/static/media', express.static(path.resolve(__dirname, 'build/static/media')));
+  app.use('/arbeid/dagpenger/kalkulator/static/js', express.static(path.resolve(__dirname, 'static/js')));
+  app.use('/arbeid/dagpenger/kalkulator/static/css', express.static(path.resolve(__dirname, 'static/css')));
+  app.use('/arbeid/dagpenger/kalkulator/static/media', express.static(path.resolve(__dirname, 'static/media')));
   app.use('/locales', express.static(path.resolve(__dirname, 'build/locales')));
 
   app.get(['/build/settings.js'], (req, res) => {
@@ -48,8 +48,8 @@ const startServer = html => {
     res.send(html);
   });
 
-  app.get('/health/isAlive', (req, res) => res.sendStatus(200));
-  app.get('/health/isReady', (req, res) => res.sendStatus(200));
+  app.get('/arbeid/dagpenger/kalkulator/health/is-alive', (req, res) => res.sendStatus(200));
+  app.get('/arbeid/dagpenger/kalkulator/health/is-ready', (req, res) => res.sendStatus(200));
 
   const server = app.listen({ port }, () => {
     console.log(`🚀 Server ready at http://localhost:${port}`);
