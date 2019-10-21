@@ -58,7 +58,7 @@ const startServer = html => {
   app.get('/arbeid/dagpenger/kalkulator/health/is-alive', (req, res) => res.sendStatus(200));
   app.get('/arbeid/dagpenger/kalkulator/health/is-ready', (req, res) => res.sendStatus(200));
 
-  app.get(/^(?!.*\/(static)).*$/, (req, res) => {
+  app.get(/^(?!.*\/static).*$/, (req, res) => {
     res.send(html);
   });
 
