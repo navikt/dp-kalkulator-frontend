@@ -50,15 +50,15 @@ const renderApp = decoratorFragments =>
 
 const startServer = html => {
   // app.use(express.static(__dirname));
-  app.use('/static/js', express.static(path.resolve(__dirname, 'static/js')));
-  app.use('/static/css', express.static(path.resolve(__dirname, 'static/css')));
-  app.use('/static/media', express.static(path.resolve(__dirname, 'static/media')));
+  app.use('/arbeid/dagpenger/kalkulator/static/js', express.static(path.resolve(__dirname, 'static/js')));
+  app.use('/arbeid/dagpenger/kalkulator/static/css', express.static(path.resolve(__dirname, 'static/css')));
+  app.use('/arbeid/dagpenger/kalkulator/static/media', express.static(path.resolve(__dirname, 'static/media')));
   app.use('/locales', express.static(path.resolve(__dirname, 'locales')));
 
   app.get('/arbeid/dagpenger/kalkulator/health/is-alive', (req, res) => res.sendStatus(200));
   app.get('/arbeid/dagpenger/kalkulator/health/is-ready', (req, res) => res.sendStatus(200));
 
-  app.get(/^(?!.*\/static).*$/, (req, res) => {
+  app.get(/^(?!.*\/(static)).*$/, (req, res) => {
     res.send(html);
   });
 
