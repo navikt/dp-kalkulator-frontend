@@ -11,6 +11,4 @@ export const getLoginUrl = (host = window.location.hostname) => {
   return 'https://loginservice.nav.no/login?level=Level3';
 };
 
-export default {
-  LOGINSERVICE: getLoginUrl(),
-};
+export default getLoginUrl;

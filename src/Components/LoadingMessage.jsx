@@ -3,14 +3,14 @@ import NavFrontendSpinner from 'nav-frontend-spinner';
 import { Normaltekst } from 'nav-frontend-typografi';
 import { useTranslation } from 'react-i18next';
 
-function LoadingMessage() {
+const LoadingMessage = props => {
   const { t } = useTranslation();
   return (
-    <div>
-      <NavFrontendSpinner />
+    <div className="flex center vertical textcenter">
+      <NavFrontendSpinner {...props} />
       <Normaltekst>{t('LoadingMessage_informasjon')}</Normaltekst>
       <Normaltekst>{t('LoadingMessage_ventetid')}</Normaltekst>
     </div>
   );
-}
+};
 export default LoadingMessage;
