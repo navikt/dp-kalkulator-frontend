@@ -1,6 +1,5 @@
 import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
-import 'moment/locale/nb';
 import Spinner from 'nav-frontend-spinner';
 import { I18nextProvider } from 'react-i18next';
 import App from './App/App';
