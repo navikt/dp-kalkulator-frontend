@@ -1,30 +1,41 @@
-const jsdom = require('jsdom');
-const request = require('request');
-
-const { JSDOM } = jsdom;
+const https = require('https');
 
 const requestDecorator = callback => {
-  const baseUrl = 'https://appres.nav.no'; // process.env.APPRES_CMS_URL;
-  return request(`${baseUrl}/common-html/v4/navno?header=true&styles=true&scripts=true&footer=true`, callback);
+  const url = `https://appres.nav.no/common-html/v4/navno?header=true&styles=true&scripts=true&footer=true`;
+
+  let body = '';
+  const request = https.get(url, response => {
+    response.setEncoding('utf8');
+
+    response.on('data', chunk => {
+      if (chunk) {
+        body += chunk;
+      }
+    });
+
+    response.on('end', () => {
+      // console.log('body', chunks);
+      return callback(response, body);
+    });
+  });
+
+  request.end();
 };
 
 const getDecorator = () =>
   new Promise((resolve, reject) => {
-    const callback = (error, response, body) => {
-      if (!error && response.statusCode >= 200 && response.statusCode < 400) {
-        const { document } = new JSDOM(body).window;
-        const prop = 'innerHTML';
-
+    const callback = (response, body) => {
+      if (response.statusCode >= 200 && response.statusCode < 400) {
         const data = {
-          NAV_SCRIPTS: document.getElementById('scripts')[prop],
-          NAV_STYLES: document.getElementById('styles')[prop],
-          NAV_HEADING: document.getElementById('header')[prop],
-          NAV_FOOTER: document.getElementById('footer')[prop],
+          NAV_SCRIPTS: body.match(/<div id="scripts">(.*?)<h2 class="divider">/is)[1],
+          NAV_STYLES: body.match(/<div id="styles">(.*?)<\/div>/i)[1],
+          NAV_HEADING: body.match(/<div id="header">(.*?)<h2 class="divider">/is)[1],
+          NAV_FOOTER: body.match(/<div id="footer">(.*?)<h2 class="divider">/is)[1],
         };
         resolve(data);
       } else {
-        console.log(error);
-        reject(new Error(error));
+        console.log(response.statusCode);
+        reject(new Error(response.statusCode));
       }
     };
 
