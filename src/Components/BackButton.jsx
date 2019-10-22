@@ -6,7 +6,7 @@ function BackButton() {
   const { t } = useTranslation();
   return (
     <a href="https://nav.no/dagpenger">
-      <Tilbakeknapp mini>{t('TilbakeTilInfoKnapp')}</Tilbakeknapp>
+      <Tilbakeknapp mini>{t('KNAPP.TILBAKE')}</Tilbakeknapp>
     </a>
   );
 }

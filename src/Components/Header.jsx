@@ -1,13 +1,22 @@
 import React from 'react';
-import { Sidetittel } from 'nav-frontend-typografi';
+import { Sidetittel, Normaltekst } from 'nav-frontend-typografi';
 import { useTranslation } from 'react-i18next';
+import { ReactComponent as HeaderImage } from '../Images/header.svg';
 
 const Header = () => {
   const { t } = useTranslation();
 
   return (
     <header className="header">
-      <Sidetittel>{t('header_sidetittel')}</Sidetittel>
+      <div className="content">
+        <div className="text">
+          <Sidetittel>{t('HEADER.TITTEL')}</Sidetittel>
+          <Normaltekst>Regn ut om du vil få dagpenger eller ikke</Normaltekst>
+        </div>
+        <div role="presentation" className="header__svgContainer">
+          <HeaderImage />
+        </div>
+      </div>
     </header>
   );
 };

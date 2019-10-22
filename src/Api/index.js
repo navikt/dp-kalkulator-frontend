@@ -38,7 +38,7 @@ export const verifyToken = async () => {
 
 // const getSubsumsjonsLocation = response => response.headers.location;
 
-const redirectToLogin = () => {
+export const redirectToLogin = () => {
   window.location.assign(`${getLoginUrl}&redirect=${window.location.href}`); // eslint-disable-line no-undef
 };
 
