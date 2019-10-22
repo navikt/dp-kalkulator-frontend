@@ -31,11 +31,11 @@ export const App = () => {
   return (
     <div className="App">
       <ErrorBoundary apiErrors={errors}>
+        <div className="toolbar">
+          <LanguageSelector />
+        </div>
         <Header />
         <div className="content">
-          <div className="toolbar flex">
-            <LanguageSelector />
-          </div>
           <Spacer twentyPx />
           {isSamtykke ? <Kalkulator /> : <SamtykkePanel onClickCallback={handleSetSamtykke} />}
           <Spacer twentyPx />

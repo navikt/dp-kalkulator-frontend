@@ -11,20 +11,20 @@ const NegativeResponse = () => {
     <>
       <Undertittel tag="h3">{t('NegativeResponse')}</Undertittel>
       <Normaltekst>
-        <Trans i18nKey="NegativeResponse_inntektsopplysning_informasjon">
+        <Trans i18nKey="NEGATIVERESPONSE.BEREGNING_BASERT_PÅ_INNTEKTSOPPLYSNINGER">
           <Lenke href="https://skatteetaten.no/mineinntekter" />
         </Trans>
       </Normaltekst>
       <Spacer twentyPx />
       <Element>{t('NegativeResponse_listheader')}</Element>
       <ul>
-        <li>{t('NegativeResponse_listitems1')}</li>
-        <li>{t('NegativeResponse_listitems2')}</li>
-        <li>{t('NegativeResponse_listitems3')}</li>
-        <li>{t('NegativeResponse_listitems4')}</li>
+        <li>{t('NEGATIVERESPONSE.AVTJENT_VERNEPLIKT')}</li>
+        <li>{t('NEGATIVERESPONSE.SØKER_FREM_I_TID')}</li>
+        <li>{t('NEGATIVERESPONSE.ARBEIDET_I_EØS')}</li>
+        <li>{t('NEGATIVERESPONSE.INNTEKT_FRA_FANGST_OG_FISK')}</li>
       </ul>
       <Element>
-        <Trans i18nKey="NegativeResponse_soknadsanbefaling">
+        <Trans i18nKey="NEGATIVERESPONSE.ANFEBALER_AT_DU_SENDER_SØKNAD">
           <Lenke href="https://www.nav.no/soknader/nb/person/arbeid/dagpenger" />
         </Trans>
       </Element>

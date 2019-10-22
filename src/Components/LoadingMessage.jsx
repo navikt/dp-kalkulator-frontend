@@ -8,8 +8,8 @@ const LoadingMessage = props => {
   return (
     <div className="flex center vertical textcenter">
       <NavFrontendSpinner {...props} />
-      <Normaltekst>{t('LoadingMessage_informasjon')}</Normaltekst>
-      <Normaltekst>{t('LoadingMessage_ventetid')}</Normaltekst>
+      <Normaltekst>{t('LOADINGMESSAGE.INFO')}</Normaltekst>
+      <Normaltekst>{t('LOADINGMESSAGE.VENNLIGST_VENT')}</Normaltekst>
     </div>
   );
 };

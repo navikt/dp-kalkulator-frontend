@@ -11,11 +11,11 @@ export const SamtykkePanel = ({ onClickCallback }) => {
   return (
     <Panel>
       <div className="padding16">
-        <Innholdstittel tag="h2">{t('consent_innholdstittel')}</Innholdstittel>
-        <Normaltekst>{t('consent_skattetinfo')}</Normaltekst>
+        <Innholdstittel tag="h2">{t('SAMTYKKEPANEL.HENTER_INFO_FRA_SKATTEETAEN_TITTEL')}</Innholdstittel>
+        <Normaltekst>{t('SAMTYKKEPANEL.HENTER_INFO_FRA_SKATTEETAEN_INGRESS')}</Normaltekst>
         <Spacer twentyPx />
         <div className="flex center">
-          <Hovedknapp onClick={onClickCallback}>{t('consent_knapp')}</Hovedknapp>
+          <Hovedknapp onClick={onClickCallback}>{t('KNAPP.FORTSETT')}</Hovedknapp>
         </div>
       </div>
     </Panel>
