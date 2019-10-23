@@ -8,7 +8,8 @@
     "TILBAKE": "Tilbake"
   },
   "HEADER": {
-    "TITTEL": "Dagpengekalkulator"
+    "TITTEL": "Dagpengekalkulator",
+    "INGRESS": "Regn ut om du vil få dagpenger eller ikke."
   },
   "LOADINGMESSAGE": {
     "INFO": "Vi laster nå inn informasjonen vi har om dine inntekter som danner grunnlaget for vurderingen om dagpenger.",
@@ -26,9 +27,9 @@
   },
   "POSITIVERESPONSE": {
     "IDAG_FÅTT_OMTRENT": "I dag ville du fått omtrent:",
-    "POSITIVERESPONSE.UKESATS_HVER_UKE": "{{ukesats}} kr før skatt hver uke i {{periodeAntallUker}} uker",
-    "POSITIVERESPONSE.GJELDER_KUN_DU_OPPFYLLER_VILKÅR": "Dette gjelder kun hvis du oppfyller alle <0>vilkårene for å få dagpenger</0> én uke før du blir arbeidsledig.",
-    "POSITIVERESPONSE.ANBEFALER_SENDE_SØKNAD_ANTALL_UKER": "Vi anbefaler at du <0>sender søknad</0> én uke før du blir arbeidsledig.",
-    "POSITIVERESPONSE.BEREGNINGEN_ER_BASERT_PÅ_OPPLYSNINGER": "Beregningen er basert på opplysninger om dine inntekter fra <0>skatteetaten.no/mineinntekter</0>"
+    "UKESATS_HVER_UKE": "{{ukesats}} kr før skatt hver uke i {{periodeAntallUker}} uker",
+    "GJELDER_KUN_DU_OPPFYLLER_VILKÅR": "Dette gjelder kun hvis du oppfyller alle <0>vilkårene for å få dagpenger</0> én uke før du blir arbeidsledig.",
+    "ANBEFALER_SENDE_SØKNAD_ANTALL_UKER": "Vi anbefaler at du <0>sender søknad</0> én uke før du blir arbeidsledig.",
+    "BEREGNINGEN_ER_BASERT_PÅ_OPPLYSNINGER": "Beregningen er basert på opplysninger om dine inntekter fra <0>skatteetaten.no/mineinntekter</0>"
   }
 }

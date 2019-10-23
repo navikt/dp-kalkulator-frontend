@@ -10,7 +10,7 @@ export const PositiveResponse = ({ ukesats, periodeAntallUker }) => {
   return (
     <>
       <Element>{t('POSITIVERESPONSE.IDAG_FÅTT_OMTRENT')}</Element>
-      <Innholdstittel tag="h3">{t('PositiveResponse_info_sats', { ukesats, periodeAntallUker })}</Innholdstittel>
+      <Innholdstittel tag="h3">{t('POSITIVERESPONSE.UKESATS_HVER_UKE', { ukesats, periodeAntallUker })}</Innholdstittel>
       <Normaltekst>
         <Trans i18nKey="POSITIVERESPONSE.GJELDER_KUN_DU_OPPFYLLER_VILKÅR">
           <Lenke href="http://nav.no/dagpenger" />
