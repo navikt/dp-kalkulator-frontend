@@ -133,6 +133,14 @@
     border-radius: 4px;
   }
 
+  &[aria-expanded="true"] {
+    border-radius: 4px 4px 0 0;
+
+    i {
+      transform: rotate(180deg);
+    }
+  }
+
   &:hover {
     background-color: white;
     cursor: pointer;
@@ -140,17 +148,13 @@
 
   .flag {
     margin-right: 16px;
+    svg {
+      vertical-align: middle;
+    }
   }
 
   .language {
     flex: 1;
   }
 
-  &.open {
-    border-radius: 4px 4px 0 0;
-
-    i {
-      transform: rotate(180deg);
-    }
-  }
 }
