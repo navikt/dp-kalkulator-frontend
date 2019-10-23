@@ -23,6 +23,7 @@ Builds the app for production to the `build` folder.<br>
 #### `npm run server`
 
 Build and start express server
+Open [http://localhost:8000](http://localhost:3000) to view it in the browser.
 
 ### `npm run docker`
 
