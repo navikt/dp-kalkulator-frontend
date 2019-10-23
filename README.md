@@ -22,11 +22,11 @@ Builds the app for production to the `build` folder.<br>
 
 #### `npm run server`
 
-Start express server
+Build and start express server
 
 ### `npm run docker`
 
-Start docker
+Build and start docker
 
 ## Licenses and attribution
 For updated information, always see LICENSE first!
