@@ -9,14 +9,14 @@ const NegativeResponse = () => {
 
   return (
     <>
-      <Undertittel tag="h3">{t('NegativeResponse')}</Undertittel>
+      <Undertittel tag="h3">{t('NEGATIVERESPONSE.RISIKERER_AVSLAG_GRUNNET_LAV_INNTEKT')}</Undertittel>
       <Normaltekst>
         <Trans i18nKey="NEGATIVERESPONSE.BEREGNING_BASERT_PÅ_INNTEKTSOPPLYSNINGER">
           <Lenke href="https://skatteetaten.no/mineinntekter" />
         </Trans>
       </Normaltekst>
       <Spacer twentyPx />
-      <Element>{t('NegativeResponse_listheader')}</Element>
+      <Element>{t('NEGATIVERESPONSE.LIKEVEL_RETT')}</Element>
       <ul>
         <li>{t('NEGATIVERESPONSE.AVTJENT_VERNEPLIKT')}</li>
         <li>{t('NEGATIVERESPONSE.SØKER_FREM_I_TID')}</li>

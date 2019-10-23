@@ -8,7 +8,8 @@
     "TILBAKE": "Back"
   },
   "HEADER": {
-    "TITTEL": "Dagpengekalkulator"
+    "TITTEL": "Dagpengekalkulator",
+    "INGRESS": "Calculate if you qualify or not."
   },
   "LOADINGMESSAGE": {
     "INFO": "We are now loading the information we have about your income that sets the foundation for your estimate of dagpenger.",
@@ -26,9 +27,9 @@
   },
   "POSITIVERESPONSE": {
     "IDAG_FÅTT_OMTRENT": "Today you would get an estimate of:",
-    "POSITIVERESPONSE.UKESATS_HVER_UKE": "{{ukesats}} before taxes for {{periodeAntallUker}} weeks",
-    "POSITIVERESPONSE.GJELDER_KUN_DU_OPPFYLLER_VILKÅR": "This applies only if you fulfill all the <0>requirements for enployment benefits</0> one week before unemployment.",
-    "POSITIVERESPONSE.ANBEFALER_SENDE_SØKNAD_ANTALL_UKER": "We recomend that you <0>send a application</0> one week before you become unemployed.",
-    "POSITIVERESPONSE.BEREGNINGEN_ER_BASERT_PÅ_OPPLYSNINGER": "The calculations are based on information about your income from <0>skatteetaten.no/mineinntekter</0>"
+    "UKESATS_HVER_UKE": "{{ukesats}} before taxes for {{periodeAntallUker}} weeks",
+    "GJELDER_KUN_DU_OPPFYLLER_VILKÅR": "This applies only if you fulfill all the <0>requirements for enployment benefits</0> one week before unemployment.",
+    "ANBEFALER_SENDE_SØKNAD_ANTALL_UKER": "We recomend that you <0>send a application</0> one week before you become unemployed.",
+    "BEREGNINGEN_ER_BASERT_PÅ_OPPLYSNINGER": "The calculations are based on information about your income from <0>skatteetaten.no/mineinntekter</0>"
   }
 }
