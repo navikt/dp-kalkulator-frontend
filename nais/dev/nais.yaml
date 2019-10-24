@@ -8,8 +8,8 @@ spec:
     - "https://www-q0.nav.no/arbeid/dagpenger/kalkulator/"
   sessionAffinity: ClientIP # Sticky Session for ingress controller to prevent 404 on rollout
   env:
-    - name: APP_KALK_API_BASEURL
-      value: http://dp-kalkulator-api/
+    - name: REACT_APP_API_URL
+      value: https://www-q0.nav.no/arbeid/dagpenger/kalkulator-api/
     - name: REDIS_HOST
       value: dagpenger-redis.default.svc.nais.local
     - name: REDIS_PORT

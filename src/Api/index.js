@@ -5,7 +5,6 @@ const axios = require('axios');
 const instance = axios.create({
   timeout: 2000,
   headers: {
-    'X-API-KEY': process.env.REACT_APP_TOKEN,
     'Content-Type': 'application/json',
   },
   withCredentials: true,
@@ -28,7 +27,7 @@ export const getBehov = async data => {
 export const verifyToken = async () => {
   try {
     return await instance({
-      method: 'post',
+      method: 'get',
       url: `${getLoginUrl}`,
     });
   } catch (error) {
