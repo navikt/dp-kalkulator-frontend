@@ -1,20 +1,45 @@
 @import '~nav-frontend-core/less/_variabler';
 
-.App {
-  max-width: 600px;
-  margin: 0 auto;
+:root {
+  --reach-menu-button: 1;
+}
 
+.App {
   header {
-    padding: 24px;
-    text-align: center;
+    background-color: @navBlaLighten80;
+    border-bottom: 5px solid @navBlaLighten60;
+
+    .content {
+      display: flex;
+      justify-content: space-between;
+      align-items: stretch;
+      overflow: hidden;
+      position: relative;
+      max-width: 900px;
+
+      .text {
+        padding: 48px 0;
+        .typo-sidetittel {
+          margin-bottom: 0.2em;
+        }
+      }
+    }
   }
 
   .toolbar {
+    background-color: @navLysGra;
+    padding: 12px;
+
     .languageselector {
-      @media (max-width: 720px) {
-        text-align: center;
-      }
+      margin: 0 auto;
+      width: 230px;
     }
+  }
+
+  .content {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 18px 0;
   }
 
   .panelblue {
@@ -88,5 +113,48 @@
   .typo-innholdstittel,
   .typo-undertittel {
     margin-bottom: 1em;
+  }
+}
+
+[data-reach-menu] {
+  position: absolute;
+}
+
+.languagebutton {
+  background-color: @navLysGra;
+  border: 1px solid @navMorkGra;
+  width: 230px;
+  padding: 4px 8px;
+  display: flex;
+  justify-content: space-between;
+  text-align: left;
+
+  &.currentlanguage {
+    border-radius: 4px;
+  }
+
+  &[aria-expanded="true"] {
+    border-radius: 4px 4px 0 0;
+
+    i {
+      transform: rotate(180deg);
+    }
+  }
+
+
+  &:hover {
+    background-color: white;
+    cursor: pointer;
+  }
+
+  .flag {
+    margin-right: 16px;
+    svg {
+      vertical-align: middle;
+    }
+  }
+
+  .language {
+    flex: 1;
   }
 }

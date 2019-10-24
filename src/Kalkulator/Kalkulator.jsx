@@ -12,9 +12,9 @@ const Kalkulator = () => {
 
   // todo fjerne rerender da dette fører til henting av data kontinuerlig
   const localPayload = {
-    aktorId: process.env.REACT_APP_aktorId,
-    vedtakId: process.env.REACT_APP_vedtakId,
-    beregningsdato: process.env.REACT_APP_beregningsdato,
+    aktorId: process.env.APP_aktorId,
+    vedtakId: process.env.APP_vedtakId,
+    beregningsdato: process.env.APP_beregningsdato,
   };
   const localparams = JSON.stringify(localPayload);
 
@@ -53,7 +53,7 @@ const Kalkulator = () => {
           await setVerified(true);
         } catch (error) {
           setVerified(true); // TODO: DELETE BEFORE DEPLOYMENT
-          // redirectToLogin();
+          redirectToLogin();
           throw new Error(`En feil har oppstått i forbindelse med tjenestekallet til backend. ${error}`);
         }
       }

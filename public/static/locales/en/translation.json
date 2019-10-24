@@ -1,0 +1,35 @@
+{
+  "SAMTYKKEPANEL": {
+    "HENTER_INFO_FRA_SKATTEETAEN_TITTEL": "We gather information from the Tax-authority",
+    "HENTER_INFO_FRA_SKATTEETAEN_INGRESS": "We gather information from the Tax-authority to calculate the estimate of how much you could get in dagpenger."
+  },
+  "KNAPP": {
+    "FORTSETT": "Continue",
+    "TILBAKE": "Back"
+  },
+  "HEADER": {
+    "TITTEL": "Dagpengekalkulator",
+    "INGRESS": "Calculate if you qualify or not."
+  },
+  "LOADINGMESSAGE": {
+    "INFO": "We are now loading the information we have about your income that sets the foundation for your estimate of dagpenger.",
+    "VENNLIGST_VENT": "Please wait up to two minutes before refreshing the page."
+  },
+  "NEGATIVERESPONSE": {
+    "RISIKERER_AVSLAG_GRUNNET_LAV_INNTEKT": "If you apply for dagpenger from today, you're risking refusal because of too low income.",
+    "BEREGNING_BASERT_PÅ_INNTEKTSOPPLYSNINGER": "The calculation is based on incomeinformation from <0>skatteetaten.no/mineinntekter</0>. If the information in incorrect, it has to be corrected.",
+    "LIKEVEL_RETT": "You may still have right for dagpenger if you",
+    "AVTJENT_VERNEPLIKT": "recently served military conscription",
+    "SØKER_FREM_I_TID": "applying ahead of time",
+    "ARBEIDET_I_EØS": "have worked in another EEA-country",
+    "INNTEKT_FRA_FANGST_OG_FISK": "ave collected income from fishing",
+    "ANFEBALER_AT_DU_SENDER_SØKNAD": "We recommend you to apply for <0>employment benefits</0> anyway"
+  },
+  "POSITIVERESPONSE": {
+    "IDAG_FÅTT_OMTRENT": "Today you would get an estimate of:",
+    "UKESATS_HVER_UKE": "{{ukesats}} before taxes for {{periodeAntallUker}} weeks",
+    "GJELDER_KUN_DU_OPPFYLLER_VILKÅR": "This applies only if you fulfill all the <0>requirements for enployment benefits</0> one week before unemployment.",
+    "ANBEFALER_SENDE_SØKNAD_ANTALL_UKER": "We recomend that you <0>send a application</0> one week before you become unemployed.",
+    "BEREGNINGEN_ER_BASERT_PÅ_OPPLYSNINGER": "The calculations are based on information about your income from <0>skatteetaten.no/mineinntekter</0>"
+  }
+}

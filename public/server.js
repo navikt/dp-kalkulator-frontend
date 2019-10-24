@@ -54,7 +54,7 @@ const startServer = html => {
   app.use('/arbeid/dagpenger/kalkulator/static/js', express.static(path.resolve(__dirname, 'static/js')));
   app.use('/arbeid/dagpenger/kalkulator/static/css', express.static(path.resolve(__dirname, 'static/css')));
   app.use('/arbeid/dagpenger/kalkulator/static/media', express.static(path.resolve(__dirname, 'static/media')));
-  app.use('/locales', express.static(path.resolve(__dirname, 'locales')));
+  app.use('/arbeid/dagpenger/kalkulator/static/locales', express.static(path.resolve(__dirname, 'static/locales')));
 
 
   app.get('/arbeid/dagpenger/kalkulator/health/is-alive', (req, res) => res.sendStatus(200));
