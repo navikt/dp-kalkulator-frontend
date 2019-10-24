@@ -30,7 +30,7 @@ app.engine('html', (filePath, options, callback) => {
 });
 
 app.use((req, res, next) => {
-  res.removeHeader('X-Powered-By');
+  //res.removeHeader('X-Powered-By');
   res.set('X-Frame-Options', 'SAMEORIGIN');
   res.set('X-XSS-Protection', '1; mode=block');
   res.set('X-Content-Type-Options', 'nosniff');
@@ -59,12 +59,12 @@ const startServer = html => {
   app.get('/arbeid/dagpenger/kalkulator/health/is-alive', (req, res) => res.sendStatus(200));
   app.get('/arbeid/dagpenger/kalkulator/health/is-ready', (req, res) => res.sendStatus(200));
 
-  app.use((_, res) => res.status(404).send("Beklager, denne siden ble ikke funnet. o.O"));
+
 
   app.get(/^(?!.*\/static).*$/, (req, res) => {
     res.send(html);
   });
-
+  app.use((_, res) => res.status(404).send("Beklager, denne siden ble ikke funnet. o.O"));
   const server = app.listen({ port }, () => {
     console.log(`🚀 Server ready at http://localhost:${port}`);
   });
