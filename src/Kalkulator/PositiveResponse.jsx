@@ -21,11 +21,6 @@ export const PositiveResponse = ({ ukesats, periodeAntallUker }) => {
           <Lenke href="https://www.nav.no/soknader/nb/person/arbeid/dagpenger" />
         </Trans>
       </Normaltekst>
-      <Normaltekst>
-        <Trans i18nKey="POSITIVERESPONSE.BEREGNINGEN_ER_BASERT_PÅ_OPPLYSNINGER">
-          <Lenke href="https://skatteetaten.no/mineinntekter" />
-        </Trans>
-      </Normaltekst>
     </>
   );
 };
