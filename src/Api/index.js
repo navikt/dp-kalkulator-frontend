@@ -1,4 +1,4 @@
-import { getLoginUrl } from './Config';
+import { getLoginUrl, getApiBaseUrl } from './Config';
 
 const axios = require('axios');
 
@@ -15,7 +15,7 @@ export const getBehov = async data => {
   try {
     return await instance({
       method: 'post',
-      url: `${process.env.REACT_APP_API_URL}/behov`,
+      url: `${getApiBaseUrl()}behov`,
       data,
     });
   } catch (error) {
@@ -28,7 +28,7 @@ export const verifyToken = async () => {
   try {
     return await instance({
       method: 'get',
-      url: `${process.env.REACT_APP_API_URL}/auth`,
+      url: `${getApiBaseUrl()}auth`,
     });
   } catch (error) {
     return error;
