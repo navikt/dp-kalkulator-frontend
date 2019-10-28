@@ -1,7 +1,8 @@
 {
   "SAMTYKKEPANEL": {
-    "HENTER_INFO_FRA_SKATTEETAEN_TITTEL": "Vi henter informasjon fra Skatteetaten",
-    "HENTER_INFO_FRA_SKATTEETAEN_INGRESS": "Vi henter opplysninger fra Skatteetaten for å regne ut omtrent hvor mye du kunne fått i dagpenger i dag. Opplysningene slettes etter en time."
+    "HENTER_INFO_FRA_SKATTEETAEN_TITTEL": "Vi henter informasjon om din inntekt fra Skatteetaten",
+    "HENTER_INFO_FRA_SKATTEETAEN_INGRESS": "Du kan selv se dine inntektsopplysninger på <0>skatteetaten.no/mineinntekter</0>.",
+    "OPPLYSNINGENE_SLETTES": "Opplysningene slettes etter en time."
   },
   "KNAPP": {
     "FORTSETT": "Fortsett",
@@ -9,7 +10,7 @@
   },
   "HEADER": {
     "TITTEL": "Dagpengekalkulator",
-    "INGRESS": "Regn ut om du vil få dagpenger eller ikke."
+    "INGRESS": "."
   },
   "LOADINGMESSAGE": {
     "INFO": "Vi laster nå inn informasjonen vi har om dine inntekter som danner grunnlaget for vurderingen om dagpenger.",
@@ -23,13 +24,15 @@
     "SØKER_FREM_I_TID": "søker fram i tid",
     "ARBEIDET_I_EØS": "har arbeidet i et annet EØS-land",
     "INNTEKT_FRA_FANGST_OG_FISK": "har hatt inntekt fra fangst og fisk",
-    "ANFEBALER_AT_DU_SENDER_SØKNAD": "Vi anbefaler uansett at du sender <0>søknad om dagpenger</0>"
+    "ANFEBALER_AT_DU_SENDER_SØKNAD": "Vi anbefaler uansett at du sender <0>søknad om dagpenger</0>",
+    "INNTEKTOPPLYSNINGER_ER_FEIL": "mener inntektopplysningene på <0>skatteetaten.no/mineinntekter</0> er feil.",
+    "ANBEFALER_SENDE_SØKNAD_ANTALL_UKER": "Send <0>søknad om dagpenger</0> én uke før du blir arbeidsledig"
   },
   "POSITIVERESPONSE": {
-    "IDAG_FÅTT_OMTRENT": "I dag ville du fått omtrent:",
+    "IDAG_FÅTT_OMTRENT": "I dag kunne du fått:",
     "UKESATS_HVER_UKE": "{{ukesats}} kr før skatt hver uke i {{periodeAntallUker}} uker",
-    "GJELDER_KUN_DU_OPPFYLLER_VILKÅR": "Dette gjelder kun hvis du oppfyller alle <0>vilkårene for å få dagpenger</0> én uke før du blir arbeidsledig.",
-    "ANBEFALER_SENDE_SØKNAD_ANTALL_UKER": "Vi anbefaler at du <0>sender søknad</0> én uke før du blir arbeidsledig.",
+    "GJELDER_KUN_DU_OPPFYLLER_VILKÅR": "Kalkulatoren viser ikke om du har <0>rett på dagpenger</0>.",
+    "ANBEFALER_SENDE_SØKNAD_ANTALL_UKER": "Send <0>søknad om dagpenger</0> én uke før du blir arbeidsledig.",
     "BEREGNINGEN_ER_BASERT_PÅ_OPPLYSNINGER": "Beregningen er basert på opplysninger om dine inntekter fra <0>skatteetaten.no/mineinntekter</0>"
   }
 }
