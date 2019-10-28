@@ -11,10 +11,9 @@ const Kalkulator = () => {
   const [isVerified, setVerified] = useState(true);
 
   // todo fjerne rerender da dette fører til henting av data kontinuerlig
+  // localpayload brukes kun i testing
   const localPayload = {
-    aktorId: process.env.APP_aktorId,
-    vedtakId: process.env.APP_vedtakId,
-    beregningsdato: process.env.APP_beregningsdato,
+    beregningsdato: "2019-07-01",
   };
   const localparams = JSON.stringify(localPayload);
 
@@ -23,7 +22,7 @@ const Kalkulator = () => {
       if (isVerified) {
         try {
           // FIXME: MOCK FOR NOW
-          const response = await getBehov(localparams);
+          const response = await getBehov(localPayload);
 
           /*
           const response = {

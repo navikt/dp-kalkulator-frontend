@@ -9,8 +9,7 @@
     "TILBAKE": "Tilbake"
   },
   "HEADER": {
-    "TITTEL": "Dagpengekalkulator",
-    "INGRESS": "."
+    "TITTEL": "Dagpengekalkulator"
   },
   "LOADINGMESSAGE": {
     "INFO": "Vi laster nå inn informasjonen vi har om dine inntekter som danner grunnlaget for vurderingen om dagpenger.",
