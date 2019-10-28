@@ -15,7 +15,7 @@ export const getBehov = async data => {
   try {
     return await instance({
       method: 'post',
-      url: `${process.env.REACT_APP_API_URL}`,
+      url: `${process.env.REACT_APP_API_URL}/behov`,
       data,
     });
   } catch (error) {
@@ -28,7 +28,7 @@ export const verifyToken = async () => {
   try {
     return await instance({
       method: 'get',
-      url: `${getLoginUrl}`,
+      url: `${process.env.REACT_APP_API_URL}/auth`,
     });
   } catch (error) {
     return error;

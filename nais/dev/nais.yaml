@@ -10,11 +10,4 @@ spec:
   env:
     - name: REACT_APP_API_URL
       value: https://www-q0.nav.no/arbeid/dagpenger/kalkulator-api/
-    - name: REDIS_HOST
-      value: dagpenger-redis.default.svc.nais.local
-    - name: REDIS_PORT
-      value: "6379"
-    - name: OIDC_HOST_URL
-      value: https://isso-q.adeo.no/isso/oauth2
-    - name: OIDC_AGENTNAME
-      value: dp-inntekt-innsyn-ui-q1
+

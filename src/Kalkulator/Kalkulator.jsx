@@ -48,10 +48,10 @@ const Kalkulator = () => {
         }
       } else {
         try {
-          await verifyToken(localparams);
+          await verifyToken();
           await setVerified(true);
         } catch (error) {
-          setVerified(true); // TODO: DELETE BEFORE DEPLOYMENT
+          setVerified(false); // TODO: DELETE BEFORE DEPLOYMENT
           redirectToLogin();
           throw new Error(`En feil har oppstått i forbindelse med tjenestekallet til backend. ${error}`);
         }
