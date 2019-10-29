@@ -50,7 +50,9 @@ const Kalkulator = () => {
         try {
           await verifyToken(localparams)
             .then((response)=>{
+              console.log("response is: "+response);
               if(response.status===200){setVerified(true)}
+              if(response.status===401){redirectToLogin()}
             });
         } catch (error) {
           console.log(error);
