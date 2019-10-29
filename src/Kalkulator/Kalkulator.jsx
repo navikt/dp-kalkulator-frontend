@@ -50,11 +50,11 @@ const Kalkulator = () => {
         try {
           await verifyToken(localparams)
             .then((response)=>{
-              response.status===200?setVerified(true):null
+              response.status===200?setVerified(true):""
             });
         } catch (error) {
           console.log(error);
-          error.response.status===401?redirectToLogin():null;
+          error.response.status===401?redirectToLogin():"";
           setVerified(false); // TODO: DELETE BEFORE DEPLOYMENT
           throw new Error(`En feil har oppstått i forbindelse med tjenestekallet til backend. ${error}`);
         }
