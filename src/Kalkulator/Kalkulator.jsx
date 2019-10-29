@@ -49,6 +49,9 @@ const Kalkulator = () => {
       } else {
         try {
           await verifyToken(localparams)
+            .then((response)=>{
+              response.status===200?setVerified(true):null
+            });
         } catch (error) {
           console.log(error);
           error.response.status===401?redirectToLogin():null;
