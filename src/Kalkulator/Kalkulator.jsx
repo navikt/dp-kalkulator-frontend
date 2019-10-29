@@ -62,7 +62,7 @@ const Kalkulator = () => {
     };
 
     fetchData();
-  }, [isVerified, localparams]);
+  }, [localparams]);
 
   if (isLoading) {
     return <LoadingMessage type="XL" />;
