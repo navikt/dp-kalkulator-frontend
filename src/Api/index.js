@@ -2,7 +2,6 @@ import { getLoginUrl, getApiBaseUrl } from './Config';
 
 const axios = require('axios');
 
-
 const instance = axios.create({
   timeout: 2000,
   headers: {
@@ -10,7 +9,6 @@ const instance = axios.create({
   },
   withCredentials: true,
 });
-
 
 // FIXME hvorfor der dette en post?
 export const getBehov = async data => {

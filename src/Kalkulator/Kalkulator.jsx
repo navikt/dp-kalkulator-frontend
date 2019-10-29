@@ -20,41 +20,41 @@ const Kalkulator = () => {
   useEffect(() => {
     const fetchData = async () => {
       if (isVerified) {
-        getBehov(localPayload)
-          .then((response) => {
-            const {minsteinntektResultat, periodeResultat, satsResultat} = response;
-            setOppfyllerInntekstkrav(minsteinntektResultat.oppfyllerMinsteinntekt);
-            setPeriodeAntallUker(periodeResultat.periodeAntallUker);
-            setUkesats(satsResultat.ukesats);
-          })
-          .catch((error) => {
-            throw new Error(`En feil har oppstått i forbindelse med tjenestekallet til backend. ${error}`);
-          })
-          .finally(setLoading(false));
-        // FIXME: MOCK FOR NOW
-        /*
-        const response = {
-          minsteinntektResultat: {
-            oppfyllerMinsteinntekt: true,
-          },
-          periodeResultat: {
-            periodeAntallUker: 13,
-          },
-          satsResultat: {
-            ukesats: 54000,
-          },
-        };
-        */
-      }
-      else {
-        verifyToken()
-          .then((response) => {
-            console.log(response)
-            //response.status===401?redirectToLogin():setVerified(true)
-          })
-          .catch((error) => {
-            throw new Error(`En feil har oppstått i forbindelse med tjenestekallet til backend. ${error}`);
-          })
+        try {
+          // FIXME: MOCK FOR NOW
+          const response = await getBehov(localPayload);
+
+          /*
+          const response = {
+            minsteinntektResultat: {
+              oppfyllerMinsteinntekt: true,
+            },
+            periodeResultat: {
+              periodeAntallUker: 13,
+            },
+            satsResultat: {
+              ukesats: 54000,
+            },
+          };
+          */
+
+          const { minsteinntektResultat, periodeResultat, satsResultat } = response;
+          setOppfyllerInntekstkrav(minsteinntektResultat.oppfyllerMinsteinntekt);
+          setPeriodeAntallUker(periodeResultat.periodeAntallUker);
+          setUkesats(satsResultat.ukesats);
+          setLoading(false);
+        } catch (error) {
+          throw new Error(`En feil har oppstått i forbindelse med tjenestekallet til backend. ${error}`);
+        }
+      } else {
+        try {
+          await verifyToken(localparams).then(()=>{setVerified(true)});
+        } catch (error) {
+          console.log(error);
+          setVerified(false); // TODO: DELETE BEFORE DEPLOYMENT
+          redirectToLogin();
+          throw new Error(`En feil har oppstått i forbindelse med tjenestekallet til backend. ${error}`);
+        }
       }
     };
 
