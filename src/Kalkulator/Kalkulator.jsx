@@ -49,13 +49,9 @@ const Kalkulator = () => {
       } else {
         try {
           await verifyToken(localparams)
-            .then((response)=>{
-              response.status===200?setVerified(true):console.log("not verified")
-            })
-            .then(console.log(isVerified));
         } catch (error) {
           console.log(error);
-          redirectToLogin();
+          error.response.status===401?redirectToLogin():null;
           setVerified(false); // TODO: DELETE BEFORE DEPLOYMENT
           throw new Error(`En feil har oppstått i forbindelse med tjenestekallet til backend. ${error}`);
         }
