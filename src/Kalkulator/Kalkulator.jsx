@@ -49,7 +49,8 @@ const Kalkulator = () => {
       else {
         verifyToken()
           .then((response) => {
-            response.status===401?redirectToLogin():setVerified(true)
+            console.log(response)
+            //response.status===401?redirectToLogin():setVerified(true)
           })
           .catch((error) => {
             throw new Error(`En feil har oppstått i forbindelse med tjenestekallet til backend. ${error}`);
