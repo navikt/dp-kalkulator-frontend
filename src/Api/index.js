@@ -23,16 +23,11 @@ export const getBehov = async data => {
   }
 };
 
-export const verifyToken = async () => {
-  try {
-    return await instance({
-      method: 'get',
-      url: `${getApiBaseUrl()}auth`,
-    });
-  } catch (error) {
-    return error;
-  }
-};
+export const verifyToken = async () =>
+  instance({
+    method: 'get',
+    url: `${getApiBaseUrl()}auth`,
+  });
 
 // const getSubsumsjonsLocation = response => response.headers.location;
 

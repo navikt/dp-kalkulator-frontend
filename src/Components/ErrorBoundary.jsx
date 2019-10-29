@@ -45,7 +45,7 @@ class ErrorBoundary extends React.Component {
     // TODO: fiks feilmeldinger
     if (hasError) {
       let feilmelding;
-      console.log(error);
+      console.log("errorboundary: " + error);
 
       switch (error.status) {
         case 404:
