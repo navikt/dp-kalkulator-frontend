@@ -22,19 +22,18 @@ const Kalkulator = () => {
         try {
           await verifyToken();
           // FIXME: MOCK FOR NOW
-          return getBehov(localPayload);
+          const { minsteinntektResultat, periodeResultat, satsResultat } = await getBehov(localPayload);
+          setOppfyllerInntekstkrav(minsteinntektResultat.oppfyllerMinsteinntekt);
+          setPeriodeAntallUker(periodeResultat.periodeAntallUker);
+          setUkesats(satsResultat.ukesats);
+          setLoading(false);
         } catch (error) {
           if(error.response.status===401){redirectToLogin()}
           throw new Error(`En feil har oppstått i forbindelse med tjenestekallet til backend. ${error}`);
         }
       };
-    const { minsteinntektResultat, periodeResultat, satsResultat } = fetchData();
-    setOppfyllerInntekstkrav(minsteinntektResultat.oppfyllerMinsteinntekt);
-    setPeriodeAntallUker(periodeResultat.periodeAntallUker);
-    setUkesats(satsResultat.ukesats);
-    setLoading(false);
+    fetchData();
   }, [localparams]);
-
   if (isLoading) {
     return <LoadingMessage type="XL" />;
   }
