@@ -50,11 +50,12 @@ const Kalkulator = () => {
         try {
           await verifyToken(localparams)
             .then((response)=>{
-              response.status===200?setVerified(true):redirectToLogin()
+              response.status===200?setVerified(true):console.log("not verified")
             })
             .then(console.log(isVerified));
         } catch (error) {
           console.log(error);
+          redirectToLogin();
           setVerified(false); // TODO: DELETE BEFORE DEPLOYMENT
           throw new Error(`En feil har oppstått i forbindelse med tjenestekallet til backend. ${error}`);
         }
@@ -62,7 +63,7 @@ const Kalkulator = () => {
     };
 
     fetchData();
-  }, [localparams]);
+  }, [isVerified, localparams]);
 
   if (isLoading) {
     return <LoadingMessage type="XL" />;

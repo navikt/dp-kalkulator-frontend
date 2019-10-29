@@ -59,7 +59,6 @@ class ErrorBoundary extends React.Component {
           break;
         case 401:
           feilmelding = 'Du er ikke autorisert';
-          redirectToLogin();
           break;
         case 500:
           feilmelding = '500';
