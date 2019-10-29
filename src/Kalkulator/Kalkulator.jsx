@@ -51,7 +51,8 @@ const Kalkulator = () => {
           await verifyToken(localparams)
             .then((response)=>{
               response.status===200?setVerified(true):redirectToLogin()
-            });
+            })
+            .then(console.log(isVerified));
         } catch (error) {
           console.log(error);
           setVerified(false); // TODO: DELETE BEFORE DEPLOYMENT

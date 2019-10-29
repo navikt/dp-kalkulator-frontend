@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import AlertStripe from 'nav-frontend-alertstriper';
 import { captureException, withScope } from '@sentry/browser';
+import {redirectToLogin} from "../Api";
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -58,6 +59,7 @@ class ErrorBoundary extends React.Component {
           break;
         case 401:
           feilmelding = 'Du er ikke autorisert';
+          redirectToLogin();
           break;
         case 500:
           feilmelding = '500';
