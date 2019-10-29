@@ -20,40 +20,40 @@ const Kalkulator = () => {
   useEffect(() => {
     const fetchData = async () => {
       if (isVerified) {
-        try {
-          // FIXME: MOCK FOR NOW
-          const response = await getBehov(localPayload);
-
-          /*
-          const response = {
-            minsteinntektResultat: {
-              oppfyllerMinsteinntekt: true,
-            },
-            periodeResultat: {
-              periodeAntallUker: 13,
-            },
-            satsResultat: {
-              ukesats: 54000,
-            },
-          };
-          */
-
-          const { minsteinntektResultat, periodeResultat, satsResultat } = response;
-          setOppfyllerInntekstkrav(minsteinntektResultat.oppfyllerMinsteinntekt);
-          setPeriodeAntallUker(periodeResultat.periodeAntallUker);
-          setUkesats(satsResultat.ukesats);
-          setLoading(false);
-        } catch (error) {
-          throw new Error(`En feil har oppstått i forbindelse med tjenestekallet til backend. ${error}`);
-        }
-      } else {
-        try {
-          await verifyToken().then((response) => {
+        getBehov(localPayload)
+          .then((response) => {
+            const {minsteinntektResultat, periodeResultat, satsResultat} = response;
+            setOppfyllerInntekstkrav(minsteinntektResultat.oppfyllerMinsteinntekt);
+            setPeriodeAntallUker(periodeResultat.periodeAntallUker);
+            setUkesats(satsResultat.ukesats);
+          })
+          .catch((error) => {
+            throw new Error(`En feil har oppstått i forbindelse med tjenestekallet til backend. ${error}`);
+          })
+          .finally(setLoading(false));
+        // FIXME: MOCK FOR NOW
+        /*
+        const response = {
+          minsteinntektResultat: {
+            oppfyllerMinsteinntekt: true,
+          },
+          periodeResultat: {
+            periodeAntallUker: 13,
+          },
+          satsResultat: {
+            ukesats: 54000,
+          },
+        };
+        */
+      }
+      else {
+        verifyToken()
+          .then((response) => {
             response.status===401?redirectToLogin():setVerified(true)
-          });
-        } catch (error) {
-          throw new Error(`En feil har oppstått i forbindelse med tjenestekallet til backend. ${error}`);
-        }
+          })
+          .catch((error) => {
+            throw new Error(`En feil har oppstått i forbindelse med tjenestekallet til backend. ${error}`);
+          })
       }
     };
 
