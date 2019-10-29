@@ -49,6 +49,7 @@ const Kalkulator = () => {
       } else {
         try {
           await verifyToken(localparams).then(()=>{setVerified(true)});
+          console.log(isVerified);
         } catch (error) {
           console.log(error);
           setVerified(false); // TODO: DELETE BEFORE DEPLOYMENT
