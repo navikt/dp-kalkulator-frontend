@@ -48,12 +48,13 @@ const Kalkulator = () => {
         }
       } else {
         try {
-          await verifyToken(localparams).then(()=>{setVerified(true)});
-          console.log(isVerified);
+          await verifyToken(localparams)
+            .then((response)=>{
+              response.status===200?setVerified(true):redirectToLogin()
+            });
         } catch (error) {
           console.log(error);
           setVerified(false); // TODO: DELETE BEFORE DEPLOYMENT
-          redirectToLogin();
           throw new Error(`En feil har oppstått i forbindelse med tjenestekallet til backend. ${error}`);
         }
       }
