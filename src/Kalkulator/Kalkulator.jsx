@@ -8,9 +8,9 @@ const Kalkulator = () => {
   const [isOppfyllerInntekstkrav, setOppfyllerInntekstkrav] = useState(false);
   const [periodeAntallUker, setPeriodeAntallUker] = useState(0);
   const [ukesats, setUkesats] = useState(0);
-  const [isVerified, setVerified] = useState(false);
 
   // todo fjerne rerender da dette fører til henting av data kontinuerlig
+  // todo: lag logikk for å opprette dagens dato
   // localpayload brukes kun i testing
   const localPayload = {
     beregningsdato: "2019-07-01",
@@ -19,52 +19,21 @@ const Kalkulator = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      if (isVerified) {
         try {
+          await verifyToken();
           // FIXME: MOCK FOR NOW
-          const response = await getBehov(localPayload);
-
-          /*
-          const response = {
-            minsteinntektResultat: {
-              oppfyllerMinsteinntekt: true,
-            },
-            periodeResultat: {
-              periodeAntallUker: 13,
-            },
-            satsResultat: {
-              ukesats: 54000,
-            },
-          };
-          */
-
-          const { minsteinntektResultat, periodeResultat, satsResultat } = response;
-          setOppfyllerInntekstkrav(minsteinntektResultat.oppfyllerMinsteinntekt);
-          setPeriodeAntallUker(periodeResultat.periodeAntallUker);
-          setUkesats(satsResultat.ukesats);
-          setLoading(false);
+          return getBehov(localPayload);
         } catch (error) {
-          throw new Error(`En feil har oppstått i forbindelse med tjenestekallet til backend. ${error}`);
-        }
-      } else {
-        try {
-          await verifyToken(localparams)
-            .then((response)=>{
-              console.log("response is: "+response);
-              if(response.status===200){setVerified(true)}
-              if(response.status===401){redirectToLogin()}
-            });
-        } catch (error) {
-          console.log(error);
           if(error.response.status===401){redirectToLogin()}
-          setVerified(false); // TODO: DELETE BEFORE DEPLOYMENT
           throw new Error(`En feil har oppstått i forbindelse med tjenestekallet til backend. ${error}`);
         }
-      }
-    };
-
-    fetchData();
-  }, [isVerified, localparams]);
+      };
+    const { minsteinntektResultat, periodeResultat, satsResultat } = fetchData();
+    setOppfyllerInntekstkrav(minsteinntektResultat.oppfyllerMinsteinntekt);
+    setPeriodeAntallUker(periodeResultat.periodeAntallUker);
+    setUkesats(satsResultat.ukesats);
+    setLoading(false);
+  }, [localparams]);
 
   if (isLoading) {
     return <LoadingMessage type="XL" />;

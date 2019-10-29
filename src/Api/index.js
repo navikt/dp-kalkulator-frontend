@@ -10,14 +10,44 @@ const instance = axios.create({
   withCredentials: true,
 });
 
-// FIXME hvorfor der dette en post?
+const getSubsumsjonsLocation = response => {
+  return response.headers.location;
+};
+
+const delay = async msDelay => {
+  return new Promise(resolve => {
+    setTimeout(async () => {
+      resolve();
+    }, msDelay);
+  });
+};
+
+// todo: need to rework the if-clause when response.data.status is not see other? might be handled by reject
+const poll = async (uri, retries = 3, msDelay = 1000) => {
+  const response = await instance({
+    method: 'get',
+    url: uri,
+  });
+  if (response.data.status) {
+    if (retries > 0) {
+      await delay(msDelay);
+      return poll(uri, retries - 1, msDelay);
+    }
+    throw new Error('Polling timed out');
+  }
+
+  return response.data;
+};
+
+// FIXME hvorfor der dette en post? Fordi den sender med dato for beregning
 export const getBehov = async data => {
   try {
-    return await instance({
+    const startBehovsLocation = await instance({
       method: 'post',
       url: `${getApiBaseUrl()}behov`,
       data,
     });
+    return await poll(getSubsumsjonsLocation(startBehovsLocation));
   } catch (error) {
     return error;
   }
