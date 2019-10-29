@@ -23,7 +23,6 @@ export const getBehov = async data => {
   }
 };
 
-// FIXME hvorfor der dette en post?
 export const verifyToken = async () => {
   try {
     return await instance({

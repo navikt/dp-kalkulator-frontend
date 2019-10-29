@@ -8,7 +8,7 @@ const Kalkulator = () => {
   const [isOppfyllerInntekstkrav, setOppfyllerInntekstkrav] = useState(false);
   const [periodeAntallUker, setPeriodeAntallUker] = useState(0);
   const [ukesats, setUkesats] = useState(0);
-  const [isVerified, setVerified] = useState(true);
+  const [isVerified, setVerified] = useState(false);
 
   // todo fjerne rerender da dette fører til henting av data kontinuerlig
   // localpayload brukes kun i testing
