@@ -2,17 +2,6 @@ import { getLoginUrl, getApiBaseUrl } from './Config';
 
 const axios = require('axios');
 
-const UNAUTHORIZED = 401;
-axios.interceptors.response.use(
-  response => response,
-  error => {
-    const {status} = error.response;
-    if (status === UNAUTHORIZED) {
-      dispatch(redirectToLogin());
-    }
-    return Promise.reject(error);
-  }
-);
 
 const instance = axios.create({
   timeout: 2000,
