@@ -9,9 +9,6 @@ const Kalkulator = () => {
   const [periodeAntallUker, setPeriodeAntallUker] = useState(0);
   const [ukesats, setUkesats] = useState(0);
 
-
-  const localparams = JSON.stringify(localPayload);
-
   useEffect(() => {
     const fetchData = async () => {
         try {
@@ -29,7 +26,7 @@ const Kalkulator = () => {
         }
       };
     fetchData();
-  }, [localparams]);
+  }, []);
   if (isLoading) {
     return <LoadingMessage type="XL" />;
   }
