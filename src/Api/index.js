@@ -40,12 +40,11 @@ const poll = async (uri, retries = 3, msDelay = 1000) => {
 };
 
 // FIXME hvorfor der dette en post? Fordi den sender med dato for beregning
-export const getBehov = async data => {
+export const getBehov = async () => {
   try {
     const startBehovsLocation = await instance({
-      method: 'post',
+      method: 'get',
       url: `${getApiBaseUrl()}behov`,
-      data,
     });
     return await poll(getSubsumsjonsLocation(startBehovsLocation));
   } catch (error) {

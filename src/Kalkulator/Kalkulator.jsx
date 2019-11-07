@@ -9,12 +9,7 @@ const Kalkulator = () => {
   const [periodeAntallUker, setPeriodeAntallUker] = useState(0);
   const [ukesats, setUkesats] = useState(0);
 
-  // todo fjerne rerender da dette fører til henting av data kontinuerlig
-  // todo: lag logikk for å opprette dagens dato
-  // localpayload brukes kun i testing
-  const localPayload = {
-    beregningsdato: "2019-07-01",
-  };
+
   const localparams = JSON.stringify(localPayload);
 
   useEffect(() => {
@@ -22,7 +17,8 @@ const Kalkulator = () => {
         try {
           await verifyToken();
           // FIXME: MOCK FOR NOW
-          const { minsteinntektResultat, periodeResultat, satsResultat } = await getBehov(localPayload);
+          let result = await getBehov();
+          const { minsteinntektResultat, periodeResultat, satsResultat } = result;
           setOppfyllerInntekstkrav(minsteinntektResultat.oppfyllerMinsteinntekt);
           setPeriodeAntallUker(periodeResultat.periodeAntallUker);
           setUkesats(satsResultat.ukesats);
