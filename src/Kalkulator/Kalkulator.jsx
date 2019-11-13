@@ -13,12 +13,11 @@ const Kalkulator = () => {
     const fetchData = async () => {
         try {
           await verifyToken();
-          // FIXME: MOCK FOR NOW
           let result = await getBehov();
-          const { minsteinntektResultat, periodeResultat, satsResultat } = result;
-          setOppfyllerInntekstkrav(minsteinntektResultat.oppfyllerMinsteinntekt);
-          setPeriodeAntallUker(periodeResultat.periodeAntallUker);
-          setUkesats(satsResultat.ukesats);
+          const { oppfyllerMinsteinntekt, periodeAntallUker, ukesats } = result;
+          setOppfyllerInntekstkrav(oppfyllerMinsteinntekt);
+          setPeriodeAntallUker(periodeAntallUker);
+          setUkesats(ukesats);
           setLoading(false);
         } catch (error) {
           if(error.response.status===401){redirectToLogin()}
