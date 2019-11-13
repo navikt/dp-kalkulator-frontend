@@ -18,6 +18,8 @@ const Kalkulator = () => {
           setOppfyllerInntekstkrav(oppfyllerMinsteinntekt);
           setPeriodeAntallUker(periodeAntallUker);
           setUkesats(ukesats);
+          console.log("result: "+result)
+          console.log('inntekt: ' +$oppfyllerMinsteinntekt+'uker: '+periodeAntallUker+'sats: '+ukesats)
           setLoading(false);
         } catch (error) {
           if(error.response.status===401){redirectToLogin()}
