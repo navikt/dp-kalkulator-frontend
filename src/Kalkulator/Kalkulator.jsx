@@ -14,12 +14,13 @@ const Kalkulator = () => {
         try {
           await verifyToken();
           let result = await getBehov();
+          console.log(result);
           const { oppfyllerMinsteinntekt, periodeAntallUker, ukesats } = result;
           setOppfyllerInntekstkrav(oppfyllerMinsteinntekt);
           setPeriodeAntallUker(periodeAntallUker);
           setUkesats(ukesats);
           console.log("result: "+result)
-          console.log('inntekt: ' +oppfyllerMinsteinntekt+'uker: '+periodeAntallUker+'sats: '+ukesats)
+          console.log('inntekt: ' +oppfyllerMinsteinntekt+' uker: '+periodeAntallUker+' sats: '+ukesats)
           setLoading(false);
         } catch (error) {
           if(error.response.status===401){redirectToLogin()}
