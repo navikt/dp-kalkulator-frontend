@@ -11,22 +11,21 @@ const Kalkulator = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-        try {
-          await verifyToken();
-          let result = await getBehov();
-          console.log(result);
-          const { oppfyllerMinsteinntekt, periodeAntallUker, ukesats } = result;
-          setOppfyllerInntekstkrav(oppfyllerMinsteinntekt);
-          setPeriodeAntallUker(periodeAntallUker);
-          setUkesats(ukesats);
-          console.log("result: "+result)
-          console.log('inntekt: ' +oppfyllerMinsteinntekt+' uker: '+periodeAntallUker+' sats: '+ukesats)
-          setLoading(false);
-        } catch (error) {
-          if(error.response.status===401){redirectToLogin()}
-          throw new Error(`En feil har oppstått i forbindelse med tjenestekallet til backend. ${error}`);
+      try {
+        await verifyToken();
+        const result = await getBehov();
+        const { oppfyllerMinsteinntekt, periodeAntallUker: uker, ukesats: sats } = result;
+        setOppfyllerInntekstkrav(oppfyllerMinsteinntekt);
+        setPeriodeAntallUker(uker);
+        setUkesats(sats);
+        setLoading(false);
+      } catch (error) {
+        if (error.response.status === 401) {
+          redirectToLogin();
         }
-      };
+        throw new Error(`En feil har oppstått i forbindelse med tjenestekallet til backend. ${error}`);
+      }
+    };
     fetchData();
   }, []);
   if (isLoading) {
