@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sidetittel, Normaltekst } from 'nav-frontend-typografi';
+import { Sidetittel } from 'nav-frontend-typografi';
 import { useTranslation } from 'react-i18next';
 import { ReactComponent as HeaderImage } from '../Images/header.svg';
 
