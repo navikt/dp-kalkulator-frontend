@@ -33,5 +33,13 @@
     "GJELDER_KUN_DU_OPPFYLLER_VILKÅR": "Kalkulatoren viser ikke om du har <0>rett på dagpenger</0>.",
     "ANBEFALER_SENDE_SØKNAD_ANTALL_UKER": "Send <0>søknad om dagpenger</0> én uke før du blir arbeidsledig.",
     "BEREGNINGEN_ER_BASERT_PÅ_OPPLYSNINGER": "Beregningen er basert på opplysninger om dine inntekter fra <0>skatteetaten.no/mineinntekter</0>"
+  },
+  "ERROR": {
+    "401": "Du er ikke autorisert",
+    "403": "Du er ikke autorisert",
+    "404": "En feil har oppstått i forbindelse med tjenestekallet",
+    "418": "I´M A TEAPOT",
+    "500": "Ingen svar",
+    "UNDIFINED": "Noe feilet"
   }
 }

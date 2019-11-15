@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import { withTranslation } from 'react-i18next';
 import AlertStripe from 'nav-frontend-alertstriper';
 import { captureException, withScope } from '@sentry/browser';
-import {redirectToLogin} from "../Api";
+import { redirectToLogin } from '../Api';
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -41,34 +41,39 @@ class ErrorBoundary extends React.Component {
 
   render() {
     const { hasError, error } = this.state;
-    const { children } = this.props;
-    // TODO: fiks feilmeldinger
+    const { children, apiErrors, t } = this.props;
+    console.log(error, apiErrors);
+    // JS feil
     if (hasError) {
-      let feilmelding;
-      console.log("errorboundary: " + error);
+      return <AlertStripe type="advarsel">{`Feilmelding: ${error}`}</AlertStripe>;
+    }
 
-      switch (error.status) {
+    // API feil
+    if (apiErrors.hasError) {
+      let feilmelding;
+      const { status } = apiErrors.response || {};
+
+      switch (status) {
+        case 401:
+          return redirectToLogin();
         case 404:
-          feilmelding = 'En feil har oppstått i forbindelse med tjenestekallet til inntekt';
+          feilmelding = t('ERROR.404');
           break;
         case 418:
-          feilmelding = 'I´M A TEAPOT';
+          feilmelding = t('ERROR.418');
           break;
         case 403:
-          feilmelding = 'Du er ikke autorisert';
-          break;
-        case 401:
-          feilmelding = 'Du er ikke autorisert';
+          feilmelding = t('ERROR.403');
           break;
         case 500:
-          feilmelding = '500';
+          feilmelding = t('ERROR.500');
           break;
         default:
-          feilmelding = error;
+          feilmelding = t('ERROR.UNDIFINED');
           break;
       }
 
-      return <AlertStripe type="feil">{`Feilmelding: ${feilmelding}`}</AlertStripe>;
+      return <AlertStripe type="advarsel">{`Feilmelding: ${feilmelding}`}</AlertStripe>;
     }
 
     return children;
@@ -77,6 +82,8 @@ class ErrorBoundary extends React.Component {
 
 ErrorBoundary.propTypes = {
   children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
+  apiErrors: PropTypes.shape().isRequired,
+  t: PropTypes.func.isRequired,
 };
 
-export default ErrorBoundary;
+export default withTranslation()(ErrorBoundary);

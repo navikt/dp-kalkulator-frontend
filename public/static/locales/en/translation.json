@@ -31,5 +31,12 @@
     "GJELDER_KUN_DU_OPPFYLLER_VILKÅR": "This applies only if you fulfill all the <0>requirements for enployment benefits</0> one week before unemployment.",
     "ANBEFALER_SENDE_SØKNAD_ANTALL_UKER": "We recomend that you <0>send a application</0> one week before you become unemployed.",
     "BEREGNINGEN_ER_BASERT_PÅ_OPPLYSNINGER": "The calculations are based on information about your income from <0>skatteetaten.no/mineinntekter</0>"
+  },
+  "ERROR": {
+    "401": "Du er ikke autorisert",
+    "403": "Du er ikke autorisert",
+    "404": "En feil har oppstått i forbindelse med tjenestekallet",
+    "418": "I´M A TEAPOT",
+    "500": "Ingen svar"
   }
 }

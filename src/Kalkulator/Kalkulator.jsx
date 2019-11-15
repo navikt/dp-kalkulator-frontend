@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import LoadingMessage from '../Components/LoadingMessage';
-import { getBehov, verifyToken, redirectToLogin } from '../Api';
+import { getBehov } from '../Api';
 import QualifiedMessage from './QualifiedMessage';
 
 const Kalkulator = () => {
@@ -12,18 +12,16 @@ const Kalkulator = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        await verifyToken();
-        const result = await getBehov();
-        const { oppfyllerMinsteinntekt, periodeAntallUker: uker, ukesats: sats } = result;
-        setOppfyllerInntekstkrav(oppfyllerMinsteinntekt);
-        setPeriodeAntallUker(uker);
-        setUkesats(sats);
-        setLoading(false);
-      } catch (error) {
-        if (error.response.status === 401) {
-          redirectToLogin();
+        const { data = {} } = await getBehov();
+        if (data) {
+          const { oppfyllerMinsteinntekt, periodeAntallUker: uker, ukesats: sats } = data;
+          setOppfyllerInntekstkrav(oppfyllerMinsteinntekt);
+          setPeriodeAntallUker(uker);
+          setUkesats(sats);
+          setLoading(false);
         }
-        throw new Error(`En feil har oppstått i forbindelse med tjenestekallet til backend. ${error}`);
+      } catch (error) {
+        throw new Error(error);
       }
     };
     fetchData();
