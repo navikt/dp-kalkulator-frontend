@@ -14,12 +14,9 @@ export const verifyToken = async () => {
   try {
     return await instance({
       method: 'get',
-      url: `${getApiBaseUrl()}auth`,
+      url: `${getApiBaseUrl()}/auth`,
     });
   } catch (error) {
-    if (!error) {
-      return 'bacon';
-    }
     throw new Error(error);
   }
 };
@@ -30,7 +27,7 @@ export const getBehov = async () => {
   try {
     return await instance({
       method: 'get',
-      url: `${getApiBaseUrl()}behov`,
+      url: `${getApiBaseUrl()}/behov`,
     });
   } catch (error) {
     throw new Error(error);
