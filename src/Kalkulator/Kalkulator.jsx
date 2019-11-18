@@ -24,7 +24,7 @@ const Kalkulator = () => {
           setLoading(false);
         } catch (error) {
           if(error.response.status===401){redirectToLogin()}
-          throw new Error(`En feil har oppstått i forbindelse med tjenestekallet til backend. ${error}`);
+          throw new Error(`En feil har oppstått i forbindelse med utregningen. ${error}`);
         }
       };
     fetchData();
