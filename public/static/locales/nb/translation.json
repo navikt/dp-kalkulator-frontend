@@ -2,7 +2,7 @@
   "SAMTYKKEPANEL": {
     "HENTER_INFO_FRA_SKATTEETAEN_TITTEL": "Vi henter informasjon om din inntekt fra Skatteetaten",
     "HENTER_INFO_FRA_SKATTEETAEN_INGRESS": "Du kan selv se dine inntektsopplysninger på <0>skatteetaten.no/mineinntekter</0>.",
-    "OPPLYSNINGENE_SLETTES": "Opplysningene slettes etter en time."
+    "OPPLYSNINGENE_SLETTES": "Opplysningene slettes etter tre måneder. Vi henter inntektsinformasjon en gang i døgnet."
   },
   "KNAPP": {
     "FORTSETT": "Fortsett",
@@ -39,7 +39,7 @@
     "403": "Du er ikke autorisert",
     "404": "En feil har oppstått i forbindelse med tjenestekallet",
     "418": "I´M A TEAPOT",
-    "500": "Ingen svar",
+    "500": "En feil har oppstått i utregningen, dette skjer vanligvis hvis vi har problemer med å kontakte Skatteetaten.",
     "UNDIFINED": "Noe feilet"
   }
 }
