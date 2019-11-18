@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { init } from '@sentry/browser';
-import axios from 'axios';
 import Header from '../Components/Header';
 import BackButton from '../Components/BackButton';
 import SamtykkePanel from '../Kalkulator/SamtykkePanel';
@@ -8,7 +7,7 @@ import Spacer from '../Components/Spacer';
 import Kalkulator from '../Kalkulator/Kalkulator';
 import LanguageSelector from '../Components/LanguageSelector';
 import ErrorBoundary from '../Components/ErrorBoundary';
-
+import { instance } from '../Api';
 import './App.css';
 
 const environment = window.location.hostname;
@@ -22,7 +21,7 @@ export const App = () => {
   const [isSamtykke, setSamtykke] = useState(false);
   const [errors, setError] = useState({ hasError: false, status: null, statusText: null });
   // apply interceptor on response
-  axios.interceptors.response.use(response => response, error => setError({ hasError: true, ...error }));
+  instance.interceptors.response.use(response => response, error => setError({ hasError: true, ...error }));
 
   const handleSetSamtykke = () => {
     setSamtykke(true);
@@ -30,19 +29,18 @@ export const App = () => {
 
   return (
     <div className="App">
-      <ErrorBoundary apiErrors={errors}>
-        <div className="toolbar">
-          <LanguageSelector />
-        </div>
-        <Header />
-        <div className="content">
-          <Spacer twentyPx />
-          {isSamtykke ? <Kalkulator /> : <SamtykkePanel onClickCallback={handleSetSamtykke} />}
-          <Spacer twentyPx />
-          <BackButton />
-          <Spacer twentyPx />
-        </div>
-      </ErrorBoundary>
+      <div className="toolbar">
+        <LanguageSelector />
+      </div>
+      <Header />
+
+      <div className="content">
+        <Spacer twentyPx />
+        <ErrorBoundary apiErrors={errors}>{isSamtykke ? <Kalkulator /> : <SamtykkePanel onClickCallback={handleSetSamtykke} />}</ErrorBoundary>
+        <Spacer twentyPx />
+        <BackButton />
+        <Spacer twentyPx />
+      </div>
     </div>
   );
 };

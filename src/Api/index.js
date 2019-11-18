@@ -2,35 +2,37 @@ import { getLoginUrl, getApiBaseUrl } from './Config';
 
 const axios = require('axios');
 
-const instance = axios.create({
-  timeout: 20000,
+export const instance = axios.create({
+  timeout: 2000,
   headers: {
     'Content-Type': 'application/json',
   },
   withCredentials: true,
 });
 
-
-
-// FIXME hvorfor der dette en post? Fordi den sender med dato for beregning
-export const getBehov = async () => {
+export const verifyToken = async () => {
   try {
-    const startBehovsLocation = await instance({
+    return await instance({
       method: 'get',
-      url: `${getApiBaseUrl()}behov`,
+      url: `${getApiBaseUrl()}/auth`,
     });
-    return startBehovsLocation.data
   } catch (error) {
-    return error;
+    throw new Error(error);
   }
 };
 
-export const verifyToken = async () =>
-  instance({
-    method: 'get',
-    url: `${getApiBaseUrl()}auth`,
-  });
+export const getBehov = async () => {
+  // 1. verify token
 
+  try {
+    return await instance({
+      method: 'get',
+      url: `${getApiBaseUrl()}/behov`,
+    });
+  } catch (error) {
+    throw new Error(error);
+  }
+};
 
 export const redirectToLogin = () => {
   window.location.assign(`${getLoginUrl()}&redirect=${window.location.href}`); // eslint-disable-line no-undef

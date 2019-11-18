@@ -15,14 +15,32 @@
       align-items: stretch;
       overflow: hidden;
       position: relative;
-      max-width: 900px;
+      max-width: 1000px;
+      padding-bottom: 0;
 
       .text {
-        padding: 48px 0;
+        padding: 48px 16px 48px 32px;
         align-self: center;
 
         .typo-sidetittel {
           margin-bottom: 0.2em;
+        }
+      }
+
+      .header__svgContainer {
+        display: flex;
+        align-items: flex-end;
+      }
+
+      @media (max-width: 750px) {
+        .text {
+          text-align: center;
+          margin: auto;
+          padding-right: 16px;
+        }
+
+        .header__svgContainer {
+          display: none;
         }
       }
     }
@@ -143,7 +161,6 @@
     }
   }
 
-
   &:hover {
     background-color: white;
     cursor: pointer;
@@ -151,6 +168,7 @@
 
   .flag {
     margin-right: 16px;
+
     svg {
       vertical-align: middle;
     }

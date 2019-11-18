@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import LoadingMessage from '../Components/LoadingMessage';
-import { getBehov, verifyToken, redirectToLogin } from '../Api';
+import { getBehov } from '../Api';
 import QualifiedMessage from './QualifiedMessage';
 
 const Kalkulator = () => {
@@ -11,22 +11,19 @@ const Kalkulator = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-        try {
-          await verifyToken();
-          let result = await getBehov();
-          console.log(result);
-          const { oppfyllerMinsteinntekt, periodeAntallUker, ukesats } = result;
+      try {
+        const { data = {} } = await getBehov();
+        if (data) {
+          const { oppfyllerMinsteinntekt, periodeAntallUker: uker, ukesats: sats } = data;
           setOppfyllerInntekstkrav(oppfyllerMinsteinntekt);
-          setPeriodeAntallUker(periodeAntallUker);
-          setUkesats(ukesats);
-          console.log("result: "+result)
-          console.log('inntekt: ' +oppfyllerMinsteinntekt+' uker: '+periodeAntallUker+' sats: '+ukesats)
+          setPeriodeAntallUker(uker);
+          setUkesats(sats);
           setLoading(false);
-        } catch (error) {
-          if(error.response.status===401){redirectToLogin()}
-          throw new Error(`En feil har oppstått i forbindelse med utregningen. ${error}`);
         }
-      };
+      } catch (error) {
+        throw new Error(error);
+      }
+    };
     fetchData();
   }, []);
   if (isLoading) {
