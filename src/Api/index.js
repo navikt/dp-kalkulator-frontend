@@ -3,7 +3,7 @@ import { getLoginUrl, getApiBaseUrl } from './Config';
 const axios = require('axios');
 
 export const instance = axios.create({
-  timeout: 2000,
+  timeout: 20000,
   headers: {
     'Content-Type': 'application/json',
   },
