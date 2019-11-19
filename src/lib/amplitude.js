@@ -1,7 +1,8 @@
 import amplitude from 'amplitude-js';
 
+// todo
 const getApiKey = () => {
-  if (process.env.NODE_ENV === 'production') {
+  if (window.location.hostname.includes('www.nav.no')) {
     return process.env.REACT_APP_AMPLITUDE_PROD;
   }
   return process.env.REACT_APP_AMPLITUDE_DEV;
