@@ -1,4 +1,7 @@
 {
+  "APP": {
+    "BETA": "Denne siden er under testing."
+  },
   "SAMTYKKEPANEL": {
     "HENTER_INFO_FRA_SKATTEETAEN_TITTEL": "Vi henter informasjon om din inntekt fra Skatteetaten",
     "HENTER_INFO_FRA_SKATTEETAEN_INGRESS": "Du kan selv se dine inntektsopplysninger på <0>skatteetaten.no/mineinntekter</0>.",

@@ -14,7 +14,6 @@ const requestDecorator = callback => {
     });
 
     response.on('end', () => {
-      // console.log('body', chunks);
       return callback(response, body);
     });
   });

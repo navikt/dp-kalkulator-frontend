@@ -42,7 +42,6 @@ class ErrorBoundary extends React.Component {
   render() {
     const { hasError, error } = this.state;
     const { children, apiErrors, t } = this.props;
-    console.log(error, apiErrors);
     // JS feil
     if (hasError) {
       return <AlertStripe type="advarsel">{`Feilmelding: ${error}`}</AlertStripe>;

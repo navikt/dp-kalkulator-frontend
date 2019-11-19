@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { init } from '@sentry/browser';
+import { useTranslation } from 'react-i18next';
 import Header from '../Components/Header';
 import BackButton from '../Components/BackButton';
 import SamtykkePanel from '../Kalkulator/SamtykkePanel';
@@ -9,6 +10,7 @@ import LanguageSelector from '../Components/LanguageSelector';
 import ErrorBoundary from '../Components/ErrorBoundary';
 import { instance } from '../Api';
 import './App.css';
+import AlertStripe from 'nav-frontend-alertstriper';
 
 const environment = window.location.hostname;
 
@@ -18,6 +20,7 @@ init({
 });
 
 export const App = () => {
+  const { t } = useTranslation();
   const [isSamtykke, setSamtykke] = useState(false);
   const [errors, setError] = useState({ hasError: false, status: null, statusText: null });
   // apply interceptor on response
@@ -35,6 +38,7 @@ export const App = () => {
       <Header />
 
       <div className="content">
+        <AlertStripe type="info">{t('APP.BETA')}</AlertStripe>
         <Spacer twentyPx />
         <ErrorBoundary apiErrors={errors}>{isSamtykke ? <Kalkulator /> : <SamtykkePanel onClickCallback={handleSetSamtykke} />}</ErrorBoundary>
         <Spacer twentyPx />
