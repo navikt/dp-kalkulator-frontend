@@ -9,10 +9,11 @@ const BackButton = () => {
     event.preventDefault();
     window.history.back();
   };
+
   return (
-    <Tilbakeknapp mini onClick={event => handleOnClick(event)}>
-      {t('KNAPP.TILBAKE')}
-    </Tilbakeknapp>
+    <a href="https://nav.no/dagpenger">
+      <Tilbakeknapp mini>{t('KNAPP.TILBAKE')}</Tilbakeknapp>
+    </a>
   );
 };
 export default BackButton;

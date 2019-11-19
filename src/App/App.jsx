@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { init } from '@sentry/browser';
 import { useTranslation } from 'react-i18next';
+import AlertStripe from 'nav-frontend-alertstriper';
 import Header from '../Components/Header';
 import BackButton from '../Components/BackButton';
 import SamtykkePanel from '../Kalkulator/SamtykkePanel';
@@ -9,8 +10,8 @@ import Kalkulator from '../Kalkulator/Kalkulator';
 import LanguageSelector from '../Components/LanguageSelector';
 import ErrorBoundary from '../Components/ErrorBoundary';
 import { instance } from '../Api';
+import tracking from '../lib/amplitude';
 import './App.css';
-import AlertStripe from 'nav-frontend-alertstriper';
 
 const environment = window.location.hostname;
 
@@ -27,6 +28,7 @@ export const App = () => {
   instance.interceptors.response.use(response => response, error => setError({ hasError: true, ...error }));
 
   const handleSetSamtykke = () => {
+    tracking.logEvent('GITT_SAMTYKKE');
     setSamtykke(true);
   };
 
