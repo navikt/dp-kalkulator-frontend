@@ -5,7 +5,7 @@
   "proxy": "http://localhost:8092",
   "homepage": "https://nav.no/arbeid/dagpenger/kalkulator",
   "scripts": {
-    "start:js": "NODE_ENV=dev react-scripts start",
+    "start:js": "react-scripts start",
     "server": "npm run build && node ./build/server.js",
     "docker": "npm run build && docker build -t dpkalkulator . && docker run dpkalkulator",
     "build:js": "react-scripts build",
