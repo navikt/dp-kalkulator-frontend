@@ -2,4 +2,10 @@ apiVersion: "nais.io/v1alpha1"
 kind: "Application"
 metadata:
   name: dp-inntekt-innsyn-ui
-
+spec:
+  ingresses:
+    - "https://www.nav.no/arbeid/dagpenger/kalkulator"
+  sessionAffinity: ClientIP # Sticky Session for ingress controller to prevent 404 on rollout
+  env:
+    - name: REACT_APP_API_URL
+      value: https://www.nav.no/arbeid/dagpenger/kalkulator-api/
