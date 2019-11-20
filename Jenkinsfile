@@ -63,7 +63,6 @@ pipeline {
           steps {
             sh label: 'Deploy with kubectl', script: """
               kubectl config use-context dev-${env.ZONE}
-              kubectl apply -f ./nais/base/redis.yaml --wait
               kubectl apply -f ./nais/nais-dev-deploy.yaml --wait
               kubectl rollout status -w deployment/${APPLICATION_NAME}
             """
@@ -142,6 +141,20 @@ pipeline {
             }
           }
         }
+      }
+    }
+    stage('Deploy') {
+      when { branch 'master' }
+
+      steps {
+        sh label: 'Deploy with kubectl', script: """
+          kubectl config use-context prod-${env.ZONE}
+          kubectl apply  -f ./nais/nais-prod-deploy.yaml --wait && sleep 5
+          kubectl rollout status -w deployment/${APPLICATION_NAME}
+        """
+
+        archiveArtifacts artifacts: 'nais/nais-prod-deploy.yaml', fingerprint: true
+
       }
     }
   }

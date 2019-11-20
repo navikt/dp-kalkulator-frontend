@@ -28,4 +28,4 @@ spec:
       cpu: 200m
       memory: 512Mi
   vault:
-    enabled: true
+    enabled: false
