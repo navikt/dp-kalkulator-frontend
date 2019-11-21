@@ -25,7 +25,7 @@ i18next
       escapeValue: false, // not needed for react as it escapes by default
     },
     backend: {
-      loadPath: `${process.env.PUBLIC_URL}/static/locales/{{lng}}/{{ns}}.json`,
+      loadPath: `${process.env.PUBLIC_URL}/static/locales/{{lng}}.json`,
     },
   });
 

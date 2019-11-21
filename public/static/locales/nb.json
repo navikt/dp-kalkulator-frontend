@@ -9,7 +9,7 @@
   },
   "KNAPP": {
     "FORTSETT": "Fortsett",
-    "TILBAKE": "Tilbake"
+    "TILBAKE": "Tilbake til dagpenger"
   },
   "HEADER": {
     "TITTEL": "Dagpengekalkulator"
@@ -42,6 +42,6 @@
     "404": "Beklager, det har skjedd en feil. Prøv igjen senere.",
     "418": "Beklager, det har skjedd en feil. Prøv igjen senere.",
     "500": "Beklager, det har skjedd en feil. Prøv igjen senere.",
-    "UNDIFINED": "Beklager, det har skjedd en feil. Prøv igjen senere."
+    "UNDEFINED": "Beklager, det har skjedd en feil. Prøv igjen senere."
   }
 }

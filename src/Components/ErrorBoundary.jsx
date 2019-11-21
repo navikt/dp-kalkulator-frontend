@@ -68,7 +68,7 @@ class ErrorBoundary extends React.Component {
           feilmelding = t('ERROR.500');
           break;
         default:
-          feilmelding = t('ERROR.UNDIFINED');
+          feilmelding = t('ERROR.UNDEFINED');
           break;
       }
 
