@@ -27,6 +27,8 @@ export const App = () => {
   // axios apply interceptor on response
   instance.interceptors.response.use(response => response, error => setError({ hasError: true, ...error }));
 
+  tracking.logEvent('ANKOMMER_FORSIDEN');
+
   const handleSetSamtykke = () => {
     tracking.logEvent('GITT_SAMTYKKE');
     setSamtykke(true);

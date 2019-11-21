@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import LoadingMessage from '../Components/LoadingMessage';
 import { getBehov } from '../Api';
 import QualifiedMessage from './QualifiedMessage';
+import tracking from '../lib/tracking';
 
 const Kalkulator = () => {
   const [isLoading, setLoading] = useState(true);
@@ -19,16 +20,21 @@ const Kalkulator = () => {
           setPeriodeAntallUker(uker);
           setUkesats(sats);
           setLoading(false);
+          tracking.logEvent('RESULTAT', {
+            isOppfyllerInntekstkrav,
+          });
         }
       } catch (error) {
         throw new Error(error);
       }
     };
     fetchData();
-  }, []);
+  }, [isOppfyllerInntekstkrav]);
+
   if (isLoading) {
     return <LoadingMessage type="XL" />;
   }
+
   return <QualifiedMessage isOppfyllerInntekstkrav={isOppfyllerInntekstkrav} ukesats={ukesats} periodeAntallUker={periodeAntallUker} />;
 };
 

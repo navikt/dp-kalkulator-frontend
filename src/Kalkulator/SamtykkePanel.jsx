@@ -4,12 +4,20 @@ import Panel from 'nav-frontend-paneler';
 import { Hovedknapp } from 'nav-frontend-knapper';
 import { useTranslation, Trans } from 'react-i18next';
 import { Normaltekst, Innholdstittel } from 'nav-frontend-typografi';
-import Lenke from 'nav-frontend-lenker';
-
+import tracking from '../lib/tracking';
 import Spacer from '../Components/Spacer';
+
+const MINE_INNTEKTER_URL = 'https://skatteetaten.no/mineinntekter';
 
 export const SamtykkePanel = ({ onClickCallback }) => {
   const { t } = useTranslation();
+
+  const handleOnClick = event => {
+    event.preventDefault();
+    tracking.logEvent('TIL_SKATTEETATEN');
+    window.location.assign(MINE_INNTEKTER_URL);
+  };
+
   return (
     <Panel>
       <div className="padding16">
@@ -17,7 +25,9 @@ export const SamtykkePanel = ({ onClickCallback }) => {
 
         <Normaltekst>
           <Trans i18nKey="SAMTYKKEPANEL.HENTER_INFO_FRA_SKATTEETAEN_INGRESS">
-            <Lenke href="https://skatteetaten.no/mineinntekter" />
+            <a href={MINE_INNTEKTER_URL} onClick={event => handleOnClick(event)} className="lenke">
+              {MINE_INNTEKTER_URL}
+            </a>
           </Trans>
         </Normaltekst>
         <Normaltekst>{t('SAMTYKKEPANEL.OPPLYSNINGENE_SLETTES')}</Normaltekst>
