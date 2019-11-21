@@ -6,5 +6,3 @@ ENV REACT_APP_AMPLITUDE_DEV="24eb6d83cfc9883c04c4eaec61251bf4" \
 RUN mkdir app
 COPY build /app
 EXPOSE 8000
-
-#ENTRYPOINT ["/dumb-init", "node", "/app/server.js"]
