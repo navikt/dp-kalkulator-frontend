@@ -1,6 +1,7 @@
 import amplitude from 'amplitude-js';
 
 const getApiKey = () => {
+  console.log('testing amp key', process.env.NODE_ENV, process.env.REACT_APP_AMPLITUDE_KEY);
   if (process.env.NODE_ENV === 'development') {
     return null;
   }
