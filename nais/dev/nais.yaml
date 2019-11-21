@@ -10,4 +10,6 @@ spec:
   env:
     - name: REACT_APP_API_URL
       value: https://www-q0.nav.no/arbeid/dagpenger/kalkulator-api/
+    - name: REACT_APP_AMPLITUDE_KEY
+      value: 24eb6d83cfc9883c04c4eaec61251bf4
 
