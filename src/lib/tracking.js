@@ -1,11 +1,10 @@
 import amplitude from 'amplitude-js';
 
 const getApiKey = () => {
-  console.log('testing amp key', process.env.NODE_ENV, process.env.REACT_APP_AMPLITUDE_DEV);
   if (window.location.hostname.includes('www.nav.no')) {
-    return process.env.REACT_APP_AMPLITUDE_PROD;
+    return 'edf391bf01b758a289ef5e7cb297f77a';
   }
-  return process.env.REACT_APP_AMPLITUDE_DEV;
+  return '24eb6d83cfc9883c04c4eaec61251bf4';
 };
 
 const tracking = amplitude.getInstance();
