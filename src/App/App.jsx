@@ -7,7 +7,6 @@ import BackButton from '../Components/BackButton';
 import SamtykkePanel from '../Kalkulator/SamtykkePanel';
 import Spacer from '../Components/Spacer';
 import Kalkulator from '../Kalkulator/Kalkulator';
-import LanguageSelector from '../Components/LanguageSelector';
 import ErrorBoundary from '../Components/ErrorBoundary';
 import { instance } from '../Api';
 import tracking from '../lib/tracking';
@@ -27,7 +26,9 @@ export const App = () => {
   // axios apply interceptor on response
   instance.interceptors.response.use(response => response, error => setError({ hasError: true, ...error }));
 
-  tracking.logEvent('ANKOMMER_FORSIDEN');
+  tracking.logEvent('ANKOMMER_FORSIDEN', {
+    environment,
+  });
 
   const handleSetSamtykke = () => {
     tracking.logEvent('GITT_SAMTYKKE');
@@ -36,9 +37,6 @@ export const App = () => {
 
   return (
     <div className="App">
-      <div className="toolbar">
-        <LanguageSelector />
-      </div>
       <Header />
 
       <div className="content">

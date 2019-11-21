@@ -19,6 +19,7 @@ i18next
   // init i18next
   // for all options read: https://www.i18next.com/overview/configuration-options
   .init({
+    lng: 'nb', // TODO ta bort når man har flere språk
     fallbackLng: 'nb',
     debug: false,
     interpolation: {
