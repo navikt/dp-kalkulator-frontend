@@ -5,7 +5,7 @@
   "SAMTYKKEPANEL": {
     "HENTER_INFO_FRA_SKATTEETAEN_TITTEL": "Vi henter informasjon om din inntekt fra Skatteetaten",
     "HENTER_INFO_FRA_SKATTEETAEN_INGRESS": "Du kan selv se dine inntektsopplysninger på <0>skatteetaten.no/mineinntekter</0>.",
-    "OPPLYSNINGENE_SLETTES": "Opplysningene slettes etter tre måneder."
+    "OPPLYSNINGENE_SLETTES": "Dine inntektspplysninger blir lagret hos NAV i tre måneder."
   },
   "KNAPP": {
     "FORTSETT": "Fortsett",
@@ -30,7 +30,7 @@
     "ANBEFALER_SENDE_SØKNAD_ANTALL_UKER": "Dagpengekalkulatoren gir ikke juridisk svar på om du har rett på dagpenger. Du bør derfor uansett sende <0>søknad om dagpenger</0> én uke før du blir arbeidsledig"
   },
   "POSITIVERESPONSE": {
-    "IDAG_FÅTT_OMTRENT": "I dag kunne du fått:",
+    "IDAG_FÅTT_OMTRENT": "I dag kunne du fått inntil:",
     "UKESATS_HVER_UKE": "{{ukesats}} kr før skatt hver uke i {{periodeAntallUker}} uker",
     "GJELDER_KUN_DU_OPPFYLLER_VILKÅR": "Dagpengekalkulatoren gir ikke juridisk svar på om du har <0>rett på dagpenger</0>.",
     "ANBEFALER_SENDE_SØKNAD_ANTALL_UKER": "Send <0>søknad om dagpenger</0> én uke før du blir arbeidsledig.",
