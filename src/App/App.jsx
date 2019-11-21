@@ -10,11 +10,11 @@ import Kalkulator from '../Kalkulator/Kalkulator';
 import LanguageSelector from '../Components/LanguageSelector';
 import ErrorBoundary from '../Components/ErrorBoundary';
 import { instance } from '../Api';
-import tracking from '../lib/amplitude';
+import tracking from '../lib/tracking';
 import './App.css';
 
+// sentry
 const environment = window.location.hostname;
-
 init({
   dsn: 'https://07ffd2b8012e4e9ba2a6643e2864d828@sentry.nav.no/21',
   environment,
@@ -24,7 +24,7 @@ export const App = () => {
   const { t } = useTranslation();
   const [isSamtykke, setSamtykke] = useState(false);
   const [errors, setError] = useState({ hasError: false, status: null, statusText: null });
-  // apply interceptor on response
+  // axios apply interceptor on response
   instance.interceptors.response.use(response => response, error => setError({ hasError: true, ...error }));
 
   const handleSetSamtykke = () => {

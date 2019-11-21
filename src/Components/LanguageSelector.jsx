@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import NavFrontendChevron from 'nav-frontend-chevron';
 import { Menu, MenuList, MenuButton, MenuItem } from '@reach/menu-button';
-import i18n from '../i18n';
+import i18n from '../lib/i18n';
 
 const NB = (
   <>
