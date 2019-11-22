@@ -21,7 +21,7 @@ export const getApiBaseUrl = (host = window.location.hostname) => {
   if (host.includes('www-q')) {
     return 'https://www-q0.nav.no/arbeid/dagpenger/kalkulator-api';
   }
-  return 'https://dp-kalkulator-api.nais.oera.no/arbeid/dagpenger/kalkulator-api';
+  return 'https://www.nav.no/arbeid/dagpenger/kalkulator-api';
 };
 
 export default { getLoginUrl, getApiBaseUrl };
