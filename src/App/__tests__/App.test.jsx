@@ -6,6 +6,9 @@ import App from '../App';
 import { SamtykkePanel } from '../../Kalkulator/SamtykkePanel';
 import Kalkulator from '../../Kalkulator/Kalkulator';
 
+// todo mocke i18next skikkelig opp
+jest.mock('../../lib/i18n');
+
 describe('App', () => {
   it('renders without crashing', () => {
     const div = document.createElement('div');
@@ -18,7 +21,7 @@ describe('App', () => {
     ReactDOM.unmountComponentAtNode(div);
   });
 
-  xit('Skal vise samtykke', () => {
+  it('Skal vise samtykke', () => {
     const wrapper = shallow(<App />);
     const samtykkePanel = wrapper.find(SamtykkePanel);
     const kalkulator = wrapper.find(Kalkulator);
@@ -26,11 +29,11 @@ describe('App', () => {
     expect(kalkulator).to.have.length(0);
   });
 
-  xit('Skal vise kalkulator etter man har klikket på knappen', () => {
+  it('Skal vise kalkulator etter man har klikket på knappen', () => {
     const wrapper = shallow(<App />);
     const samtykkePanel = wrapper.find(SamtykkePanel);
     const kalkulator = wrapper.find(Kalkulator);
-    const samtykkeKnapp = samtykkePanel.find('Hovedknapp');
+    const samtykkeKnapp = samtykkePanel.dive().find('Hovedknapp');
     expect(samtykkePanel).to.have.length(1);
     expect(kalkulator).to.have.length(0);
     samtykkeKnapp.simulate('click');
