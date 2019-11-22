@@ -30,7 +30,6 @@ export const SamtykkePanel = ({ onClickCallback }) => {
             </a>
           </Trans>
         </Normaltekst>
-        <Normaltekst>{t('SAMTYKKEPANEL.OPPLYSNINGENE_SLETTES')}</Normaltekst>
         <Spacer twentyPx />
         <div className="flex center">
           <Hovedknapp onClick={onClickCallback}>{t('KNAPP.FORTSETT')}</Hovedknapp>
