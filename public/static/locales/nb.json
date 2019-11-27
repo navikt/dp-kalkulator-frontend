@@ -4,7 +4,8 @@
   },
   "SAMTYKKEPANEL": {
     "HENTER_INFO_FRA_SKATTEETAEN_TITTEL": "Vi henter informasjon om inntekten din fra Skatteetaten",
-    "HENTER_INFO_FRA_SKATTEETAEN_INGRESS": "Du kan selv se dine inntektsopplysninger på <0>skatteetaten.no/mineinntekter</0>."
+    "HENTER_INFO_FRA_SKATTEETAEN_INGRESS": "Du kan selv se dine inntektsopplysninger på <0>skatteetaten.no/mineinntekter</0>.",
+    "OPPLYSNINGENE_SLETTES": "Vi lagrer opplysningene kun i en kort periode."
   },
   "KNAPP": {
     "FORTSETT": "Fortsett",

@@ -2,7 +2,6 @@
   "name": "dp-inntekt-innsyn-ui",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:8092",
   "homepage": "https://nav.no/arbeid/dagpenger/kalkulator",
   "scripts": {
     "start:js": "react-scripts start",
@@ -18,7 +17,7 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
-    "@reach/menu-button": "^0.5.4",
+    "@reach/menu-button": "^0.6.1",
     "@sentry/browser": "^5.7.1",
     "amplitude-js": "^5.6.0",
     "axios": "^0.19.0",
@@ -83,7 +82,7 @@
     "react-motion": "^0.5.2",
     "react-scripts": "^3.0.1",
     "sinon": "^7.5.0",
-    "stylelint": "^11.1.1"
+    "stylelint": "^12.0.0"
   },
   "browserslist": {
     "production": [
