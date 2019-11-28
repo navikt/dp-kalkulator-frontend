@@ -34,8 +34,8 @@ export const getBehov = async () => {
   }
 };
 
-export const redirectToLogin = () => {
-  window.location.assign(`${getLoginUrl()}&redirect=${window.location.href}`); // eslint-disable-line no-undef
+export const redirectToLogin = (redirectUrl = window.location.href) => {
+  window.location.assign(`${getLoginUrl()}&redirect=${redirectUrl}?samtykke=true`); // eslint-disable-line no-undef
 };
 
 export default { getBehov, verifyToken, redirectToLogin };

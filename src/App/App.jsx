@@ -21,6 +21,7 @@ init({
 
 export const App = () => {
   const { t } = useTranslation();
+
   const [isSamtykke, setSamtykke] = useState(false);
   const [errors, setError] = useState({ hasError: false, status: null, statusText: null });
   // axios apply interceptor on response
@@ -35,6 +36,8 @@ export const App = () => {
     setSamtykke(true);
   };
 
+  const hasSamtykke = window.location.search === '?samtykke=true';
+
   return (
     <div className="App">
       <Header />
@@ -42,7 +45,7 @@ export const App = () => {
       <div className="content">
         <AlertStripe type="info">{t('APP.BETA')}</AlertStripe>
         <Spacer twentyPx />
-        <ErrorBoundary apiErrors={errors}>{isSamtykke ? <Kalkulator /> : <SamtykkePanel onClickCallback={handleSetSamtykke} />}</ErrorBoundary>
+        <ErrorBoundary apiErrors={errors}>{isSamtykke || hasSamtykke ? <Kalkulator /> : <SamtykkePanel onClickCallback={handleSetSamtykke} />}</ErrorBoundary>
         <Spacer twentyPx />
         <BackButton />
         <Spacer twentyPx />
