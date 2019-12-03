@@ -22,8 +22,16 @@ export const verifyToken = async () => {
 };
 
 export const getBehov = async () => {
-  // 1. verify token
-
+  if (1 === 2 && process.env.NODE_ENV === 'development') {
+    try {
+      return await instance({
+        method: 'get',
+        url: `${process.env.PUBLIC_URL}/__mocks__/mockInnsyn.json`,
+      });
+    } catch (error) {
+      throw new Error(error);
+    }
+  }
   try {
     return await instance({
       method: 'get',
@@ -35,7 +43,7 @@ export const getBehov = async () => {
 };
 
 export const redirectToLogin = (redirectUrl = window.location.href) => {
-  window.location.assign(`${getLoginUrl()}&redirect=${redirectUrl}?samtykke=true`); // eslint-disable-line no-undef
+  window.location.assign(`${getLoginUrl()}&redirect=${redirectUrl}/samtykke`); // eslint-disable-line no-undef
 };
 
 export default { getBehov, verifyToken, redirectToLogin };
