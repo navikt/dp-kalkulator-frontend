@@ -17,6 +17,9 @@
   "LOADINGMESSAGE": {
     "INFO": "Vi henter informasjonen om inntekten din fra Skatteetaten."
   },
+  "FELLES": {
+    "ANBEFALER_SENDE_SØKNAD_ANTALL_UKER": "Dagpengekalkulatoren gir ikke juridisk svar på om du har rett til <0>dagpenger</0>. Du bør derfor uansett sende <1>søknad om dagpenger</1> én uke før du blir arbeidsledig"
+  },
   "NEGATIVERESPONSE": {
     "RISIKERER_AVSLAG_GRUNNET_LAV_INNTEKT": "Søker du om dagpenger fra i dag, risikerer du å få avslag på grunn av for lav inntekt.",
     "BEREGNING_BASERT_PÅ_INNTEKTSOPPLYSNINGER": "Beregningen er basert på inntektsopplysninger fra <0>skatteetaten.no/mineinntekter</0>.",
@@ -26,14 +29,11 @@
     "ARBEIDET_I_EØS": "har arbeidet i et annet EØS-land",
     "INNTEKT_FRA_FANGST_OG_FISK": "har hatt inntekt fra fangst og fisk",
     "ANFEBALER_AT_DU_SENDER_SØKNAD": "Vi anbefaler uansett at du sender <0>søknad om dagpenger</0>",
-    "INNTEKTOPPLYSNINGER_ER_FEIL": "mener inntektsopplysningene på <0>skatteetaten.no/mineinntekter</0> er feil.",
-    "ANBEFALER_SENDE_SØKNAD_ANTALL_UKER": "Dagpengekalkulatoren gir ikke juridisk svar på om du har rett til dagpenger. Du bør derfor uansett sende <0>søknad om dagpenger</0> én uke før du blir arbeidsledig"
+    "INNTEKTOPPLYSNINGER_ER_FEIL": "mener inntektsopplysningene på <0>skatteetaten.no/mineinntekter</0> er feil."
   },
   "POSITIVERESPONSE": {
     "IDAG_FÅTT_OMTRENT": "I dag kunne du fått inntil:",
     "UKESATS_HVER_UKE": "{{ukesats}} kr før skatt hver uke i {{periodeAntallUker}} uker",
-    "GJELDER_KUN_DU_OPPFYLLER_VILKÅR": "Dagpengekalkulatoren gir ikke juridisk svar på om du har <0>rett til dagpenger</0>.",
-    "ANBEFALER_SENDE_SØKNAD_ANTALL_UKER": "Send <0>søknad om dagpenger</0> én uke før du blir arbeidsledig.",
     "BEREGNINGEN_ER_BASERT_PÅ_OPPLYSNINGER": "Beregningen er basert på opplysninger om inntektene dine fra <0>skatteetaten.no/mineinntekter</0>"
   },
   "ERROR": {

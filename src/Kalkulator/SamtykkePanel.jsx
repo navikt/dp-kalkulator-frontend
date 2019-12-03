@@ -6,16 +6,15 @@ import { useTranslation, Trans } from 'react-i18next';
 import { Normaltekst, Innholdstittel } from 'nav-frontend-typografi';
 import tracking from '../lib/tracking';
 import Spacer from '../Components/Spacer';
-
-const MINE_INNTEKTER_URL = 'https://skatteetaten.no/mineinntekter';
+import { LENKER } from '../lib/constants';
 
 export const SamtykkePanel = ({ onClickCallback }) => {
   const { t } = useTranslation();
 
-  const handleOnClick = event => {
+  const handleClickMineInntekter = event => {
     event.preventDefault();
     tracking.logEvent('TIL_SKATTEETATEN');
-    window.location.assign(MINE_INNTEKTER_URL);
+    window.location.assign(LENKER.MINE_INNTEKTER_URL);
   };
 
   return (
@@ -25,8 +24,8 @@ export const SamtykkePanel = ({ onClickCallback }) => {
 
         <Normaltekst>
           <Trans i18nKey="SAMTYKKEPANEL.HENTER_INFO_FRA_SKATTEETAEN_INGRESS">
-            <a href={MINE_INNTEKTER_URL} onClick={event => handleOnClick(event)} className="lenke">
-              {MINE_INNTEKTER_URL}
+            <a href={LENKER.MINE_INNTEKTER_URL} onClick={event => handleClickMineInntekter(event)} className="lenke">
+              {LENKER.MINE_INNTEKTER_URL}
             </a>
           </Trans>
         </Normaltekst>
