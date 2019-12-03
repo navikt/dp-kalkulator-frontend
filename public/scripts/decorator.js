@@ -1,6 +1,7 @@
 const https = require('https');
 
 const requestDecorator = callback => {
+  // header-withmenu=true
   const url = `https://appres.nav.no/common-html/v4/navno?header=true&styles=true&scripts=true&footer=true`;
 
   let body = '';
