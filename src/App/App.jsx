@@ -34,10 +34,9 @@ export const App = () => {
   const handleSetSamtykke = () => {
     tracking.logEvent('GITT_SAMTYKKE');
     setSamtykke(true);
-    window.history.pushState({ isSamtykke }, '', 'samtykke');
   };
 
-  const hasSamtykke = window.location.pathname === '/samtykke';
+  const hasSamtykke = window.location.search === '?samtykke=true';
 
   return (
     <div className="App">
