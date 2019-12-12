@@ -9,7 +9,7 @@ const BackButton = () => {
   const handleOnClick = event => {
     event.preventDefault();
     tracking.logEvent('TILBAKE_TIL_DAGPENGER');
-    window.location.assign('https://nav.no/dagpenger');
+    window.location.assign('https://www.nav.no/no/person/arbeid/dagpenger-ved-arbeidsloshet-og-permittering/dagpenger-nar-du-er-arbeidsledig#chapter-5');
   };
 
   return (
