@@ -69,6 +69,9 @@ class ErrorBoundary extends React.Component {
         case 500:
           feilmelding = t('ERROR.500');
           break;
+        case 502:
+          feilmelding = t('ERROR.502');
+          break;
         case 504:
           feilmelding = t('ERROR.504');
           break;
@@ -77,7 +80,7 @@ class ErrorBoundary extends React.Component {
           break;
       }
 
-      return <AlertStripe type="advarsel">{`Feilmelding: ${feilmelding}`}</AlertStripe>;
+      return <AlertStripe type="advarsel">{`${feilmelding}`}</AlertStripe>;
     }
 
     return children;

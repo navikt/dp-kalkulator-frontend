@@ -43,7 +43,6 @@ export const App = () => {
       <Header />
 
       <div className="content">
-        <AlertStripe type="info">{t('APP.BETA')}</AlertStripe>
         <Spacer twentyPx />
         <ErrorBoundary apiErrors={errors}>{isSamtykke || hasSamtykke ? <Kalkulator /> : <SamtykkePanel onClickCallback={handleSetSamtykke} />}</ErrorBoundary>
         <Spacer twentyPx />

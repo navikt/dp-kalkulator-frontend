@@ -42,7 +42,8 @@
     "404": "Beklager, det har skjedd en feil. Prøv igjen senere.",
     "418": "Beklager, det har skjedd en feil. Prøv igjen senere.",
     "500": "Beklager, det har skjedd en feil. Prøv igjen senere.",
-    "504": "Beklager, vi fikk ikke beregnet inntektene dine, dette skyldes som ofte at vi ikke fikk kontakt med skatteetaten på vår side.",
+    "502": "Beklager, det har skjedd en feil. Prøv igjen senere.",
+    "504": "Beklager, vi fikk ikke til å hente inntektsopplysningene dine. Prøv igjen senere.",
     "UNDEFINED": "Beklager, det har skjedd en feil. Prøv igjen senere."
   }
 }
