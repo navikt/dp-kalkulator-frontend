@@ -32,7 +32,7 @@ export const Kalkulator = () => {
     return <LoadingMessage type="XL" />;
   }
 
-  tracking.logEvent('DAGPENGEKALKULATOR_RESULTAT', {
+  tracking.logEvent('RESULTAT', {
     isOppfyllerInntekstkrav,
     ukesats,
   });
