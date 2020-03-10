@@ -15,7 +15,7 @@ import './App.css';
 // sentry
 const environment = window.location.hostname;
 init({
-  dsn: 'https://07ffd2b8012e4e9ba2a6643e2864d828@sentry.nav.no/21',
+  dsn: 'https://26768d0f8af64d66901466f17b51d1fe@sentry.gc.nav.no/22',
   environment,
 });
 
