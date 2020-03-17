@@ -1,11 +1,15 @@
 {
+  "APP": {
+    "BETA": "Denne siden er under testing.",
+    "CORONA_INFO": "The calculator does not take into account the rules proposed by the government on 16.03.2020"
+  },
   "SAMTYKKEPANEL": {
     "HENTER_INFO_FRA_SKATTEETAEN_TITTEL": "We gather information from the Tax-authority",
     "HENTER_INFO_FRA_SKATTEETAEN_INGRESS": "We gather information from the Tax-authority to calculate the estimate of how much you could get in dagpenger."
   },
   "KNAPP": {
     "FORTSETT": "Continue",
-    "TILBAKE": "Back"
+    "TILBAKE": "Information about unemployment benefits"
   },
   "HEADER": {
     "TITTEL": "Dagpengekalkulator",

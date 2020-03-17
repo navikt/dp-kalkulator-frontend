@@ -1,6 +1,7 @@
 {
   "APP": {
-    "BETA": "Denne siden er under testing."
+    "BETA": "Denne siden er under testing.",
+    "CORONA_INFO": "Kalkulatoren tar ikke hensyn til regler innført av regjeringen 16.03.2020"
   },
   "SAMTYKKEPANEL": {
     "HENTER_INFO_FRA_SKATTEETAEN_TITTEL": "Vi henter informasjon om inntekten din fra Skatteetaten",
@@ -9,7 +10,7 @@
   },
   "KNAPP": {
     "FORTSETT": "Fortsett",
-    "TILBAKE": "Tilbake til dagpenger"
+    "TILBAKE": "Informasjon om dagpenger"
   },
   "HEADER": {
     "TITTEL": "Dagpengekalkulator"
