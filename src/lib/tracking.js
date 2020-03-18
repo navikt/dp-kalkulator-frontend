@@ -1,13 +1,4 @@
-class Tracking {
-  constructor(props) {
-  }
-  logEvent(){
-    return;
-  }
-}
-
-const tracking = new Tracking("hei");
-/*import amplitude from 'amplitude-js';
+import amplitude from 'amplitude-js';
 
 const getApiKey = () => {
   if (window.location.hostname.includes('www.nav.no')) {
@@ -23,6 +14,6 @@ tracking.init(getApiKey(), '', {
   includeUtm: true,
   batchEvents: false,
   includeReferrer: true,
-});*/
+});
 
 export default tracking;
