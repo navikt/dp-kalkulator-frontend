@@ -59,7 +59,7 @@ pipeline {
     stage('Acceptance testing') {
       stages {
         stage('Deploy to pre-production') {
-          when { branch 'master' }
+          when { branch 'feature/staticLoginRedirect' }
           steps {
             sh label: 'Deploy with kubectl', script: """
               kubectl config use-context dev-${env.ZONE}

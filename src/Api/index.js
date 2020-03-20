@@ -1,4 +1,4 @@
-import { getLoginUrl, getApiBaseUrl } from './Config';
+import {getLoginUrl, getApiBaseUrl, getBaseUrl} from './Config';
 
 const axios = require('axios');
 
@@ -42,8 +42,8 @@ export const getBehov = async () => {
   }
 };
 
-export const redirectToLogin = (redirectUrl = window.location.href) => {
-  window.location.assign(`${getLoginUrl()}&redirect=${redirectUrl}?samtykke=true`); // eslint-disable-line no-undef
+export const redirectToLogin = () => {
+  window.location.assign(`${getLoginUrl()}&redirect=${getBaseUrl()}?samtykke=true`); // eslint-disable-line no-undef
 };
 
 export default { getBehov, verifyToken, redirectToLogin };
