@@ -37,7 +37,6 @@ export const App = () => {
   };
 
   const hasSamtykke = window.location.search === '?samtykke=true';
-  //<ErrorBoundary apiErrors={errors}>{isSamtykke || hasSamtykke ? <Kalkulator /> : <SamtykkePanel onClickCallback={handleSetSamtykke} />}</ErrorBoundary>
 
   return (
     <div className="App">
@@ -45,7 +44,7 @@ export const App = () => {
       <div className="content">
         <AlertStripe type="advarsel">{t('APP.CORONA_INFO')}</AlertStripe>
         <Spacer twentyPx />
-        <AlertStripe type="feil">{t('APP.AVSLATT_SKATT')}</AlertStripe>
+        <ErrorBoundary apiErrors={errors}>{isSamtykke || hasSamtykke ? <Kalkulator /> : <SamtykkePanel onClickCallback={handleSetSamtykke} />}</ErrorBoundary>
         <Spacer twentyPx />
         <BackButton />
         <Spacer twentyPx />
