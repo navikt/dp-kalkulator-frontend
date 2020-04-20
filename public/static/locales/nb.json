@@ -20,12 +20,13 @@
     "INFO": "Vi henter informasjonen om inntekten din fra Skatteetaten."
   },
   "FELLES": {
-    "ANBEFALER_SENDE_SØKNAD_ANTALL_UKER": "Dagpengekalkulatoren gir ikke juridisk svar på om du har rett til <0>dagpenger</0>. Du bør derfor uansett sende <1>søknad om dagpenger</1> én uke før du blir arbeidsledig"
+    "ANBEFALER_SENDE_SØKNAD_ANTALL_UKER": "Dagpengekalkulatoren gir ikke juridisk svar på om du har <0>rett til dagpenger</0>. Du bør derfor uansett sende <1>søknad om dagpenger</1> én uke før du blir arbeidsledig eller når du får permitteringsvarsel."
   },
   "NEGATIVERESPONSE": {
     "RISIKERER_AVSLAG_GRUNNET_LAV_INNTEKT": "Søker du om dagpenger fra i dag, risikerer du å få avslag på grunn av for lav inntekt.",
     "BEREGNING_BASERT_PÅ_INNTEKTSOPPLYSNINGER": "Beregningen er basert på inntektsopplysninger fra <0>skatteetaten.no/mineinntekter</0>.",
     "LIKEVEL_RETT": "Du kan likevel ha rett til dagpenger om du",
+    "ER_LÆRLING": "er lærling",
     "AVTJENT_VERNEPLIKT": "nylig har avtjent verneplikt",
     "SØKER_FREM_I_TID": "søker fram i tid",
     "ARBEIDET_I_EØS": "har arbeidet i et annet EØS-land",

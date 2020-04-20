@@ -36,6 +36,7 @@ const NegativeResponse = () => {
       <Undertittel tag="h3">{t('NEGATIVERESPONSE.RISIKERER_AVSLAG_GRUNNET_LAV_INNTEKT')}</Undertittel>
       <Element>{t('NEGATIVERESPONSE.LIKEVEL_RETT')}</Element>
       <ul>
+        <li>{t('NEGATIVERESPONSE.ER_LÆRLING')}</li>
         <li>{t('NEGATIVERESPONSE.AVTJENT_VERNEPLIKT')}</li>
         <li>{t('NEGATIVERESPONSE.SØKER_FREM_I_TID')}</li>
         <li>{t('NEGATIVERESPONSE.ARBEIDET_I_EØS')}</li>
