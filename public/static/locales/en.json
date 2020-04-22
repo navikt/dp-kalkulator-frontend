@@ -24,6 +24,7 @@
     "RISIKERER_AVSLAG_GRUNNET_LAV_INNTEKT": "If you apply for dagpenger from today, you're risking refusal because of too low income.",
     "BEREGNING_BASERT_PÅ_INNTEKTSOPPLYSNINGER": "The calculation is based on incomeinformation from <0>skatteetaten.no/mineinntekter</0>. If the information in incorrect, it has to be corrected.",
     "LIKEVEL_RETT": "You may still have right for dagpenger if you",
+    "ER_LÆRLING": "are an apprentice",
     "AVTJENT_VERNEPLIKT": "recently served military conscription",
     "SØKER_FREM_I_TID": "applying ahead of time",
     "ARBEIDET_I_EØS": "have worked in another EEA-country",
@@ -34,7 +35,7 @@
     "IDAG_FÅTT_OMTRENT": "Today you would get an estimate of:",
     "UKESATS_HVER_UKE": "{{ukesats}} before taxes for {{periodeAntallUker}} weeks",
     "GJELDER_KUN_DU_OPPFYLLER_VILKÅR": "This applies only if you fulfill all the <0>requirements for enployment benefits</0> one week before unemployment.",
-    "ANBEFALER_SENDE_SØKNAD_ANTALL_UKER": "We recomend that you <0>send a application</0> one week before you become unemployed.",
+    "ANBEFALER_SENDE_SØKNAD_ANTALL_UKER": "We recommend that you <0>send a application</0> one week before you become unemployed or when you receive lay-off notice",
     "BEREGNINGEN_ER_BASERT_PÅ_OPPLYSNINGER": "The calculations are based on information about your income from <0>skatteetaten.no/mineinntekter</0>"
   },
   "ERROR": {
