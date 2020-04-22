@@ -35,7 +35,7 @@
     "IDAG_FÅTT_OMTRENT": "Today you would get an estimate of:",
     "UKESATS_HVER_UKE": "{{ukesats}} before taxes for {{periodeAntallUker}} weeks",
     "GJELDER_KUN_DU_OPPFYLLER_VILKÅR": "This applies only if you fulfill all the <0>requirements for enployment benefits</0> one week before unemployment.",
-    "ANBEFALER_SENDE_SØKNAD_ANTALL_UKER": "We recomend that you <0>send a application</0> one week before you become unemployed or once you receive a notice of layoff ",
+    "ANBEFALER_SENDE_SØKNAD_ANTALL_UKER": "We recommend that you <0>send a application</0> one week before you become unemployed or when you receive lay-off notice",
     "BEREGNINGEN_ER_BASERT_PÅ_OPPLYSNINGER": "The calculations are based on information about your income from <0>skatteetaten.no/mineinntekter</0>"
   },
   "ERROR": {
