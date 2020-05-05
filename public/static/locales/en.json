@@ -1,7 +1,7 @@
 {
   "APP": {
     "BETA": "Denne siden er under testing.",
-    "NEDETID": "Kalkulatoren er midlertidig slått av grunnet arbeid, vi beklager ulempene dette medfører",
+    "NEDETID": "Dagpengekalkulatoren er midlertidig ute av drift. Vi jobber med å løse dette.",
     "AVSLATT_SKATT": "Grunnet problemer med innhenting av inntekter er kalkulatoren midlertidig deaktivert",
     "CORONA_INFO": "The calculator is up to date on current laws."
   },
