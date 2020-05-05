@@ -1,6 +1,7 @@
 {
   "APP": {
     "BETA": "Denne siden er under testing.",
+    "NEDETID": "Kalkulatoren er midlertidig slått av grunnet arbeid, vi beklager ulempene dette medfører",
     "AVSLATT_SKATT": "Grunnet problemer med innhenting av inntekter er kalkulatoren midlertidig deaktivert",
     "CORONA_INFO": "Kalkulatoren er oppdatert etter gjeldende regelverk. Er du permittert vil ikke kalkulatoren gi svar på hvor mye du vil få utbetalt de 20 første dagene."
   },
