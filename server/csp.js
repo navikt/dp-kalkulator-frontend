@@ -27,7 +27,7 @@ module.exports = helmet.contentSecurityPolicy({
         ],
         fontSrc: ['data:', '*.psplugin.com', '*.hotjar.com'],
         frameSrc: ['video.qbrick.com/', 'vars.hotjar.com'],
-        imgSrc: ['*.hotjar.com', 'www.google-analytics.com', 'appres.nav.no'],
+        imgSrc: ['*.hotjar.com', 'www.google-analytics.com', '*.nav.no'],
         // reportUri: 'https://navdagpenger.report-uri.com/r/d/csp/enforce',
     },
 });
