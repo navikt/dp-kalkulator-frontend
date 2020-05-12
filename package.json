@@ -5,7 +5,7 @@
   "homepage": "https://nav.no/arbeid/dagpenger/kalkulator",
   "scripts": {
     "start:js": "react-scripts start",
-    "server": "npm run build && node ./build/server.js",
+    "server": "npm run build && node ./server/server.js",
     "docker": "npm run build && docker build -t dpkalkulator . && docker run dpkalkulator",
     "build:js": "react-scripts build",
     "start:css": "less-watch-compiler --config less.json",

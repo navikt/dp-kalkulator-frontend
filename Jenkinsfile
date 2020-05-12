@@ -17,7 +17,8 @@ pipeline {
 
       steps {
         sh label: 'Install dependencies', script: """
-          npm install
+          npm ci
+          npm --prefix ./server ci
         """
 
         sh label: 'Build artifact', script: """
@@ -59,7 +60,7 @@ pipeline {
     stage('Acceptance testing') {
       stages {
         stage('Deploy to pre-production') {
-          when { branch 'master' }
+          when { branch 'ny-dekorator' }
           steps {
             sh label: 'Deploy with kubectl', script: """
               kubectl config use-context dev-${env.ZONE}
