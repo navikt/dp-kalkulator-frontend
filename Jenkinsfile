@@ -17,7 +17,8 @@ pipeline {
 
       steps {
         sh label: 'Install dependencies', script: """
-          npm install
+          npm ci
+          npm --prefix ./server ci
         """
 
         sh label: 'Build artifact', script: """
