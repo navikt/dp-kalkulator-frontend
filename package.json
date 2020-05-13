@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "@navikt/fnrvalidator": "^1.1.0",
-    "@reach/menu-button": "^0.6.1",
+    "@reach/menu-button": "^0.10.0",
     "@sentry/browser": "^5.7.1",
     "amplitude-js": "^5.6.0",
     "axios": "^0.19.0",
