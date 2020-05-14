@@ -3,37 +3,29 @@
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=navikt_dp-inntekt-innsyn-ui&metric=alert_status)](https://sonarcloud.io/dashboard?id=navikt_dp-inntekt-innsyn-ui)
 
 
-### Available Scripts
+## Utvikling
 
-In the project directory, you can run:
+### Utvikle lokalt
 
-#### `npm start`
+`npm install`
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+`npm start`
 
-#### `npm test`
+For å mocke api'et kan du gå i filen `src/Api/index.js` og sette `const mock = true;`
 
-#### `npm test:less`
+### Lokal server
 
-#### `npm run build`
+Installer server-deps:
 
-Builds the app for production to the `build` folder.<br>
+`npm --prefix ./server install`
 
-#### `npm run server`
+`npm run server`
 
-Build and start express server
-Open [http://localhost:8000](http://localhost:3000) to view it in the browser.
+### Bygg og kjør docker-container
 
-#### `npm run docker`
+`npm run docker`
 
-Build and start docker
+## Kontakt
 
-## Licenses and attribution
-For updated information, always see LICENSE first!
-
-## For NAV-ansatte
 Interne henvendelser kan sendes via Slack i kanalen #team-dagpenger.
-
-
 
