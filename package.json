@@ -61,7 +61,7 @@
     "react": "^16.9.0",
     "react-collapse": "^5.0.0",
     "react-dom": "^16.8.6",
-    "react-i18next": "^11.2.1",
+    "react-i18next": "^11.3.5",
     "react-router-dom": "^5.0.1",
     "typescript": "^3.8.3"
   },
