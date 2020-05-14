@@ -28,7 +28,7 @@ const getDecorator = () =>
                         MEGAMENU_RESOURCES: document.getElementById('megamenu-resources')[prop],
                     };
                     cache.set('main-cache', data);
-                    console.info(`Creating cache`);
+                    console.info(`🗄 Creating cache for nav-dekorator`);
                     resolve(data);
                 } else {
                     reject(new Error(error));
