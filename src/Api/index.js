@@ -21,8 +21,11 @@ export const verifyToken = async () => {
   }
 };
 
+// Sett denne til true for å få mock-resultat
+const mock = false;
+
 export const getBehov = async () => {
-  if (1 === 2 && process.env.NODE_ENV === 'development') {
+  if (mock && process.env.NODE_ENV === 'development') {
     try {
       return await instance({
         method: 'get',
