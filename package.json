@@ -4,17 +4,12 @@
   "private": true,
   "homepage": "https://nav.no/arbeid/dagpenger/kalkulator",
   "scripts": {
-    "start:js": "react-scripts start",
+    "start": "craco start",
     "server": "npm run build && node ./server/server.js",
     "docker": "npm run build && docker build -t dpkalkulator . && docker run dpkalkulator",
-    "build:js": "react-scripts build",
-    "start:css": "less-watch-compiler --config less.json",
-    "build:css": "less-watch-compiler --run-once --config less.json",
-    "start": "npm-run-all -p start:*",
-    "build": "npm-run-all -p build:*",
-    "test": "react-scripts test",
-    "test:less": "stylelint \"src/**/*.less\"",
-    "eject": "react-scripts eject"
+    "build": "craco build",
+    "test": "craco test",
+    "test:less": "stylelint \"src/**/*.less\""
   },
   "dependencies": {
     "@navikt/fnrvalidator": "^1.1.0",
@@ -66,6 +61,8 @@
     "typescript": "^3.9.2"
   },
   "devDependencies": {
+    "@craco/craco": "^5.6.4",
+    "craco-less": "^1.16.0",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.15.1",
     "eslint": "^6.8.0",
@@ -76,11 +73,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react": "^7.19.0",
-    "less": "^3.5.2",
-    "less-plugin-npm-import": "^2.1.0",
-    "less-watch-compiler": "^1.14.1",
     "minimist": "^1.2.5",
-    "npm-run-all": "^4.1.5",
     "prettier": "^1.19.1",
     "react-motion": "^0.5.2",
     "react-scripts": "^3.4.0",
