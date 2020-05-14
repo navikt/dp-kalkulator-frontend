@@ -60,7 +60,7 @@ pipeline {
     stage('Acceptance testing') {
       stages {
         stage('Deploy to pre-production') {
-          when { branch 'forenkler-lessoppsett' }
+          when { branch 'master' }
           steps {
             sh label: 'Deploy with kubectl', script: """
               kubectl config use-context dev-${env.ZONE}
