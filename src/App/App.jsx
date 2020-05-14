@@ -10,7 +10,7 @@ import Kalkulator from '../Kalkulator/Kalkulator';
 import ErrorBoundary from '../Components/ErrorBoundary';
 import { instance } from '../Api';
 import tracking from '../lib/tracking';
-import './App.css';
+import './App.less';
 
 // sentry
 const environment = window.location.hostname;
