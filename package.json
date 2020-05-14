@@ -6,7 +6,7 @@
   "scripts": {
     "start": "craco start",
     "server": "npm run build && node ./server/server.js",
-    "docker": "npm run build && docker build -t dpkalkulator . && docker run dpkalkulator",
+    "docker": "npm run build && docker build -t dpkalkulator . && docker run -p 8000:8000 dpkalkulator",
     "build": "craco build",
     "test": "craco test",
     "test:less": "stylelint \"src/**/*.less\""
