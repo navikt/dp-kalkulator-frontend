@@ -20,12 +20,10 @@ const getDecorator = () =>
                     const { document } = new JSDOM(body).window;
                     const prop = 'innerHTML';
                     const data = {
-                        NAV_SKIPLINKS: document.getElementById('skiplinks')[prop],
                         NAV_SCRIPTS: document.getElementById('scripts')[prop],
                         NAV_STYLES: document.getElementById('styles')[prop],
                         NAV_HEADING: document.getElementById('header-withmenu')[prop],
                         NAV_FOOTER: document.getElementById('footer-withmenu')[prop],
-                        MEGAMENU_RESOURCES: document.getElementById('megamenu-resources')[prop],
                     };
                     cache.set('main-cache', data);
                     console.info(`🗄 Creating cache for nav-dekorator`);
