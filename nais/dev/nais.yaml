@@ -5,7 +5,7 @@ metadata:
 spec:
   ingresses:
     - "https://dp-inntekt-innsyn-ui.nais.oera-q.local/"
-    - "https://www-q1.nav.no/arbeid/dagpenger/kalkulator"
+    - "https://www-q0.nav.no/arbeid/dagpenger/kalkulator"
   sessionAffinity: ClientIP # Sticky Session for ingress controller to prevent 404 on rollout
   env:
     - name: REACT_APP_API_URL
