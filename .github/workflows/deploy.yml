@@ -21,11 +21,10 @@ jobs:
       - run: npm test
       - run: npm --prefix ./server ci
       - run: npm run build
-      - run: cp ~/.npmrc .npmrc
         env:
           CI: true
       - name: Build docker image
-        run: docker build -t $IMAGE . -f Dockerfile.ci --pull
+        run: docker build -t $IMAGE . -f Dockerfile --pull
       - name: Login to Github Package Registry
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
