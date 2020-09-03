@@ -4,6 +4,7 @@ team: teamdagpenger
 ingresses: |
   ingresses:
     - https://www.nav.no/arbeid/dagpenger/kalkulator
+    - https://arbeid.prod-gcp.nais.io/arbeid/dagpenger/kalkulator
 env: |
   env:
     - name: REACT_APP_API_URL
