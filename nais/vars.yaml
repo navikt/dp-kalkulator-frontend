@@ -1,3 +1,3 @@
-app: dp-inntekt-innsyn-ui
-namespace: default
+app: dp-kalkulator-frontend
+namespace: teamdagpenger
 team: teamdagpenger
