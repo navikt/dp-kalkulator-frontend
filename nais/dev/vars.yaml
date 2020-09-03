@@ -3,9 +3,8 @@ namespace: teamdagpenger
 team: teamdagpenger
 ingresses: |
   ingresses:
-    - "https://dp-inntekt-innsyn-ui.nais.oera-q.local/"
-    - "https://www-q0.nav.no/arbeid/dagpenger/kalkulator"
-    - "https://www-q1.nav.no/arbeid/dagpenger/kalkulator"
+    - https://www-q0.nav.no/arbeid/dagpenger/kalkulator
+    - https://www-q1.nav.no/arbeid/dagpenger/kalkulator
 env: |
   env:
     - name: REACT_APP_API_URL
