@@ -3,7 +3,7 @@ namespace: teamdagpenger
 team: teamdagpenger
 ingresses: |
   ingresses:
-    - arbeid.dev.nav.no/arbeid/dagpenger/kalkulator
+    - https://arbeid.dev.nav.no/arbeid/dagpenger/kalkulator
 env: |
   env:
     - name: REACT_APP_API_URL
