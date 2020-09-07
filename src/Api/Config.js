@@ -31,6 +31,9 @@ export const getApiBaseUrl = (host = window.location.hostname) => {
   if (host.includes('www-q')) {
     return 'https://www-q0.nav.no/arbeid/dagpenger/kalkulator-api';
   }
+  if (host.includes('arbeid.dev')) {
+    return 'https://arbeid.dev.nav.no/arbeid/dagpenger/kalkulator-api';
+  }
   return 'https://www.nav.no/arbeid/dagpenger/kalkulator-api';
 };
 
