@@ -8,6 +8,9 @@ export const getLoginUrl = (host = window.location.hostname) => {
   if (host.includes('www-q')) {
     return 'https://loginservice-q.nav.no/login?level=Level3';
   }
+  if (host.includes('arbeid.dev')) {
+    return 'https://loginservice.dev.nav.no/login?level=Level3';
+  }
   return 'https://loginservice.nav.no/login?level=Level3';
 };
 
