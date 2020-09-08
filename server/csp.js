@@ -19,6 +19,7 @@ module.exports = helmet.contentSecurityPolicy({
         connectSrc: [
             "'self'",
             '*.nav.no',
+            '*.dev.nav.no',
             'appres.nav.no',
             'amplitude.nav.no/collect',
             '*.psplugin.com',
