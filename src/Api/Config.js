@@ -15,7 +15,7 @@ export const getLoginUrl = (host = window.location.hostname) => {
 };
 
 export const getBaseUrl = (host = window.location.hostname) => {
-  if (host.includes('localhost') || host.includes('t6') || host.includes('t1') || host.includes('www-q')) {
+  if (host.includes('localhost') || host.includes('t6') || host.includes('t1') || host.includes('www-q') || host.includes('arbeid.dev')) {
     return window.location.href;
   }
   return 'https://www.nav.no/arbeid/dagpenger/kalkulator';
