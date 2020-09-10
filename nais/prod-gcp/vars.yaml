@@ -2,7 +2,7 @@ app: dp-kalkulator-frontend
 namespace: teamdagpenger
 team: teamdagpenger
 ingresses: |
-        env: |
+env: |
   env:
     - name: REACT_APP_API_URL
       value: https://www.nav.no/arbeid/dagpenger/kalkulator-api/
