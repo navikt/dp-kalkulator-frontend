@@ -14,7 +14,7 @@
   "dependencies": {
     "@navikt/fnrvalidator": "^1.1.0",
     "@reach/menu-button": "^0.10.2",
-    "@sentry/browser": "^5.15.5",
+    "@sentry/browser": "^5.21.3",
     "amplitude-js": "^5.11.0",
     "axios": "^0.19.0",
     "axios-mock-adapter": "^1.18.1",
