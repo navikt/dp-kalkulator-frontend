@@ -9,6 +9,7 @@
     "docker": "npm run build && docker build -t dpkalkulator . && docker run -p 8000:8000 dpkalkulator",
     "build": "craco build",
     "test": "craco test",
+    "testOnce": "craco test --watchAll=false --bail",
     "lint": "eslint src/",
     "test:less": "stylelint \"src/**/*.less\""
   },
@@ -98,10 +99,11 @@
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
-      "pre-push": " run lint && npm run test"
+      "pre-push": "npm run lint && npm run testOnce"
     }
   },
   "lint-staged": {
+    "*.{js,jsx,md,ts,tsx}": "prettier --write",
     "*.{js,jsx,ts,tsx}": "eslint"
   }
 }

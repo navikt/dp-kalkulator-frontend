@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { init } from '@sentry/browser';
-import { useTranslation } from 'react-i18next';
 import Header from '../Components/Header';
 import BackButton from '../Components/BackButton';
 import SamtykkePanel from '../Kalkulator/SamtykkePanel';
@@ -22,7 +21,10 @@ export const App = () => {
   const [isSamtykke, setSamtykke] = useState(false);
   const [errors, setError] = useState({ hasError: false, status: null, statusText: null });
   // axios apply interceptor on response
-  instance.interceptors.response.use(response => response, error => setError({ hasError: true, ...error }));
+  instance.interceptors.response.use(
+    response => response,
+    error => setError({ hasError: true, ...error }),
+  );
 
   tracking.logEvent('ANKOMMER_FORSIDEN', {
     environment,

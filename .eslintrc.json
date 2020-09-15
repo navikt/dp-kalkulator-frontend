@@ -10,11 +10,8 @@
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
-  "plugins": ["prettier"],
   "extends": [
-    "react-app",
-    "airbnb",
-    "plugin:prettier/recommended"
+    "react-app"
   ],
   "rules": {
     "import/no-named-as-default": 0,
