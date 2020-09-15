@@ -16,14 +16,6 @@ export const PositiveResponse = ({ ukesats, periodeAntallUker }) => {
     window.location.assign(LENKER.DAGPENGER_SØKNAD_URL);
   };
 
-  const handleClickFaktasider = event => {
-    event.preventDefault();
-    tracking.logEvent('TIL_FAKTASIDER', {
-      isOppfyllerInntekstkrav: true,
-    });
-    window.location.assign(LENKER.DAGPENGER_FAKTASIDE_URL);
-  };
-
   return (
     <>
       <Element>{t('POSITIVERESPONSE.IDAG_FÅTT_OMTRENT')}</Element>
