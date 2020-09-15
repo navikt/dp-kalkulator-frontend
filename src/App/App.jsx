@@ -42,7 +42,6 @@ export const App = () => {
     <div className="App">
       <Header />
       <div className="content">
-        <AlertStripe type="advarsel">{t('APP.CORONA_INFO')}</AlertStripe>
         <Spacer twentyPx />
         <ErrorBoundary apiErrors={errors}>{isSamtykke || hasSamtykke ? <Kalkulator /> : <SamtykkePanel onClickCallback={handleSetSamtykke} />}</ErrorBoundary>
         <Spacer twentyPx />
