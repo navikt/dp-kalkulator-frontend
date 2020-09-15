@@ -30,9 +30,6 @@ export const PositiveResponse = ({ ukesats, periodeAntallUker }) => {
       <Innholdstittel tag="h3">{t('POSITIVERESPONSE.UKESATS_HVER_UKE', { ukesats, periodeAntallUker })}</Innholdstittel>
       <Normaltekst>
         <Trans i18nKey="FELLES.ANBEFALER_SENDE_SØKNAD_ANTALL_UKER">
-          <a href={LENKER.DAGPENGER_FAKTASIDE_URL} onClick={event => handleClickFaktasider(event)} className="lenke">
-            {LENKER.DAGPENGER_FAKTASIDE_URL}
-          </a>
           <a href={LENKER.DAGPENGER_SØKNAD_URL} onClick={event => handleClickSøknad(event)} className="lenke">
             {LENKER.DAGPENGER_SØKNAD_URL}
           </a>
