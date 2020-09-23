@@ -3,10 +3,9 @@ namespace: teamdagpenger
 team: teamdagpenger
 ingresses: |
   ingresses:
-    - https://www-q0.nav.no/arbeid/dagpenger/kalkulator
-    - https://www-q1.nav.no/arbeid/dagpenger/kalkulator
+    - https://arbeid.dev.nav.no/arbeid/dagpenger/kalkulator
 env: |
   env:
     - name: REACT_APP_API_URL
-      value: https://www-q0.nav.no/arbeid/dagpenger/kalkulator-api/
+      value: https://arbeid.dev.nav.no/arbeid/dagpenger/api/kalkulator
 alerts_slack_channel: "#team-dagpenger-alert-non-prod"

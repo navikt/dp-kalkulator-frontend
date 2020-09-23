@@ -7,7 +7,7 @@ ingresses: |
 env: |
   env:
     - name: REACT_APP_API_URL
-      value: https://www.nav.no/arbeid/dagpenger/kalkulator-api/
+      value: https://www.nav.no/arbeid/dagpenger/api/kalkulator
     - name: REACT_APP_AMPLITUDE_KEY
       value: edf391bf01b758a289ef5e7cb297f77a
 alerts_slack_channel: "#team-dagpenger-alert"
