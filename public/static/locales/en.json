@@ -2,8 +2,7 @@
   "APP": {
     "BETA": "Denne siden er under testing.",
     "NEDETID": "Dagpengekalkulatoren er midlertidig ute av drift. Vi jobber med å løse dette.",
-    "AVSLATT_SKATT": "Grunnet problemer med innhenting av inntekter er kalkulatoren midlertidig deaktivert",
-    "CORONA_INFO": "The calculator is up to date on current laws."
+    "AVSLATT_SKATT": "Grunnet problemer med innhenting av inntekter er kalkulatoren midlertidig deaktivert"
   },
   "SAMTYKKEPANEL": {
     "HENTER_INFO_FRA_SKATTEETAEN_TITTEL": "We gather information from the Tax-authority",

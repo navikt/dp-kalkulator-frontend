@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import { init } from '@sentry/browser';
-import { useTranslation } from 'react-i18next';
-import AlertStripe from 'nav-frontend-alertstriper';
 import Header from '../Components/Header';
 import BackButton from '../Components/BackButton';
 import SamtykkePanel from '../Kalkulator/SamtykkePanel';
@@ -20,12 +18,13 @@ init({
 });
 
 export const App = () => {
-  const { t } = useTranslation();
-
   const [isSamtykke, setSamtykke] = useState(false);
   const [errors, setError] = useState({ hasError: false, status: null, statusText: null });
   // axios apply interceptor on response
-  instance.interceptors.response.use(response => response, error => setError({ hasError: true, ...error }));
+  instance.interceptors.response.use(
+    response => response,
+    error => setError({ hasError: true, ...error }),
+  );
 
   tracking.logEvent('ANKOMMER_FORSIDEN', {
     environment,
@@ -42,7 +41,6 @@ export const App = () => {
     <div className="App">
       <Header />
       <div className="content">
-        <AlertStripe type="advarsel">{t('APP.CORONA_INFO')}</AlertStripe>
         <Spacer twentyPx />
         <ErrorBoundary apiErrors={errors}>{isSamtykke || hasSamtykke ? <Kalkulator /> : <SamtykkePanel onClickCallback={handleSetSamtykke} />}</ErrorBoundary>
         <Spacer twentyPx />

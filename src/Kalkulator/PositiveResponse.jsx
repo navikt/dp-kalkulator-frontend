@@ -16,23 +16,12 @@ export const PositiveResponse = ({ ukesats, periodeAntallUker }) => {
     window.location.assign(LENKER.DAGPENGER_SØKNAD_URL);
   };
 
-  const handleClickFaktasider = event => {
-    event.preventDefault();
-    tracking.logEvent('TIL_FAKTASIDER', {
-      isOppfyllerInntekstkrav: true,
-    });
-    window.location.assign(LENKER.DAGPENGER_FAKTASIDE_URL);
-  };
-
   return (
     <>
       <Element>{t('POSITIVERESPONSE.IDAG_FÅTT_OMTRENT')}</Element>
       <Innholdstittel tag="h3">{t('POSITIVERESPONSE.UKESATS_HVER_UKE', { ukesats, periodeAntallUker })}</Innholdstittel>
       <Normaltekst>
         <Trans i18nKey="FELLES.ANBEFALER_SENDE_SØKNAD_ANTALL_UKER">
-          <a href={LENKER.DAGPENGER_FAKTASIDE_URL} onClick={event => handleClickFaktasider(event)} className="lenke">
-            {LENKER.DAGPENGER_FAKTASIDE_URL}
-          </a>
           <a href={LENKER.DAGPENGER_SØKNAD_URL} onClick={event => handleClickSøknad(event)} className="lenke">
             {LENKER.DAGPENGER_SØKNAD_URL}
           </a>

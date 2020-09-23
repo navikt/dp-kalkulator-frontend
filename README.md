@@ -11,7 +11,7 @@
 
 `npm start`
 
-For å mocke api'et kan du gå i filen `src/Api/index.js` og sette `const mock = true;`
+Api'et blir automatisk mocket i dev, for å skru av mock kan du gå i filen `src/Api/index.js` og sette `const mock = false;`
 
 ### Lokal server
 

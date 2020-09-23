@@ -2,8 +2,7 @@
   "APP": {
     "BETA": "Denne siden er under testing.",
     "NEDETID": "Dagpengekalkulatoren er midlertidig ute av drift. Vi jobber med å løse dette.",
-    "AVSLATT_SKATT": "Grunnet problemer med innhenting av inntekter er kalkulatoren midlertidig deaktivert",
-    "CORONA_INFO": "Kalkulatoren er oppdatert etter gjeldende regelverk. Er du permittert vil ikke kalkulatoren gi svar på hvor mye du vil få utbetalt de 20 første dagene."
+    "AVSLATT_SKATT": "Grunnet problemer med innhenting av inntekter er kalkulatoren midlertidig deaktivert"
   },
   "SAMTYKKEPANEL": {
     "HENTER_INFO_FRA_SKATTEETAEN_TITTEL": "Vi henter informasjon om inntekten din fra Skatteetaten",
@@ -21,7 +20,7 @@
     "INFO": "Vi henter informasjonen om inntekten din fra Skatteetaten."
   },
   "FELLES": {
-    "ANBEFALER_SENDE_SØKNAD_ANTALL_UKER": "Dagpengekalkulatoren gir ikke juridisk svar på om du har rett til <0>dagpenger</0>. Du bør derfor uansett sende <1>søknad om dagpenger</1> én uke før du blir arbeidsledig eller når du får permitteringsvarsel."
+    "ANBEFALER_SENDE_SØKNAD_ANTALL_UKER": "Dagpengekalkulatoren gir ikke juridisk svar på om du har rett til dagpenger. Du bør derfor uansett sende <0>søknad om dagpenger</0> én uke før du blir arbeidsledig eller når du får permitteringsvarsel."
   },
   "NEGATIVERESPONSE": {
     "RISIKERER_AVSLAG_GRUNNET_LAV_INNTEKT": "Søker du om dagpenger fra i dag, risikerer du å få avslag på grunn av for lav inntekt.",

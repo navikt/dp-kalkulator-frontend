@@ -1,4 +1,5 @@
 import {getLoginUrl, getApiBaseUrl, getBaseUrl} from './Config';
+import {isDevelopment} from "../utils/environment";
 
 const axios = require('axios');
 
@@ -21,8 +22,8 @@ export const verifyToken = async () => {
   }
 };
 
-// Sett denne til true for å få mock-resultat
-const mock = false;
+// Sett denne til false for å ikke få mock-resultat i dev
+const mock = isDevelopment();
 
 export const getBehov = async () => {
   if (mock && process.env.NODE_ENV === 'development') {
