@@ -7,5 +7,5 @@ ingresses: |
 env: |
   env:
     - name: REACT_APP_API_URL
-      value: https://arbeid.dev.nav.no/arbeid/dagpenger/kalkulator-api/
+      value: https://arbeid.dev.nav.no/arbeid/dagpenger/api/kalkulator
 alerts_slack_channel: "#team-dagpenger-alert-non-prod"
