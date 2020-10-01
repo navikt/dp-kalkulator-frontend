@@ -1,7 +1,7 @@
 const jsdom = require('jsdom');
 const request = require('request');
 const NodeCache = require('node-cache');
-const { JSDOM } = jsdom;
+const {JSDOM} = jsdom;
 
 // Refresh cache every hour
 const cache = new NodeCache({
@@ -9,15 +9,20 @@ const cache = new NodeCache({
     checkperiod: 60,
 });
 
+const breadcrumbs = JSON.stringify([
+    {title: 'Arbeid', url: 'https://www.nav.no/arbeid/no/'},
+    {title: 'Dagpengekalkulator', url: 'https://www.nav.no/arbeid/dagpenger/kalkulator/'}
+]);
+
 const getDecorator = () =>
     new Promise((resolve, reject) => {
         const decorator = cache.get('main-cache');
         if (decorator) {
             resolve(decorator);
         } else {
-            request('https://www.nav.no/dekoratoren/', (error, response, body) => {
+            request(`https://www.nav.no/dekoratoren/?breadcrumbs=${breadcrumbs}&context=privatperson`, (error, response, body) => {
                 if (!error && response.statusCode >= 200 && response.statusCode < 400) {
-                    const { document } = new JSDOM(body).window;
+                    const {document} = new JSDOM(body).window;
                     const prop = 'innerHTML';
                     const data = {
                         NAV_SCRIPTS: document.getElementById('scripts')[prop],
