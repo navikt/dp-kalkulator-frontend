@@ -1,3 +1,4 @@
+/* eslint-disable */ // Kan fjernes når eslint får fikset bug (feks ved bump til react-scripts 4.0.0)
 import React, { Suspense } from "react";
 import ReactDOM from "react-dom";
 import Spinner from "nav-frontend-spinner";
