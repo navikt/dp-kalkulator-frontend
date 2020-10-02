@@ -4,7 +4,7 @@
 
 Frontend for dagpengekalkulatoren på nav.no (https://www.nav.no/arbeid/dagpenger/kalkulator/).
 Gir bruker automatisk innsikt i hvor mye de kan få i dagpenger basert på data fra skattetaten og regler i dagpengereglverket.
-Henter data fra [https://github.com/navikt/dp-kalkulator-api](dp-kalkulator-api)
+Henter data fra [dp-kalkulator-api](https://github.com/navikt/dp-kalkulator-api)
 
 ## Utvikling
 
