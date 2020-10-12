@@ -32,22 +32,6 @@ jobs:
       - name: Push Docker image
         run: docker push $IMAGE
 
-  deploy-preprod:
-    name: Deploy to Preprod
-    needs: build
-    if: github.ref == 'refs/heads/master'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@master
-        name: Checkout code
-      - uses: nais/deploy/actions/deploy@master
-        env:
-          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-          CLUSTER: dev-sbs
-          RESOURCE: nais/nais.yaml,nais/alerts.yaml
-          VARS: nais/dev/vars.yaml
-          PRINT_PAYLOAD: true
-
   deploy-dev:
     name: Deploy to dev-gcp
     needs: build
@@ -62,22 +46,6 @@ jobs:
           CLUSTER: dev-gcp
           RESOURCE: nais/nais.yaml,nais/alerts.yaml
           VARS: nais/dev-gcp/vars.yaml
-          PRINT_PAYLOAD: true
-
-  deploy-prod:
-    name: Deploy to Prod
-    needs: [build, deploy-preprod]
-    if: github.ref == 'refs/heads/master'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@master
-        name: Checkout code
-      - uses: nais/deploy/actions/deploy@master
-        env:
-          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-          CLUSTER: prod-sbs
-          RESOURCE: nais/nais.yaml,nais/alerts.yaml
-          VARS: nais/prod/vars.yaml
           PRINT_PAYLOAD: true
 
   deploy-prod-gcp:
