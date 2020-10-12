@@ -33,6 +33,5 @@ spec:
       cpu: 200m
       memory: 512Mi
   {{ingresses}}
-  {{accessPolicies}}
   sessionAffinity: ClientIP # Sticky Session for ingress controller to prevent 404 on rollout
   {{env}}

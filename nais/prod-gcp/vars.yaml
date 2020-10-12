@@ -10,9 +10,4 @@ env: |
       value: https://www.nav.no/arbeid/dagpenger/api/kalkulator
     - name: REACT_APP_AMPLITUDE_KEY
       value: edf391bf01b758a289ef5e7cb297f77a
-accesPolicies: |
-  accessPolicy:
-    outbound:
-      external:
-        - host: www.nav.no/dekoratoren
 alerts_slack_channel: "#team-dagpenger-alert"
