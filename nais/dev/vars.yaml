@@ -8,9 +8,4 @@ env: |
   env:
     - name: REACT_APP_API_URL
       value: https://arbeid.dev.nav.no/arbeid/dagpenger/api/kalkulator
-accesPolicies: |
-  accessPolicy:
-    outbound:
-      external:
-        - host: www.nav.no
 alerts_slack_channel: "#team-dagpenger-alert-non-prod"

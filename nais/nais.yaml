@@ -32,7 +32,10 @@ spec:
     requests:
       cpu: 200m
       memory: 512Mi
+  accessPolicy:
+    outbound:
+      external:
+        - host: www.nav.no
   {{ingresses}}
-  {{accessPolicy}}
   sessionAffinity: ClientIP # Sticky Session for ingress controller to prevent 404 on rollout
   {{env}}
