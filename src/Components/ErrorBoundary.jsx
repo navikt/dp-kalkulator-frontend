@@ -1,10 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { withTranslation } from 'react-i18next';
-import AlertStripe from 'nav-frontend-alertstriper';
-import { captureException, withScope } from '@sentry/browser';
-import { redirectToLogin } from '../Api';
-import tracking from '../lib/tracking';
+import React from "react";
+import PropTypes from "prop-types";
+import { withTranslation } from "react-i18next";
+import AlertStripe from "nav-frontend-alertstriper";
+import { captureException, withScope } from "@sentry/browser";
+import { redirectToLogin } from "../Api";
+import tracking from "../lib/tracking";
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -26,14 +26,14 @@ class ErrorBoundary extends React.Component {
       error: [
         error.toString(),
         info.componentStack
-          .split('\n')
-          .map(line => line.trim())
-          .find(line => !!line),
-      ].join(' '),
+          .split("\n")
+          .map((line) => line.trim())
+          .find((line) => !!line),
+      ].join(" "),
     });
     // send til sentry
-    withScope(scope => {
-      Object.keys(info).forEach(key => {
+    withScope((scope) => {
+      Object.keys(info).forEach((key) => {
         scope.setExtra(key, info[key]);
         captureException(error);
       });
@@ -55,28 +55,28 @@ class ErrorBoundary extends React.Component {
 
       switch (status) {
         case 401:
-          tracking.logEvent('VIDERESEND_TIL_LOGGINN');
+          tracking.logEvent("VIDERESEND_TIL_LOGGINN");
           return redirectToLogin();
         case 404:
-          feilmelding = t('ERROR.404');
+          feilmelding = t("ERROR.404");
           break;
         case 418:
-          feilmelding = t('ERROR.418');
+          feilmelding = t("ERROR.418");
           break;
         case 403:
-          feilmelding = t('ERROR.403');
+          feilmelding = t("ERROR.403");
           break;
         case 500:
-          feilmelding = t('ERROR.500');
+          feilmelding = t("ERROR.500");
           break;
         case 502:
-          feilmelding = t('ERROR.502');
+          feilmelding = t("ERROR.502");
           break;
         case 504:
-          feilmelding = t('ERROR.504');
+          feilmelding = t("ERROR.504");
           break;
         default:
-          feilmelding = t('ERROR.UNDEFINED');
+          feilmelding = t("ERROR.UNDEFINED");
           break;
       }
 
