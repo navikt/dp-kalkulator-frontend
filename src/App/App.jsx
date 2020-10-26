@@ -1,19 +1,19 @@
-import React, { useState } from 'react';
-import { init } from '@sentry/browser';
-import Header from '../Components/Header';
-import BackButton from '../Components/BackButton';
-import SamtykkePanel from '../Kalkulator/SamtykkePanel';
-import Spacer from '../Components/Spacer';
-import Kalkulator from '../Kalkulator/Kalkulator';
-import ErrorBoundary from '../Components/ErrorBoundary';
-import { instance } from '../Api';
-import tracking from '../lib/tracking';
-import './App.less';
+import React, { useState } from "react";
+import { init } from "@sentry/browser";
+import Header from "../Components/Header";
+import BackButton from "../Components/BackButton";
+import SamtykkePanel from "../Kalkulator/SamtykkePanel";
+import Spacer from "../Components/Spacer";
+import Kalkulator from "../Kalkulator/Kalkulator";
+import ErrorBoundary from "../Components/ErrorBoundary";
+import { instance } from "../Api";
+import tracking from "../lib/tracking";
+import "./App.less";
 
 // sentry
 const environment = window.location.hostname;
 init({
-  dsn: 'https://26768d0f8af64d66901466f17b51d1fe@sentry.gc.nav.no/22',
+  dsn: "https://26768d0f8af64d66901466f17b51d1fe@sentry.gc.nav.no/22",
   environment,
 });
 
@@ -22,20 +22,20 @@ export const App = () => {
   const [errors, setError] = useState({ hasError: false, status: null, statusText: null });
   // axios apply interceptor on response
   instance.interceptors.response.use(
-    response => response,
-    error => setError({ hasError: true, ...error }),
+    (response) => response,
+    (error) => setError({ hasError: true, ...error })
   );
 
-  tracking.logEvent('ANKOMMER_FORSIDEN', {
+  tracking.logEvent("ANKOMMER_FORSIDEN", {
     environment,
   });
 
   const handleSetSamtykke = () => {
-    tracking.logEvent('GITT_SAMTYKKE');
+    tracking.logEvent("GITT_SAMTYKKE");
     setSamtykke(true);
   };
 
-  const hasSamtykke = window.location.search === '?samtykke=true';
+  const hasSamtykke = window.location.search === "?samtykke=true";
 
   return (
     <div className="App">
