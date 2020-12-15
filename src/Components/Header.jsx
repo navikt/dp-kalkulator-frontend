@@ -7,7 +7,7 @@ const Header = () => {
   const { t } = useTranslation();
 
   return (
-    <div className="banner" role="banner">
+    <div className="dagpengekalkulator">
       <div className="content">
         <div className="text">
           <Sidetittel>{t("HEADER.TITTEL")}</Sidetittel>
