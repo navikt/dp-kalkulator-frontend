@@ -7,7 +7,7 @@ const Header = () => {
   const { t } = useTranslation();
 
   return (
-    <header className="header">
+    <div className="banner" role="banner">
       <div className="content">
         <div className="text">
           <Sidetittel>{t("HEADER.TITTEL")}</Sidetittel>
@@ -16,7 +16,7 @@ const Header = () => {
           <HeaderImage />
         </div>
       </div>
-    </header>
+    </div>
   );
 };
 export default Header;

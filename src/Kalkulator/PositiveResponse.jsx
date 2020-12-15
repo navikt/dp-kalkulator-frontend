@@ -18,7 +18,7 @@ export const PositiveResponse = ({ ukesats, periodeAntallUker }) => {
 
   return (
     <>
-      <Element>{t("POSITIVERESPONSE.IDAG_FÅTT_OMTRENT")}</Element>
+      <Element tag="h2">{t("POSITIVERESPONSE.IDAG_FÅTT_OMTRENT")}</Element>
       <Innholdstittel tag="h3">{t("POSITIVERESPONSE.UKESATS_HVER_UKE", { ukesats, periodeAntallUker })}</Innholdstittel>
       <Normaltekst>
         <Trans i18nKey="FELLES.ANBEFALER_SENDE_SØKNAD_ANTALL_UKER">

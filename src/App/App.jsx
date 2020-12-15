@@ -39,14 +39,16 @@ export const App = () => {
 
   return (
     <div className="App">
-      <Header />
-      <div className="content">
-        <Spacer twentyPx />
-        <ErrorBoundary apiErrors={errors}>{isSamtykke || hasSamtykke ? <Kalkulator /> : <SamtykkePanel onClickCallback={handleSetSamtykke} />}</ErrorBoundary>
-        <Spacer twentyPx />
-        <BackButton />
-        <Spacer twentyPx />
-      </div>
+      <main role="main">
+        <Header />
+        <div className="content">
+          <Spacer twentyPx />
+          <ErrorBoundary apiErrors={errors}>{isSamtykke || hasSamtykke ? <Kalkulator /> : <SamtykkePanel onClickCallback={handleSetSamtykke} />}</ErrorBoundary>
+          <Spacer twentyPx />
+          <BackButton />
+          <Spacer twentyPx />
+        </div>
+      </main>
     </div>
   );
 };
