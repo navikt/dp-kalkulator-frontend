@@ -16,7 +16,7 @@
     "@navikt/fnrvalidator": "^1.1.3",
     "@sentry/browser": "^5.27.1",
     "amplitude-js": "^7.3.0",
-    "axios": "^0.21.0",
+    "axios": "^0.21.1",
     "axios-mock-adapter": "^1.19.0",
     "babel-polyfill": "^6.26.0",
     "babel-runtime": "^6.26.0",
