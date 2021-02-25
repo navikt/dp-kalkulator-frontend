@@ -6,12 +6,12 @@ const { JSDOM } = jsdom;
 // Refresh cache every hour
 const cache = new NodeCache({
   stdTTL: 3600,
-  checkperiod: 60
+  checkperiod: 60,
 });
 
 const breadcrumbs = JSON.stringify([
   { title: "Arbeidssøker eller permittert", url: "https://www.nav.no/arbeid/no/" },
-  { title: "Dagpengekalkulator", url: "https://www.nav.no/arbeid/dagpenger/kalkulator/" }
+  { title: "Dagpengekalkulator", url: "https://www.nav.no/arbeid/dagpenger/kalkulator/" },
 ]);
 
 const getDecorator = () =>
@@ -28,7 +28,7 @@ const getDecorator = () =>
             NAV_SCRIPTS: document.getElementById("scripts")[prop],
             NAV_STYLES: document.getElementById("styles")[prop],
             NAV_HEADING: document.getElementById("header-withmenu")[prop],
-            NAV_FOOTER: document.getElementById("footer-withmenu")[prop]
+            NAV_FOOTER: document.getElementById("footer-withmenu")[prop],
           };
           cache.set("main-cache", data);
           console.info(`🗄 Creating cache for nav-dekorator`);

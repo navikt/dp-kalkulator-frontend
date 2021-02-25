@@ -1,12 +1,12 @@
-import {getLoginUrl, getApiBaseUrl, getBaseUrl} from './Config';
-import {isDevelopment} from "../utils/environment";
+import { getLoginUrl, getApiBaseUrl, getBaseUrl } from "./Config";
+import { isDevelopment } from "../utils/environment";
 
-const axios = require('axios');
+const axios = require("axios");
 
 export const instance = axios.create({
   timeout: 20000,
   headers: {
-    'Content-Type': 'application/json',
+    "Content-Type": "application/json",
   },
   withCredentials: true,
 });
@@ -14,7 +14,7 @@ export const instance = axios.create({
 export const verifyToken = async () => {
   try {
     return await instance({
-      method: 'get',
+      method: "get",
       url: `${getApiBaseUrl()}/auth`,
     });
   } catch (error) {
@@ -26,10 +26,10 @@ export const verifyToken = async () => {
 const mock = isDevelopment();
 
 export const getBehov = async () => {
-  if (mock && process.env.NODE_ENV === 'development') {
+  if (mock && process.env.NODE_ENV === "development") {
     try {
       return await instance({
-        method: 'get',
+        method: "get",
         url: `${process.env.PUBLIC_URL}/__mocks__/mockInnsyn.json`,
       });
     } catch (error) {
@@ -38,7 +38,7 @@ export const getBehov = async () => {
   }
   try {
     return await instance({
-      method: 'get',
+      method: "get",
       url: `${getApiBaseUrl()}/behov`,
     });
   } catch (error) {
