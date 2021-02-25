@@ -2,7 +2,7 @@ const contentSecurityPolicy = require("./csp");
 const express = require("express");
 const path = require("path");
 const mustacheExpress = require("mustache-express");
-const getDecorator = require("./decorator");
+const { fetchDecoratorHtml } = require("@navikt/nav-dekoratoren-moduler/ssr");
 
 const app = express();
 
@@ -29,9 +29,14 @@ app.use(basePath, express.static(buildPath, { index: false }));
 // Nais functions
 app.get(`${basePath}/internal/isAlive|isReady`, (req, res) => res.sendStatus(200));
 
+const breadcrumbs = JSON.stringify([
+  { title: "Arbeidssøker eller permittert", url: "https://www.nav.no/arbeid/no/" },
+  { title: "Dagpengekalkulator", url: "https://www.nav.no/arbeid/dagpenger/kalkulator/" },
+]);
+
 // Match everything except internal og static
 app.use(/^(?!.*\/(internal|static)\/).*$/, (req, res) =>
-  getDecorator()
+  fetchDecoratorHtml({breadcrumbs})
     .then((fragments) => {
       res.render("index.html", fragments);
     })
