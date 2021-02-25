@@ -27,13 +27,13 @@ const mock = isDevelopment();
 
 export const getBehov = async () => {
   if (mock && process.env.NODE_ENV === "development") {
-    return await instance({
+    return instance({
       method: "get",
       url: `${process.env.PUBLIC_URL}/__mocks__/mockInnsyn.json`,
     });
   }
 
-  return await instance({
+  return instance({
     method: "get",
     url: `${getApiBaseUrl()}/behov`,
   });
