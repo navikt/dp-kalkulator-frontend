@@ -1,5 +1,5 @@
-import { getLoginUrl, getApiBaseUrl, getBaseUrl } from "./Config";
-import { isDevelopment } from "../utils/environment";
+import {getApiBaseUrl, getBaseUrl, getLoginUrl} from "./Config";
+import {isDevelopment} from "../utils/environment";
 
 const axios = require("axios");
 
@@ -27,28 +27,22 @@ const mock = isDevelopment();
 
 export const getBehov = async () => {
   if (mock && process.env.NODE_ENV === "development") {
-    try {
-      return await instance({
-        method: "get",
-        url: `${process.env.PUBLIC_URL}/__mocks__/mockInnsyn.json`,
-      });
-    } catch (error) {
-      throw new Error(error);
-    }
-  }
-  try {
     return await instance({
       method: "get",
-      url: `${getApiBaseUrl()}/behov`,
+      url: `${process.env.PUBLIC_URL}/__mocks__/mockInnsyn.json`,
     });
-  } catch (error) {
-    throw new Error(error);
   }
+
+  return await instance({
+    method: "get",
+    url: `${getApiBaseUrl()}/behov`,
+  });
+
 };
 
 export const redirectToLogin = () => {
   window.location.assign(`${getLoginUrl()}&redirect=${getBaseUrl()}?samtykke=true`); // eslint-disable-line no-undef
 };
 
-const api = { getBehov, verifyToken, redirectToLogin };
+const api = {getBehov, verifyToken, redirectToLogin};
 export default api;
