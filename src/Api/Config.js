@@ -37,4 +37,5 @@ export const getApiBaseUrl = (host = window.location.hostname) => {
   return 'https://www.nav.no/arbeid/dagpenger/api/kalkulator';
 };
 
-export default { getLoginUrl, getApiBaseUrl };
+const config = { getLoginUrl, getApiBaseUrl };
+export default config;

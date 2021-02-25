@@ -50,4 +50,5 @@ export const redirectToLogin = () => {
   window.location.assign(`${getLoginUrl()}&redirect=${getBaseUrl()}?samtykke=true`); // eslint-disable-line no-undef
 };
 
-export default { getBehov, verifyToken, redirectToLogin };
+const api = { getBehov, verifyToken, redirectToLogin };
+export default api;
