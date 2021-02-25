@@ -15,6 +15,7 @@ const environment = window.location.hostname;
 init({
   dsn: "https://26768d0f8af64d66901466f17b51d1fe@sentry.gc.nav.no/22",
   environment,
+  autoSessionTracking: false,
 });
 
 export const App = () => {
