@@ -2,7 +2,7 @@ const contentSecurityPolicy = require("./csp");
 const express = require("express");
 const path = require("path");
 const mustacheExpress = require("mustache-express");
-const { fetchDecoratorHtml } = require("@navikt/nav-dekoratoren-moduler/ssr");
+const { injectDecorator } = require("@navikt/nav-dekoratoren-moduler/ssr");
 
 const app = express();
 
@@ -36,9 +36,9 @@ const breadcrumbs = JSON.stringify([
 
 // Match everything except internal og static
 app.use(/^(?!.*\/(internal|static)\/).*$/, (req, res) =>
-  fetchDecoratorHtml({breadcrumbs})
-    .then((fragments) => {
-      res.render("index.html", fragments);
+  injectDecorator({ filePath: path.resolve(__dirname, "../public/index.html"), breadcrumbs })
+    .then((html) => {
+      res.send(html);
     })
     .catch((e) => {
       const error = `Failed to get decorator: ${e}`;
