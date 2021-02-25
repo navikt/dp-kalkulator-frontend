@@ -35,7 +35,7 @@ export const getBehov = async () => {
 
   return instance({
     method: "get",
-    url: `${getApiBaseUrl()}/behov`,
+    url: `${getApiBaseUrl()}/behov?regelkontekst=veiledning`,
   });
 
 };

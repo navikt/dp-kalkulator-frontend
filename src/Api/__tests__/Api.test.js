@@ -18,7 +18,7 @@ describe("Api", () => {
   });
 
   it("Hente behov", async () => {
-    mock.onGet(`${getApiBaseUrl()}/behov`).reply(200, mockInnsyn);
+    mock.onGet(`${getApiBaseUrl()}/behov?regelkontekst=veiledning`).reply(200, mockInnsyn);
     try {
       const response = await getBehov();
       expect(response.data).to.eql(mockInnsyn);
@@ -28,7 +28,7 @@ describe("Api", () => {
   });
 
   it("Hente behov timer ut", async () => {
-    mock.onGet(`${getApiBaseUrl()}/behov`).timeout();
+    mock.onGet(`${getApiBaseUrl()}/behov?regelkontekst=veiledning`).timeout();
     try {
       await getBehov();
     } catch (error) {
@@ -37,7 +37,7 @@ describe("Api", () => {
   });
 
   it("Hente behov skal gi 401 når du ikke er logget inn", async () => {
-    mock.onGet(`${getApiBaseUrl()}/behov`).reply(401, {});
+    mock.onGet(`${getApiBaseUrl()}/behov?regelkontekst=veiledning`).reply(401, {});
     try {
       await getBehov();
     } catch (error) {
