@@ -32,7 +32,7 @@ app.get(`${basePath}/internal/isAlive|isReady`, (req, res) => res.sendStatus(200
 // Match everything except internal og static
 app.use(/^(?!.*\/(internal|static)\/).*$/, (req, res) =>
   injectDecoratorServerSide({
-    env: "prod",
+    env: process.env.DEKORATOR_MILJO || "prod",
     filePath: `${buildPath}/index.html`,
     breadcrumbs: [
       { title: "Arbeidssøker eller permittert", url: "https://www.nav.no/arbeid/no/" },
