@@ -6,6 +6,8 @@ ingresses: |
     - https://www.nav.no/arbeid/dagpenger/kalkulator
 env: |
   env:
+    - name: DEKORATOR_MILJO
+      value: prod
     - name: REACT_APP_API_URL
       value: https://www.nav.no/arbeid/dagpenger/api/kalkulator
     - name: REACT_APP_AMPLITUDE_KEY

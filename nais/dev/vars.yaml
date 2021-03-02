@@ -6,6 +6,10 @@ ingresses: |
     - https://arbeid.dev.nav.no/arbeid/dagpenger/kalkulator
 env: |
   env:
+    - name: DEKORATOR_MILJO
+      value: dev
     - name: REACT_APP_API_URL
       value: https://arbeid.dev.nav.no/arbeid/dagpenger/api/kalkulator
 alerts_slack_channel: "#team-dagpenger-alert-non-prod"
+outbound_external: |
+  - host: dekoratoren.dev.nav.no

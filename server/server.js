@@ -1,8 +1,7 @@
 const contentSecurityPolicy = require("./csp");
 const express = require("express");
 const path = require("path");
-const mustacheExpress = require("mustache-express");
-const getDecorator = require("./decorator");
+const { injectDecoratorServerSide } = require("@navikt/nav-dekoratoren-moduler/ssr");
 
 const app = express();
 
@@ -11,7 +10,6 @@ const basePath = "/arbeid/dagpenger/kalkulator";
 
 app.set("views", `${__dirname}/../build`);
 app.set("view engine", "mustache");
-app.engine("html", mustacheExpress());
 
 // Parse application/json
 app.use(express.json());
@@ -31,9 +29,16 @@ app.get(`${basePath}/internal/isAlive|isReady`, (req, res) => res.sendStatus(200
 
 // Match everything except internal og static
 app.use(/^(?!.*\/(internal|static)\/).*$/, (req, res) =>
-  getDecorator()
-    .then((fragments) => {
-      res.render("index.html", fragments);
+  injectDecoratorServerSide({
+    env: process.env.DEKORATOR_MILJO || "prod",
+    filePath: `${buildPath}/index.html`,
+    breadcrumbs: [
+      { title: "Arbeidssøker eller permittert", url: "https://www.nav.no/arbeid/no/" },
+      { title: "Dagpengekalkulator", url: "https://www.nav.no/arbeid/dagpenger/kalkulator/" },
+    ],
+  })
+    .then((html) => {
+      res.send(html);
     })
     .catch((e) => {
       const error = `Failed to get decorator: ${e}`;
