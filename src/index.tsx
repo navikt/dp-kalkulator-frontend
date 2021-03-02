@@ -7,10 +7,11 @@ import App from "./App/App";
 import i18n from "./lib/i18n";
 import { injectDecoratorClientSide } from "@navikt/nav-dekoratoren-moduler";
 import "./index.less";
+import { isDevelopment } from "./utils/environment";
 
-if (process.env.NODE_ENV === "development") {
+if (isDevelopment()) {
   injectDecoratorClientSide({
-    env: "prod",
+    env: "dev",
     breadcrumbs: [
       { title: "Arbeidssøker eller permittert", url: "https://www.nav.no/arbeid/no/" },
       { title: "Dagpengekalkulator", url: "https://www.nav.no/arbeid/dagpenger/kalkulator/" },
