@@ -2,7 +2,6 @@ const contentSecurityPolicy = require("./csp");
 const express = require("express");
 const path = require("path");
 const { injectDecoratorServerSide } = require("@navikt/nav-dekoratoren-moduler/ssr");
-const mustacheExpress = require("mustache-express");
 
 const app = express();
 
@@ -11,7 +10,6 @@ const basePath = "/arbeid/dagpenger/kalkulator";
 
 app.set("views", `${__dirname}/../build`);
 app.set("view engine", "mustache");
-app.engine("html", mustacheExpress());
 
 // Parse application/json
 app.use(express.json());
