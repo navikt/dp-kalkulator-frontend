@@ -36,7 +36,7 @@ spec:
     outbound:
       external:
         - host: www.nav.no
-        - host: dekoratoren.dev.nav.no
+        {{outbound_external}}
   {{ingresses}}
   sessionAffinity: ClientIP # Sticky Session for ingress controller to prevent 404 on rollout
   {{env}}
