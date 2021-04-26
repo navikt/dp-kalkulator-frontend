@@ -1,12 +1,12 @@
 import React from "react";
-import { useTranslation } from "react-i18next";
 import tracking from "../lib/tracking";
 import Lenke from "nav-frontend-lenker";
 import NavFrontendChevron from "nav-frontend-chevron";
 import LENKER from "../lib/constants";
+import { useTextContext } from "../utils/TextProvider";
 
 const BackButton = () => {
-  const { t } = useTranslation();
+  const text = useTextContext();
 
   return (
     <Lenke
@@ -14,7 +14,7 @@ const BackButton = () => {
       onClick={() => tracking.logEvent("TILBAKE_TIL_DAGPENGER")}
       href={LENKER.DAGPENGER_FAKTASIDE_URL}
     >
-      <NavFrontendChevron type="venstre" /> {t("KNAPP.TILBAKE")}
+      <NavFrontendChevron type="venstre" /> {text.tilbakeknapp}
     </Lenke>
   );
 };

@@ -1,16 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Sidetittel } from "nav-frontend-typografi";
-import { useTranslation } from "react-i18next";
 import { ReactComponent as HeaderImage } from "../Images/header.svg";
+import { useTextContext } from "../utils/TextProvider";
 
 const Header = () => {
-  const { t } = useTranslation();
-
+  const text = useTextContext();
   return (
     <div className="dagpengekalkulator">
       <div className="content">
         <div className="text">
-          <Sidetittel>{t("HEADER.TITTEL")}</Sidetittel>
+          <Sidetittel>{text.title}</Sidetittel>
         </div>
         <div role="presentation" className="header__svgContainer">
           <HeaderImage />

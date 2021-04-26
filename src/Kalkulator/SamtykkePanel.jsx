@@ -2,14 +2,14 @@ import React from "react";
 import PropTypes from "prop-types";
 import Panel from "nav-frontend-paneler";
 import { Hovedknapp } from "nav-frontend-knapper";
-import { useTranslation, Trans } from "react-i18next";
-import { Normaltekst, Innholdstittel } from "nav-frontend-typografi";
 import tracking from "../lib/tracking";
 import Spacer from "../Components/Spacer";
 import { LENKER } from "../lib/constants";
+import { useTextContext } from "../utils/TextProvider";
+import BlockContent from "../utils/BlockContent";
 
 export const SamtykkePanel = ({ onClickCallback }) => {
-  const { t } = useTranslation();
+  const text = useTextContext();
 
   const handleClickMineInntekter = (event) => {
     event.preventDefault();
@@ -20,20 +20,11 @@ export const SamtykkePanel = ({ onClickCallback }) => {
   return (
     <Panel>
       <div className="padding16">
-        <Innholdstittel tag="h2">{t("SAMTYKKEPANEL.HENTER_INFO_FRA_SKATTEETAEN_TITTEL")}</Innholdstittel>
-
-        <Normaltekst>
-          <Trans i18nKey="SAMTYKKEPANEL.HENTER_INFO_FRA_SKATTEETAEN_INGRESS">
-            <a href={LENKER.MINE_INNTEKTER_URL} onClick={(event) => handleClickMineInntekter(event)} className="lenke">
-              {LENKER.MINE_INNTEKTER_URL}
-            </a>
-          </Trans>
-        </Normaltekst>
-        <Normaltekst>{t("SAMTYKKEPANEL.OPPLYSNINGENE_SLETTES")}</Normaltekst>
+        <BlockContent blocks={text.samtykke} />
 
         <Spacer twentyPx />
         <div className="flex center">
-          <Hovedknapp onClick={onClickCallback}>{t("KNAPP.FORTSETT")}</Hovedknapp>
+          <Hovedknapp onClick={onClickCallback}>{text.fortsettknapp}</Hovedknapp>
         </div>
       </div>
     </Panel>
