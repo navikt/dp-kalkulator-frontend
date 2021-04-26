@@ -7,14 +7,13 @@ import { useTextContext } from "../utils/TextProvider";
 
 const BackButton = () => {
   const text = useTextContext();
-
   return (
     <Lenke
       className={"knapp--kompakt knapp--mini knapp--flat knapp"}
       onClick={() => tracking.logEvent("TILBAKE_TIL_DAGPENGER")}
       href={LENKER.DAGPENGER_FAKTASIDE_URL}
     >
-      <NavFrontendChevron type="venstre" /> {text.tilbakeknapp}
+      <NavFrontendChevron type="venstre" /> {text.tilbake}
     </Lenke>
   );
 };

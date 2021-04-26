@@ -14,7 +14,6 @@ type Props = typeof initialValue;
 
 export const PositiveResponse = (props: Props) => {
   const text = useTextContext();
-  console.log(text.apierrors);
   return (
     <Context.Provider value={props}>
       <BlockContent blocks={text.positiveresponse} />

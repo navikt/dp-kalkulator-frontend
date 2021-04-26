@@ -7,9 +7,8 @@ const initialValue = {
   negativeresponse: [] as any[],
   positiveresponse: [] as any[],
   fortsettknapp: "",
-  tilbakeknapp: "",
+  tilbake: "",
   loadingmessage: "",
-  apierrors: [] as any[],
 };
 const TextContext = createContext(initialValue);
 
