@@ -8,6 +8,7 @@ import i18n from "./lib/i18n";
 import { injectDecoratorClientSide } from "@navikt/nav-dekoratoren-moduler";
 import "./index.less";
 import { isDevelopment } from "./utils/environment";
+import TextProvider from "./utils/TextProvider";
 
 if (isDevelopment()) {
   injectDecoratorClientSide({
@@ -21,9 +22,11 @@ if (isDevelopment()) {
 
 ReactDOM.render(
   <I18nextProvider i18n={i18n}>
-    <Suspense fallback={<Spinner />}>
-      <App />
-    </Suspense>
+    <TextProvider>
+      <Suspense fallback={<Spinner />}>
+        <App />
+      </Suspense>
+    </TextProvider>
   </I18nextProvider>,
   document.getElementById("root")
 );

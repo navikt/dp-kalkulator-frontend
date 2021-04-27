@@ -1,7 +1,7 @@
 import Panel from "nav-frontend-paneler";
 import React from "react";
 import PropTypes from "prop-types";
-import PositiveResponse from "./PositiveResponse";
+import { PositiveResponse } from "./PositiveResponse";
 import NegativeResponse from "./NegativeResponse";
 
 export const QualifiedMessage = ({ isOppfyllerInntekstkrav, ukesats, periodeAntallUker }) => (

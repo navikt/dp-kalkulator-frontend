@@ -16,4 +16,8 @@ tracking.init(getApiKey(), "", {
   includeReferrer: true,
 });
 
+export function logLenkeKlikk(url: string) {
+  tracking.logEvent("LENKE_KLIKKET", { url });
+}
+
 export default tracking;

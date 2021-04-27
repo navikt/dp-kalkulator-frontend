@@ -39,7 +39,7 @@ export const App = () => {
   const hasSamtykke = window.location.search === "?samtykke=true";
 
   return (
-    <div className="App">
+    <div className="App typo-normal">
       <main role="main">
         <Header />
         <div className="content">

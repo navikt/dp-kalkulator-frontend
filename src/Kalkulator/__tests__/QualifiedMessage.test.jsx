@@ -2,7 +2,7 @@ import React from "react";
 import { shallow } from "enzyme";
 import { expect } from "chai";
 import QualifiedMessage from "../QualifiedMessage";
-import PositiveResponse from "../PositiveResponse";
+import { PositiveResponse } from "../PositiveResponse";
 import NegativeResponse from "../NegativeResponse";
 
 describe("QualifiedMessage", () => {
