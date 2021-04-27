@@ -1,5 +1,4 @@
 import React from "react";
-import "./BlockContent.less";
 // @ts-ignore
 import SanityBlockContent from "@sanity/block-content-to-react";
 import { VariabelSerializer } from "./VariabelSerializer";
