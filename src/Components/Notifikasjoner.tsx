@@ -9,10 +9,6 @@ export interface Notifikasjon {
   innhold?: typeof BlockContent[];
 }
 
-interface Props {
-  notifikasjoner?: Notifikasjon[];
-}
-
 function Notifikasjoner() {
   const { notifikasjoner } = useTextContext();
 
