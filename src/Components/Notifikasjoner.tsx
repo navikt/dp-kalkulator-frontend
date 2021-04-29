@@ -6,7 +6,7 @@ import { useTextContext } from "../utils/TextProvider";
 
 export interface Notifikasjon {
   title?: string;
-  innhold?: typeof BlockContent[];
+  innhold?: any[];
 }
 
 function Notifikasjoner() {
@@ -15,8 +15,6 @@ function Notifikasjoner() {
   if (!notifikasjoner?.length) {
     return null;
   }
-
-  console.log(notifikasjoner);
 
   return (
     <div>

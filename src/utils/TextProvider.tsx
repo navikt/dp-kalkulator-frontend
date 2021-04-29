@@ -23,14 +23,8 @@ export default function TextProvider(props: { children: ReactNode }) {
     sanityClient
       .fetch(
         `*[_id == "dagpengekalkulator"][0]{
-    title,
-    samtykke,
-    negativeresponse,
-    positiveresponse,
+        ...,
     'notifikasjoner': *[_type == "notifikasjon" && visPaaKalkulator==true],
-    fortsettknapp,
-    tilbake,
-    loadingmessage,
     }`
       )
       .then(setTekst)
