@@ -9,6 +9,7 @@ import ErrorBoundary from "../Components/ErrorBoundary";
 import { instance } from "../Api";
 import tracking from "../lib/tracking";
 import "./App.less";
+import Notifikasjoner from "../Components/Notifikasjoner";
 
 // sentry
 const environment = window.location.hostname;
@@ -43,6 +44,7 @@ export const App = () => {
       <main role="main">
         <Header />
         <div className="content">
+          <Notifikasjoner />
           <Spacer twentyPx />
           <ErrorBoundary apiErrors={errors}>{isSamtykke || hasSamtykke ? <Kalkulator /> : <SamtykkePanel onClickCallback={handleSetSamtykke} />}</ErrorBoundary>
           <Spacer twentyPx />
