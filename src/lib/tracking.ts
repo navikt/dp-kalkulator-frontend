@@ -17,7 +17,7 @@ tracking.init(getApiKey(), "", {
 });
 
 function logg(eventname: string, data: object) {
-  tracking.logEvent(eventname, { ...data });
+  tracking.logEvent(eventname, data);
 }
 
 interface ResultatData {
