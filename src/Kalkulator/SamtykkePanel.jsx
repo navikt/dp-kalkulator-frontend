@@ -5,10 +5,11 @@ import { Hovedknapp } from "nav-frontend-knapper";
 import Spacer from "../Components/Spacer";
 import { useTextContext } from "../utils/TextProvider";
 import BlockContent from "../utils/BlockContent";
+import { logVisning } from "../lib/tracking";
 
 export const SamtykkePanel = ({ onClickCallback }) => {
   const text = useTextContext();
-
+  logVisning({ viser: "Viser samtykkepanelet (forsiden når en bruker har landet på kalkulatoren)" });
   return (
     <Panel>
       <div className="padding16">

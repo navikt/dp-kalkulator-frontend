@@ -7,9 +7,9 @@ import Spacer from "../Components/Spacer";
 import Kalkulator from "../Kalkulator/Kalkulator";
 import ErrorBoundary from "../Components/ErrorBoundary";
 import { instance } from "../Api";
-import tracking from "../lib/tracking";
 import "./App.less";
 import Notifikasjoner from "../Components/Notifikasjoner";
+import { logAktivitet, logSamtykkeKnapp } from "../lib/tracking";
 
 // sentry
 const environment = window.location.hostname;
@@ -28,12 +28,8 @@ export const App = () => {
     (error) => setError({ hasError: true, ...error })
   );
 
-  tracking.logEvent("ANKOMMER_FORSIDEN", {
-    environment,
-  });
-
   const handleSetSamtykke = () => {
-    tracking.logEvent("GITT_SAMTYKKE");
+    logAktivitet({ aktivitet: "Bruker trykker på fortsettknapp for å starte dagpengeberegning (ukjent om innlogget eller ikke)" });
     setSamtykke(true);
   };
 

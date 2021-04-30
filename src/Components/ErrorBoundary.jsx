@@ -4,7 +4,7 @@ import { withTranslation } from "react-i18next";
 import AlertStripe from "nav-frontend-alertstriper";
 import { captureException, withScope } from "@sentry/browser";
 import { redirectToLogin } from "../Api";
-import tracking from "../lib/tracking";
+import { logAktivitet, logVisning } from "../lib/tracking";
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -55,7 +55,7 @@ class ErrorBoundary extends React.Component {
 
       switch (status) {
         case 401:
-          tracking.logEvent("VIDERESEND_TIL_LOGGINN");
+          logAktivitet({ aktivitet: "Bruker blir videresendt til login, da h*n ikke er innlogget" });
           return redirectToLogin();
         case 404:
           feilmelding = t("ERROR.404");
