@@ -27,11 +27,7 @@ interface ResultatData {
 export function logResultat(data: ResultatData) {
   let faarDagpenger: string;
   data.isOppfyllerInntekstkrav ? (faarDagpenger = "Ja") : (faarDagpenger = "Nei");
-  logVisning({ faarDagpenger, viser: "Bruker får tilbakemelding på kalkulator om h*n får dagpenger eller ikke" });
-}
-
-export function logLenkeTrykk(aktivitet: string) {
-  logAktivitet({ aktivitet });
+  logVisning("Bruker får tilbakemelding på kalkulator om h*n får dagpenger eller ikke", { faarDagpenger });
 }
 
 export function logLenkeKlikk(href: string, children: any) {
@@ -39,11 +35,11 @@ export function logLenkeKlikk(href: string, children: any) {
 }
 
 export function logAktivitet(data: object) {
-  logg("dagpengekalkulator.aktivitet", { ...data });
+  logg("dagpengekalkulator.aktivitet", data);
 }
 
-export function logVisning(data: object) {
-  logg("dagpengekalkulator.visning", { ...data });
+export function logVisning(viser: string, extraData: object) {
+  logg("dagpengekalkulator.visning", { viser, ...extraData });
 }
 
 export default tracking;

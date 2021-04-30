@@ -9,7 +9,7 @@ import { logVisning } from "../lib/tracking";
 
 export const SamtykkePanel = ({ onClickCallback }) => {
   const text = useTextContext();
-  logVisning({ viser: "Viser samtykkepanelet (forsiden når en bruker har landet på kalkulatoren)" });
+  logVisning("Viser samtykkepanelet (forsiden når en bruker har landet på kalkulatoren)");
   return (
     <Panel>
       <div className="padding16">
