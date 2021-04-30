@@ -20,11 +20,11 @@ function logg(eventname: string, data: object) {
   tracking.logEvent(eventname, { ...data });
 }
 
-interface resultatData {
+interface ResultatData {
   isOppfyllerInntekstkrav: boolean;
 }
 
-export function logResultat(data: resultatData) {
+export function logResultat(data: ResultatData) {
   let faarDagpenger: string;
   data.isOppfyllerInntekstkrav ? (faarDagpenger = "Ja") : (faarDagpenger = "Nei");
   logVisning({ faarDagpenger, viser: "Bruker får tilbakemelding på kalkulator om h*n får dagpenger eller ikke" });
