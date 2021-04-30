@@ -3,6 +3,7 @@ import { AlertStripeInfo } from "nav-frontend-alertstriper";
 import { Element } from "nav-frontend-typografi";
 import BlockContent from "../utils/BlockContent";
 import { useTextContext } from "../utils/TextProvider";
+import Spacer from "./Spacer";
 
 export interface Notifikasjon {
   title?: string;
@@ -19,10 +20,13 @@ function Notifikasjoner() {
   return (
     <div>
       {notifikasjoner.map((notifikasjon, i) => (
-        <AlertStripeInfo key={i}>
-          <Element>{notifikasjon.title}</Element>
-          {notifikasjon.innhold && <BlockContent blocks={notifikasjon.innhold} />}
-        </AlertStripeInfo>
+        <>
+          <AlertStripeInfo key={i}>
+            <Element>{notifikasjon.title}</Element>
+            {notifikasjon.innhold && <BlockContent blocks={notifikasjon.innhold} />}
+          </AlertStripeInfo>
+          <Spacer fourPx />
+        </>
       ))}
     </div>
   );

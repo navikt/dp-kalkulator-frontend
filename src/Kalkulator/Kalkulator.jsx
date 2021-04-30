@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import LoadingMessage from "../Components/LoadingMessage";
 import { getBehov } from "../Api";
 import QualifiedMessage from "./QualifiedMessage";
-import tracking from "../lib/tracking";
+import { logResultat } from "../lib/tracking";
 
 export const Kalkulator = () => {
   const [isLoading, setLoading] = useState(true);
@@ -32,7 +32,7 @@ export const Kalkulator = () => {
     return <LoadingMessage type="XL" />;
   }
 
-  tracking.logEvent("RESULTAT", {
+  logResultat({
     isOppfyllerInntekstkrav,
     ukesats,
   });

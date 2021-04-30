@@ -13,7 +13,7 @@ const serializers = {
   },
   marks: {
     link: (props: any) => (
-      <Lenke href={props.mark.href} onClick={() => logLenkeKlikk(props.mark.href)}>
+      <Lenke href={props.mark.href} onClick={() => logLenkeKlikk(props.mark.href, props.children)}>
         {props.children}
       </Lenke>
     ),
