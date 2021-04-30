@@ -9,7 +9,7 @@ import ErrorBoundary from "../Components/ErrorBoundary";
 import { instance } from "../Api";
 import "./App.less";
 import Notifikasjoner from "../Components/Notifikasjoner";
-import { logAktivitet, logSamtykkeKnapp } from "../lib/tracking";
+import { logAktivitet } from "../lib/tracking";
 
 // sentry
 const environment = window.location.hostname;

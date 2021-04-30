@@ -4,7 +4,7 @@ import { withTranslation } from "react-i18next";
 import AlertStripe from "nav-frontend-alertstriper";
 import { captureException, withScope } from "@sentry/browser";
 import { redirectToLogin } from "../Api";
-import { logAktivitet, logVisning } from "../lib/tracking";
+import { logAktivitet } from "../lib/tracking";
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
