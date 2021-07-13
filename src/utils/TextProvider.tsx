@@ -4,6 +4,7 @@ import { Notifikasjon } from "../Components/Notifikasjoner";
 import localizeSanityContent from "./localizeSanityContent";
 
 const initialValue = {
+  _id: "",
   title: "",
   samtykke: [] as any[],
   negativeresponse: [] as any[],
@@ -22,12 +23,15 @@ export default function TextProvider(props: { children: ReactNode }) {
   useEffect(() => {
     sanityClient
       .fetch(
-        `*[_id == "dagpengekalkulator"][0]{
+        `*[_type == "dagpengekalkulator"]{
         ...,
     'notifikasjoner': *[_type == "notifikasjon" && visPaaKalkulator==true],
     }`
       )
-      .then(setTekst)
+      .then((result) => {
+        const draft = result.find((it: typeof initialValue) => it._id.includes("drafts."));
+        setTekst(draft || result[0]);
+      })
       .catch(console.error);
   }, []);
 
