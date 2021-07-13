@@ -26,6 +26,7 @@ module.exports = helmet.contentSecurityPolicy({
       "*.hotjar.com",
       "*.vc.hotjar.com",
       "rt6o382n.apicdn.sanity.io",
+      "rt6o382n.api.sanity.io",
     ],
     fontSrc: ["data:", "*.psplugin.com", "*.hotjar.com"],
     frameSrc: ["video.qbrick.com/", "vars.hotjar.com"],
