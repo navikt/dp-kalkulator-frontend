@@ -1,5 +1,5 @@
-import {getApiBaseUrl, getBaseUrl, getLoginUrl} from "./Config";
-import {isDevelopment} from "../utils/environment";
+import { getApiBaseUrl, getBaseUrl, getLoginUrl } from "./Config";
+import { isDevelopment } from "../utils/environment";
 
 const axios = require("axios");
 
@@ -37,12 +37,11 @@ export const getBehov = async () => {
     method: "get",
     url: `${getApiBaseUrl()}/behov?regelkontekst=veiledning`,
   });
-
 };
 
 export const redirectToLogin = () => {
-  window.location.assign(`${getLoginUrl()}&redirect=${getBaseUrl()}?samtykke=true`); // eslint-disable-line no-undef
+  window.location.assign(`${getLoginUrl()}&redirect=${getBaseUrl()}?samtykke=true${window.location.search.replace("?", "&")}`); // eslint-disable-line no-undef
 };
 
-const api = {getBehov, verifyToken, redirectToLogin};
+const api = { getBehov, verifyToken, redirectToLogin };
 export default api;
