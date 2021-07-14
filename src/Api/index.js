@@ -40,8 +40,7 @@ export const getBehov = async () => {
 };
 
 export const redirectToLogin = () => {
-  const redirect = `${getLoginUrl()}&redirect=${getBaseUrl()}?samtykke=true${window.location.search.replace("?", "&")}`;
-  console.log(redirect);
+  const redirect = `${getLoginUrl()}&redirect=${getBaseUrl()}?samtykke=true`;
   window.location.assign(redirect);
 };
 
