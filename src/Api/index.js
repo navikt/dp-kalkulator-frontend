@@ -40,7 +40,9 @@ export const getBehov = async () => {
 };
 
 export const redirectToLogin = () => {
-  window.location.assign(`${getLoginUrl()}&redirect=${getBaseUrl()}?samtykke=true${window.location.search.replace("?", "&")}`); // eslint-disable-line no-undef
+  const redirect = `${getLoginUrl()}&redirect=${getBaseUrl()}?samtykke=true${window.location.search.replace("?", "&")}`;
+  console.log(redirect);
+  window.location.assign(redirect);
 };
 
 const api = { getBehov, verifyToken, redirectToLogin };
