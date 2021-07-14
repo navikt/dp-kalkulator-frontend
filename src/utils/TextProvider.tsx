@@ -3,6 +3,11 @@ import sanityClient from "../sanityClient";
 import { Notifikasjon } from "../Components/Notifikasjoner";
 import localizeSanityContent from "./localizeSanityContent";
 
+const query = `*[_type == "dagpengekalkulator"]{
+    ...,
+'notifikasjoner': *[_type == "notifikasjon" && visPaaKalkulator==true],
+}`;
+
 const initialValue = {
   _id: "",
   title: "",
@@ -23,12 +28,7 @@ export default function TextProvider(props: { children: ReactNode }) {
 
   useEffect(() => {
     sanityClient
-      .fetch(
-        `*[_type == "dagpengekalkulator"]{
-        ...,
-    'notifikasjoner': *[_type == "notifikasjon" && visPaaKalkulator==true],
-    }`
-      )
+      .fetch(query)
       .then((result) => {
         //henter både draft og vanlige dokumentet, slik at man kan se utkast som live previews i sanity studio cms
         const draft = result.find((it: typeof initialValue) => it._id.includes("drafts."));

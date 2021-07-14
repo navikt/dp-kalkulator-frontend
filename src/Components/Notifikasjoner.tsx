@@ -20,13 +20,13 @@ function Notifikasjoner() {
   return (
     <div>
       {notifikasjoner.map((notifikasjon, i) => (
-        <>
-          <AlertStripeInfo key={i}>
+        <div key={i}>
+          <AlertStripeInfo>
             <Element>{notifikasjon.title}</Element>
             {notifikasjon.innhold && <BlockContent blocks={notifikasjon.innhold} />}
           </AlertStripeInfo>
           <Spacer fourPx />
-        </>
+        </div>
       ))}
     </div>
   );
