@@ -10,6 +10,7 @@ import { instance } from "../Api";
 import "./App.less";
 import Notifikasjoner from "../Components/Notifikasjoner";
 import { logAktivitet } from "../lib/tracking";
+import PreviewBanner from "../Components/PreviewBanner";
 
 // sentry
 const environment = window.location.hostname;
@@ -37,6 +38,7 @@ export const App = () => {
 
   return (
     <div className="App typo-normal">
+      <PreviewBanner />
       <main role="main">
         <Header />
         <div className="content">

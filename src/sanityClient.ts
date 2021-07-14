@@ -5,7 +5,7 @@ const localStorageKey = "sanityPreview";
 
 //dette gjøres for å kunne huske sanity parametre når bruker av cms'et som ser på preview
 // blir sendt til en annen side for å logge inn med bankid for så å komme tilbake
-function getConfig(): { preview: boolean; dataset: string } {
+export function getSanityConfig(): { preview: boolean; dataset: string } {
   const URLParams = new URLSearchParams(window.location.search);
   const currentLocalstorage = JSON.parse(window.localStorage.getItem(localStorageKey) || "{}");
 
@@ -38,7 +38,7 @@ function getConfig(): { preview: boolean; dataset: string } {
   }
 }
 
-const params = getConfig();
+const params = getSanityConfig();
 
 const config = {
   projectId: "rt6o382n",
