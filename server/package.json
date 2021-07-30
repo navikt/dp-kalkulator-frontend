@@ -10,7 +10,7 @@
     "@navikt/nav-dekoratoren-moduler": "^1.2.5",
     "@types/helmet": "^4.0.0",
     "express": "^4.17.1",
-    "helmet": "^4.4.1",
+    "helmet": "^4.6.0",
     "jsdom": "^16.4.0",
     "node-cache": "^5.1.2",
     "node-fetch": "^2.6.1"
