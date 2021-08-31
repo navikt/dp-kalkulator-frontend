@@ -26,7 +26,7 @@
     "babel-runtime": "^6.26.0",
     "chai": "^4.3.4",
     "classnames": "^2.3.1",
-    "i18next": "^20.3.5",
+    "i18next": "^20.4.0",
     "i18next-browser-languagedetector": "^6.1.2",
     "i18next-xhr-backend": "^3.2.2",
     "lodash.throttle": "^4.1.1",
