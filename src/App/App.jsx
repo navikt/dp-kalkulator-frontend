@@ -21,21 +21,6 @@ init({
 });
 
 export const App = () => {
-  const [isSamtykke, setSamtykke] = useState(false);
-  const [errors, setError] = useState({ hasError: false, status: null, statusText: null });
-  // axios apply interceptor on response
-  instance.interceptors.response.use(
-    (response) => response,
-    (error) => setError({ hasError: true, ...error })
-  );
-
-  const handleSetSamtykke = () => {
-    logAktivitet({ aktivitet: "Bruker trykker på fortsettknapp for å starte dagpengeberegning (ukjent om innlogget eller ikke)" });
-    setSamtykke(true);
-  };
-
-  const hasSamtykke = window.location.search === "?samtykke=true";
-
   return (
     <div className="App typo-normal">
       <PreviewBanner />
@@ -43,9 +28,7 @@ export const App = () => {
         <Header />
         <div className="content">
           <Notifikasjoner />
-          <Spacer twentyPx />
-          <ErrorBoundary apiErrors={errors}>{isSamtykke || hasSamtykke ? <Kalkulator /> : <SamtykkePanel onClickCallback={handleSetSamtykke} />}</ErrorBoundary>
-          <Spacer twentyPx />
+
           <BackButton />
           <Spacer twentyPx />
         </div>
