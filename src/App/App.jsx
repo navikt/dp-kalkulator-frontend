@@ -2,14 +2,9 @@ import React, { useState } from "react";
 import { init } from "@sentry/browser";
 import Header from "../Components/Header";
 import BackButton from "../Components/BackButton";
-import SamtykkePanel from "../Kalkulator/SamtykkePanel";
 import Spacer from "../Components/Spacer";
-import Kalkulator from "../Kalkulator/Kalkulator";
-import ErrorBoundary from "../Components/ErrorBoundary";
-import { instance } from "../Api";
 import "./App.less";
 import Notifikasjoner from "../Components/Notifikasjoner";
-import { logAktivitet } from "../lib/tracking";
 import PreviewBanner from "../Components/PreviewBanner";
 
 // sentry
