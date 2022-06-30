@@ -45,6 +45,7 @@ const config = {
   dataset: params.dataset,
   withCredentials: params.preview,
   useCdn: params.preview ? false : isProduction(),
+  apiVersion: "2021-06-06",
 };
 
 export default sanityClient(config);
