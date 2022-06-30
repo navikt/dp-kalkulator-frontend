@@ -49,12 +49,12 @@
     "nav-frontend-spinner-style": "^1.0.2",
     "nav-frontend-typografi": "^4.0.1",
     "nav-frontend-typografi-style": "^2.0.1",
-    "prop-types": "^15.7.2",
+    "prop-types": "^15.8.1",
     "react": "^17.0.1",
-    "react-collapse": "^5.1.0",
+    "react-collapse": "^5.1.1",
     "react-dom": "^17.0.1",
-    "react-i18next": "^11.11.1",
-    "react-router-dom": "^5.2.0",
+    "react-i18next": "^11.17.3",
+    "react-router-dom": "^5.3.3",
     "react-scripts": "^4.0.3",
     "typescript": "^4.7.4"
   },
@@ -69,7 +69,7 @@
     "eslint-config-prettier": "^8.5.0",
     "husky": "^4.3.8",
     "lint-staged": "^11.2.6",
-    "prettier": "^2.2.1"
+    "prettier": "^2.7.1"
   },
   "browserslist": {
     "production": [
