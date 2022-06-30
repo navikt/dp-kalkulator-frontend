@@ -3,14 +3,14 @@ name: Build and deploy
 on: [push]
 
 env:
-  IMAGE: docker.pkg.github.com/${{ github.repository }}/dp-inntekt-innsyn-ui:${{ github.sha }}
+  IMAGE: docker.pkg.github.com/${{ github.repository }}/dp-kalkulator-frontend:${{ github.sha }}
 
 jobs:
   build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [13.x]
+        node-version: [16.x]
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
@@ -35,7 +35,7 @@ jobs:
   deploy-dev:
     name: Deploy to dev-gcp
     needs: build
-    if: github.ref == 'refs/heads/master'
+    #if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master

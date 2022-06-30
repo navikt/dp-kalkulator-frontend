@@ -1,9 +1,8 @@
 import * as React from "react";
-import { AlertStripeInfo } from "nav-frontend-alertstriper";
-import { Element } from "nav-frontend-typografi";
 import BlockContent from "../utils/BlockContent";
 import { useTextContext } from "../utils/TextProvider";
 import Spacer from "./Spacer";
+import { Alert, Label } from "@navikt/ds-react";
 
 export interface Notifikasjon {
   title?: string;
@@ -21,10 +20,10 @@ function Notifikasjoner() {
     <div>
       {notifikasjoner.map((notifikasjon, i) => (
         <div key={i}>
-          <AlertStripeInfo>
-            <Element>{notifikasjon.title}</Element>
+          <Alert variant="info" size="medium">
+            <Label>{notifikasjon.title}</Label>
             {notifikasjon.innhold && <BlockContent blocks={notifikasjon.innhold} />}
-          </AlertStripeInfo>
+          </Alert>
           <Spacer fourPx />
         </div>
       ))}

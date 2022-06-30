@@ -7,7 +7,7 @@ import Spacer from "../Components/Spacer";
 import Kalkulator from "../Kalkulator/Kalkulator";
 import ErrorBoundary from "../Components/ErrorBoundary";
 import { instance } from "../Api";
-import "./App.less";
+import "./App.css";
 import Notifikasjoner from "../Components/Notifikasjoner";
 import { logAktivitet } from "../lib/tracking";
 import PreviewBanner from "../Components/PreviewBanner";
@@ -37,11 +37,11 @@ export const App = () => {
   const hasSamtykke = window.location.search === "?samtykke=true";
 
   return (
-    <div className="App typo-normal">
+    <div className="App">
       <PreviewBanner />
       <main role="main">
         <Header />
-        <div className="content">
+        <div className="content kalkulator-content">
           <Notifikasjoner />
           <Spacer twentyPx />
           <ErrorBoundary apiErrors={errors}>{isSamtykke || hasSamtykke ? <Kalkulator /> : <SamtykkePanel onClickCallback={handleSetSamtykke} />}</ErrorBoundary>

@@ -4,6 +4,7 @@ import { shallow } from "enzyme";
 import { expect } from "chai";
 import App from "../App";
 import { SamtykkePanel } from "../../Kalkulator/SamtykkePanel";
+import { Button } from "@navikt/ds-react";
 import Kalkulator from "../../Kalkulator/Kalkulator";
 
 // todo mocke i18next skikkelig opp
@@ -33,7 +34,7 @@ describe("App", () => {
     const wrapper = shallow(<App />);
     const samtykkePanel = wrapper.find(SamtykkePanel);
     const kalkulator = wrapper.find(Kalkulator);
-    const samtykkeKnapp = samtykkePanel.dive().find("Hovedknapp");
+    const samtykkeKnapp = samtykkePanel.dive().find(Button);
     expect(samtykkePanel).to.have.length(1);
     expect(kalkulator).to.have.length(0);
     samtykkeKnapp.simulate("click");

@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { withTranslation } from "react-i18next";
-import AlertStripe from "nav-frontend-alertstriper";
 import { captureException, withScope } from "@sentry/browser";
 import { redirectToLogin } from "../Api";
 import { logAktivitet } from "../lib/tracking";
+import { Alert } from "@navikt/ds-react";
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -45,7 +45,11 @@ class ErrorBoundary extends React.Component {
     const { children, apiErrors, t } = this.props;
     // JS feil
     if (hasError) {
-      return <AlertStripe type="advarsel">{`Feilmelding: ${error}`}</AlertStripe>;
+      return (
+        <Alert variant="warning" size="medium">
+          {`Feilmelding: ${error}`}
+        </Alert>
+      );
     }
 
     // API feil
@@ -80,7 +84,11 @@ class ErrorBoundary extends React.Component {
           break;
       }
 
-      return <AlertStripe type="advarsel">{`${feilmelding}`}</AlertStripe>;
+      return (
+        <Alert variant="warning" size="medium">
+          {feilmelding}
+        </Alert>
+      );
     }
 
     return children;

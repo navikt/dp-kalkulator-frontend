@@ -1,14 +1,13 @@
 import React from "react";
-import NavFrontendSpinner from "nav-frontend-spinner";
-import { Normaltekst } from "nav-frontend-typografi";
 import { useTextContext } from "../utils/TextProvider";
+import { BodyLong, Loader } from "@navikt/ds-react";
 
-const LoadingMessage = (props) => {
+const LoadingMessage = () => {
   const text = useTextContext();
   return (
     <div className="flex center vertical textcenter">
-      <NavFrontendSpinner {...props} />
-      <Normaltekst>{text.loadingmessage}</Normaltekst>
+      <Loader size="3xlarge" />
+      <BodyLong>{text.loadingmessage}</BodyLong>
     </div>
   );
 };

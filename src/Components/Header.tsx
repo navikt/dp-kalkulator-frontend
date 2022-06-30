@@ -1,7 +1,7 @@
 import React from "react";
-import { Sidetittel } from "nav-frontend-typografi";
 import { ReactComponent as HeaderImage } from "../Images/header.svg";
 import { useTextContext } from "../utils/TextProvider";
+import { Heading } from "@navikt/ds-react";
 
 const Header = () => {
   const text = useTextContext();
@@ -9,7 +9,7 @@ const Header = () => {
     <div className="dagpengekalkulator">
       <div className="content">
         <div className="text">
-          <Sidetittel>{text.title}</Sidetittel>
+          <Heading size={"large"}>{text.title}</Heading>
         </div>
         <div role="presentation" className="header__svgContainer">
           <HeaderImage />

@@ -1,11 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Panel from "nav-frontend-paneler";
-import { Hovedknapp } from "nav-frontend-knapper";
 import Spacer from "../Components/Spacer";
 import { useTextContext } from "../utils/TextProvider";
 import BlockContent from "../utils/BlockContent";
 import { logVisning } from "../lib/tracking";
+import { Button, Panel } from "@navikt/ds-react";
 
 export const SamtykkePanel = ({ onClickCallback }) => {
   const text = useTextContext();
@@ -17,7 +16,9 @@ export const SamtykkePanel = ({ onClickCallback }) => {
 
         <Spacer twentyPx />
         <div className="flex center">
-          <Hovedknapp onClick={onClickCallback}>{text.fortsettknapp}</Hovedknapp>
+          <Button variant="primary" onClick={onClickCallback}>
+            {text.fortsettknapp}
+          </Button>
         </div>
       </div>
     </Panel>

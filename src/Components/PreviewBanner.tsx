@@ -1,5 +1,5 @@
 import React from "react";
-import "./PreviewBanner.less";
+import "./PreviewBanner.css";
 import { getSanityConfig } from "../sanityClient";
 
 function PreviewBanner() {

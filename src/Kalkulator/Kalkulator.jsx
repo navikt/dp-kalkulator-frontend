@@ -29,7 +29,7 @@ export const Kalkulator = () => {
   }, []);
 
   if (isLoading) {
-    return <LoadingMessage type="XL" />;
+    return <LoadingMessage />;
   }
 
   logResultat({

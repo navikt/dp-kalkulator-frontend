@@ -1,7 +1,7 @@
 import React from "react";
 // @ts-ignore
 import SanityBlockContent from "@sanity/block-content-to-react";
-import { Innholdstittel, Normaltekst } from "nav-frontend-typografi";
+import { BodyLong, Heading } from "@navikt/ds-react";
 
 interface Props {
   node: {
@@ -14,9 +14,13 @@ export const BlockRenderer = (props: Props) => {
   const { style = "normal" } = props.node;
   switch (style) {
     case "h2":
-      return <Innholdstittel tag="h2">{props.children}</Innholdstittel>;
+      return (
+        <Heading level="2" size={"medium"} spacing>
+          {props.children}
+        </Heading>
+      );
     case "normal":
-      return <Normaltekst>{props.children}</Normaltekst>;
+      return <BodyLong>{props.children}</BodyLong>;
     default:
       return SanityBlockContent.defaultSerializers.types.block(props);
   }
