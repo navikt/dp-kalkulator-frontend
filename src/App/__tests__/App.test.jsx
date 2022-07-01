@@ -7,6 +7,9 @@ import { SamtykkePanel } from "../../Kalkulator/SamtykkePanel";
 import { Button } from "@navikt/ds-react";
 import Kalkulator from "../../Kalkulator/Kalkulator";
 
+// todo mocke i18next skikkelig opp
+jest.mock("../../lib/i18n");
+
 describe("App", () => {
   it("renders without crashing", () => {
     const div = document.createElement("div");
