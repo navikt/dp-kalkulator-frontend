@@ -9,7 +9,7 @@ const Header = () => {
     <div className="dagpengekalkulator">
       <div className="content kalkulator-content">
         <div className="text">
-          <Heading size={"large"}>{text.title}</Heading>
+          <Heading size={"xlarge"}>{text.title}</Heading>
         </div>
         <div role="presentation" className="header__svgContainer">
           <HeaderImage />

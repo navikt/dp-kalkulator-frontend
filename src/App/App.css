@@ -3,8 +3,8 @@
 }
 
 .dagpengekalkulator {
-  background-color: var(--navds-global-color-blue-50);
-  border-bottom: 5px solid var(--navds-global-color-blue-100);
+  background-color: var(--navds-global-color-blue-100);
+  border-bottom: 5px solid var(--navds-global-color-blue-200);
 }
 
 .dagpengekalkulator .content {
@@ -46,7 +46,7 @@
 }
 
 .kalkulator-content .panelblue {
-  background-color: var(--navds-global-color-blue-50);
+  background-color: var(--navds-global-color-blue-100);
   padding: var(--navds-spacing-4);
   border-radius: var(--navds-border-radius-small);
   border: 1px solid transparent;
