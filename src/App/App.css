@@ -1,0 +1,146 @@
+:root {
+  --reach-menu-button: 1;
+}
+
+.dagpengekalkulator {
+  background-color: var(--navds-global-color-blue-50);
+  border-bottom: 5px solid var(--navds-global-color-blue-100);
+}
+
+.dagpengekalkulator .content {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  overflow: hidden;
+  position: relative;
+  max-width: 1000px;
+  padding-bottom: 0;
+}
+
+.dagpengekalkulator .content .text {
+  padding: 48px 16px 48px 32px;
+  align-self: center;
+}
+
+.dagpengekalkulator .header__svgContainer {
+  display: flex;
+  align-items: flex-end;
+}
+
+@media (max-width: 750px) {
+  .text {
+    text-align: center;
+    margin: auto;
+    padding-right: 16px;
+  }
+
+  .header__svgContainer {
+    display: none;
+  }
+}
+
+.kalkulator-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 18px 0;
+}
+
+.kalkulator-content .panelblue {
+  background-color: var(--navds-global-color-blue-50);
+  padding: var(--navds-spacing-4);
+  border-radius: var(--navds-border-radius-small);
+  border: 1px solid transparent;
+}
+
+.flex {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: flex-start;
+}
+.flex.vertical {
+  flex-direction: column;
+}
+
+.flex.center {
+  justify-content: center;
+}
+
+.flex.flexend {
+  justify-content: flex-end;
+}
+
+.flexend {
+  flex-grow: 1;
+  text-align: right;
+}
+
+.textcenter {
+  text-align: center;
+}
+
+.spacer.fourPx {
+  padding-bottom: 4px;
+}
+
+.spacer.eightPx {
+  padding-bottom: 8px;
+}
+
+.spacer.sixteenPx {
+  padding-bottom: 16px;
+}
+
+.spacer.twentyPx {
+  padding-bottom: 20px;
+}
+
+.spacer.dashed {
+  border-bottom: 3px dashed var(--navds-global-color-gray-100);
+  padding-left: -10px;
+  padding-top: 13px;
+}
+
+.padding16 {
+  padding: 16px;
+}
+
+[data-reach-menu] {
+  position: absolute;
+}
+
+.languagebutton {
+  background-color: var(--navds-global-color-gray-50);
+  border: 1px solid var(--navds-global-color-gray-200);
+  width: 230px;
+  padding: 4px 8px;
+  display: flex;
+  justify-content: space-between;
+  text-align: left;
+}
+.languagebutton.currentlanguage {
+  border-radius: 4px;
+}
+
+.languagebutton[aria-expanded="true"] {
+  border-radius: 4px 4px 0 0;
+}
+.languagebutton[aria-expanded="true"] i {
+  transform: rotate(180deg);
+}
+
+.languagebutton:hover {
+  background-color: white;
+  cursor: pointer;
+}
+
+.languagebutton .flag {
+  margin-right: 16px;
+}
+.languagebutton svg {
+  vertical-align: middle;
+}
+
+.languagebutton .language {
+  flex: 1;
+}

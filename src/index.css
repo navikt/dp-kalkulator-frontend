@@ -1,0 +1,17 @@
+@import "~@navikt/ds-css/dist/index.css";
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--navds-global-color-gray-50);
+  height: 100%;
+  line-height: 1.42857143;
+  margin: 0;
+  text-align: left;
+}
