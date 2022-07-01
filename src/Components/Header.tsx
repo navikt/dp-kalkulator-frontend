@@ -7,7 +7,7 @@ const Header = () => {
   const text = useTextContext();
   return (
     <div className="dagpengekalkulator">
-      <div className="content">
+      <div className="content kalkulator-content">
         <div className="text">
           <Heading size={"large"}>{text.title}</Heading>
         </div>
