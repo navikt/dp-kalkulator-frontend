@@ -4,12 +4,12 @@
   "private": true,
   "homepage": "https://nav.no/arbeid/dagpenger/kalkulator",
   "scripts": {
-    "start": "craco start",
+    "start": "react-scripts start",
     "server": "npm run build && node ./server/server.js",
     "docker": "npm run build && docker build -t dpkalkulator . && docker run -p 8000:8000 dpkalkulator",
-    "build": "craco build",
-    "test": "craco test",
-    "testOnce": "craco test --watchAll=false --bail",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "testOnce": "react-scripts test --watchAll=false --bail",
     "lint": "eslint src/",
     "lintStaged": "lint-staged"
   },
@@ -44,7 +44,6 @@
     "typescript": "^4.7.4"
   },
   "devDependencies": {
-    "@craco/craco": "^6.4.3",
     "@types/react": "^17.0.47",
     "@types/react-dom": "^17.0.17",
     "@typescript-eslint/parser": "^5.30.0",
