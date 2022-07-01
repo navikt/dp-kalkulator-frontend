@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { withTranslation } from "react-i18next";
 import { captureException, withScope } from "@sentry/browser";
 import { redirectToLogin } from "../Api";
 import { logAktivitet } from "../lib/tracking";
@@ -42,7 +41,7 @@ class ErrorBoundary extends React.Component {
 
   render() {
     const { hasError, error } = this.state;
-    const { children, apiErrors, t } = this.props;
+    const { children, apiErrors } = this.props;
     // JS feil
     if (hasError) {
       return (
@@ -62,25 +61,25 @@ class ErrorBoundary extends React.Component {
           logAktivitet({ aktivitet: "Bruker blir videresendt til login, da h*n ikke er innlogget" });
           return redirectToLogin();
         case 404:
-          feilmelding = t("ERROR.404");
+          feilmelding = "ERROR.404";
           break;
         case 418:
-          feilmelding = t("ERROR.418");
+          feilmelding = "ERROR.418";
           break;
         case 403:
-          feilmelding = t("ERROR.403");
+          feilmelding = "ERROR.403";
           break;
         case 500:
-          feilmelding = t("ERROR.500");
+          feilmelding = "ERROR.500";
           break;
         case 502:
-          feilmelding = t("ERROR.502");
+          feilmelding = "ERROR.502";
           break;
         case 504:
-          feilmelding = t("ERROR.504");
+          feilmelding = "ERROR.504";
           break;
         default:
-          feilmelding = t("ERROR.UNDEFINED");
+          feilmelding = "ERROR.UNDEFINED";
           break;
       }
 
@@ -98,7 +97,6 @@ class ErrorBoundary extends React.Component {
 ErrorBoundary.propTypes = {
   children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
   apiErrors: PropTypes.shape().isRequired,
-  t: PropTypes.func.isRequired,
 };
 
-export default withTranslation()(ErrorBoundary);
+export default ErrorBoundary;
