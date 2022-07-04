@@ -17,14 +17,23 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
+          cache: "npm"
+          registry-url: "https://npm.pkg.github.com"
+      - run: cp $NPM_CONFIG_USERCONFIG .npmrc
       - run: npm ci
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
       - run: npm test
       - run: npm --prefix ./server ci
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
       - run: npm run build
         env:
           CI: true
       - name: Build docker image
         run: docker build -t $IMAGE . -f Dockerfile --pull
+        secrets: |
+            "NODE_AUTH_TOKEN=${{ secrets.READER_TOKEN }}"
       - name: Login to Github Package Registry
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
