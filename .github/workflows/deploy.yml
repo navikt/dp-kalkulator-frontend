@@ -32,8 +32,7 @@ jobs:
           CI: true
       - name: Build docker image
         run: docker build -t $IMAGE . -f Dockerfile --pull
-        secrets: |
-            "NODE_AUTH_TOKEN=${{ secrets.READER_TOKEN }}"
+        
       - name: Login to Github Package Registry
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
