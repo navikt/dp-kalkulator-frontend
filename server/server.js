@@ -25,7 +25,7 @@ app.use(contentSecurityPolicy);
 app.use(basePath, express.static(buildPath, { index: false }));
 
 // Nais functions
-app.get(`${basePath}/internal/isAlive|isReady`, (req, res) => res.sendStatus(200));
+app.get(/.*\/internal\/(isAlive|isReady)$/, (req, res) => res.sendStatus(200));
 
 // Match everything except internal og static
 app.use(/^(?!.*\/(internal|static)\/).*$/, (req, res) =>
