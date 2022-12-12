@@ -4,7 +4,7 @@ import { PositiveResponse } from "./PositiveResponse";
 import NegativeResponse from "./NegativeResponse";
 
 export const QualifiedMessage = ({ isOppfyllerInntekstkrav, ukesats, periodeAntallUker }) => (
-  <div className="panelblue padding16">
+  <div className="navds-panel padding16">
     {isOppfyllerInntekstkrav ? <PositiveResponse ukesats={ukesats} periodeAntallUker={periodeAntallUker} /> : <NegativeResponse />}
   </div>
 );
