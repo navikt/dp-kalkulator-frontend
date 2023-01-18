@@ -3,7 +3,7 @@ namespace: teamdagpenger
 team: teamdagpenger
 ingresses: |
   ingresses:
-    - https://arbeid.dev.nav.no/arbeid/dagpenger/kalkulator-old
+    - https://arbeid.dev.nav.no/arbeid/dagpenger/kalkulator
 env: |
   env:
     - name: DEKORATOR_MILJO
