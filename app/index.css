@@ -1,0 +1,84 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --app-max-width: 787px;
+  --app-min-height: 55vh;
+}
+
+#maincontent {
+  max-width: var(--app-max-width);
+  min-height: var(--app-min-height);
+  margin: var(--ax-space-40) auto;
+  padding: var(--ax-space-16);
+}
+
+main {
+  width: min(100%, 900px);
+  margin: 0 auto;
+  padding: 2rem 1rem 4rem;
+}
+
+.heading {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.dekorlinje {
+  margin: var(--ax-space-16) 0;
+  border: 0;
+  border-top: 1px solid #cbcfd5;
+}
+
+.resultatSeksjon {
+  margin-top: var(--ax-space-16);
+}
+
+.negativBoks,
+.positivBoks {
+  border-radius: var(--ax-radius-16);
+  padding: var(--ax-space-20);
+}
+
+.negativBoks {
+  border: 1px solid var(--ax-border-warning);
+  background: var(--ax-bg-warning-moderate);
+}
+
+.positivBoks {
+  border: 1px solid var(--ax-border-success);
+  background: var(--ax-bg-success-moderate);
+}
+
+.stortResultat {
+  font-size: 3rem;
+  font-weight: bold;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.resultatTabell {
+  margin-top: var(--ax-space-16);
+  margin-bottom: 0;
+  display: block;
+}
+
+.resultatTabell dt {
+  margin: 0;
+}
+
+.resultatTabell dd {
+  margin: var(--ax-space-4) 0 var(--ax-space-12);
+}
+
+.resultatSkillelinje {
+  margin: var(--ax-space-16) 0 var(--ax-space-12);
+  border: 0;
+  border-top: 1px solid #6b737d;
+}
+
+.resultatTotallinje {
+  margin: 0;
+}
