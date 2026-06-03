@@ -135,6 +135,15 @@ export default function IndexRoute() {
           onChangeCapture={() => {
             setVisResultat(false);
           }}
+          onKeyDownCapture={(event) => {
+            const target = event.target as HTMLInputElement;
+            if (
+              target.type === "number" &&
+              (event.key === "ArrowUp" || event.key === "ArrowDown")
+            ) {
+              event.preventDefault();
+            }
+          }}
         >
           <VStack gap="space-36" align="start">
             <Box>
