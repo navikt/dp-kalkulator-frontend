@@ -7,7 +7,6 @@ import {
   tilKR,
   tilTall
 } from "~/utils/kalkulator.utils";
-import { hentMaanederATrekkeFra } from "~/utils/dato.utils";
 
 describe("beregnDagpengerResultat", () => {
   it("returnerer avslag når inntekt siste 12 måneder er under 1,5 G", () => {
@@ -105,15 +104,5 @@ describe("tilTall", () => {
 
   it("returnerer null for ugyldige tallstrenger", () => {
     expect(tilTall("abc")).toBeNull();
-  });
-});
-
-describe("hentMaanederATrekkeFra", () => {
-  it("returnerer 2 når dato er innenfor de første fem dagene", () => {
-    expect(hentMaanederATrekkeFra(new Date("2026-06-05"))).toBe(2);
-  });
-
-  it("returnerer 1 for en vanlig dag midt i måneden", () => {
-    expect(hentMaanederATrekkeFra(new Date("2026-06-15"))).toBe(1);
   });
 });

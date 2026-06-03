@@ -1,5 +1,5 @@
 import { useTypedRouteLoaderData } from "~/hooks/useTypedRouteLoaderData";
-import { tekster } from "~/translations/translation";
+import { tekster } from "~/translation";
 
 type språk = "nb" | "en";
 type ErstattVariabler = Record<string, string | number>;
