@@ -3,6 +3,7 @@ import { useForm } from "@rvf/react-router";
 import { subMonths } from "date-fns";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { NumericFormat } from "react-number-format";
+import { DagpengerLink } from "~/components/DagpengerLink";
 import { Header } from "~/components/Header";
 import { HvilkenInntektsperiodeBorDuVelge } from "~/components/HvilkenInntektsperiodeBorDuVelge";
 import { HvorforViSporOmForsorgerBarn } from "~/components/HvorforViSporOmForsorgerBarn";
@@ -271,6 +272,8 @@ export default function IndexRoute() {
             )}
           </VStack>
         </form>
+
+        <DagpengerLink />
       </VStack>
     </main>
   );

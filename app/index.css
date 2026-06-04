@@ -52,6 +52,41 @@ main {
   background: var(--ax-bg-success-moderate);
 }
 
+.dagpenger-link {
+  display: flex;
+  gap: var(--ax-space-16);
+  border: 1px solid var(--ax-border-neutral);
+  border-radius: var(--ax-radius-16);
+  padding: var(--ax-space-16) var(--ax-space-32);
+  margin-top: var(--ax-space-32);
+}
+
+.dagpenger-link:hover {
+  border: 1px solid var(--ax-border-accent);
+}
+
+.dagpenger-link span {
+  color: var(--ax-color-default);
+}
+
+.dagpenger-link svg {
+  max-width: 75px;
+}
+
+.dagpenger-link {
+  text-decoration: none;
+}
+
+.lenke-tittel {
+  font-size: var(--ax-font-size-heading-medium);
+  font-weight: bold;
+  line-height: 1.1;
+}
+
+.lenke-tekst {
+  color: var(--ax-text-neutral);
+}
+
 .stortResultat {
   font-size: 3rem;
   font-weight: bold;
