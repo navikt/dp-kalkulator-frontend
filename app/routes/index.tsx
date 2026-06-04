@@ -2,6 +2,7 @@ import { Box, Button, Label, Radio, RadioGroup, Select, TextField, VStack } from
 import { useForm } from "@rvf/react-router";
 import { subMonths } from "date-fns";
 import { useEffect, useMemo, useRef, useState } from "react";
+import { NumericFormat } from "react-number-format";
 import { Header } from "~/components/Header";
 import { HvilkenInntektsperiodeBorDuVelge } from "~/components/HvilkenInntektsperiodeBorDuVelge";
 import { HvorforViSporOmForsorgerBarn } from "~/components/HvorforViSporOmForsorgerBarn";
@@ -15,32 +16,24 @@ import {
   beregnDagpengerResultat,
   formaterMaanedOgAar,
   GRUNNBELOP,
+  Inntektsperiode,
+  SkjemaTilstand,
   tilGVerdi,
   tilKR
 } from "~/utils/kalkulator.utils";
 import { lagKalkulatorSkjema } from "~/utils/validering";
 
-type Inntektsperiode = "12" | "36";
-
-interface SkjemaTilstand {
-  inntektsperiode: Inntektsperiode;
-  inntektSiste12Maaneder: number | null;
-  inntektSiste36MaanederIAar: number | null;
-  inntektSiste36MaanederIFjor: number | null;
-  inntektSiste36MaanederToAarSiden: number | null;
-  forsorgerBarn: "ja" | "nei" | null;
-  antallBarn: number | null;
-}
-
 export default function IndexRoute() {
   const rootData = useTypedRouteLoaderData("root");
-  const språk = rootData.language === "en" ? "en" : "nb";
   const { t } = useOversettelser();
-  const kalkulatorSkjema = lagKalkulatorSkjema(språk === "en");
+  const språk = rootData.language === "en" ? "en" : "nb";
+  const tusenSeparator = språk === "en" ? "," : " ";
+  const inputValutaPostfix = språk === "en" ? " NOK" : " kr";
   const [visResultat, setVisResultat] = useState(false);
   const resultatRef = useRef<HTMLDivElement>(null);
+  const kalkulatorSkjema = lagKalkulatorSkjema(språk);
 
-  const skjermaDefaultValues: SkjemaTilstand = {
+  const skjemaDefaultValues: SkjemaTilstand = {
     inntektsperiode: "12",
     inntektSiste12Maaneder: null,
     inntektSiste36MaanederIAar: null,
@@ -52,7 +45,7 @@ export default function IndexRoute() {
 
   const skjema = useForm({
     schema: kalkulatorSkjema,
-    defaultValues: skjermaDefaultValues,
+    defaultValues: skjemaDefaultValues,
     submitSource: "state",
     handleSubmit: async () => {
       setVisResultat(true);
@@ -75,43 +68,42 @@ export default function IndexRoute() {
       return;
     }
 
-    const foretrekkerRedusertBevegelse = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
+    const scrollingType = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     resultatRef.current.scrollIntoView({
-      behavior: foretrekkerRedusertBevegelse ? "auto" : "smooth",
+      behavior: scrollingType ? "auto" : "smooth",
       block: "start"
     });
   }, [visResultat]);
 
   const barnetilleggVerdi = hentBarnetillegg(new Date());
-  const maanederATrekkeFra = hentMaanederATrekkeFra(new Date());
-  const sisteMaanedMedUtbetaling = subMonths(new Date(), maanederATrekkeFra);
+  const månedÅTrekkeFra = hentMaanederATrekkeFra(new Date());
+  const sisteMånedMedUtbetaling = subMonths(new Date(), månedÅTrekkeFra);
+
   const periode12 = {
-    from: subMonths(sisteMaanedMedUtbetaling, 11),
-    to: sisteMaanedMedUtbetaling
+    from: subMonths(sisteMånedMedUtbetaling, 11),
+    to: sisteMånedMedUtbetaling
   };
 
   const periode36 = [
     {
       key: "inntektSiste36MaanederIAar" as const,
-      from: subMonths(sisteMaanedMedUtbetaling, 11),
-      to: sisteMaanedMedUtbetaling
+      from: subMonths(sisteMånedMedUtbetaling, 11),
+      to: sisteMånedMedUtbetaling
     },
     {
       key: "inntektSiste36MaanederIFjor" as const,
-      from: subMonths(sisteMaanedMedUtbetaling, 23),
-      to: subMonths(sisteMaanedMedUtbetaling, 12)
+      from: subMonths(sisteMånedMedUtbetaling, 23),
+      to: subMonths(sisteMånedMedUtbetaling, 12)
     },
     {
       key: "inntektSiste36MaanederToAarSiden" as const,
-      from: subMonths(sisteMaanedMedUtbetaling, 35),
-      to: subMonths(sisteMaanedMedUtbetaling, 24)
+      from: subMonths(sisteMånedMedUtbetaling, 35),
+      to: subMonths(sisteMånedMedUtbetaling, 24)
     }
   ];
 
-  const resultat = useMemo(
+  const beregningResultat = useMemo(
     () =>
       beregnDagpengerResultat({
         inntektsperiode: skjemaData.inntektsperiode,
@@ -166,17 +158,24 @@ export default function IndexRoute() {
 
             <VStack gap="space-16" align="start">
               {skjemaData.inntektsperiode === "12" && (
-                <TextField
-                  name="inntektSiste12Maaneder"
+                <NumericFormat
+                  customInput={TextField}
+                  id="inntektSiste12Maaneder"
                   error={skjema.error("inntektSiste12Maaneder") ?? undefined}
                   label={t("inntektSiste12Maaneder.etikett")}
                   description={t("inntektSiste12Maaneder.periodeBeskrivelse", {
                     fra: formaterMaanedOgAar(periode12.from, språk),
                     til: formaterMaanedOgAar(periode12.to, språk)
                   })}
+                  value={skjemaData.inntektSiste12Maaneder ?? ""}
+                  onValueChange={({ floatValue }: { floatValue?: number }) => {
+                    skjema.setValue("inntektSiste12Maaneder", floatValue ?? null);
+                  }}
+                  thousandSeparator={tusenSeparator}
+                  suffix={inputValutaPostfix}
+                  decimalScale={0}
+                  allowNegative={false}
                   inputMode="numeric"
-                  type="number"
-                  min={0}
                 />
               )}
 
@@ -185,18 +184,24 @@ export default function IndexRoute() {
                   <Label spacing>{t("inntektSiste36Maaneder.etikett")}</Label>
                   <VStack gap="space-16">
                     {periode36.map((periode) => (
-                      <TextField
+                      <NumericFormat
+                        customInput={TextField}
                         label=""
                         id={periode.key}
-                        name={periode.key}
                         error={skjema.error(periode.key) ?? undefined}
                         description={t("inntektSiste36Maaneder.periodeBeskrivelse", {
                           fra: formaterMaanedOgAar(periode.from, språk),
                           til: formaterMaanedOgAar(periode.to, språk)
                         })}
+                        value={skjemaData[periode.key] ?? ""}
+                        onValueChange={({ floatValue }: { floatValue?: number }) => {
+                          skjema.setValue(periode.key, floatValue ?? null);
+                        }}
+                        thousandSeparator={tusenSeparator}
+                        suffix={inputValutaPostfix}
+                        decimalScale={0}
+                        allowNegative={false}
                         inputMode="numeric"
-                        type="number"
-                        min={0}
                       />
                     ))}
                   </VStack>
@@ -249,16 +254,16 @@ export default function IndexRoute() {
 
             {visResultat && (
               <div ref={resultatRef} className="resultatSeksjon" aria-live="assertive">
-                {resultat.harForLavInntekt && (
+                {beregningResultat.harForLavInntekt && (
                   <NegativResultatBoks
                     minsteInntekt12={tilKR(tilGVerdi(1.5), språk)}
                     minsteInntekt36={tilKR(tilGVerdi(3), språk)}
                   />
                 )}
 
-                {!resultat.harForLavInntekt && (
+                {!beregningResultat.harForLavInntekt && (
                   <PositivResultatBoks
-                    resultat={resultat}
+                    resultat={beregningResultat}
                     antallBarn={skjemaData.antallBarn ?? 0}
                   />
                 )}

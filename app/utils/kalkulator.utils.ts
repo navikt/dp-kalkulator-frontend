@@ -1,11 +1,11 @@
 import { format } from "date-fns";
 import { enGB, nb } from "date-fns/locale";
 
-export type Inntektsperiode = "12" | "36";
-
 export const GRUNNBELOP = 136549;
 
-export interface KalkulatorInput {
+export type Inntektsperiode = "12" | "36";
+
+export type KalkulatorInput = {
   inntektsperiode: Inntektsperiode;
   inntektSiste12Maaneder: number;
   inntektSiste36MaanederIAar: number;
@@ -14,9 +14,9 @@ export interface KalkulatorInput {
   antallBarn: number;
   gVerdi: number;
   barnetilleggVerdi: number;
-}
+};
 
-export interface KalkulatorResult {
+export type KalkulatorResult = {
   harForLavInntekt: boolean;
   inntekt: number;
   inntektForBeregning: number;
@@ -24,7 +24,17 @@ export interface KalkulatorResult {
   dagpengerPer14Dager: number;
   barnetilleggPer14Dager: number;
   totalPer14Dager: number;
-}
+};
+
+export type SkjemaTilstand = {
+  inntektsperiode: Inntektsperiode;
+  inntektSiste12Maaneder: number | null;
+  inntektSiste36MaanederIAar: number | null;
+  inntektSiste36MaanederIFjor: number | null;
+  inntektSiste36MaanederToAarSiden: number | null;
+  forsorgerBarn: "ja" | "nei" | null;
+  antallBarn: number | null;
+};
 
 function tak6G(belop: number, gVerdi: number): number {
   return Math.min(belop, 6 * gVerdi);

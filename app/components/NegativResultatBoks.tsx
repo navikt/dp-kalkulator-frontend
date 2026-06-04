@@ -2,14 +2,14 @@ import { BodyLong, Heading, InfoCard, Link, VStack } from "@navikt/ds-react";
 import { useTypedRouteLoaderData } from "~/hooks/useTypedRouteLoaderData";
 import { InformationSquareIcon } from "@navikt/aksel-icons";
 
-interface INegativResultatBoks {
+type Props = {
   minsteInntekt12: string;
   minsteInntekt36: string;
-}
+};
 
-export function NegativResultatBoks({ minsteInntekt12, minsteInntekt36 }: INegativResultatBoks) {
-  const rootData = useTypedRouteLoaderData("root");
-  const språk = rootData.language === "en" ? "en" : "nb";
+export function NegativResultatBoks({ minsteInntekt12, minsteInntekt36 }: Props) {
+  const { language } = useTypedRouteLoaderData("root");
+  const språk = language === "en" ? "en" : "nb";
 
   if (språk === "en") {
     return (

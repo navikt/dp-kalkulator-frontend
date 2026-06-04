@@ -7,8 +7,8 @@ type Props = {
 };
 
 export function HvilkenInntektsperiodeBorDuVelge({ belop12, belop36 }: Props) {
-  const rootData = useTypedRouteLoaderData("root");
-  const språk = rootData.language === "en" ? "en" : "nb";
+  const { language } = useTypedRouteLoaderData("root");
+  const språk = language === "en" ? "en" : "nb";
 
   if (språk === "en") {
     return (
@@ -26,13 +26,6 @@ export function HvilkenInntektsperiodeBorDuVelge({ belop12, belop36 }: Props) {
             total income of at least {belop36} (3 G) in the last 36 months, you should choose the
             last 36 months as your income period. <br />
           </BodyLong>
-          <Alert variant="info">
-            <BodyShort>
-              If you apply for unemployment benefit before 1 June, you need to have had an income of
-              at least {` ${belop12} `}(1.5 G) in the last 12 months, or at least
-              {` ${belop36} `}(3 G) collectively in the last 36 months.
-            </BodyShort>
-          </Alert>
         </VStack>
       </ReadMore>
     );
@@ -53,13 +46,6 @@ export function HvilkenInntektsperiodeBorDuVelge({ belop12, belop36 }: Props) {
           minst {belop36} (3 G) de siste 36 månedene, bør du velge siste 36 måneder som
           inntektsperiode. <br />
         </BodyLong>
-        <Alert variant="info">
-          <BodyShort>
-            Hvis du søker om dagpenger før 1. juni, må du ha tjent minst
-            {` ${belop12} `}(1,5 G) de siste 12 månedene, eller minst {` ${belop36} `}(3 G) til
-            sammen de siste 36 månedene.
-          </BodyShort>
-        </Alert>
       </VStack>
     </ReadMore>
   );

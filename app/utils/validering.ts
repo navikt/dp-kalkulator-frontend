@@ -1,6 +1,8 @@
 import { z } from "zod";
 
-export function lagKalkulatorSkjema(erEngelsk: boolean) {
+export function lagKalkulatorSkjema(språk: "nb" | "en") {
+  const erEngelsk = språk === "en";
+
   return z
     .object({
       inntektsperiode: z.enum(["12", "36"]),

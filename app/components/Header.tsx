@@ -3,8 +3,8 @@ import { KalkulatorIkon } from "~/components/KalkulatorIkon";
 import { useTypedRouteLoaderData } from "~/hooks/useTypedRouteLoaderData";
 
 export function Header() {
-  const rootData = useTypedRouteLoaderData("root");
-  const språk = rootData.language === "en" ? "en" : "nb";
+  const { language } = useTypedRouteLoaderData("root");
+  const språk = language === "en" ? "en" : "nb";
 
   if (språk === "en") {
     return (

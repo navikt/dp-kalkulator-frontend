@@ -4,14 +4,14 @@ import { useId } from "react";
 import { useTypedRouteLoaderData } from "~/hooks/useTypedRouteLoaderData";
 import { type KalkulatorResult, tilKR } from "~/utils/kalkulator.utils";
 
-interface IPositivResultatBoks {
+type Props = {
   resultat: KalkulatorResult;
   antallBarn: number;
-}
+};
 
-export function PositivResultatBoks({ resultat, antallBarn }: IPositivResultatBoks) {
-  const rootData = useTypedRouteLoaderData("root");
-  const språk = rootData.language === "en" ? "en" : "nb";
+export function PositivResultatBoks({ resultat, antallBarn }: Props) {
+  const { language } = useTypedRouteLoaderData("root");
+  const språk = language === "en" ? "en" : "nb";
   const resultatTittelId = useId();
   const utregningTittelId = useId();
 
