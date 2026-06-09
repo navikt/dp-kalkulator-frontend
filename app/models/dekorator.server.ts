@@ -31,7 +31,17 @@ export async function getDekoratorHTML(): Promise<DecoratorElements> {
     params: {
       context: "privatperson",
       chatbot: false,
-      availableLanguages: availableLanguages
+      availableLanguages: availableLanguages,
+      breadcrumbs: [
+        {
+          title: "dagpenger",
+          url: "https://www.nav.no/dagpenger"
+        },
+        {
+          title: "kalkulator",
+          url: "https://www.nav.no/dagpenger/kalkulator-frontend"
+        }
+      ]
     }
   };
 

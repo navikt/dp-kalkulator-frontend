@@ -7,6 +7,7 @@ import {
   Links,
   type LinksFunction,
   type LoaderFunctionArgs,
+  type MetaFunction,
   Meta,
   Outlet,
   Scripts,
@@ -25,9 +26,24 @@ export const links: LinksFunction = () => [
   { rel: "stylesheet", href: appStyles }
 ];
 
+export const meta: MetaFunction = () => [
+  { title: "Dagpenger kalkulator - nav.no" },
+  {
+    name: "description",
+    content:
+      "Dagpenger er en pengestøtte du kan få hvis du er arbeidsledig eller permittert. Sjekk hva du kan få i din situasjon."
+  },
+  { property: "og:title", content: "Dagpenger kalkulator - nav.no" },
+  {
+    property: "og:description",
+    content:
+      "Dagpenger er en pengestøtte du kan få hvis du er arbeidsledig eller permittert. Sjekk hva du kan få i din situasjon."
+  }
+];
+
 export async function loader({ request }: LoaderFunctionArgs) {
   const language = await getDekoratorLanguage(request);
-  const decoratorFragments = await getDekoratorHTML(language);
+  const decoratorFragments = await getDekoratorHTML();
 
   return data({
     decoratorFragments,
@@ -52,7 +68,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <head lang={language}>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Dagpengerkalkulator</title>
         {parse(DECORATOR_HEAD_ASSETS, { trim: true })}
         <Meta />
         <Links />
