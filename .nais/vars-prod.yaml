@@ -1,0 +1,16 @@
+ingresses:
+  - https://www.nav.no/dagpenger/dialog/soknad
+  - https://www.nav.no/ny-dagpenger/dialog/soknad
+base_path: "/dagpenger/dialog/soknad"
+dekorator:
+  url: https://www.nav.no/dekoratoren
+  env: prod
+replicas:
+  min: 4
+  max: 6
+resources:
+  limits:
+    memory: 1280Mi
+  requests:
+    cpu: 50m
+    memory: 256Mi

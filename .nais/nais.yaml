@@ -1,0 +1,69 @@
+apiVersion: "nais.io/v1alpha1"
+kind: "Application"
+metadata:
+  name: dp-kalkulator-frontend
+  namespace: teamdagpenger
+  labels:
+    team: teamdagpenger
+    app: dp-kalkulator-frontend
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: "64M"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "300"
+spec:
+  image: "{{image}}"
+  port: 3000
+  liveness:
+    path: "{{base_path}}/api/internal/isalive"
+    initialDelay: 15
+    timeout: 1
+    periodSeconds: 5
+    failureThreshold: 5
+  readiness:
+    path: "{{base_path}}/api/internal/isready"
+    initialDelay: 15
+    timeout: 1
+  prometheus:
+    path: "{{base_path}}/api/internal/isready"
+    enabled: true
+  replicas:
+    min: {{replicas.min}}
+    max: {{replicas.max}}
+    cpuThresholdPercentage: 80
+  resources:
+    limits:
+      memory: {{resources.limits.memory}}
+    requests:
+      cpu: {{resources.limits.cpu}}
+      memory: {{resources.requests.memory}}
+  env:
+    - name: SELF_URL
+      value: "{{ingress}}"
+    - name: BASE_PATH
+      value: "{{base_path}}"
+    - name: DEKORATOR_URL
+      value: "{{dekorator.url}}"
+    - name: DEKORATOR_ENV
+      value: "{{dekorator.env}}"
+    - name: APP_ENV
+      value: "{{app_env}}"
+
+  ingresses:
+    {{#each ingresses as |url|}}
+    - {{url}}
+    {{/each}}
+  accessPolicy:
+    outbound:
+      external:
+        - host: www.nav.no
+        - host: dekoratoren.dev.nav.no
+      rules:
+        - application: nav-dekoratoren
+          namespace: personbruker
+  observability:
+    autoInstrumentation:
+      enabled: true
+      runtime: nodejs
+    logging:
+      destinations:
+        - id: loki
+        - id: elastic
