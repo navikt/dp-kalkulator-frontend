@@ -1,10 +1,10 @@
 import {
+  DecoratorElements,
+  DecoratorEnvProps,
   fetchDecoratorHtml,
-  type DecoratorElements,
-  type DecoratorEnvProps,
-  type DecoratorFetchProps,
-  type DecoratorLocale as DecoratorLocaleType
+  type DecoratorFetchProps
 } from "@navikt/nav-dekoratoren-moduler/ssr";
+import { getEnv } from "~/utils/env.utils";
 
 export enum DecoratorLocale {
   NB = "nb",
@@ -15,41 +15,35 @@ export const availableLanguages = [
   {
     locale: DecoratorLocale.NB,
     url: "https://www.nav.no/person/kontakt-oss/nb/",
-    handleInApp: true as const
+    handleInApp: true
   },
   {
     locale: DecoratorLocale.EN,
     url: "https://www.nav.no/person/kontakt-oss/en/",
-    handleInApp: true as const
+    handleInApp: true
   }
 ];
 
-function isSupportedLanguage(value: string | undefined): value is DecoratorLocale {
-  return value === DecoratorLocale.NB || value === DecoratorLocale.EN;
-}
-
-export async function getDekoratorHTML(language: DecoratorLocale): Promise<DecoratorElements> {
-  const env = (process.env.DECORATOR_ENV ?? "localhost") as DecoratorEnvProps["env"];
-
+export async function getDekoratorHTML(): Promise<DecoratorElements> {
   const config: DecoratorFetchProps = {
-    env,
+    env: (getEnv("DEKORATOR_ENV") || "localhost") as DecoratorEnvProps["env"],
     localUrl: "https://dekoratoren.ekstern.dev.nav.no",
     params: {
       context: "privatperson",
       chatbot: false,
       redirectToApp: true,
-      language: language as DecoratorLocaleType,
-      availableLanguages
+      level: "Level4",
+      availableLanguages: availableLanguages
     }
   };
 
   return await fetchDecoratorHtml(config);
 }
 
-export async function getDekoratorLanguage(request: Request): Promise<DecoratorLocale> {
+export async function getDekoratorLanguage(request: Request): Promise<string> {
   const cookieHeader = request.headers.get("Cookie");
   const match = cookieHeader?.match(/decorator-language=([^;]+)/);
 
-  const lang = match?.[1];
-  return isSupportedLanguage(lang) ? lang : DecoratorLocale.NB;
+  const lang = match?.[1] as DecoratorLocale | undefined;
+  return lang ?? DecoratorLocale.NB;
 }
