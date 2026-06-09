@@ -8,15 +8,15 @@ export default defineConfig({
   base:
     process.env.NODE_ENV === "production"
       ? "https://cdn.nav.no/teamdagpenger/dp-kalkulator-frontend/client/"
-      : "/dagpenger/kalkulator-frontend",
+      : "/dagpenger/kalkulator-frontend/",
   plugins: [reactRouter(), tsconfigPaths(), devtoolsJson()],
   build: {
     manifest: true,
-    sourcemap: process.env.NODE_ENV !== "production",
+    sourcemap: process.env.NODE_ENV !== "production"
   },
   resolve: {
     alias: {
-      "~": path.resolve(__dirname, "./app"),
-    },
-  },
+      "~": path.resolve(__dirname, "./app")
+    }
+  }
 });
