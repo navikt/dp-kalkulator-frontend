@@ -38,7 +38,6 @@ export async function getDekoratorHTML(language: DecoratorLocale): Promise<Decor
       context: "privatperson",
       chatbot: false,
       redirectToApp: true,
-      level: "Level4",
       language: language as DecoratorLocaleType,
       availableLanguages
     }
