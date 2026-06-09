@@ -112,7 +112,7 @@ export default function IndexRoute() {
         inntektSiste36MaanederIAar: skjemaData.inntektSiste36MaanederIAar ?? 0,
         inntektSiste36MaanederIFjor: skjemaData.inntektSiste36MaanederIFjor ?? 0,
         inntektSiste36MaanederToAarSiden: skjemaData.inntektSiste36MaanederToAarSiden ?? 0,
-        antallBarn: skjemaData.forsorgerBarn === "ja" ? skjemaData.antallBarn ?? 0 : 0,
+        antallBarn: skjemaData.forsorgerBarn === "ja" ? (skjemaData.antallBarn ?? 0) : 0,
         gVerdi: GRUNNBELOP,
         barnetilleggVerdi: barnetilleggVerdi
       }),

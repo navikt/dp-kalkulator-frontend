@@ -1,10 +1,7 @@
 import { PassThrough } from "node:stream";
 import { createReadableStreamFromReadable } from "@react-router/node";
-import { renderToPipeableStream, type RenderToPipeableStreamOptions } from "react-dom/server";
-import type { EntryContext } from "react-router";
-import { ServerRouter } from "react-router";
-
-export const streamTimeout = 5_000;
+import { renderToPipeableStream } from "react-dom/server";
+import { ServerRouter, type EntryContext } from "react-router";
 
 export default function handleRequest(
   request: Request,
@@ -13,16 +10,10 @@ export default function handleRequest(
   routerContext: EntryContext
 ) {
   return new Promise((resolve, reject) => {
-    let shellRendered = false;
-    const readyOption: keyof RenderToPipeableStreamOptions = routerContext.isSpaMode
-      ? "onAllReady"
-      : "onShellReady";
-
-    const { pipe, abort } = renderToPipeableStream(
+    const { pipe } = renderToPipeableStream(
       <ServerRouter context={routerContext} url={request.url} />,
       {
-        [readyOption]() {
-          shellRendered = true;
+        onShellReady() {
           const body = new PassThrough();
           const stream = createReadableStreamFromReadable(body);
 
@@ -39,16 +30,8 @@ export default function handleRequest(
         },
         onShellError(error: unknown) {
           reject(error);
-        },
-        onError(error: unknown) {
-          responseStatusCode = 500;
-          if (shellRendered) {
-            console.log(error);
-          }
         }
       }
     );
-
-    setTimeout(abort, streamTimeout + 1000);
   });
 }
