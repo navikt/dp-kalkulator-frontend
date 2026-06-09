@@ -31,8 +31,6 @@ export async function getDekoratorHTML(): Promise<DecoratorElements> {
     params: {
       context: "privatperson",
       chatbot: false,
-      redirectToApp: true,
-      level: "Level4",
       availableLanguages: availableLanguages
     }
   };
