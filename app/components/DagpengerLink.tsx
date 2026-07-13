@@ -8,7 +8,7 @@ export function DagpengerLink() {
 
   if (språk === "en") {
     return (
-      <Link href="https://www.nav.no/dagpenger" className="dagpenger-link">
+      <Link href="https://www.nav.no/dagpenger/en" className="dagpenger-link">
         <DagpengerIkon aria-hidden />
         <VStack gap="space-16">
           <BodyShort className="lenke-tittel">Unemployment benefit (dagpenger)</BodyShort>
