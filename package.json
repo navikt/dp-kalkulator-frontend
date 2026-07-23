@@ -13,8 +13,8 @@
   },
   "dependencies": {
     "@navikt/aksel-icons": "^8.15.0",
-    "@navikt/ds-css": "8.14.0",
-    "@navikt/ds-react": "8.14.0",
+    "@navikt/ds-css": "8.15.0",
+    "@navikt/ds-react": "8.15.0",
     "@navikt/nav-dekoratoren-moduler": "^4.2.2",
     "@react-router/fs-routes": "^7.18.1",
     "@react-router/node": "7.18.0",
@@ -38,7 +38,7 @@
     "eslint-plugin-prettier": "^5.5.6",
     "prettier": "^3.9.5",
     "typescript": "5.9.3",
-    "vite": "7.3.2",
+    "vite": "8.1.5",
     "vite-plugin-devtools-json": "1.0.0",
     "vite-tsconfig-paths": "6.1.1",
     "vitest": "4.1.10"
