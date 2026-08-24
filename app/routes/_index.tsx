@@ -5,18 +5,18 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { NumericFormat } from "react-number-format";
 import { DagpengerLink } from "~/components/DagpengerLink";
 import { Header } from "~/components/Header";
-import { HvilkenInntektsperiodeBorDuVelge } from "~/components/HvilkenInntektsperiodeBorDuVelge";
-import { HvorforViSporOmForsorgerBarn } from "~/components/HvorforViSporOmForsorgerBarn";
-import { InntekterSomAvgjorDagpenger } from "~/components/InntekterSomAvgjorDagpenger";
+import { HvilkenInntektsperiodeBørDuVelge } from "~/components/HvilkenInntektsperiodeBørDuVelge";
+import { HvorforViSpørOmForsørgerBarn } from "~/components/HvorforViSpørOmForsørgerBarn";
+import { InntekterSomAvgjørDagpenger } from "~/components/InntekterSomAvgjørDagpenger";
 import { NegativResultatBoks } from "~/components/NegativResultatBoks";
 import { PositivResultatBoks } from "~/components/PositivResultatBoks";
 import { useOversettelser } from "~/hooks/useOversettelser";
 import { useTypedRouteLoaderData } from "~/hooks/useTypedRouteLoaderData";
-import { hentBarnetillegg, hentMaanederATrekkeFra } from "~/utils/dato.utils";
+import { hentBarnetillegg, hentMånederÅTrekkeFra } from "~/utils/dato.utils";
 import {
   beregnDagpengerResultat,
-  formaterMaanedOgAar,
-  GRUNNBELOP,
+  formaterMånedOgÅr,
+  hentGrunnbeløp,
   Inntektsperiode,
   SkjemaTilstand,
   tilGVerdi,
@@ -36,11 +36,11 @@ export default function IndexRoute() {
 
   const skjemaDefaultValues: SkjemaTilstand = {
     inntektsperiode: "12",
-    inntektSiste12Maaneder: null,
-    inntektSiste36MaanederIAar: null,
-    inntektSiste36MaanederIFjor: null,
-    inntektSiste36MaanederToAarSiden: null,
-    forsorgerBarn: null,
+    inntektSiste12Måneder: null,
+    inntektSiste36MånederIÅr: null,
+    inntektSiste36MånederIFjor: null,
+    inntektSiste36MånederToÅrSiden: null,
+    forsørgerBarn: null,
     antallBarn: null
   };
 
@@ -59,10 +59,10 @@ export default function IndexRoute() {
   const skjemaData = skjema.value();
 
   useEffect(() => {
-    if (skjemaData.forsorgerBarn === "nei" && skjemaData.antallBarn !== null) {
+    if (skjemaData.forsørgerBarn === "nei" && skjemaData.antallBarn !== null) {
       skjema.setValue("antallBarn", null);
     }
-  }, [skjemaData.forsorgerBarn, skjemaData.antallBarn, skjema]);
+  }, [skjemaData.forsørgerBarn, skjemaData.antallBarn, skjema]);
 
   useEffect(() => {
     if (!visResultat || !resultatRef.current) {
@@ -78,7 +78,7 @@ export default function IndexRoute() {
   }, [visResultat]);
 
   const barnetilleggVerdi = hentBarnetillegg(new Date());
-  const månedÅTrekkeFra = hentMaanederATrekkeFra(new Date());
+  const månedÅTrekkeFra = hentMånederÅTrekkeFra(new Date());
   const sisteMånedMedUtbetaling = subMonths(new Date(), månedÅTrekkeFra);
 
   const periode12 = {
@@ -88,17 +88,17 @@ export default function IndexRoute() {
 
   const periode36 = [
     {
-      key: "inntektSiste36MaanederIAar" as const,
+      key: "inntektSiste36MånederIÅr" as const,
       from: subMonths(sisteMånedMedUtbetaling, 11),
       to: sisteMånedMedUtbetaling
     },
     {
-      key: "inntektSiste36MaanederIFjor" as const,
+      key: "inntektSiste36MånederIFjor" as const,
       from: subMonths(sisteMånedMedUtbetaling, 23),
       to: subMonths(sisteMånedMedUtbetaling, 12)
     },
     {
-      key: "inntektSiste36MaanederToAarSiden" as const,
+      key: "inntektSiste36MånederToÅrSiden" as const,
       from: subMonths(sisteMånedMedUtbetaling, 35),
       to: subMonths(sisteMånedMedUtbetaling, 24)
     }
@@ -108,12 +108,12 @@ export default function IndexRoute() {
     () =>
       beregnDagpengerResultat({
         inntektsperiode: skjemaData.inntektsperiode,
-        inntektSiste12Maaneder: skjemaData.inntektSiste12Maaneder ?? 0,
-        inntektSiste36MaanederIAar: skjemaData.inntektSiste36MaanederIAar ?? 0,
-        inntektSiste36MaanederIFjor: skjemaData.inntektSiste36MaanederIFjor ?? 0,
-        inntektSiste36MaanederToAarSiden: skjemaData.inntektSiste36MaanederToAarSiden ?? 0,
-        antallBarn: skjemaData.forsorgerBarn === "ja" ? (skjemaData.antallBarn ?? 0) : 0,
-        gVerdi: GRUNNBELOP,
+        inntektSiste12Måneder: skjemaData.inntektSiste12Måneder ?? 0,
+        inntektSiste36MånederIÅr: skjemaData.inntektSiste36MånederIÅr ?? 0,
+        inntektSiste36MånederIFjor: skjemaData.inntektSiste36MånederIFjor ?? 0,
+        inntektSiste36MånederToÅrSiden: skjemaData.inntektSiste36MånederToÅrSiden ?? 0,
+        antallBarn: skjemaData.forsørgerBarn === "ja" ? (skjemaData.antallBarn ?? 0) : 0,
+        gVerdi: hentGrunnbeløp(),
         barnetilleggVerdi: barnetilleggVerdi
       }),
     [skjemaData, barnetilleggVerdi]
@@ -148,12 +148,12 @@ export default function IndexRoute() {
                   skjema.setValue("inntektsperiode", value as Inntektsperiode);
                 }}
               >
-                <Radio value="12">{t("inntektsperiode.siste12Maaneder")}</Radio>
-                <Radio value="36">{t("inntektsperiode.siste36Maaneder")}</Radio>
+                <Radio value="12">{t("inntektsperiode.siste12Måneder")}</Radio>
+                <Radio value="36">{t("inntektsperiode.siste36Måneder")}</Radio>
               </RadioGroup>
-              <HvilkenInntektsperiodeBorDuVelge
-                belop12={tilKR(tilGVerdi(1.5), språk)}
-                belop36={tilKR(tilGVerdi(3), språk)}
+              <HvilkenInntektsperiodeBørDuVelge
+                beløp12={tilKR(tilGVerdi(1.5), språk)}
+                beløp36={tilKR(tilGVerdi(3), språk)}
               />
             </Box>
 
@@ -161,16 +161,16 @@ export default function IndexRoute() {
               {skjemaData.inntektsperiode === "12" && (
                 <NumericFormat
                   customInput={TextField}
-                  id="inntektSiste12Maaneder"
-                  error={skjema.error("inntektSiste12Maaneder") ?? undefined}
-                  label={t("inntektSiste12Maaneder.etikett")}
-                  description={t("inntektSiste12Maaneder.periodeBeskrivelse", {
-                    fra: formaterMaanedOgAar(periode12.from, språk),
-                    til: formaterMaanedOgAar(periode12.to, språk)
+                  id="inntektSiste12Måneder"
+                  error={skjema.error("inntektSiste12Måneder") ?? undefined}
+                  label={t("inntektSiste12Måneder.etikett")}
+                  description={t("inntektSiste12Måneder.periodeBeskrivelse", {
+                    fra: formaterMånedOgÅr(periode12.from, språk),
+                    til: formaterMånedOgÅr(periode12.to, språk)
                   })}
-                  value={skjemaData.inntektSiste12Maaneder ?? ""}
+                  value={skjemaData.inntektSiste12Måneder ?? ""}
                   onValueChange={({ floatValue }: { floatValue?: number }) => {
-                    skjema.setValue("inntektSiste12Maaneder", floatValue ?? null);
+                    skjema.setValue("inntektSiste12Måneder", floatValue ?? null);
                   }}
                   thousandSeparator={tusenSeparator}
                   suffix={inputValutaPostfix}
@@ -182,7 +182,7 @@ export default function IndexRoute() {
 
               {skjemaData.inntektsperiode === "36" && (
                 <VStack gap="space-8">
-                  <Label spacing>{t("inntektSiste36Maaneder.etikett")}</Label>
+                  <Label spacing>{t("inntektSiste36Måneder.etikett")}</Label>
                   <VStack gap="space-16">
                     {periode36.map((periode) => (
                       <NumericFormat
@@ -190,9 +190,9 @@ export default function IndexRoute() {
                         label=""
                         id={periode.key}
                         error={skjema.error(periode.key) ?? undefined}
-                        description={t("inntektSiste36Maaneder.periodeBeskrivelse", {
-                          fra: formaterMaanedOgAar(periode.from, språk),
-                          til: formaterMaanedOgAar(periode.to, språk)
+                        description={t("inntektSiste36Måneder.periodeBeskrivelse", {
+                          fra: formaterMånedOgÅr(periode.from, språk),
+                          til: formaterMånedOgÅr(periode.to, språk)
                         })}
                         value={skjemaData[periode.key] ?? ""}
                         onValueChange={({ floatValue }: { floatValue?: number }) => {
@@ -209,27 +209,27 @@ export default function IndexRoute() {
                 </VStack>
               )}
 
-              <InntekterSomAvgjorDagpenger />
+              <InntekterSomAvgjørDagpenger />
             </VStack>
 
             <VStack gap="space-16" align="start">
               <RadioGroup
-                name="forsorgerBarn"
-                legend={t("forsorgerBarn.legende")}
-                error={skjema.error("forsorgerBarn") ?? undefined}
-                value={skjemaData.forsorgerBarn === null ? undefined : skjemaData.forsorgerBarn}
+                name="forsørgerBarn"
+                legend={t("forsørgerBarn.legende")}
+                error={skjema.error("forsørgerBarn") ?? undefined}
+                value={skjemaData.forsørgerBarn === null ? undefined : skjemaData.forsørgerBarn}
                 onChange={(value) => {
-                  skjema.setValue("forsorgerBarn", value as "ja" | "nei");
+                  skjema.setValue("forsørgerBarn", value as "ja" | "nei");
                 }}
               >
-                <Radio value="ja">{t("forsorgerBarn.ja")}</Radio>
-                <Radio value="nei">{t("forsorgerBarn.nei")}</Radio>
+                <Radio value="ja">{t("forsørgerBarn.ja")}</Radio>
+                <Radio value="nei">{t("forsørgerBarn.nei")}</Radio>
               </RadioGroup>
 
-              <HvorforViSporOmForsorgerBarn />
+              <HvorforViSpørOmForsørgerBarn />
             </VStack>
 
-            {skjemaData.forsorgerBarn === "ja" && (
+            {skjemaData.forsørgerBarn === "ja" && (
               <Box>
                 <Select
                   name="antallBarn"

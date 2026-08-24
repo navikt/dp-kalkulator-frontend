@@ -6,11 +6,11 @@ export function lagKalkulatorSkjema(språk: "nb" | "en") {
   return z
     .object({
       inntektsperiode: z.enum(["12", "36"]),
-      inntektSiste12Maaneder: z.number().nullable(),
-      inntektSiste36MaanederIAar: z.number().nullable(),
-      inntektSiste36MaanederIFjor: z.number().nullable(),
-      inntektSiste36MaanederToAarSiden: z.number().nullable(),
-      forsorgerBarn: z.enum(["ja", "nei"]).nullable(),
+      inntektSiste12Måneder: z.number().nullable(),
+      inntektSiste36MånederIÅr: z.number().nullable(),
+      inntektSiste36MånederIFjor: z.number().nullable(),
+      inntektSiste36MånederToÅrSiden: z.number().nullable(),
+      forsørgerBarn: z.enum(["ja", "nei"]).nullable(),
       antallBarn: z.preprocess((value) => {
         if (value === "" || value === null || value === undefined) {
           return null;
@@ -25,51 +25,51 @@ export function lagKalkulatorSkjema(språk: "nb" | "en") {
       }, z.number().nullable())
     })
     .superRefine((values, ctx) => {
-      if (values.inntektsperiode === "12" && values.inntektSiste12Maaneder === null) {
+      if (values.inntektsperiode === "12" && values.inntektSiste12Måneder === null) {
         ctx.addIssue({
           code: "custom",
-          path: ["inntektSiste12Maaneder"],
+          path: ["inntektSiste12Måneder"],
           message: erEngelsk ? "You have to write an income" : "Du må skrive inn inntekt"
         });
       }
 
       if (values.inntektsperiode === "36") {
-        if (values.inntektSiste36MaanederIAar === null) {
+        if (values.inntektSiste36MånederIÅr === null) {
           ctx.addIssue({
             code: "custom",
-            path: ["inntektSiste36MaanederIAar"],
+            path: ["inntektSiste36MånederIÅr"],
             message: erEngelsk ? "You have to write an income" : "Du må skrive inn inntekt"
           });
         }
 
-        if (values.inntektSiste36MaanederIFjor === null) {
+        if (values.inntektSiste36MånederIFjor === null) {
           ctx.addIssue({
             code: "custom",
-            path: ["inntektSiste36MaanederIFjor"],
+            path: ["inntektSiste36MånederIFjor"],
             message: erEngelsk ? "You have to write an income" : "Du må skrive inn inntekt"
           });
         }
 
-        if (values.inntektSiste36MaanederToAarSiden === null) {
+        if (values.inntektSiste36MånederToÅrSiden === null) {
           ctx.addIssue({
             code: "custom",
-            path: ["inntektSiste36MaanederToAarSiden"],
+            path: ["inntektSiste36MånederToÅrSiden"],
             message: erEngelsk ? "You have to write an income" : "Du må skrive inn inntekt"
           });
         }
       }
 
-      if (values.forsorgerBarn === null) {
+      if (values.forsørgerBarn === null) {
         ctx.addIssue({
           code: "custom",
-          path: ["forsorgerBarn"],
+          path: ["forsørgerBarn"],
           message: erEngelsk
             ? "You have to say if you provide for children under the age of 18"
             : "Du må svare på om du forsørger barn under 18 år"
         });
       }
 
-      if (values.forsorgerBarn === "ja" && values.antallBarn === null) {
+      if (values.forsørgerBarn === "ja" && values.antallBarn === null) {
         ctx.addIssue({
           code: "custom",
           path: ["antallBarn"],

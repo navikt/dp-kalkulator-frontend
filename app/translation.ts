@@ -5,47 +5,47 @@ export const tekster = [
     en: "Select income period"
   },
   {
-    id: "inntektsperiode.siste12Maaneder",
+    id: "inntektsperiode.siste12Måneder",
     nb: "Siste 12 måneder",
     en: "Last 12 months"
   },
   {
-    id: "inntektsperiode.siste36Maaneder",
+    id: "inntektsperiode.siste36Måneder",
     nb: "Siste 36 måneder",
     en: "Last 36 months"
   },
   {
-    id: "inntektSiste12Maaneder.etikett",
+    id: "inntektSiste12Måneder.etikett",
     nb: "Hva har du hatt i inntekt de siste 12 månedene?",
     en: "What income have you had last 12 months?"
   },
   {
-    id: "inntektSiste12Maaneder.periodeBeskrivelse",
+    id: "inntektSiste12Måneder.periodeBeskrivelse",
     nb: "Fra {fra} til {til}",
     en: "From {fra} to {til}"
   },
   {
-    id: "inntektSiste36Maaneder.etikett",
+    id: "inntektSiste36Måneder.etikett",
     nb: "Hva har du hatt i inntekt de siste 36 månedene?",
     en: "What income have you had last 36 months?"
   },
   {
-    id: "inntektSiste36Maaneder.periodeBeskrivelse",
+    id: "inntektSiste36Måneder.periodeBeskrivelse",
     nb: "Fra {fra} til {til}",
     en: "From {fra} to {til}"
   },
   {
-    id: "forsorgerBarn.legende",
+    id: "forsørgerBarn.legende",
     nb: "Forsørger du barn under 18 år?",
     en: "Do you provide for children under the age of 18?"
   },
   {
-    id: "forsorgerBarn.ja",
+    id: "forsørgerBarn.ja",
     nb: "Ja",
     en: "Yes"
   },
   {
-    id: "forsorgerBarn.nei",
+    id: "forsørgerBarn.nei",
     nb: "Nei",
     en: "No"
   },

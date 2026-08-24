@@ -1,16 +1,18 @@
 import { format } from "date-fns";
 import { enGB, nb } from "date-fns/locale";
 
-export const GRUNNBELOP = 136549;
+export function hentGrunnbeløp(): number {
+  return 136549;
+}
 
 export type Inntektsperiode = "12" | "36";
 
 export type KalkulatorInput = {
   inntektsperiode: Inntektsperiode;
-  inntektSiste12Maaneder: number;
-  inntektSiste36MaanederIAar: number;
-  inntektSiste36MaanederIFjor: number;
-  inntektSiste36MaanederToAarSiden: number;
+  inntektSiste12Måneder: number;
+  inntektSiste36MånederIÅr: number;
+  inntektSiste36MånederIFjor: number;
+  inntektSiste36MånederToÅrSiden: number;
   antallBarn: number;
   gVerdi: number;
   barnetilleggVerdi: number;
@@ -28,31 +30,31 @@ export type KalkulatorResult = {
 
 export type SkjemaTilstand = {
   inntektsperiode: Inntektsperiode;
-  inntektSiste12Maaneder: number | null;
-  inntektSiste36MaanederIAar: number | null;
-  inntektSiste36MaanederIFjor: number | null;
-  inntektSiste36MaanederToAarSiden: number | null;
-  forsorgerBarn: "ja" | "nei" | null;
+  inntektSiste12Måneder: number | null;
+  inntektSiste36MånederIÅr: number | null;
+  inntektSiste36MånederIFjor: number | null;
+  inntektSiste36MånederToÅrSiden: number | null;
+  forsørgerBarn: "ja" | "nei" | null;
   antallBarn: number | null;
 };
 
-function tak6G(belop: number, gVerdi: number): number {
-  return Math.min(belop, 6 * gVerdi);
+function tak6G(beløp: number, gVerdi: number): number {
+  return Math.min(beløp, 6 * gVerdi);
 }
 
-function hentTotalInntektSiste36Maaneder(grunnlag: KalkulatorInput): number {
+function hentTotalInntektSiste36Måneder(grunnlag: KalkulatorInput): number {
   return (
-    grunnlag.inntektSiste36MaanederIAar +
-    grunnlag.inntektSiste36MaanederIFjor +
-    grunnlag.inntektSiste36MaanederToAarSiden
+    grunnlag.inntektSiste36MånederIÅr +
+    grunnlag.inntektSiste36MånederIFjor +
+    grunnlag.inntektSiste36MånederToÅrSiden
   );
 }
 
-function hentSnittInntektSiste36MaanederMedTak6G(grunnlag: KalkulatorInput): number {
+function hentSnittInntektSiste36MånederMedTak6G(grunnlag: KalkulatorInput): number {
   return (
-    (tak6G(grunnlag.inntektSiste36MaanederIAar, grunnlag.gVerdi) +
-      tak6G(grunnlag.inntektSiste36MaanederIFjor, grunnlag.gVerdi) +
-      tak6G(grunnlag.inntektSiste36MaanederToAarSiden, grunnlag.gVerdi)) /
+    (tak6G(grunnlag.inntektSiste36MånederIÅr, grunnlag.gVerdi) +
+      tak6G(grunnlag.inntektSiste36MånederIFjor, grunnlag.gVerdi) +
+      tak6G(grunnlag.inntektSiste36MånederToÅrSiden, grunnlag.gVerdi)) /
     3
   );
 }
@@ -60,13 +62,13 @@ function hentSnittInntektSiste36MaanederMedTak6G(grunnlag: KalkulatorInput): num
 export function beregnDagpengerResultat(grunnlag: KalkulatorInput): KalkulatorResult {
   const inntekt =
     grunnlag.inntektsperiode === "12"
-      ? grunnlag.inntektSiste12Maaneder
-      : hentTotalInntektSiste36Maaneder(grunnlag);
+      ? grunnlag.inntektSiste12Måneder
+      : hentTotalInntektSiste36Måneder(grunnlag);
 
   const inntektForBeregning =
     grunnlag.inntektsperiode === "12"
-      ? grunnlag.inntektSiste12Maaneder
-      : hentSnittInntektSiste36MaanederMedTak6G(grunnlag);
+      ? grunnlag.inntektSiste12Måneder
+      : hentSnittInntektSiste36MånederMedTak6G(grunnlag);
 
   const minsteInntektBasertPaPeriodeLengde = grunnlag.inntektsperiode === "12" ? 1.5 : 3;
   const harForLavInntekt = inntekt < minsteInntektBasertPaPeriodeLengde * grunnlag.gVerdi;
@@ -95,10 +97,10 @@ export function tilKR(verdi: number, språk: "nb" | "en" = "nb"): string {
 }
 
 export function tilGVerdi(multiplum: number): number {
-  return multiplum * GRUNNBELOP;
+  return multiplum * hentGrunnbeløp();
 }
 
-export function formaterMaanedOgAar(dato: Date, språk: "nb" | "en" = "nb"): string {
+export function formaterMånedOgÅr(dato: Date, språk: "nb" | "en" = "nb"): string {
   const locale = språk === "en" ? enGB : nb;
   return format(dato, "LLLL yyyy", { locale });
 }
@@ -108,6 +110,6 @@ export function tilTall(verdi: string): number | null {
     return null;
   }
 
-  const tolket = Number(verdi);
-  return Number.isFinite(tolket) ? tolket : null;
+  const konvertert = Number(verdi);
+  return Number.isFinite(konvertert) ? konvertert : null;
 }

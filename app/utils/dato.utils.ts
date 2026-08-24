@@ -1,9 +1,9 @@
 import { addDays, getDate, getMonth, getYear, subDays } from "date-fns";
 
-function finnPaskeSondag(aar: number): Date {
-  const a = aar % 19;
-  const b = Math.floor(aar / 100);
-  const c = aar % 100;
+function finnPåskeSøndag(år: number): Date {
+  const a = år % 19;
+  const b = Math.floor(år / 100);
+  const c = år % 100;
   const d = Math.floor(b / 4);
   const e = b % 4;
   const f = Math.floor((b + 8) / 25);
@@ -13,29 +13,29 @@ function finnPaskeSondag(aar: number): Date {
   const k = c % 4;
   const l = (32 + 2 * e + 2 * i - h - k) % 7;
   const m = Math.floor((a + 11 * h + 22 * l) / 451);
-  const maaned = Math.floor((h + l - 7 * m + 114) / 31);
+  const måned = Math.floor((h + l - 7 * m + 114) / 31);
   const dag = ((h + l - 7 * m + 114) % 31) + 1;
 
-  return new Date(`${aar}-${maaned}-${dag}`);
+  return new Date(`${år}-${måned}-${dag}`);
 }
 
-function hentFridager(aar: number): Set<string> {
-  const paskeSondag = finnPaskeSondag(aar);
+function hentFridager(år: number): Set<string> {
+  const påskeSøndag = finnPåskeSøndag(år);
 
   const datoer = [
-    new Date(`${aar}-01-01`),
-    subDays(paskeSondag, 7),
-    subDays(paskeSondag, 3),
-    subDays(paskeSondag, 2),
-    paskeSondag,
-    addDays(paskeSondag, 1),
-    addDays(paskeSondag, 39),
-    addDays(paskeSondag, 49),
-    addDays(paskeSondag, 50),
-    new Date(`${aar}-05-01`),
-    new Date(`${aar}-05-17`),
-    new Date(`${aar}-12-25`),
-    new Date(`${aar}-12-26`)
+    new Date(`${år}-01-01`),
+    subDays(påskeSøndag, 7),
+    subDays(påskeSøndag, 3),
+    subDays(påskeSøndag, 2),
+    påskeSøndag,
+    addDays(påskeSøndag, 1),
+    addDays(påskeSøndag, 39),
+    addDays(påskeSøndag, 49),
+    addDays(påskeSøndag, 50),
+    new Date(`${år}-05-01`),
+    new Date(`${år}-05-17`),
+    new Date(`${år}-12-25`),
+    new Date(`${år}-12-26`)
   ];
 
   return new Set(datoer.map((dato) => `${getYear(dato)}-${getMonth(dato)}-${getDate(dato)}`));
@@ -46,7 +46,7 @@ function erFridag(dato: Date): boolean {
   return hentFridager(getYear(dato)).has(datoSomSkalSjekkes);
 }
 
-export function hentMaanederATrekkeFra(datoObjekt: Date): number {
+export function hentMånederÅTrekkeFra(datoObjekt: Date): number {
   const [sunday, monday] = [0, 1];
   const dag = datoObjekt.getDay();
   const dato = datoObjekt.getDate();

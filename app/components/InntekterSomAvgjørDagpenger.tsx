@@ -1,7 +1,7 @@
 import { BodyShort, Box, List, ReadMore, VStack } from "@navikt/ds-react";
 import { useTypedRouteLoaderData } from "~/hooks/useTypedRouteLoaderData";
 
-export function InntekterSomAvgjorDagpenger() {
+export function InntekterSomAvgjørDagpenger() {
   const { language } = useTypedRouteLoaderData("root");
   const språk = language === "en" ? "en" : "nb";
 

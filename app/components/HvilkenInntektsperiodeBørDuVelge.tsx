@@ -2,11 +2,11 @@ import { Alert, BodyLong, BodyShort, ReadMore, VStack } from "@navikt/ds-react";
 import { useTypedRouteLoaderData } from "~/hooks/useTypedRouteLoaderData";
 
 type Props = {
-  belop12: string;
-  belop36: string;
+  beløp12: string;
+  beløp36: string;
 };
 
-export function HvilkenInntektsperiodeBorDuVelge({ belop12, belop36 }: Props) {
+export function HvilkenInntektsperiodeBørDuVelge({ beløp12, beløp36 }: Props) {
   const { language } = useTypedRouteLoaderData("root");
   const språk = language === "en" ? "en" : "nb";
 
@@ -18,12 +18,12 @@ export function HvilkenInntektsperiodeBorDuVelge({ belop12, belop36 }: Props) {
             When you apply for unemployment benefit, we choose the alternative that is best for you.
             <br />
             <br />
-            If you have had an income of at least {belop12} (1.5 G) in the last 12 months, you can
+            If you have had an income of at least {beløp12} (1.5 G) in the last 12 months, you can
             choose the last 12 months as your income period.
             <br />
             <br />
-            If you have had an income of less than {belop12} in the last 12 months, but have had a
-            total income of at least {belop36} (3 G) in the last 36 months, you should choose the
+            If you have had an income of less than {beløp12} in the last 12 months, but have had a
+            total income of at least {beløp36} (3 G) in the last 36 months, you should choose the
             last 36 months as your income period. <br />
           </BodyLong>
         </VStack>
@@ -38,12 +38,12 @@ export function HvilkenInntektsperiodeBorDuVelge({ belop12, belop36 }: Props) {
           Når du søker om dagpenger velger vi det alternativet som er best for deg.
           <br />
           <br />
-          Har du hatt en inntekt på minst {belop12} (1,5 G) de siste 12 månedene, kan du velge siste
+          Har du hatt en inntekt på minst {beløp12} (1,5 G) de siste 12 månedene, kan du velge siste
           12 måneder som inntektsperiode.
           <br />
           <br />
-          Har du tjent mindre enn {belop12} de siste 12 månedene, men hatt en samlet inntekt på
-          minst {belop36} (3 G) de siste 36 månedene, bør du velge siste 36 måneder som
+          Har du tjent mindre enn {beløp12} de siste 12 månedene, men hatt en samlet inntekt på
+          minst {beløp36} (3 G) de siste 36 månedene, bør du velge siste 36 måneder som
           inntektsperiode. <br />
         </BodyLong>
       </VStack>

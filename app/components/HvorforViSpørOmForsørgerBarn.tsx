@@ -1,7 +1,7 @@
 import { BodyLong, ReadMore } from "@navikt/ds-react";
 import { useTypedRouteLoaderData } from "~/hooks/useTypedRouteLoaderData";
 
-export function HvorforViSporOmForsorgerBarn() {
+export function HvorforViSpørOmForsørgerBarn() {
   const { language } = useTypedRouteLoaderData("root");
   const språk = language === "en" ? "en" : "nb";
 

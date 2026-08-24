@@ -1,8 +1,8 @@
 import { describe, expect, it } from "vitest";
 import {
   beregnDagpengerResultat,
-  formaterMaanedOgAar,
-  GRUNNBELOP,
+  formaterMånedOgÅr,
+  hentGrunnbeløp,
   tilGVerdi,
   tilKR,
   tilTall
@@ -12,10 +12,10 @@ describe("beregnDagpengerResultat", () => {
   it("returnerer avslag når inntekt siste 12 måneder er under 1,5 G", () => {
     const result = beregnDagpengerResultat({
       inntektsperiode: "12",
-      inntektSiste12Maaneder: 100000,
-      inntektSiste36MaanederIAar: 0,
-      inntektSiste36MaanederIFjor: 0,
-      inntektSiste36MaanederToAarSiden: 0,
+      inntektSiste12Måneder: 100000,
+      inntektSiste36MånederIÅr: 0,
+      inntektSiste36MånederIFjor: 0,
+      inntektSiste36MånederToÅrSiden: 0,
       antallBarn: 0,
       gVerdi: 130160,
       barnetilleggVerdi: 38
@@ -27,10 +27,10 @@ describe("beregnDagpengerResultat", () => {
   it("setter tak på 6 G per år ved beregning av snitt for 36 måneder", () => {
     const result = beregnDagpengerResultat({
       inntektsperiode: "36",
-      inntektSiste12Maaneder: 0,
-      inntektSiste36MaanederIAar: 9999999,
-      inntektSiste36MaanederIFjor: 9999999,
-      inntektSiste36MaanederToAarSiden: 9999999,
+      inntektSiste12Måneder: 0,
+      inntektSiste36MånederIÅr: 9999999,
+      inntektSiste36MånederIFjor: 9999999,
+      inntektSiste36MånederToÅrSiden: 9999999,
       antallBarn: 2,
       gVerdi: 100000,
       barnetilleggVerdi: 38
@@ -44,10 +44,10 @@ describe("beregnDagpengerResultat", () => {
   it("returnerer forventede verdier for gyldig grunnlag med 12 måneder", () => {
     const result = beregnDagpengerResultat({
       inntektsperiode: "12",
-      inntektSiste12Maaneder: 300000,
-      inntektSiste36MaanederIAar: 0,
-      inntektSiste36MaanederIFjor: 0,
-      inntektSiste36MaanederToAarSiden: 0,
+      inntektSiste12Måneder: 300000,
+      inntektSiste36MånederIÅr: 0,
+      inntektSiste36MånederIFjor: 0,
+      inntektSiste36MånederToÅrSiden: 0,
       antallBarn: 1,
       gVerdi: 130160,
       barnetilleggVerdi: 38
@@ -75,19 +75,25 @@ describe("tilKR", () => {
   });
 });
 
-describe("tilGVerdi", () => {
-  it("multipliserer med GRUNNBELOP", () => {
-    expect(tilGVerdi(1.5)).toBe(1.5 * GRUNNBELOP);
+describe("hentGrunnbeløp", () => {
+  it("returnerer gjeldende grunnbeløp", () => {
+    expect(hentGrunnbeløp()).toBe(136549);
   });
 });
 
-describe("formaterMaanedOgAar", () => {
+describe("tilGVerdi", () => {
+  it("multipliserer med gjeldende grunnbeløp", () => {
+    expect(tilGVerdi(1.5)).toBe(1.5 * hentGrunnbeløp());
+  });
+});
+
+describe("formaterMånedOgÅr", () => {
   it("formatterer på norsk som standard", () => {
-    expect(formaterMaanedOgAar(new Date("2026-06-15T12:00:00.000Z"))).toBe("juni 2026");
+    expect(formaterMånedOgÅr(new Date("2026-06-15T12:00:00.000Z"))).toBe("juni 2026");
   });
 
   it("formatterer på engelsk når språk er en", () => {
-    expect(formaterMaanedOgAar(new Date("2026-06-15T12:00:00.000Z"), "en")).toBe("June 2026");
+    expect(formaterMånedOgÅr(new Date("2026-06-15T12:00:00.000Z"), "en")).toBe("June 2026");
   });
 });
 
