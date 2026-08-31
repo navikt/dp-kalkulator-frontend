@@ -1,6 +1,6 @@
 ingresses:
-  - https://www.nav.no/dagpenger/kalkulator-frontend
-base_path: "/dagpenger/kalkulator-frontend"
+  - https://www.nav.no/dagpenger/kalkulator
+base_path: "/dagpenger/kalkulator"
 dekorator:
   url: https://www.nav.no/dekoratoren
   env: prod

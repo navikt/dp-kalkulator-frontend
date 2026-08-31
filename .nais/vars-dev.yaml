@@ -1,7 +1,7 @@
 ingresses:
-  - https://arbeid.intern.dev.nav.no/dagpenger/kalkulator-frontend
-  - https://arbeid.ansatt.dev.nav.no/dagpenger/kalkulator-frontend
-base_path: /dagpenger/kalkulator-frontend
+  - https://arbeid.intern.dev.nav.no/dagpenger
+  - https://arbeid.ansatt.dev.nav.no/dagpenger
+base_path: /dagpenger
 dekorator:
   url: https://dekoratoren.dev.nav.no/
   env: dev

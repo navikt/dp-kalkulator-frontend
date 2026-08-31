@@ -39,7 +39,7 @@ export async function getDekoratorHTML(): Promise<DecoratorElements> {
         },
         {
           title: "kalkulator",
-          url: "https://www.nav.no/dagpenger/kalkulator-frontend"
+          url: "https://www.nav.no/dagpenger/kalkulator"
         }
       ]
     }
