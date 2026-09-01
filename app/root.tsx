@@ -16,15 +16,12 @@ import {
   useNavigate
 } from "react-router";
 
-import akselStyles from "@navikt/ds-css/dist/index.css?url";
+import "@navikt/ds-css";
 import appStyles from "./index.css?url";
 import { useInjectDecoratorScript } from "./hooks/useInjectDecoratorScript";
 import { getDekoratorHTML, getDekoratorLanguage } from "./models/dekorator.server";
 
-export const links: LinksFunction = () => [
-  { rel: "stylesheet", href: akselStyles },
-  { rel: "stylesheet", href: appStyles }
-];
+export const links: LinksFunction = () => [{ rel: "stylesheet", href: appStyles }];
 
 export const meta: MetaFunction = () => [
   { title: "Dagpenger kalkulator - nav.no" },
