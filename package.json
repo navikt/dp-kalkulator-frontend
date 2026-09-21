@@ -17,7 +17,7 @@
     "@navikt/ds-react": "8.16.2",
     "@navikt/nav-dekoratoren-moduler": "^4.3.0",
     "@react-router/fs-routes": "^7.18.1",
-    "@react-router/node": "7.18.0",
+    "@react-router/node": "7.18.3",
     "@react-router/serve": "7.18.0",
     "@rvf/react-router": "8.2.0",
     "@rvf/zod": "^7.0.5",
