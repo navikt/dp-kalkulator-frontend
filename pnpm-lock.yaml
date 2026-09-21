@@ -35,8 +35,8 @@ importers:
         specifier: ^4.3.0
         version: 4.3.0(html-react-parser@6.1.7(@types/react@19.3.0)(react@19.3.0))(react@19.3.0)
       '@react-router/fs-routes':
-        specifier: ^7.18.1
-        version: 7.18.1(@react-router/dev@7.18.0(@react-router/serve@7.18.0(react-router@7.18.3(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(typescript@5.9.3))(@types/node@25.9.5)(lightningcss@1.32.0)(react-router@7.18.3(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(typescript@5.9.3)(vite@7.3.5(@types/node@25.9.5)(lightningcss@1.32.0)))(typescript@5.9.3)
+        specifier: ^8.3.1
+        version: 8.3.1(@react-router/dev@7.18.0(@react-router/serve@7.18.0(react-router@7.18.3(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(typescript@5.9.3))(@types/node@25.9.5)(lightningcss@1.32.0)(react-router@7.18.3(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(typescript@5.9.3)(vite@7.3.5(@types/node@25.9.5)(lightningcss@1.32.0)))(typescript@5.9.3)
       '@react-router/node':
         specifier: 7.18.0
         version: 7.18.0(react-router@7.18.3(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(typescript@5.9.3)
@@ -511,9 +511,6 @@ packages:
       '@types/react': ^17.0.30 || ^18 || ^19
       react: ^17 || ^18 || ^19
       react-dom: ^17 || ^18 || ^19
-    peerDependenciesMeta:
-      '@types/react':
-        optional: true
 
   '@navikt/ds-tokens@8.16.2':
     resolution: {integrity: sha512-WXtLRb034uUN1SUBEg+AYUrAu0zm+P0xuUheIWABEDpWnVGmfXDng7lIW5JDFbut3rQIa1xfzvUfeL3ghc4eng==, tarball: https://npm.pkg.github.com/download/@navikt/ds-tokens/8.16.2/a22ed996203e7730664ed43d7025c68609c937a8}
@@ -524,9 +521,6 @@ packages:
     peerDependencies:
       html-react-parser: '>=5.x'
       react: '>=17.x'
-    peerDependenciesMeta:
-      react:
-        optional: true
 
   '@pkgr/core@0.3.6':
     resolution: {integrity: sha512-SEeaJLb3qBNF/OaXnaR1NmmBbFYk1zC0ZH/52fATcRPLFg/p791YrcyFFy44Bo9sLaGuSuLp5Q6axbb/O+v/RA==}
@@ -567,12 +561,12 @@ packages:
       typescript:
         optional: true
 
-  '@react-router/fs-routes@7.18.1':
-    resolution: {integrity: sha512-DwK89XlrXHRnvE1pHtBCzZDUGhi33gh/IBpNNkdnCSfxVxkiBToqpT1Mveve81Ddgrbp+vKmLgetLHlftigLGw==}
-    engines: {node: '>=20.0.0'}
+  '@react-router/fs-routes@8.3.1':
+    resolution: {integrity: sha512-bAIk7cvs9ie+Lu0WkznmEPZTLmaocrdg/DrSM7P01UkTG16VTlWP7TDRY8yszLGm6DnR1fbf0sOaa2L7/8QBzg==}
+    engines: {node: '>=22.22.0'}
     peerDependencies:
-      '@react-router/dev': ^7.18.1
-      typescript: ^5.1.0 || ^6.0.0
+      '@react-router/dev': ^8.3.1
+      typescript: ^5.1.0 || ^6.0.0 || ^7.0.0
     peerDependenciesMeta:
       typescript:
         optional: true
@@ -1451,10 +1445,6 @@ packages:
   minimatch@10.2.6:
     resolution: {integrity: sha512-vpLQEs+VLCr1nU0BXS07maYoFwlDAH0gngQuuttxIwutDFEMHq2blX+8vpgxDdK3J1PwjCJiep77OitTZ4Ll1A==}
     engines: {node: 18 || 20 || >=22}
-
-  minimatch@9.0.9:
-    resolution: {integrity: sha512-OBwBN9AL4dqmETlpS2zasx+vTeWclWzkblfZk7KTA5j3jeOONz/tRCnZomUyvNg83wL5Zv9Ss6HMJXAgL8R2Yg==}
-    engines: {node: '>=16 || 14 >=14.17'}
 
   morgan@1.12.1:
     resolution: {integrity: sha512-tljKC0ex20AjO58Ob/eZ53JloycbVswbVNCHx6V6VLGzqt/w8dIynVGL0G8qVjNKwiA7sYSogCrN6QtJ82IV+g==}
@@ -2340,12 +2330,11 @@ snapshots:
       '@floating-ui/react-dom': 2.1.9(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       '@navikt/aksel-icons': 8.16.2
       '@navikt/ds-tokens': 8.16.2
+      '@types/react': 19.3.0
       date-fns: 4.4.0
       react: 19.3.0
       react-day-picker: 10.0.1(@types/react@19.3.0)(react@19.3.0)
       react-dom: 19.3.0(react@19.3.0)
-    optionalDependencies:
-      '@types/react': 19.3.0
 
   '@navikt/ds-tokens@8.16.2': {}
 
@@ -2355,7 +2344,6 @@ snapshots:
       csp-header: 6.3.1
       html-react-parser: 6.1.7(@types/react@19.3.0)(react@19.3.0)
       js-cookie: 3.0.8
-    optionalDependencies:
       react: 19.3.0
 
   '@pkgr/core@0.3.6': {}
@@ -2418,10 +2406,10 @@ snapshots:
     optionalDependencies:
       typescript: 5.9.3
 
-  '@react-router/fs-routes@7.18.1(@react-router/dev@7.18.0(@react-router/serve@7.18.0(react-router@7.18.3(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(typescript@5.9.3))(@types/node@25.9.5)(lightningcss@1.32.0)(react-router@7.18.3(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(typescript@5.9.3)(vite@7.3.5(@types/node@25.9.5)(lightningcss@1.32.0)))(typescript@5.9.3)':
+  '@react-router/fs-routes@8.3.1(@react-router/dev@7.18.0(@react-router/serve@7.18.0(react-router@7.18.3(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(typescript@5.9.3))(@types/node@25.9.5)(lightningcss@1.32.0)(react-router@7.18.3(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(typescript@5.9.3)(vite@7.3.5(@types/node@25.9.5)(lightningcss@1.32.0)))(typescript@5.9.3)':
     dependencies:
       '@react-router/dev': 7.18.0(@react-router/serve@7.18.0(react-router@7.18.3(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(typescript@5.9.3))(@types/node@25.9.5)(lightningcss@1.32.0)(react-router@7.18.3(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(typescript@5.9.3)(vite@7.3.5(@types/node@25.9.5)(lightningcss@1.32.0))
-      minimatch: 9.0.9
+      minimatch: 10.2.6
     optionalDependencies:
       typescript: 5.9.3
 
@@ -3252,10 +3240,6 @@ snapshots:
   mime@1.6.0: {}
 
   minimatch@10.2.6:
-    dependencies:
-      brace-expansion: 5.0.9
-
-  minimatch@9.0.9:
     dependencies:
       brace-expansion: 5.0.9
 
