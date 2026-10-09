@@ -1,22 +1,36 @@
-import { describe, expect, it } from "vitest";
-import { hentBarnetillegg, hentMånederÅTrekkeFra } from "~/utils/dato.utils";
+import { afterEach, describe, expect, it, vi } from "vitest";
+import { hentMånederÅTrekkeFra } from "~/utils/dato.utils";
+import { hentBarnetillegg } from "./kalkulator.utils";
+
+afterEach(() => {
+  vi.useRealTimers();
+});
 
 describe("hentMånederÅTrekkeFra", () => {
   it("returnerer 2 når dato er innenfor de første fem dagene", () => {
-    expect(hentMånederÅTrekkeFra(new Date("2026-06-05"))).toBe(2);
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date(2024, 5, 3));
+
+    expect(hentMånederÅTrekkeFra()).toBe(2);
   });
 
   it("returnerer 1 når dato er en fridag senere i måneden", () => {
-    expect(hentMånederÅTrekkeFra(new Date("2026-05-17"))).toBe(1);
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date(2024, 5, 16));
+
+    expect(hentMånederÅTrekkeFra()).toBe(1);
   });
 
   it("returnerer 1 for en vanlig dag midt i måneden", () => {
-    expect(hentMånederÅTrekkeFra(new Date("2026-06-15"))).toBe(1);
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date(2024, 5, 12));
+
+    expect(hentMånederÅTrekkeFra()).toBe(1);
   });
 });
 
 describe("hentBarnetillegg", () => {
   it("beregner barnetillegg basert på årstall", () => {
-    expect(hentBarnetillegg(new Date("2026-01-01"))).toBe(38);
+    expect(hentBarnetillegg()).toBe(38);
   });
 });

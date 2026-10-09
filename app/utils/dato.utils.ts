@@ -46,17 +46,18 @@ function erFridag(dato: Date): boolean {
   return hentFridager(getYear(dato)).has(datoSomSkalSjekkes);
 }
 
-export function hentMånederÅTrekkeFra(datoObjekt: Date): number {
+export function hentMånederÅTrekkeFra(): number {
+  const date = new Date();
   const [sunday, monday] = [0, 1];
-  const dag = datoObjekt.getDay();
-  const dato = datoObjekt.getDate();
+  const dag = date.getDay();
+  const dato = date.getDate();
 
   const regler = [
     dato <= 5,
     dato === 6 && dag === sunday,
     dato === 6 && dag === monday,
     dato === 7 && dag === monday,
-    dato <= 7 && erFridag(datoObjekt)
+    dato <= 7 && erFridag(date)
   ];
 
   if (regler.includes(true)) {
@@ -64,8 +65,4 @@ export function hentMånederÅTrekkeFra(datoObjekt: Date): number {
   }
 
   return 1;
-}
-
-export function hentBarnetillegg(dato: Date): number {
-  return getYear(dato) - 1988;
 }

@@ -1,7 +1,9 @@
-import { format } from "date-fns";
+import { format, getYear } from "date-fns";
 import { enGB, nb } from "date-fns/locale";
 
 export function hentGrunnbeløp(): number {
+  // Vi kan vurdere å hente grunnbeløpet fra en ekstern kilde i stedet for å hardkode det.
+  // Tidligere hentet vi grunnbeløpet fra Nav API, men API-et kan bruke tid på å bli oppdatert. Derfor har vi valgt å hardkode beløpet.
   return 136549;
 }
 
@@ -112,4 +114,12 @@ export function tilTall(verdi: string): number | null {
 
   const konvertert = Number(verdi);
   return Number.isFinite(konvertert) ? konvertert : null;
+}
+
+export function hentBarnetillegg(): number {
+  return getYear(new Date()) - 1988;
+}
+
+export function beregnBarnetilleggPerUke(barnetilleggVerdi: number): number {
+  return barnetilleggVerdi * 5;
 }

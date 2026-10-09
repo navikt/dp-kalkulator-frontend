@@ -3,7 +3,7 @@ import { useForm } from "@rvf/react-router";
 import { subMonths } from "date-fns";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { NumericFormat } from "react-number-format";
-import { DagpengerLink } from "~/components/DagpengerLink";
+import { DagpengerLenke } from "~/components/DagpengerLinke";
 import { Header } from "~/components/Header";
 import { HvilkenInntektsperiodeBørDuVelge } from "~/components/HvilkenInntektsperiodeBørDuVelge";
 import { HvorforViSpørOmForsørgerBarn } from "~/components/HvorforViSpørOmForsørgerBarn";
@@ -12,10 +12,11 @@ import { NegativResultatBoks } from "~/components/NegativResultatBoks";
 import { PositivResultatBoks } from "~/components/PositivResultatBoks";
 import { useOversettelser } from "~/hooks/useOversettelser";
 import { useTypedRouteLoaderData } from "~/hooks/useTypedRouteLoaderData";
-import { hentBarnetillegg, hentMånederÅTrekkeFra } from "~/utils/dato.utils";
+import { hentMånederÅTrekkeFra } from "~/utils/dato.utils";
 import {
   beregnDagpengerResultat,
   formaterMånedOgÅr,
+  hentBarnetillegg,
   hentGrunnbeløp,
   Inntektsperiode,
   SkjemaTilstand,
@@ -77,8 +78,8 @@ export default function IndexRoute() {
     });
   }, [visResultat]);
 
-  const barnetilleggVerdi = hentBarnetillegg(new Date());
-  const månedÅTrekkeFra = hentMånederÅTrekkeFra(new Date());
+  const barnetilleggVerdi = hentBarnetillegg();
+  const månedÅTrekkeFra = hentMånederÅTrekkeFra();
   const sisteMånedMedUtbetaling = subMonths(new Date(), månedÅTrekkeFra);
 
   const periode12 = {
@@ -273,7 +274,7 @@ export default function IndexRoute() {
           </VStack>
         </form>
 
-        <DagpengerLink />
+        <DagpengerLenke />
       </VStack>
     </main>
   );
