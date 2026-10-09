@@ -1,4 +1,4 @@
-import { format } from "date-fns";
+import { format, getYear } from "date-fns";
 import { enGB, nb } from "date-fns/locale";
 
 export function hentGrunnbeløp(): number {
@@ -112,4 +112,12 @@ export function tilTall(verdi: string): number | null {
 
   const konvertert = Number(verdi);
   return Number.isFinite(konvertert) ? konvertert : null;
+}
+
+export function hentBarnetillegg(): number {
+  return getYear(new Date()) - 1988;
+}
+
+export function beregnBarnetilleggPerUke(barnetilleggVerdi: number): number {
+  return barnetilleggVerdi * 5;
 }

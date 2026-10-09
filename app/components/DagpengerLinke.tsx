@@ -2,7 +2,7 @@ import { BodyLong, BodyShort, HStack, Link, VStack } from "@navikt/ds-react";
 import { useTypedRouteLoaderData } from "~/hooks/useTypedRouteLoaderData";
 import { DagpengerIkon } from "./DagpengerIkon";
 
-export function DagpengerLink() {
+export function DagpengerLenke() {
   const { language } = useTypedRouteLoaderData("root");
   const språk = language === "en" ? "en" : "nb";
 
